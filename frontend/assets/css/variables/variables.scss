@@ -1,0 +1,80 @@
+
+:root {
+  --base-size: 1vw;//#{"calc(1vw + 1vh)"};
+
+  --tr: 0.3s;
+  --tr-regular: all var(--tr) ease;
+
+  --p-container: 2rem;
+  --m-m-container: calc(-1 * var(--p-container));
+
+
+  // Widths
+  --w-container: 100%;
+
+  --fz-regular: 2rem;
+  --lh-regular: 120%;
+
+  @media (max-width: $mobile) {
+    --fz-regular: 1.6rem;
+  }
+
+  @media (max-width: $mobile) {
+    --fz-regular: 1.5rem;
+  }
+
+  --fz-h1: 7rem;
+  --lh-h1: 100%;
+  --lc-h1: -.04rem;
+
+  @media (max-width: $tablet) {
+    --fz-h1: 4rem;
+  }
+
+  @media (max-width: $mobile) {
+    --fz-h1: 2.4rem;
+    --lc-h1: -0.08rem;
+  }
+
+  --fz-h2: 5rem;
+  --lh-h2: 85%;
+  --lc-h2: -.04rem;
+
+  @media (max-width: $mobile) {
+    --fz-h2: 1.7rem;
+    --lc-h2: -.02rem;
+  }
+
+  --fz-h3: 3.2rem;
+  --lh-h3: 110%;
+  --lc-h3: -.02rem;
+
+  --fz-h4: 2.4rem;
+  --lh-h4: 100%;
+  --lc-h4: -.02rem;
+
+  --fz-button: 3.2rem;
+  --lh-button: 100%;
+
+  @media (max-width: $mobile) {
+    --fz-button: 2rem;
+    line-height: 90%;
+  }
+
+  --fz-caption: 1.6rem;
+  --lh-caption: 110%;
+  --lc-caption: -.02rem;
+
+  @media (max-width: $mobile) {
+    --fz-caption: 1.2rem;
+  }
+
+  --fz-link: 1.6rem;
+  --lh-link: 110%;
+  --lc-link: -.02rem;
+
+  --fz-headline: 2.2rem;
+  --lh-headline: 110%;
+
+  --br-regular: 2rem;
+}

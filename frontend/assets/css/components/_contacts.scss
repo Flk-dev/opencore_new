@@ -1,0 +1,13 @@
+.c-contacts {
+
+}
+
+.c-contacts__item:not(:last-child){
+  margin-bottom: .7rem;
+}
+
+.c-contacts__link {
+  font-size: 2.2rem;
+  line-height: 120%;
+  color: var(--fg-white);
+}

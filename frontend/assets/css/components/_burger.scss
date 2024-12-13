@@ -1,0 +1,31 @@
+.burger {
+  width: 100%;
+}
+
+.burger__line {
+  display: block;
+  width: 100%;
+  height: .2rem;
+  margin-bottom: .5rem;
+  background: var(--fg-blue);
+  transition: var(--tr-regular);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.menu--open {
+  & .burger__line {
+    background: var(--fg-white);
+  }
+
+  & .burger__line:first-child {
+    width: 0;
+  }
+
+  & .burger__line:last-child {
+    width: 0;
+    margin-left: auto;
+  }
+}

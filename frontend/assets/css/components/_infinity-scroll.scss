@@ -1,0 +1,50 @@
+//@keyframes scroll {
+//  0% {
+//    transform: translateX(100%);
+//  }
+//
+//  100% {
+//    transform: translateX(-100%);
+//  }
+//}
+//
+//@keyframes scroll2 {
+//  0% {
+//    transform: translateX(0);
+//  }
+//
+//  100% {
+//    transform: translateX(-200%);
+//  }
+//}
+//
+//.infinity__scroll {
+//  position: relative;
+//  display: flex;
+//  overflow: hidden;
+//}
+//
+//.infinity__scroll > div {
+//  display: flex;
+//  align-items: center;
+//  white-space: nowrap;
+//  animation: scroll var(--time) linear infinite;
+//  animation-delay: calc(var(--time)*-1);
+//
+//  &:last-child {
+//    animation: scroll2 var(--time) linear infinite;
+//    animation-delay: calc(var(--time)/-2);
+//  }
+//}
+//
+//.infinity__scroll div > span {
+//  display: inline-flex;
+//  margin: 10px;
+//  letter-spacing: 0.2em;
+//  background: #333;
+//  color: #fff;
+//  padding: 5px 10px;
+//  border-radius: 5px;
+//  transition: 0.5s;
+//}
+

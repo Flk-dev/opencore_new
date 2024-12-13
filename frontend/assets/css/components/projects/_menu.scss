@@ -1,0 +1,36 @@
+.projects__menu {
+  display: flex;
+  margin-right: calc(-1 * var(--p-container));
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow-y: auto;
+  margin-bottom: 2rem;
+
+  &::-webkit-scrollbar {
+    opacity: 0;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+}
+
+.projects__menu-link {
+  font-size: var(--fz-caption);
+  line-height: var(--lh-caption);
+  letter-spacing: var(--lc-caption);
+  color: var(--fg-black);
+  padding: 1.1rem 2rem;
+  border: .15rem solid var(--fg-black);
+  border-radius: 1.5rem;
+  margin-right: 1rem;
+  font-weight: 400;
+  transition: var(--tr-regular);
+
+  &._active,
+  &:hover {
+    background: var(--fg-blue);
+    border-color: var(--fg-blue);
+    color: var(--fg-white);
+  }
+}

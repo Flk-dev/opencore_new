@@ -1,0 +1,22 @@
+.socials {
+  display: flex;
+  align-items: center;
+}
+
+.socials__item {
+  margin-right: 2rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.socials__link {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--fg-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
