@@ -1,0 +1,25 @@
+.text__content {
+  --fz: 1.7rem;
+  --lh: 130%;
+
+  font-size: var(--fz);
+  line-height: var(--lh);
+
+  & > * {
+    margin-bottom: 3rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  & a {
+    color: var(--fg-blue);
+  }
+
+  & ol,
+  & ul {
+    padding-left: .5rem;
+    margin-top: -.5rem;
+  }
+}

@@ -38,7 +38,7 @@
 
   --fz-h2: 5rem;
   --lh-h2: 85%;
-  --lc-h2: -.04rem;
+  --lc-h2: -.2rem;
 
   @media (max-width: $mobile) {
     --fz-h2: 1.7rem;
@@ -77,4 +77,5 @@
   --lh-headline: 110%;
 
   --br-regular: 2rem;
+  --br-secondary: 1.5rem;
 }

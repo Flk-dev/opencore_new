@@ -196,7 +196,27 @@ h4, .fz-h4 {
 }
 
 .page-paddings {
+  padding-top: 6rem;
   padding-bottom: 20rem;
+}
+
+.item--cover {
+  position: relative;
+
+  & > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 }
 
 @import "./keyframes";

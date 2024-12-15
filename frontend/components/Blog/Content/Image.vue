@@ -1,11 +1,8 @@
 <template>
 
-  <PageHeader />
-  <FiltersCategories type="blog" />
-
 </template>
 
-<script>
+<script setup>
 
 </script>
 
