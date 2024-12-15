@@ -1,13 +1,16 @@
 <template>
-Test
+  <Header />
+
+  <PageHeader />
+  <FiltersCategories />
+
+  <Footer />
 </template>
 
-<script>
-export default {
-  name: "index"
-}
+<script setup>
+
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
 </style>
