@@ -34,7 +34,12 @@ const contentLayouts = ref( {
   image: BlogContentImage
 } );
 
-const { result: post, error } = await useApi( '/blog/' + route.params.slug );
+const { result: post, error } = await useApi( '/blog/' + route.params.slug, {}, true );
+// if ( ! post.data ) {
+//
+//     throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+//
+// }
 
 </script>
 

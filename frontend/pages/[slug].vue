@@ -20,25 +20,25 @@
 //   }
 // } );
 
-const route = useRoute()
-const config = useRuntimeConfig();
-const error = useError();
-
-const pageData = await useAsyncData(
-    `${route.params.slug}`,
-    () =>
-        $fetch(`${config.public.WP_DEV}/pages`, {}).catch((error) => error.data),
-    {
-      transform: (resData) => {
-        if ( resData.data.status === 404 ) {
-          console.log( resData.data.status );
-          //error({ statusCode: 404, message: err.message })
-        }
-      },
-    },
-)
-
-console.log( pageData );
+// const route = useRoute()
+// const config = useRuntimeConfig();
+// const error = useError();
+//
+// const pageData = await useAsyncData(
+//     `${route.params.slug}`,
+//     () =>
+//         $fetch(`${config.public.WP_DEV}/pages`, {}).catch((error) => error.data),
+//     {
+//       transform: (resData) => {
+//         if ( resData.data.status === 404 ) {
+//           console.log( resData.data.status );
+//           //error({ statusCode: 404, message: err.message })
+//         }
+//       },
+//     },
+// )
+//
+// console.log( pageData );
 
 </script>
 

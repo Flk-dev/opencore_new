@@ -10,6 +10,8 @@ function dd( $array ) {
 }
 
 add_action( 'rest_api_init', function () {
+	require_once __DIR__ . '/api/contacts/page.php';
+
 	require_once __DIR__ . '/api/blog/categories.php';
 	require_once __DIR__ . '/api/blog/list.php';
 	require_once __DIR__ . '/api/blog/slug.php';
@@ -45,4 +47,14 @@ function get_term_format_data( $terms ) {
 	}
 
 	return $new;
+}
+
+if ( function_exists( 'acf_add_options_page' ) ) {
+	acf_add_options_page( [
+		'page_title' => 'Настройки сайта',
+		'menu_title' => 'Настройки сайта',
+		'menu_slug'  => 'theme-general-settings',
+		'capability' => 'edit_posts',
+		'redirect'   => false
+	] );
 }

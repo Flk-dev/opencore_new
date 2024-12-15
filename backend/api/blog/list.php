@@ -8,6 +8,7 @@ register_rest_route( OS_API_NAMESPACE, '/blog', [
 			'posts_per_page' => - 1
 		] );
 
+
 		return $posts;
 	},
 
