@@ -13,15 +13,26 @@
     <section class="partners section">
       <div class="partners__container container">
         <BlockHeader title="Мы всегда рады новым знакомствам, давайте сделаем вместе что-нибудь классное" classes="partners" />
-        <div class="partners__grid">
-          <PartnersCard />
+        <div class="partners__grid" v-if="post.data.list">
+          <PartnersCard
+              v-for="post in post.data.list"
+              :key="post.ID"
+              :id="post.ID"
+              :title="post.title"
+              :slug="post.slug"
+              :description="post.description"
+          />
         </div>
       </div>
     </section>
+
+    <SectionsCollaboration />
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+
+const { result: post, error } = await useApi( '/template/partners' );
 
 </script>
 

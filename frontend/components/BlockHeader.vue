@@ -1,6 +1,6 @@
 <template>
 <div class="block-header" :class="classes + '__block-header'">
-  <h2 class="block-header__title">{{ title }}</h2>
+  <h2 class="block-header__title" v-html="title"></h2>
 </div>
 </template>
 
