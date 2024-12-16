@@ -11,21 +11,32 @@
 
   <div class="contacts">
     <div class="contacts__container container">
-      <h1 class="contacts__title fz-h2">Давайте вместе сделаем что-то классное</h1>
+      <h1 class="contacts__title fz-h2">Давайте вместе сделаем<br> что-то классное</h1>
       <div class="contacts__flex">
-        <div class="contacts__main"></div>
-        <div class="contacts__socials">
-          <div class="contacts__socials-title fz-h4">Можете подписаться на наши соц сети</div>
-          <div class="contacts__socials-list" v-if="post.data.socials" v-for="social in post.data.socials">
-            <a :href="social.link" class="contacts__socials-item">{{ social.text }}</a>
+        <div class="contacts__main">
+          <ContactsVideo :video="post.data.video" />
+          <div class="contacts__video" v-if="post.data.video.link" :data-video="post.data.video.link">
+            <button class="contacts__video-play">
+              <svg width="25" height="27" viewBox="0 0 25 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.9" d="M22.6465 10.6816C24.7559 11.8995 24.7559 14.9441 22.6465 16.1619L5.42005 26.1076C3.31069 27.3254 0.673992 25.8031 0.673992 23.3675V3.47606C0.673992 1.04038 3.31069 -0.481916 5.42006 0.735924L22.6465 10.6816Z" fill="white"/>
+              </svg>
+            </button>
+            <div class="contacts__video-bg" v-if="post.data.video.preview" :style="{backgroundImage: 'url('+post.data.video.preview+')'}"></div>
+          </div>
+          <div class="contacts__main-content">
+            <div class="contacts__hello fz-h4" v-if="post.data.hello_text" v-html="post.data.hello_text"></div>
+            <ContactsSocials classes="contacts__direct" :socials="post.data.socials_direct" />
           </div>
         </div>
+        <ContactsSocials title="Можете подписаться на наши соц сети" classes="contacts__socials" :socials="post.data.socials" />
       </div>
+      <ContactsAddresses classes="contacts__addresses" v-if="post.data.addresses" :items="post.data.addresses" />
     </div>
   </div>
 </template>
 
 <script setup>
+
 const { result: post, error } = await useApi( '/template/contacts' );
 
 </script>
@@ -34,5 +45,38 @@ const { result: post, error } = await useApi( '/template/contacts' );
 .contacts__flex {
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 10rem;
 }
+
+.contacts__title {
+  max-width: 94.1rem;
+  margin-bottom: 6rem;
+}
+
+.contacts__socials {
+  max-width: 30.3rem;
+}
+
+.contacts__main {
+  display: flex;
+  max-width: 80.2rem;
+}
+
+.contacts__main-content {
+  padding-left: 2.9rem;
+}
+
+.contacts__hello {
+  margin-bottom: 6rem;
+
+  & ::v-deep p {
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
 </style>

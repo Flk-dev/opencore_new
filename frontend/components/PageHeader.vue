@@ -10,14 +10,14 @@
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 
 .page__header {
   padding: 12rem 0;
+}
 
-  & svg {
-    margin: 0 auto;
-  }
+.page__header-container svg {
+  margin: 0 auto;
 }
 
 </style>
