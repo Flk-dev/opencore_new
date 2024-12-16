@@ -3,6 +3,8 @@
 
 define( 'OS_API_NAMESPACE', 'opencore/v1' );
 
+add_theme_support( 'post-thumbnails' );
+
 function dd( $array ) {
 	echo '<pre>';
 	var_dump( $array );
@@ -51,6 +53,7 @@ function get_term_format_data( $terms ) {
 }
 
 if ( function_exists( 'acf_add_options_page' ) ) {
+	// Options page for theme
 	acf_add_options_page( [
 		'page_title' => 'Настройки сайта',
 		'menu_title' => 'Настройки сайта',
@@ -58,4 +61,19 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 		'capability' => 'edit_posts',
 		'redirect'   => false
 	] );
+
+	// Options page for partners
+	acf_add_options_sub_page( [
+		'page_title'  => 'Настройки: партнеры',
+		'menu_title'  => 'Настройки',
+		'parent_slug' => 'edit.php?post_type=partners',
+	] );
+
+//	acf_add_options_sub_page( [
+//		'page_title' => 'Настройки партнеров',
+//		'menu_title' => 'Настройки партнеров',
+//		'menu_slug'  => 'partners-settings',
+//		'capability' => 'edit.php?post_type=partners',
+//		'redirect'   => false
+//	] );
 }
