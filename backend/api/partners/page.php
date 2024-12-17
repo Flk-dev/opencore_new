@@ -14,7 +14,7 @@ register_rest_route( OS_API_NAMESPACE, '/template/partners', [
 					'ID'          => $partner->ID,
 					'slug'        => $partner->post_name,
 					'title'       => $partner->post_title,
-					'description' => get_field( 'short_description', $partner->ID ) ?? '',
+					'description' => on_get_field( 'short_description', $partner->ID ),
 					'categories'  => get_term_format_data(
 						wp_get_post_terms( $partner->ID, 'partners_cats' )
 					)
@@ -23,7 +23,8 @@ register_rest_route( OS_API_NAMESPACE, '/template/partners', [
 		}
 
 		return get_format_data( [
-			'list' => $partners
+			'title' => on_get_field( 'partners_title', 'option' ),
+			'list'  => $partners,
 		] );
 	},
 

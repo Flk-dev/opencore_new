@@ -13,7 +13,7 @@
     <section class="partners section">
       <div class="partners__container container">
         <BlockHeader title="Мы всегда рады новым знакомствам, давайте сделаем вместе что-нибудь классное" classes="partners" />
-        <div class="partners__grid" v-if="post.data.list">
+        <div class="partners__grid">
           <PartnersCard
               v-for="post in post.data.list"
               :key="post.ID"
@@ -21,6 +21,7 @@
               :title="post.title"
               :slug="post.slug"
               :description="post.description"
+              :categories="post.categories"
           />
         </div>
       </div>
@@ -31,9 +32,7 @@
 </template>
 
 <script setup lang="ts">
-
-const { result: post, error } = await useApi( '/template/partners' );
-
+const { result: post } = await useApi( '/template/partners' );
 </script>
 
 <style scoped lang="scss">

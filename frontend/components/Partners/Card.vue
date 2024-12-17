@@ -2,7 +2,9 @@
 
   <div class="partners-item">
     <div class="partners-item__top">
-      <div class="partners-item__category" v-if="categories"></div>
+      <div class="partners-item__category" v-if="categories">
+        <p v-for="category in categories">{{ category.name }}</p>
+      </div>
       <NuxtLink :to="{ name: 'partners-slug', params: { slug: slug } }" class="partners-item__header">
         <h3 class="partners-item__title">{{ title }}</h3>
         <div class="partners-item__icon">
@@ -39,6 +41,7 @@ defineProps<{
   padding-bottom: 2rem;
   border-bottom: .15rem solid var(--fg-blue);
   margin-bottom: 2rem;
+  color: var(--fg-blue);
 }
 
 .partners-item__header {
