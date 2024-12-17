@@ -1,1 +1,1 @@
-<?php /* TEMPLATE NAME: Обучение */ 
+<?php /* TEMPLATE NAME: Обучение */
