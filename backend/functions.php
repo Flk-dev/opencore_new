@@ -12,6 +12,8 @@ function dd( $array ) {
 }
 
 add_action( 'rest_api_init', function () {
+	require_once __DIR__ . '/api/pages/slug.php';
+
 	require_once __DIR__ . '/api/contacts/page.php';
 	require_once __DIR__ . '/api/partners/page.php';
 
@@ -50,6 +52,15 @@ function get_term_format_data( $terms ) {
 	}
 
 	return $new;
+}
+
+function on_get_field( $selector, $post_id, $default = '' ) {
+	$field = get_field( $selector, $post_id );
+	if ( empty( $field ) ) {
+		return $default;
+	}
+
+	return $field;
 }
 
 if ( function_exists( 'acf_add_options_page' ) ) {

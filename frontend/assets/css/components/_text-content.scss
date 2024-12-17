@@ -2,6 +2,9 @@
   --fz: 1.7rem;
   --lh: 130%;
 
+  --m-bottom: 3rem;
+
+  --mt-ul: 0;
   --mb-ul-li: .5rem;
   --wh-ul-icon: .6rem;
   --pd-ul-icon: .5rem;
@@ -10,7 +13,7 @@
   line-height: var(--lh);
 
   & > * {
-    margin-bottom: 3rem;
+    margin-bottom: var(--m-bottom);
 
     &:last-child {
       margin-bottom: 0;
@@ -28,7 +31,7 @@
 
   & ul {
     padding: 0;
-    margin: 0;
+    margin-top: var(--mt-ul);
     list-style: none;
 
     & li {

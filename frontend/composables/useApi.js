@@ -11,9 +11,18 @@ export default async ( url, options = {}, is_error = false ) => {
         },
     );
 
-    if ( is_error && result.value.data.status === 404 ) {
-        throw createError( { statusCode: 404, statusMessage: 'Page Not Found' } )
-    }
+    const errorHandler = () => {
+        if ( is_error ) {
+            console.log( result.value );
+            if ( result.value.data.hasOwnProperty( 'status' ) && result.value.data.status === 404 ) {
+                console.log( result.value.data );
+                throw createError( { statusCode: 404, statusMessage: 'Page Not Found' } );
+            }
+        }
+    };
+
+    // TODO: Add errors handler
+    errorHandler();
 
     return {
         result,

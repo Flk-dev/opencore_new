@@ -1,47 +1,60 @@
 <template>
-  <template>
-    <Header />
     <div class="content__page page-paddings">
       <div class="content__page-container container">
-        <PageTitle title="Политика использования файлов Cookie" />
+        <div class="content__page-left">
+          <PageTitle classes="content__page-title" :title="post.data.title" />
+          <div class="content__page-subtitle fz-h3" v-if="post.data.subtitle">{{ post.data.subtitle }}</div>
+        </div>
+        <div class="content__page-blocks">
+          <div class="content__page-block text__content"
+               v-if="post.data.page_content"
+               v-for="content in post.data.page_content"
+               v-html="content.text">
+          </div>
+        </div>
       </div>
     </div>
-    <Footer />
-  </template>
 </template>
 
 <script setup>
 
-// definePageMeta( {
-//   validate: async ( route ) => {
-//     console.log( route );
-//     // Check if the id is made up of digits
-//     return typeof route.params.id === 'string' && /^\d+$/.test( route.params.slug )
-//   }
-// } );
-
-// const route = useRoute()
-// const config = useRuntimeConfig();
-// const error = useError();
-//
-// const pageData = await useAsyncData(
-//     `${route.params.slug}`,
-//     () =>
-//         $fetch(`${config.public.WP_DEV}/pages`, {}).catch((error) => error.data),
-//     {
-//       transform: (resData) => {
-//         if ( resData.data.status === 404 ) {
-//           console.log( resData.data.status );
-//           //error({ statusCode: 404, message: err.message })
-//         }
-//       },
-//     },
-// )
-//
-// console.log( pageData );
+const route = useRoute();
+const { result: post, error } = await useApi( '/pages/' + route.params.slug + '/', {}, true );
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.content__page-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3.5rem;
+}
+
+.content__page-title {
+  margin: 0;
+}
+
+.content__page-block {
+  margin-bottom: 8rem;
+
+  --fz: var(--fz-body-b);
+  --lh: var(--lh-body-b);
+  --m-bottom: 2.2rem;
+  --mt-ul: -1.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  & ::v-deep a {
+    text-decoration: underline;
+  }
+}
+
+.content__page-subtitle {
+  margin-top: 3rem;
+  color: var(--fg-black-50);
+  max-width: 44.8rem;
+}
 
 </style>
