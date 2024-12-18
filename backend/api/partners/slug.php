@@ -18,12 +18,23 @@ register_rest_route( OS_API_NAMESPACE, '/partners/(?P<slug>\S+)', [
             return get_wp_error();
         }
 
+	    $content = on_get_field( 'content', $post[0]->ID, [] );
+	    $content = on_filter_post_objects(
+		    $content,
+		    [ 'speakers' => 'select' ],
+		    [
+			    'image'      => '',
+			    'post'       => '',
+			    'experience' => ''
+		    ]
+	    );
+
         $categories = get_term_format_data( wp_get_post_terms( $post[0]->ID, 'partners_cats' ) );
 
 	    return get_format_data( [
 		    'ID'         => $post[0]->ID,
 		    'title'      => $post[0]->post_title,
-		    'content'    => on_get_field( 'content', $post[0]->ID, [] ),
+		    'content'    => $content,
 		    'subtitle'   => on_get_field( 'subtitle', $post[0]->ID ),
 		    'categories' => $categories
 	    ] );

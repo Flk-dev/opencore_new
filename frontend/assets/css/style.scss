@@ -153,6 +153,11 @@ h4, .fz-h4 {
   font-family: var(--ff-regular);
 }
 
+.fz-body {
+  font-size: var(--fz-body-b);
+  line-height: var(--fz-body-b);
+}
+
 @media (max-width: $tablet) {
   .fz-h1--tablet {
     font-size: var(--fz-h1);

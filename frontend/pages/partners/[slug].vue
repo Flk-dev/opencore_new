@@ -1,7 +1,5 @@
 <template>
   <div class="partner page-paddings">
-
-    {{ post.data.content }}
     <PartnersContentHead
         :title="post.data.title"
         :subtitle="post.data.subtitle"
@@ -16,19 +14,27 @@
 </template>
 
 <script setup lang="ts">
-import { PartnersContentList, PartnersContentThemes } from '#components';
+import { PartnersContentList, PartnersContentThemes, PartnersContentYoutube, SectionsSpeakers } from '#components';
 
 const route = useRoute();
 const contentLayouts = ref( {
   list: PartnersContentList,
   themes: PartnersContentThemes,
-  //text: PartnersContentHead,
-  //image: BlogContentImage
+  youtube: PartnersContentYoutube,
+  speakers: SectionsSpeakers,
 } );
 
 const { result: post, error } = await useApi( '/partners/' + route.params.slug, {}, '', true );
 </script>
 
 <style scoped lang="scss">
+
+.partner section {
+  padding: 0;
+}
+
+.partner .speakers {
+  margin-top: var(--mt-content-block)
+}
 
 </style>

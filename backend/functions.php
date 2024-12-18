@@ -66,6 +66,34 @@ function on_get_field( $selector, $post_id, $default = '' ) {
 	return $field;
 }
 
+function on_filter_post_objects( $field, $keys, $fields = [] ) {
+	foreach ( $keys as $key => $value ) {
+		$find = array_search( $key, array_column( $field, 'acf_fc_layout' ) );
+		if ( $find !== false && ! empty( $field[ $find ][ $value ] ) ) {
+			$new = $field[ $find ][ $value ];
+
+			foreach ( $new as $item_key => $item ) {
+				$data = [
+					'post_id'    => $item->ID,
+					'post_title' => $item->post_title,
+				];
+
+				if ( ! empty( $fields ) ) {
+					foreach ( $fields as $field_key => $default ) {
+						$data[ $field_key ] = on_get_field( $field_key, $item->ID, $default );
+					}
+				}
+
+				$new[ $item_key ] = $data;
+			}
+
+			$field[ $find ][ $value ] = $new;
+		}
+	}
+
+	return $field;
+}
+
 if ( function_exists( 'acf_add_options_page' ) ) {
 	// Options page for theme
 	acf_add_options_page( [

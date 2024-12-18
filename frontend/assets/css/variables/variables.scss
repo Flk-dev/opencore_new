@@ -37,7 +37,7 @@
   }
 
   --fz-h2: 5rem;
-  --lh-h2: 85%;
+  --lh-h2: 100%;
   --lc-h2: -.2rem;
 
   @media (max-width: $mobile) {
@@ -51,7 +51,7 @@
 
   --fz-h4: 2.4rem;
   --lh-h4: 100%;
-  --lc-h4: -.02rem;
+  --lc-h4: -.1rem;
 
   --fz-button: 3.2rem;
   --lh-button: 100%;
@@ -83,5 +83,6 @@
   --br-secondary: 1.5rem;
 
   --mt-content-block-plus: 16rem;
+  --mt-content-block-secondary: 12rem;
   --mt-content-block: 20rem;
 }

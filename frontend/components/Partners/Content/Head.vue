@@ -32,6 +32,7 @@ defineProps<{
 
 .partner-head__title {
   margin: 0;
+  font-weight: 600;
 }
 
 .partner-head__subtitle {
