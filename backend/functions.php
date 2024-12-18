@@ -18,6 +18,7 @@ add_action( 'rest_api_init', function () {
 
 	require_once __DIR__ . '/api/partners/page.php';
 	require_once __DIR__ . '/api/partners/collaborate.php';
+	require_once __DIR__ . '/api/partners/slug.php';
 
 	require_once __DIR__ . '/api/blog/categories.php';
 	require_once __DIR__ . '/api/blog/list.php';
