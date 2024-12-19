@@ -1,5 +1,7 @@
 <template>
-  <button class="btn" :class="classes">{{ title }}</button>
+  <button class="btn" :class="classes">
+    <span>{{ title }}</span>
+  </button>
 </template>
 
 <script setup lang="ts">
@@ -49,7 +51,7 @@ const props = defineProps<{
   }
 }
 
-.btn--ripple {
+::v-deep .btn--ripple {
   position: relative;
   overflow: hidden;
 

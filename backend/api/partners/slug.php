@@ -21,11 +21,19 @@ register_rest_route( OS_API_NAMESPACE, '/partners/(?P<slug>\S+)', [
 	    $content = on_get_field( 'content', $post[0]->ID, [] );
 	    $content = on_filter_post_objects(
 		    $content,
-		    [ 'speakers' => 'select' ],
 		    [
-			    'image'      => '',
-			    'post'       => '',
-			    'experience' => ''
+			    'speakers' => 'select',
+			    'cases'    => 'select'
+		    ],
+		    [
+			    'speakers' => [
+				    'image'      => '',
+				    'post'       => '',
+				    'experience' => ''
+			    ],
+			    'cases' => [
+				    'taxonomy' => 'cases_cats',
+			    ]
 		    ]
 	    );
 

@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { PartnersContentList, PartnersContentThemes, PartnersContentYoutube, SectionsSpeakers } from '#components';
+import { PartnersContentList, PartnersContentThemes, PartnersContentYoutube, SectionsSpeakers, SectionsCases } from '#components';
 
 const route = useRoute();
 const contentLayouts = ref( {
@@ -22,6 +22,7 @@ const contentLayouts = ref( {
   themes: PartnersContentThemes,
   youtube: PartnersContentYoutube,
   speakers: SectionsSpeakers,
+  cases: SectionsCases
 } );
 
 const { result: post, error } = await useApi( '/partners/' + route.params.slug, {}, '', true );

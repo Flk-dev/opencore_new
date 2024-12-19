@@ -78,8 +78,8 @@ function on_filter_post_objects( $field, $keys, $fields = [] ) {
 					'post_title' => $item->post_title,
 				];
 
-				if ( ! empty( $fields ) ) {
-					foreach ( $fields as $field_key => $default ) {
+				if ( ! empty( $fields[ $key ] ) ) {
+					foreach ( $fields[ $key ] as $field_key => $default ) {
 						$data[ $field_key ] = on_get_field( $field_key, $item->ID, $default );
 					}
 				}
