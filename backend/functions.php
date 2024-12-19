@@ -28,6 +28,9 @@ add_action( 'rest_api_init', function () {
 	require_once __DIR__ . '/api/blog/categories.php';
 	require_once __DIR__ . '/api/blog/list.php';
 	require_once __DIR__ . '/api/blog/slug.php';
+
+	// Reviews
+	require_once __DIR__ . '/api/reviews/page.php';
 } );
 
 function get_wp_error( $name = '404_error', $message = 'Пост не найден', $status = 404 ) {
@@ -111,6 +114,13 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 		'page_title'  => 'Настройки: партнеры',
 		'menu_title'  => 'Настройки',
 		'parent_slug' => 'edit.php?post_type=partners',
+	] );
+
+	// Options page for reviews
+	acf_add_options_sub_page( [
+		'page_title'  => 'Настройки: Отзывы',
+		'menu_title'  => 'Настройки: Отзывы',
+		'parent_slug' => 'edit.php?post_type=reviews',
 	] );
 
 //	acf_add_options_sub_page( [

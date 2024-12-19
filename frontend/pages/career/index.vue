@@ -24,15 +24,9 @@ const contentLayouts = ref( {
   values: CareerValues,
   expertise: CareerExpertise,
   histories: CareerHistory,
-  // themes: PartnersContentThemes,
-  // youtube: PartnersContentYoutube,
-  // speakers: SectionsSpeakers,
-  // cases: SectionsCases
 } );
 
 const { result: post, error } = await useApi( '/template/career', {}, '', true );
-console.log( post );
-
 </script>
 
 <style scoped lang="scss">
