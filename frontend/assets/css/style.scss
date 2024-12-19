@@ -155,7 +155,7 @@ h4, .fz-h4 {
 
 .fz-body {
   font-size: var(--fz-body-b);
-  line-height: var(--fz-body-b);
+  line-height: 120%;
 }
 
 @media (max-width: $tablet) {

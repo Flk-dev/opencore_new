@@ -11,7 +11,7 @@ const props = defineProps<{
 }>();
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .btn {
   display: block;
   width: 100%;

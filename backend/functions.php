@@ -12,20 +12,22 @@ function dd( $array ) {
 }
 
 add_action( 'rest_api_init', function () {
+	// Text content pages
 	require_once __DIR__ . '/api/pages/slug.php';
 
+	// Pages
 	require_once __DIR__ . '/api/contacts/page.php';
+	require_once __DIR__ . '/api/career/page.php';
 
+	// Partners
 	require_once __DIR__ . '/api/partners/page.php';
 	require_once __DIR__ . '/api/partners/collaborate.php';
 	require_once __DIR__ . '/api/partners/slug.php';
 
+	// Blog
 	require_once __DIR__ . '/api/blog/categories.php';
 	require_once __DIR__ . '/api/blog/list.php';
 	require_once __DIR__ . '/api/blog/slug.php';
-
-	//require_once __DIR__ . '/api/blog/list.php';
-	//require_once __DIR__ . '/api/pages/slug.php';
 } );
 
 function get_wp_error( $name = '404_error', $message = 'Пост не найден', $status = 404 ) {

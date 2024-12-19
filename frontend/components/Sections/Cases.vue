@@ -1,5 +1,4 @@
 <template>
-  {{ data }}
   <section class="projects section">
     <div class="projects__container container">
       <BlockHeader :title="data.title" classes="projects" />

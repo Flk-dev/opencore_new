@@ -1,11 +1,11 @@
 <template>
-  <div class="scroll-text" :class="classes + '__scroll-text'">
+  <section class="scroll-text" :class="classes + '__scroll-text'">
     <div class="scroll-text__row" v-for="row in data">
       <div class="scroll-text__item fz-h4" v-for="cell in row.cell">
         {{ cell.text }}
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -37,5 +37,6 @@ defineProps<{
   border: .15rem solid var(--fg-blue);
   border-radius: var(--br-regular);
   margin-right: 2rem;
+  line-height: 60%;
 }
 </style>
