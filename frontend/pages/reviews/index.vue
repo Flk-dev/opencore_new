@@ -9,18 +9,67 @@
     </svg>
   </PageHeader>
 
-  <div class="reviews">
-    <div class="reviews__container">
-
+  <div class="reviews page-paddings">
+    <div class="reviews__container container">
+      <BlockHeader :title="post.data.title" classes="reviews" />
+      <div class="reviews__grid" v-if="columns.value.col_1.length">
+        <div class="reviews__col" v-for="(reviews, index) in columns.value" :key="index">
+          <template v-if="reviews.length">
+            <ReviewsCard
+              v-for="review in reviews"
+              :key="review.post_id"
+              :id="review.post_id"
+              :name="review.post_title"
+              :title="review.title"
+              :post="review.post"
+              :logo="review.logo"
+            />
+          </template>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 const { result: post, error } = await useApi( '/template/reviews' );
-console.log( post.value )
+const cols = ref( {
+  col_1: [],
+  col_2: [],
+} )
+
+const columns = computed(() => {
+  const list = post.value.data.list;
+  if ( list.length ) {
+    list.forEach( ( element, index ) => {
+      index += 1;
+      if ( index % 2 === 0 ) {
+        cols.value.col_2.push( element );
+      } else {
+        cols.value.col_1.push( element );
+      }
+    } );
+  }
+
+  return cols;
+});
+
 </script>
 
 <style scoped lang="scss">
+.reviews {
+  padding-top: 0;
+}
+
+.reviews__block-header {
+  max-width: 84.7rem;
+  margin-bottom: 10.7rem;
+}
+
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat( 2, 1fr );
+  gap: 2rem;
+}
 
 </style>
