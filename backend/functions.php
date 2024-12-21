@@ -31,6 +31,9 @@ add_action( 'rest_api_init', function () {
 
 	// Reviews
 	require_once __DIR__ . '/api/reviews/page.php';
+
+	// Learning
+	require_once __DIR__ . '/api/learning/page.php';
 } );
 
 function get_wp_error( $name = '404_error', $message = 'Пост не найден', $status = 404 ) {
