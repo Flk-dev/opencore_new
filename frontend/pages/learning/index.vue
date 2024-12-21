@@ -19,16 +19,16 @@
 </template>
 
 <script setup lang="ts">
-import { LearningVideo, LearningWhos } from '#components';
+import { LearningVideo, LearningWhos, LearningWe } from '#components';
 
 const route = useRoute();
 const contentLayouts = ref( {
   video: LearningVideo,
   whos: LearningWhos,
+  learn: LearningWe,
 } );
 
 const { result: post, error } = await useApi( '/template/learning' );
-console.log( post );
 </script>
 
 <style scoped lang="scss">
