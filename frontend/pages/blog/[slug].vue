@@ -18,20 +18,20 @@
         :categories="post.data.categories"
     />
 
-    <div class="article__content" v-if="post.data.content" v-for="content in post.data.content">
-      <component :is="contentLayouts[content.acf_fc_layout]" :data="content" />
+    <div class="article__content" v-if="post.data.content">
+      <component v-for="content in post.data.content" :is="contentLayouts[content.acf_fc_layout]" :data="content" />
     </div>
   </div>
 
 </template>
 
 <script setup>
-import { BlogContentText, BlogContentImage } from '#components';
+import { BlogContentText, BlogContentButton } from '#components';
 
 const route = useRoute();
 const contentLayouts = ref( {
-  text: BlogContentText,
-  image: BlogContentImage
+  block: BlogContentText,
+  button: BlogContentButton
 } );
 
 const { result: post, error } = await useApi( '/blog/' + route.params.slug, {}, true );

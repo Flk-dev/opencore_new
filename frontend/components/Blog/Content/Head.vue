@@ -32,7 +32,7 @@ const props = defineProps<{
 
 <style scoped lang="scss">
 .article__head {
-  margin-bottom: 10rem;
+  margin-bottom: 15.6rem;
 }
 
 .article__head-container {
