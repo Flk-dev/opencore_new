@@ -11,11 +11,16 @@
 const props = defineProps<{
   image?: string,
   title?: string,
+  classes?: string,
   classes_pic?: string
 }>();
 </script>
 
 <style scoped lang="scss">
+.image {
+  position: relative;
+}
+
 .image__picture {
   position: relative;
   background: var(--fg-blue);

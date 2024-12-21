@@ -2,7 +2,7 @@
 
   <div class="cats__menu">
     <div class="cats__menu-container container">
-      <div class="cats__menu-list">
+      <div class="cats__menu-list" v-if="categories.length">
         <button class="cats__menu-link _active" data-id="all">Все</button>
         <template v-for="category in categories">
           <button class="cats__menu-link" data-id="{{ category.term_id }}">{{ category.name }}</button>
@@ -14,13 +14,11 @@
 </template>
 
 <script setup>
-
 const props = defineProps( {
   type: String
 } );
 
-const { result: categories, error } = await useApi( '/blog/' + props.type );
-
+const { result: categories, error } = await useApi( '/' + props.type + '/categories', {}, 'blog/categories' );
 </script>
 
 <style scoped lang="scss">

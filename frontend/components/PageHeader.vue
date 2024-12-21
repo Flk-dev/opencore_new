@@ -20,4 +20,8 @@
   margin: 0 auto;
 }
 
+.page__header + .page-paddings {
+  padding-top: 0;
+}
+
 </style>
