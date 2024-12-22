@@ -19,9 +19,9 @@ register_rest_route( OS_API_NAMESPACE, '/template/learning', [
 			],
 			[
 				'teachers' => [
-					'image'    => '',
-					'subtitle' => '',
-					'post'     => '',
+					'image'      => '',
+					'experience' => '',
+					'post'       => '',
 				],
 			]
 		);

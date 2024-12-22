@@ -19,13 +19,16 @@
 </template>
 
 <script setup lang="ts">
-import { LearningVideo, LearningWhos, LearningWe } from '#components';
+import { LearningVideo, LearningWhos, LearningWe, LearningComplex, SectionsSpeakers, LearningFormat } from '#components';
 
 const route = useRoute();
 const contentLayouts = ref( {
   video: LearningVideo,
   whos: LearningWhos,
   learn: LearningWe,
+  complex: LearningComplex,
+  teachers: SectionsSpeakers,
+  format: LearningFormat
 } );
 
 const { result: post, error } = await useApi( '/template/learning' );
@@ -35,6 +38,12 @@ const { result: post, error } = await useApi( '/template/learning' );
 
 .learning__block:not(:first-child){
   margin-top: var(--mt-content-block);
+}
+
+.learning__block {
+  ::v-deep .speakers {
+    padding: 0;
+  }
 }
 
 </style>
