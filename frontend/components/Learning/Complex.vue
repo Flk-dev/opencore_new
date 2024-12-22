@@ -1,5 +1,4 @@
 <template>
-  {{ data }}
   <div class="learning__complex learning-complex">
     <BlockHeader :title="data.title" classes="learning-video"/>
     <div class="learning-complex__text fz-h4" v-if="data.text" v-html="data.text"></div>
