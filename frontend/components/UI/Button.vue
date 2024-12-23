@@ -51,7 +51,7 @@ const props = defineProps<{
   }
 }
 
-::v-deep .btn--ripple {
+.btn--ripple {
   position: relative;
   overflow: hidden;
 

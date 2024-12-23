@@ -1,7 +1,10 @@
 <?php
 
-
 define( 'OS_API_NAMESPACE', 'opencore/v1' );
+
+register_nav_menus( [
+	'header' => 'Верхнее',
+] );
 
 add_theme_support( 'post-thumbnails' );
 
@@ -14,6 +17,9 @@ function dd( $array ) {
 add_action( 'rest_api_init', function () {
 	// Text content pages
 	require_once __DIR__ . '/api/pages/slug.php';
+
+	// Menu
+	require_once __DIR__ . '/api/menu/header.php';
 
 	// Pages
 	require_once __DIR__ . '/api/contacts/page.php';

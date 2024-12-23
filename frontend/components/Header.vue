@@ -1,7 +1,9 @@
 <template>
+  <MenuMain />
+
   <header class="header">
     <div class="header__container container">
-      <button class="header__burger burger">
+      <button class="header__burger burger" @click="setActive">
         <span class="burger__line"></span>
         <span class="burger__line"></span>
         <span class="burger__line"></span>
@@ -26,9 +28,17 @@
   </header>
 </template>
 
-<script>
-export default {
-  name: "Header"
+<script setup lang="ts">
+const setActive = () => {
+  const body = document.body;
+
+  if ( body.classList.contains( 'menu--open' ) ) {
+    body.classList.remove( '_lock', 'menu--open' );
+
+    return;
+  }
+
+  body.classList.add( '_lock', 'menu--open' );
 }
 </script>
 

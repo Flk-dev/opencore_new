@@ -1,6 +1,5 @@
 <template>
   <div class="service page-paddings">
-    {{ post.data.content }}
     <div class="service__content" v-if="post.data.content">
       <component v-for="content in post.data.content" :is="contentLayouts[content.acf_fc_layout]" :data="content" />
     </div>
