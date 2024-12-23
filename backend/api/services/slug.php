@@ -18,7 +18,7 @@ register_rest_route( OS_API_NAMESPACE, '/services/(?P<slug>\S+)', [
             return get_wp_error();
         }
 
-        $categories = get_term_format_data( wp_get_post_terms( $post[0]->ID, 'services_cats' ) );
+        $categories = get_term_format_data( wp_get_post_terms( $post[0]->ID, 'services_cat' ) );
 
         return get_format_data( [
             'post_id'    => $post[0]->ID,
