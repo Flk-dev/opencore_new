@@ -1,22 +1,24 @@
 <template>
   <div class="service page-paddings">
-    <div class="service__container container">
-      {{ post.data.content }}
-      <div class="service__content" v-if="post.data.content">
-        <component v-for="content in post.data.content" :is="contentLayouts[content.acf_fc_layout]" :data="content" />
-      </div>
+    {{ post.data.content }}
+    <div class="service__content" v-if="post.data.content">
+      <component v-for="content in post.data.content" :is="contentLayouts[content.acf_fc_layout]" :data="content" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import {
-  ServicesContentWhen
+  ServicesContentWhen,
+  ServicesContentCases,
+  ServicesContentInclude
 } from '#components';
 
 const route = useRoute();
 const contentLayouts = ref({
-  when: ServicesContentWhen
+  when: ServicesContentWhen,
+  cases: ServicesContentCases,
+  include: ServicesContentInclude
 } );
 
 const { result: post, error } = await useApi( '/services/' + route.params.slug, {}, '', true );

@@ -1,13 +1,15 @@
 <template>
-<div class="service-when" v-if="data.list.length" :class="{ '_blue': data.is_blue }">
-  <BlockHeader :title="data.title" classes="service-when" />
-  <div class="service-when__grid">
-    <div class="service-when__item" v-for="(item, key) in data.list" :key="key">
-      <h4 class="service-when__item-title fz-h4" v-if="item.title" v-html="item.title"></h4>
-      <ContentText :text="item.text" class="service-when__item-text" />
+  <div class="service-when" v-if="data.list.length" :class="{ '_blue': data.is_blue }">
+    <div class="service__container container">
+      <BlockHeader :title="data.title" classes="service-when" />
+      <div class="service-when__grid">
+        <div class="service-when__item" v-for="(item, key) in data.list" :key="key">
+          <h4 class="service-when__item-title fz-h4" v-if="item.title" v-html="item.title"></h4>
+          <ContentText :text="item.text" class="service-when__item-text" />
+        </div>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script setup lang="ts">

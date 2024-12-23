@@ -1,13 +1,17 @@
 <template>
 <div class="block-header" :class="classes + '__block-header'">
   <h2 class="block-header__title" v-html="title"></h2>
+  <div class="block-header__content" v-if="text">
+    <div class="block-header__text fz-caption" v-html="text"></div>
+  </div>
 </div>
 </template>
 
 <script setup lang="ts">
 defineProps<{
   title: string,
-  classes?: string
+  classes?: string,
+  text?: string
 }>();
 </script>
 
