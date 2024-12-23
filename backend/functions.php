@@ -37,6 +37,9 @@ add_action( 'rest_api_init', function () {
 
 	// Cases
 	require_once __DIR__ . '/api/cases/slug.php';
+
+	// Services
+	require_once __DIR__ . '/api/services/slug.php';
 } );
 
 function get_wp_error( $name = '404_error', $message = 'Пост не найден', $status = 404 ) {
