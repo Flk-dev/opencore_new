@@ -14,7 +14,7 @@
               <div class="learning-complex__item-number">{{ ( index + 1 ) }}</div>
               <h4 class="learning-complex__item-title fz-h4" v-html="item.title"></h4>
             </div>
-            <div class="learning-complex__item-text text__content" v-html="item.text"></div>
+            <div class="learning-complex__item-text content__text" v-html="item.text"></div>
           </div>
         </div>
       </swiper-slide>

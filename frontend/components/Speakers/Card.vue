@@ -10,7 +10,7 @@
       </div>
       <div class="speakers-item__experience" v-if="experience">
         <div class="speakers-item__experience-title fz-body">Опыт</div>
-        <div class="speakers-item__experience-text text__content" v-html="experience"></div>
+        <div class="speakers-item__experience-text content__text" v-html="experience"></div>
       </div>
     </div>
   </div>

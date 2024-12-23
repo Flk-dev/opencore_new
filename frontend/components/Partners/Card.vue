@@ -13,7 +13,7 @@
           </svg>
         </div>
       </NuxtLink>
-      <div class="partners-item__description text__content" v-if="description" v-html="description"></div>
+      <div class="partners-item__description content__text" v-if="description" v-html="description"></div>
     </div>
     <NuxtLink  class="partners-item__more fz-link" :to="{ name: 'partners-slug', params: { slug: slug } }">Подробнее</NuxtLink>
   </div>

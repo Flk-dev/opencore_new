@@ -4,7 +4,7 @@
       <BlockHeader :title="item.title"  classes="learning-format" />
       <div :class="{ 'learning-format__item': true, '_blue': item.is_blue }">
         <h3 class="learning-format__item-title fz-h3" v-if="item.subtitle" v-html="item.subtitle"></h3>
-        <div class="learning-format__item-text text__content" v-if="item.text" v-html="item.text"></div>
+        <div class="learning-format__item-text content__text" v-if="item.text" v-html="item.text"></div>
       </div>
     </div>
   </div>

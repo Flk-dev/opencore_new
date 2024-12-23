@@ -7,7 +7,6 @@
 @import "./components/contacts";
 @import "./components/scoll-button";
 @import "./components/infinity-scroll";
-@import "./components/text-content";
 
 @import "./components/footer/subscribe";
 @import "./components/footer/menu";
@@ -20,4 +19,7 @@
 @import "./components/projects/menu";
 @import "./components/projects/item";
 
+// Content
+//@import "./components/content/block";
+@import "./components/content/text";
 

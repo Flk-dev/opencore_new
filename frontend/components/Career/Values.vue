@@ -7,7 +7,7 @@
           <div class="career-values__item" v-for="(item, key ) in data.list" :class="'career-values__item--'+key">
             <div class="career-values__item-content">
               <h3 class="career-values__item-title">{{ item.title }}</h3>
-              <div class="career-values__item-text text__content" v-if="item.text" v-html="item.text"></div>
+              <div class="career-values__item-text content__text" v-if="item.text" v-html="item.text"></div>
             </div>
           </div>
         </div>

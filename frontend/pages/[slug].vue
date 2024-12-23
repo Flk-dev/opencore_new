@@ -6,7 +6,7 @@
           <div class="content__page-subtitle fz-h3" v-if="post.data.subtitle">{{ post.data.subtitle }}</div>
         </div>
         <div class="content__page-blocks">
-          <div class="content__page-block text__content"
+          <div class="content__page-block content__text"
                v-if="post.data.page_content"
                v-for="content in post.data.page_content"
                v-html="content.text">
