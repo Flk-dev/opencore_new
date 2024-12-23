@@ -2,7 +2,7 @@
   <div class="case page-paddings">
     <div class="case__header">
       <div class="container">
-        <h1 class="case__title fz-h2">{{ post.data.title }}</h1>
+        <h1 class="case__title fz-h2" v-if="post.data.post_title">{{ post.data.post_title }}</h1>
       </div>
     </div>
     <div class="case__content" v-if="post.data.content">
@@ -12,19 +12,33 @@
 </template>
 
 <script setup lang="ts">
-import { CasesContentText } from '#components';
+import {
+  CasesContentText,
+  CasesContentAchievement,
+  CasesContentImage,
+  CasesContentTasks,
+  CasesContentTeam
+} from '#components';
 
 const route = useRoute();
 const contentLayouts = ref( {
   text: CasesContentText,
+  achievement: CasesContentAchievement,
+  image: CasesContentImage,
+  tasks: CasesContentTasks,
+  team: CasesContentTeam,
 } );
 
 const { result: post, error } = await useApi( '/cases/' + route.params.slug, {}, '', true );
-console.log( post );
 </script>
 
 <style scoped lang="scss">
 .case {
   padding-top: 5rem;
+}
+
+.case__title {
+  max-width: 104.5rem;
+  margin: 0 0 6rem;
 }
 </style>
