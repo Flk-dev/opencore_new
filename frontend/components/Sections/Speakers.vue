@@ -1,13 +1,13 @@
 <template>
   <section class="speakers section">
     <div class="speakers__container container">
-      <BlockHeader :title="data.title" classes="speakers" />
+      <BlockHeader :title="title" classes="speakers" />
       <swiper
           class="speakers-gallery__swiper"
           :slides-per-view="1.5"
           :space-between="30"
       >
-        <swiper-slide v-for="(item, index) in data.select" :key="item.id">
+        <swiper-slide v-for="(item, index) in data" :key="item.id">
           <SpeakersCard
             :id="item.post_id"
             :title="item.post_title"
@@ -26,6 +26,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 
 defineProps<{
+  title?: string,
   data: object
 }>();
 </script>

@@ -7,22 +7,30 @@
     />
 
     <template v-if="post.data.content" v-for="content in post.data.content">
-      <component :is="contentLayouts[content.acf_fc_layout]" :data="content" />
+      <component :is="contentLayouts[content.acf_fc_layout]" :data="content" class="partner__block" />
     </template>
 
   </div>
+
+  <SectionsFooterButton btn="Пригласить на выступление" action="invite" />
 </template>
 
 <script setup lang="ts">
-import { PartnersContentList, PartnersContentThemes, PartnersContentYoutube, SectionsSpeakers, SectionsCases } from '#components';
+import {
+  PartnersContentList,
+  PartnersContentThemes,
+  PartnersContentYoutube,
+  PartnersContentSpeakers,
+  PartnersContentCases
+} from '#components';
 
 const route = useRoute();
 const contentLayouts = ref( {
   list: PartnersContentList,
   themes: PartnersContentThemes,
   youtube: PartnersContentYoutube,
-  speakers: SectionsSpeakers,
-  cases: SectionsCases
+  speakers: PartnersContentSpeakers,
+  cases: PartnersContentCases
 } );
 
 const { result: post, error } = await useApi( '/partners/' + route.params.slug, {}, '', true );
@@ -30,12 +38,12 @@ const { result: post, error } = await useApi( '/partners/' + route.params.slug, 
 
 <style scoped lang="scss">
 
-.partner section {
+.partner .section {
   padding: 0;
 }
 
-.partner .speakers {
-  margin-top: var(--mt-content-block)
+.partner__block {
+  margin-top: var(--mt-content-block);
 }
 
 </style>

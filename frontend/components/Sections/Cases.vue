@@ -1,7 +1,7 @@
 <template>
   <section class="projects section">
     <div class="projects__container container">
-      <BlockHeader :title="data.title" classes="projects" />
+      <BlockHeader :title="title" classes="projects" />
       <div class="projects__grid parallax">
         <div class="projects__col">
           <div class="projects__left">
@@ -22,10 +22,8 @@
 
 <script setup lang="ts">
 defineProps<{
-  data: {
-    title?: string,
-    select: object
-  }
+  title?: string,
+  data: object
 }>();
 </script>
 

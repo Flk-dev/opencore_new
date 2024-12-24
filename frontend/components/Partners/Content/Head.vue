@@ -21,6 +21,9 @@ defineProps<{
 </script>
 
 <style scoped lang="scss">
+.partner-head + ::v-deep div {
+  margin-top: var(--mt-content-block-secondary);
+}
 
 .partner-head__content {
   max-width: 80.2rem;

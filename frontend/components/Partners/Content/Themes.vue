@@ -20,7 +20,5 @@ defineProps<{
 </script>
 
 <style scoped lang="scss">
-.partner-themes {
-  margin-top: var(--mt-content-block);
-}
+
 </style>

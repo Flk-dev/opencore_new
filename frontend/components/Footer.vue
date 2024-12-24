@@ -1,9 +1,6 @@
 <template>
   <footer class="footer">
     <div class="footer__container container">
-      <button class="footer__button btn--ripple _white">
-        <span>Получить КП</span>
-      </button>
       <div class="footer__main">
         <div class="footer__main-left">
           <div class="footer__subscribe">
@@ -52,7 +49,7 @@ const contacts = useState('contacts');
 
 <style scoped lang="scss">
 .footer {
-  padding: 2rem 0 2.5rem;
+  padding: 6rem 0 2.5rem;
   background: var(--fg-blue);
   color: var(--fg-white);
 
@@ -81,7 +78,6 @@ const contacts = useState('contacts');
 }
 
 .footer__main {
-  margin-top: 13.5rem;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;

@@ -15,7 +15,9 @@
       </NuxtLink>
       <div class="partners-item__description content__text" v-if="description" v-html="description"></div>
     </div>
-    <NuxtLink  class="partners-item__more fz-link" :to="{ name: 'partners-slug', params: { slug: slug } }">Подробнее</NuxtLink>
+    <NuxtLink  class="partners-item__more fz-link btn--ripple" :to="{ name: 'partners-slug', params: { slug: slug } }">
+      <span>Подробнее</span>
+    </NuxtLink>
   </div>
 
 </template>
@@ -75,6 +77,10 @@ defineProps<{
   border-radius: 1rem;
   max-width: fit-content;
   line-height: 60%;
+
+  &:hover {
+    color: var(--fg-white);
+  }
 }
 
 </style>

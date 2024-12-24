@@ -36,10 +36,6 @@ const upCounter = () => {
 
 <style scoped lang="scss">
 
-.partner__list {
-  margin-top: var(--mt-content-block);
-}
-
 .partner__list + .partner__list {
   margin-top: var(--mt-content-block-plus);
 }
