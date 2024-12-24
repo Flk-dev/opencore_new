@@ -27,18 +27,18 @@
             </ul>
           </div>
         </div>
-        <div class="footer__main-right footer__contacts">
-          <div class="footer__contacts-item">
-            <a href="mailto:info@opencore.pro" class="footer__contacts-link">info@opencore.pro</a>
+        <div class="footer__main-right footer__contacts" v-if="contacts.email || contacts.phone">
+          <div class="footer__contacts-item" v-if="contacts.email">
+            <a :href="'mailto:' + contacts.email" class="footer__contacts-link">{{ contacts.email }}</a>
           </div>
-          <div class="footer__contacts-item">
-            <a href="tel:+79857734805" class="footer__contacts-link">+7 985 773-48-05</a>
+          <div class="footer__contacts-item" v-if="contacts.phone">
+            <a :href="'tel:'+ contacts.phone" class="footer__contacts-link">{{ contacts.phone }}</a>
           </div>
         </div>
       </div>
       <div class="footer__logo">
         <picture class="footer__logo-pic">
-          <img src="./img/logo-white.svg" class="footer__logo-img">
+          <img src="/img/logo-white.svg" class="footer__logo-img">
         </picture>
       </div>
     </div>
@@ -46,10 +46,8 @@
 
 </template>
 
-<script>
-export default {
-  name: "Footer"
-}
+<script setup lang="ts">
+const contacts = useState('contacts');
 </script>
 
 <style scoped lang="scss">

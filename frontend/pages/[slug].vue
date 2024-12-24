@@ -2,18 +2,21 @@
     <div class="content__page page-paddings">
       <div class="content__page-container container">
         <div class="content__page-left">
-          <PageTitle classes="content__page-title" :title="post.data.title" />
+          <PageTitle class="content__page-title" :title="post.data.title" />
           <div class="content__page-subtitle fz-h3" v-if="post.data.subtitle">{{ post.data.subtitle }}</div>
         </div>
-        <div class="content__page-blocks">
+        <div class="content__page-blocks" v-if="post.data.page_content.length">
           <div class="content__page-block content__text"
-               v-if="post.data.page_content"
                v-for="content in post.data.page_content"
                v-html="content.text">
           </div>
         </div>
       </div>
     </div>
+
+  <ModalDefault title="Давайте общаться" >
+    <ModalSocialize />
+  </ModalDefault>
 </template>
 
 <script setup>
