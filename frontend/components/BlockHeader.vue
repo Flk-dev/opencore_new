@@ -26,10 +26,15 @@ defineProps<{
   @media (max-width: $tablet) {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  @media (max-width: $mobile) {
     margin-bottom: 6rem;
+  }
+}
+
+.block-header__title {
+  @media (max-width: $tablet) {
+    ::v-deep & br {
+      display: none;
+    }
   }
 }
 

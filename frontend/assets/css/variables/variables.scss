@@ -90,6 +90,17 @@
   --mt-content-block-secondary: 12rem;
   --mt-content-block: 20rem;
 
+  @media (max-width: $tablet) {
+    --mt-content-block-plus: 12rem;
+    --mt-content-block: 18rem;
+  }
+
+  @media (max-width: $mobile) {
+    --mt-content-block-plus: 10rem;
+    --mt-content-block-secondary: 8rem;
+    --mt-content-block: 12rem;
+  }
+
   --mb-block-header-secodary: 4rem;
   --mb-block-header-third: 6rem;
 }

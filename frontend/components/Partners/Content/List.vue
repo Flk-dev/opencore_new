@@ -38,12 +38,21 @@ const upCounter = () => {
 
 .partner__list + .partner__list {
   margin-top: var(--mt-content-block-plus);
+
+  @media (max-width: $tablet) {
+    margin-top: var(--mt-content-block);
+  }
 }
 
 .partner-list__container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5rem;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
 }
 
 .partner-list__item {

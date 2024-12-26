@@ -23,6 +23,10 @@ defineProps<{
 <style scoped lang="scss">
 .partner-head + ::v-deep div {
   margin-top: var(--mt-content-block-secondary);
+
+  @media (max-width: $tablet) {
+    margin-bottom: 3rem;
+  }
 }
 
 .partner-head__content {
@@ -31,6 +35,14 @@ defineProps<{
 
 .partner-head__category {
   margin-bottom: 3.5rem;
+
+  @media (max-width: $tablet) {
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: $mobile) {
+    margin-bottom: 1.5rem;
+  }
 }
 
 .partner-head__title {

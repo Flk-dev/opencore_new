@@ -37,6 +37,17 @@ const { result: post, error } = await useApi( '/partners/' + route.params.slug, 
 </script>
 
 <style scoped lang="scss">
+.partner {
+  padding-top: 10rem;
+
+  @media (max-width: $tablet) {
+    padding-top: 8rem;
+  }
+
+  @media (max-width: $mobile) {
+    padding-top: 4rem;
+  }
+}
 
 .partner .section {
   padding: 0;

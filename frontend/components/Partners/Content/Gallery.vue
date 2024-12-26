@@ -3,9 +3,10 @@
     <div class="partner-gallery__container container">
       <swiper
           class="partner-gallery__swiper"
-          :slides-per-view="5"
+          :slides-per-view="1.3"
           :loop="true"
           :space-between="20"
+          :breakpoints="{ '576': { slidesPerView: 2 }, '992': { slidesPerView: 5 } }"
       >
           <swiper-slide v-for="(item, index) in data" :key="index">
             <div class="partner-gallery__item item--cover">
@@ -32,12 +33,30 @@ defineProps<{
 
 .partner-gallery {
   margin-top: 8rem;
+
+  @media (max-width: $tablet) {
+    margin-top: 6rem;
+  }
+
+  @media (max-width: $mobile) {
+    margin-top: 3rem;
+  }
 }
 
 .partner-gallery__item {
   padding-bottom: 98.5%;
   border-radius: var(--br-regular);
   overflow: hidden;
+
+  @media (max-width: $tablet) {
+    padding-bottom: 0;
+    height: 26rem;
+  }
+
+  @media (max-width: $mobile) {
+    padding-bottom: 0;
+    height: 21.8rem;
+  }
 }
 
 </style>

@@ -21,6 +21,12 @@
         </svg>
       </button>
     </div>
+    <div class="partner-video__logo _tablet">
+      <div class="partner-video__logo-media">
+        <img :src="data.logo" alt="">
+      </div>
+      <div class="partner-video__logo-text" v-if="data.logo_text" v-html="data.logo_text"></div>
+    </div>
   </div>
 </div>
 </template>
@@ -45,6 +51,10 @@ defineProps<{
 .partner-video__container {
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+  }
 }
 
 .partner-video__content {
@@ -64,6 +74,14 @@ defineProps<{
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: $tablet) {
+    margin-top: 4rem;
+  }
+
+  @media (max-width: $mobile) {
+    margin-top: 3rem;
+  }
 }
 
 .partner-video__preview {
@@ -85,6 +103,27 @@ defineProps<{
 .partner-video__logo {
   display: flex;
   align-items: center;
+
+  &._tablet {
+    display: none;
+  }
+
+  @media (max-width: $tablet) {
+    & {
+      display: none;
+    }
+
+    &._tablet {
+      display: flex;
+      margin-top: 4rem;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    &._tablet {
+      margin-top: 3rem;
+    }
+  }
 }
 
 .partner-video__logo-text {
