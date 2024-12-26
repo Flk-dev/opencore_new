@@ -55,4 +55,8 @@
       }
     }
   }
+
+  @media (max-width: $mobile) {
+    --m-bottom: 1.5rem;
+  }
 }

@@ -72,6 +72,10 @@
   --fz-body-b: 2rem;
   --lh-body-b: 120%;
 
+  @media (max-width: $mobile) {
+    --fz-body-b: 1.5rem;
+  }
+
   --fz-link: 1.6rem;
   --lh-link: 110%;
   --lc-link: -.02rem;

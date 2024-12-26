@@ -2,8 +2,8 @@
   <div class="content__page page-paddings">
     <div class="content__page-container container">
       <div class="content__page-left">
-        <PageTitle class="content__page-title" :title="post.data.title" />
-        <div class="content__page-subtitle fz-h3" v-if="post.data.subtitle">{{ post.data.subtitle }}</div>
+        <PageTitle class="content__page-title fz-h1--mobile" :title="post.data.title" />
+        <div class="content__page-subtitle fz-h3 fz-h2--mobile" v-if="post.data.subtitle">{{ post.data.subtitle }}</div>
       </div>
       <div class="content__page-blocks" v-if="post.data.page_content.length">
         <div class="content__page-block content__text"
@@ -33,6 +33,11 @@ const { result: post, error } = await useApi( '/pages/' + route.params.slug + '/
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 3.5rem;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+    row-gap: 6rem;
+  }
 }
 
 .content__page-title {
@@ -54,12 +59,26 @@ const { result: post, error } = await useApi( '/pages/' + route.params.slug + '/
   & ::v-deep a {
     text-decoration: underline;
   }
+
+  @media (max-width: $tablet) {
+    margin-bottom: 6rem;
+  }
+
+  @media (max-width: $mobile) {
+    margin-bottom: 4rem;
+    --m-bottom: 1.5rem;
+  }
 }
 
 .content__page-subtitle {
   margin-top: 3rem;
   color: var(--fg-black-50);
   max-width: 44.8rem;
+
+  @media (max-width: $mobile) {
+    margin-top: 2rem;
+    max-width: 24rem;
+  }
 }
 
 </style>
