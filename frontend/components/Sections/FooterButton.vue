@@ -1,6 +1,7 @@
 <template>
   <div class="footer__button">
     <div class="footer__button-container container">
+      <div class="footer__button-title fz-h1" v-if="title" v-html="title"></div>
       <button class="footer__button-btn btn--ripple _white" :class="btn_class" :data-modal="action">
         <span>{{ btn }}</span>
       </button>
@@ -44,5 +45,11 @@ const props = withDefaults(defineProps<{
   @media (max-width: $mobile) {
     padding: 2.8rem 0;
   }
+}
+
+.footer__button-title {
+  text-align: center;
+  margin: 3rem 0 6rem;
+  color: var(--fg-white);
 }
 </style>

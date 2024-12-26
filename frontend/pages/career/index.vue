@@ -13,6 +13,8 @@
       <component :is="contentLayouts[content.acf_fc_layout]" :data="content" />
     </template>
   </div>
+
+  <SectionsFooterButton title="Создайте свою историю успеха с&nbsp;нашей командой!" btn="Стать частью команды" />
 </template>
 
 <script setup lang="ts">
