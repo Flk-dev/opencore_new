@@ -12,7 +12,7 @@
 
     <section class="partners section">
       <div class="partners__container container">
-        <BlockHeader title="Мы всегда рады новым знакомствам, давайте сделаем вместе что-нибудь классное" classes="partners" />
+        <BlockHeader title="Мы всегда рады новым знакомствам, давайте сделаем вместе что-нибудь классное" classes="partners" class-title="fz-h1--tablet" />
         <div class="partners__grid">
           <PartnersCard
               v-for="post in post.data.list"
@@ -36,15 +36,48 @@ const { result: post } = await useApi( '/template/partners' );
 </script>
 
 <style scoped lang="scss">
+.partners {
+  padding-top: 0;
+}
+
+.partners-page {
+  padding-bottom: 11rem;
+
+  @media (max-width: $tablet) {
+    padding-bottom: 9rem;
+  }
+
+  @media (max-width: $tablet) {
+    padding-bottom: 6rem;
+  }
+}
+
 .partners__block-header {
   margin-bottom: 12rem;
   max-width: 94.9rem;
+
+  @media (max-width: $tablet) {
+    margin-bottom: 8rem;
+  }
+
+  @media (max-width: $mobile) {
+    margin-bottom: 6rem;
+  }
 }
 
 .partners__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5rem;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+    gap: 8rem;
+  }
+
+  @media (max-width: $mobile) {
+    gap: 6rem;
+  }
 }
 
 </style>

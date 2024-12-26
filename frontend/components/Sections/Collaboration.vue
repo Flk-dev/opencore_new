@@ -5,9 +5,10 @@
       <div class="collaborate__slider">
         <swiper
             class="collaborate__swiper"
-            :slides-per-view="5"
+            :slides-per-view="1.5"
             :space-between="22"
             :loop="true"
+            :breakpoints="{ '767': { slidesPerView: 2.55 }, '992': { slidesPerView: 5 } }"
         >
           <swiper-slide v-for="collaborate in collaborate.data.list">
             <div class="collaborate__item">
