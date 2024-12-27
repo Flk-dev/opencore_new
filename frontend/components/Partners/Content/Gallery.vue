@@ -59,4 +59,10 @@ defineProps<{
   }
 }
 
+.partner-gallery__swiper {
+  @media (max-width: $mobile) {
+    margin-right: var(--m-m-container);
+  }
+}
+
 </style>

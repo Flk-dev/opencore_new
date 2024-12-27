@@ -32,6 +32,11 @@ defineProps<{
   padding: 3rem;
   background: var(--fg-gray);
   border-radius: var(--br-regular);
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    padding: 2rem;
+  }
 }
 
 .speakers-item__media {
@@ -39,6 +44,16 @@ defineProps<{
   height: 45rem;
   border-radius: var(--br-regular);
   overflow: hidden;
+
+  @media (max-width: $tablet) {
+    min-width: auto;
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: $mobile) {
+    height: 35.7rem;
+  }
 }
 
 .speakers-item__content {
@@ -47,15 +62,24 @@ defineProps<{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: $tablet) {
+    width: 100%;
+    padding-left: 0;
+  }
 }
 
 .speakers-item__post {
   color: var(--fg-black-75);
   margin-top: 1.3rem;
+
+  @media (max-width: $tablet) {
+    margin-top: 1rem;
+  }
 }
 
 .speakers-item__experience {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 
 .speakers-item__experience-title {

@@ -1,11 +1,11 @@
 <template>
   <div class="partner__list partner-list">
     <div class="partner-list__container container">
-      <h2 class="partner-list__title fz-h2">{{ data.title }}</h2>
+      <h2 class="partner-list__title fz-h2 fz-h1--mobile" :class="{ '_empty': ! data.title.length ? true : false }">{{ data.title }}</h2>
       <div class="partner-list__row" v-if="data.list.length">
         <div class="partner-list__item" v-for="(item, key) in data.list">
-          <div class="partner-list__item-number fz-h4">{{getCounter( key + 1 ) }}</div>
-          <div class="partner-list__item-text fz-h4" v-html="item.text">
+          <div class="partner-list__item-number fz-h4 fz-h2--mobile">{{getCounter( key + 1 ) }}</div>
+          <div class="partner-list__item-text fz-h4 fz-h2--mobile" v-html="item.text">
 
           </div>
         </div>
@@ -55,15 +55,37 @@ const upCounter = () => {
   }
 }
 
+.partner-list__title:not(._empty) {
+  @media (max-width: $tablet) {
+    margin-bottom: 6rem;
+  }
+
+  @media (max-width: $tablet) {
+    margin-bottom: 3rem;
+  }
+}
+
 .partner-list__item {
   padding: 3rem 0;
   border-top: .15rem solid var(--fg-blue);
+
+  @media (max-width: $mobile) {
+    padding: 2rem 0;
+  }
 }
 
 .partner-list__item-number {
   color: var(--fg-blue);
   font-weight: 600;
   margin-bottom: 1.7rem;
+
+  @media (max-width: $mobile) {
+    margin-bottom: 1.3rem;
+  }
+
+  @media (max-width: $mobile) {
+    margin-bottom: .8rem;
+  }
 }
 
 .partner-list__item-text {

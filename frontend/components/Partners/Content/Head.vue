@@ -6,7 +6,7 @@
           <p v-for="category in categories">{{ category.name }}</p>
         </div>
         <h1 class="partner-head__title fz-h1">{{ title }}</h1>
-        <div class="partner-head__subtitle fz-h3" v-if="subtitle" v-html="subtitle"></div>
+        <div class="partner-head__subtitle fz-h3 fz-h2--mobile" v-if="subtitle" v-html="subtitle"></div>
       </div>
     </div>
   </div>
@@ -25,7 +25,7 @@ defineProps<{
   margin-top: var(--mt-content-block-secondary);
 
   @media (max-width: $tablet) {
-    margin-bottom: 3rem;
+    margin-top: 3rem;
   }
 }
 

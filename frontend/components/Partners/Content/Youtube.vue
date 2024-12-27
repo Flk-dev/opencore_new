@@ -63,6 +63,11 @@ defineProps<{
   justify-content: space-between;
   max-width: 66.4rem;
   margin-right: 3.6rem;
+
+  @media (max-width: $tablet) {
+    max-width: 100%;
+    margin-right: 0;
+  }
 }
 
 .partner-video__iframe {
@@ -77,10 +82,14 @@ defineProps<{
 
   @media (max-width: $tablet) {
     margin-top: 4rem;
+    min-width: auto;
+    width: 100%;
   }
 
   @media (max-width: $mobile) {
     margin-top: 3rem;
+    min-height: auto;
+    padding-bottom: 56.5%;
   }
 }
 
@@ -96,8 +105,11 @@ defineProps<{
 }
 
 .partner-video__play {
-  position: relative;
+  position: absolute;
   z-index: 5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .partner-video__logo {

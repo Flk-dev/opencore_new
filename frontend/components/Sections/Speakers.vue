@@ -4,8 +4,9 @@
       <BlockHeader :title="title" classes="speakers" />
       <swiper
           class="speakers-gallery__swiper"
-          :slides-per-view="1.5"
+          :slides-per-view="1"
           :space-between="30"
+          :breakpoints="{ '576': { slidesPerView: 1.5 } }"
       >
         <swiper-slide v-for="(item, index) in data" :key="item.id">
           <SpeakersCard
