@@ -3,7 +3,7 @@
     <div class="contact-socials__title fz-h4" v-if="title">{{ title }}</div>
     <div class="contact-socials__list">
       <div class="contact-socials__item" v-for="social in socials">
-        <a :href="social.link" class="contact-socials__link fz-h3">{{ social.text }}</a>
+        <a :href="social.link" class="contact-socials__link fz-h3 fz-h4--tablet">{{ social.text }}</a>
       </div>
     </div>
   </div>

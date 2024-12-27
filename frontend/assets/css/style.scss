@@ -165,6 +165,20 @@ h4, .fz-h4 {
     letter-spacing: var(--lc-h1);
     font-family: var(--ff-extended);
   }
+
+  .fz-h3--tablet {
+    font-size: var(--fz-h3);
+    line-height: var(--lh-h3);
+    letter-spacing: var(--lc-h3);
+    font-family: var(--ff-extended);
+  }
+
+  .fz-h4--tablet {
+    font-size: var(--fz-h4);
+    line-height: var(--lh-h4);
+    letter-spacing: var(--lc-h4);
+    font-family: var(--ff-extended);
+  }
 }
 
 @media (max-width: $mobile) {

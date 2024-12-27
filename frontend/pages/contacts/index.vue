@@ -9,26 +9,18 @@
     </svg>
   </PageHeader>
 
-  <div class="contacts">
+  <div class="contacts page-paddings">
     <div class="contacts__container container">
-      <h1 class="contacts__title fz-h2">Давайте вместе сделаем<br> что-то классное</h1>
+      <h1 class="contacts__title fz-h2 fz-h1--tablet fz-h1--mobile">Давайте вместе сделаем<br> что-то классное</h1>
       <div class="contacts__flex">
         <div class="contacts__main">
-          <ContactsVideo :video="post.data.video" />
-          <div class="contacts__video" v-if="post.data.video.link" :data-video="post.data.video.link">
-            <button class="contacts__video-play">
-              <svg width="25" height="27" viewBox="0 0 25 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path opacity="0.9" d="M22.6465 10.6816C24.7559 11.8995 24.7559 14.9441 22.6465 16.1619L5.42005 26.1076C3.31069 27.3254 0.673992 25.8031 0.673992 23.3675V3.47606C0.673992 1.04038 3.31069 -0.481916 5.42006 0.735924L22.6465 10.6816Z" fill="white"/>
-              </svg>
-            </button>
-            <div class="contacts__video-bg" v-if="post.data.video.preview" :style="{backgroundImage: 'url('+post.data.video.preview+')'}"></div>
-          </div>
+          <UIRoundVideo class="contacts__video _big" :link="post.data.video.link" :preview="post.data.video.preview" />
           <div class="contacts__main-content">
             <div class="contacts__hello fz-h4" v-if="post.data.hello_text" v-html="post.data.hello_text"></div>
             <ContactsSocials classes="contacts__direct" :socials="post.data.socials_direct" />
           </div>
         </div>
-        <ContactsSocials title="Можете подписаться на наши соц сети" classes="contacts__socials" :socials="post.data.socials" />
+        <ContactsSocials title="Можете подписаться на наши соц сети" class="contacts__socials--right" :socials="post.data.socials" />
       </div>
       <ContactsAddresses classes="contacts__addresses" v-if="post.data.addresses" :items="post.data.addresses" />
     </div>
@@ -36,22 +28,31 @@
 </template>
 
 <script setup>
-
 const { result: post, error } = await useApi( '/template/contacts' );
-
 </script>
 
 <style scoped lang="scss">
+.contacts {
+  padding-top: 0;
+}
+
 .contacts__flex {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 10rem;
+
+  @media (max-width: $tablet) {
+    flex-wrap: wrap;
+  }
 }
 
 .contacts__title {
   max-width: 94.1rem;
-  margin-bottom: 6rem;
+  margin: 0 0 6rem;
+
+  @media (max-width: $mobile) {
+    margin-bottom: 3rem;
+  }
 }
 
 .contacts__socials {
@@ -61,10 +62,28 @@ const { result: post, error } = await useApi( '/template/contacts' );
 .contacts__main {
   display: flex;
   max-width: 80.2rem;
+
+  @media (max-width: $mobile) {
+    flex-direction: column;
+    max-width: 100%;
+  }
+}
+
+.contacts__video {
+  @media (max-width: $mobile) {
+    min-width: 100% !important;
+    padding-bottom: 100% !important;
+    height: auto !important;
+    margin-bottom: 3rem;
+  }
 }
 
 .contacts__main-content {
   padding-left: 2.9rem;
+
+  @media (max-width: $mobile) {
+    padding-left: 0;
+  }
 }
 
 .contacts__hello {
@@ -77,6 +96,51 @@ const { result: post, error } = await useApi( '/template/contacts' );
       margin-bottom: 0;
     }
   }
+
+  @media (max-width: $tablet) {
+    margin-bottom: 4rem;
+  }
+
+  @media (max-width: $mobile) {
+    margin-bottom: 3rem;
+  }
+}
+
+.contacts__socials--right {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 6rem;
+
+  ::v-deep .contact-socials__title {
+    width: 20.4rem;
+    max-width: 100%;
+    margin-bottom: 0;
+
+    @media (max-width: $mobile) {
+      width: 100%;
+      margin-bottom: 3rem;
+      max-width: 23.9rem;
+    }
+  }
+
+  ::v-deep .contact-socials__list {
+    width: calc(100% - 20.4rem);
+    padding-left: 2.9rem;
+
+    @media (max-width: $mobile) {
+      width: 100%;
+      padding-left: 0;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    flex-direction: column;
+    margin-top: 6rem;
+  }
+}
+
+.contacts__addresses {
+  margin-top: var(--mt-content-block);
 }
 
 </style>

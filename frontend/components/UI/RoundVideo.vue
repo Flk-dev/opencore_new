@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes" class="video-round" v-if="preview && link" :dataLink="link">
+  <div class="video-round" v-if="preview && link" :dataLink="link">
     <div class="video-round__preview" :style="{ backgroundImage: `url(${ preview })` }"></div>
     <button class="video-round__play">
       <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,6 +28,11 @@ defineProps<{
   justify-content: center;
   max-width: 11.3rem;
   overflow: hidden;
+
+  &._big {
+    min-width: 20.4rem;
+    height: 20.4rem;
+  }
 }
 
 .video-round__preview {
@@ -42,7 +47,10 @@ defineProps<{
 }
 
 .video-round__play {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 5;
 }
 </style>
