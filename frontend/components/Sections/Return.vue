@@ -1,3 +1,28 @@
+<template>
+  <section class="return">
+    <div class="return__container container">
+      <div class="return__col return__col--first">
+        <div class="return__block-header block-header">
+          <h2 class="block-header__title fz-h2 fz-h1--tablet" v-html="title"></h2>
+        </div>
+      </div>
+      <div class="return__col return__col--last">
+        <h4 class="return__subtitle fz-h4 fz-h2--mobile" v-if="bigText" v-html="bigText"></h4>
+        <div class="return__caption fz-caption" v-if="smallText" v-html="smallText"></div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script setup lang="ts">
+defineProps<{
+  title: string,
+  bigText?: string,
+  smallText?: string,
+}>();
+</script>
+
+<style scoped lang="scss">
 .return {
   padding: 3rem 0;
   background-color: var(--fg-black);
@@ -49,3 +74,4 @@
   margin-top: 2rem;
 
 }
+</style>

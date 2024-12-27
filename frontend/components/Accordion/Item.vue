@@ -1,7 +1,10 @@
 <template>
   <div class="accordion-item" @click="open" :class="{ '_active': active }">
     <div class="accordion-item__head" v-if="title">
-      <div class="accordion-item__title fz-h3" v-html="title"></div>
+      <div class="accordion-item__head-left" :class="titleClass">
+        <div class="accordion-item__counter" v-if="counter">{{ counter }}</div>
+        <div class="accordion-item__title" v-html="title"></div>
+      </div>
       <div class="accordion-item__icon">
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M11.5652 14.4806L1 14.4806V13.9106L11.5652 13.9106C12.9099 13.9106 14 12.8205 14 11.4758V1L14.5968 1V11.4758C14.5968 12.8205 15.6869 13.9106 17.0315 13.9106L27.5 13.9106V14.4806L17.0315 14.4806C15.6868 14.4806 14.5968 15.5707 14.5968 16.9154L14.5968 27.5L14 27.5L14 16.9154C14 15.5707 12.9099 14.4806 11.5652 14.4806Z" fill="#0C0C0C" stroke="#111111"/>
@@ -17,16 +20,24 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   classes?: string,
   title: string,
-  text: string
+  text: string,
+  counter?: string,
+  titleClass?: string
 }>();
 
 const active = ref(false);
 const open = () => {
   active.value = ! active.value;
 }
+
+const titleClass = ref( 'fz-h3' );
+if ( props.titleClass ) {
+  titleClass.value = props.titleClass;
+}
+
 </script>
 
 <style scoped lang="scss">
@@ -82,6 +93,16 @@ const open = () => {
   cursor: pointer;
   text-align: left;
   width: 100%;
+}
+
+.accordion-item__head-left {
+  display: flex;
+  align-items: flex-start;
+}
+
+.accordion-item__counter {
+  min-width: 4.7rem;
+  margin-right: 3.3rem;
 }
 
 .accordion-item__icon {

@@ -15,6 +15,7 @@ function dd( $array ) {
 }
 
 add_action( 'rest_api_init', function () {
+
 	// Contacts
 	require_once __DIR__ . '/api/global/contacts.php';
 
@@ -27,6 +28,7 @@ add_action( 'rest_api_init', function () {
 	// Pages
 	require_once __DIR__ . '/api/contacts/page.php';
 	require_once __DIR__ . '/api/career/page.php';
+	require_once __DIR__ . '/api/methodology/page.php';
 
 	// Partners
 	require_once __DIR__ . '/api/partners/page.php';
