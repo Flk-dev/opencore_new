@@ -88,6 +88,7 @@
 
   --mt-content-block-plus: 16rem;
   --mt-content-block-secondary: 12rem;
+  --mt-content-third: 18rem;
   --mt-content-block: 20rem;
 
   @media (max-width: $tablet) {
@@ -99,6 +100,7 @@
     --mt-content-block-plus: 10rem;
     --mt-content-block-secondary: 8rem;
     --mt-content-block: 12rem;
+    --mt-content-third: var(--mt-content-block);
   }
 
   --mb-block-header-secodary: 4rem;

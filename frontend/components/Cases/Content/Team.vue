@@ -31,10 +31,29 @@ defineProps<{
   grid-template-columns: repeat(4, 1fr);
   column-gap: 9rem;
   row-gap: 8.1rem;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2fr;
+    row-gap: 4rem;
+  }
+
+  @media (max-width: $mobile) {
+    grid-template-columns: 1fr;
+    row-gap: 3rem;
+  }
 }
 
 .case-team__title {
   margin-bottom: 8rem;
+
+  @media (max-width: $tablet) {
+    margin-bottom: 6rem;
+  }
+
+  @media (max-width: $mobile) {
+    margin-bottom: 4rem;
+  }
 }
 
 .case-team__item-post {

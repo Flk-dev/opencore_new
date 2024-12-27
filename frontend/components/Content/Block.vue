@@ -18,7 +18,7 @@ defineProps<{
 
 <style scoped lang="scss">
 .content {
-  --mt-block: 18rem;
+  --mt-block: var(--mt-content-third);
   --w-title: 110rem;
   --w-text: 70rem;
 
@@ -35,6 +35,10 @@ defineProps<{
     & .content__text {
       --fz: 2.8rem;
       --lh: 125%;
+
+      @media (max-width: $mobile) {
+        --fz: 1.8rem;
+      }
     }
   }
 }
@@ -49,6 +53,10 @@ defineProps<{
       height: auto;
       border-radius: var(--br-regular);
       margin: 6rem 0;
+
+      @media (max-width: $mobile) {
+        margin: 3rem 0;
+      }
     }
 
     ::v-deep h2,

@@ -20,6 +20,10 @@ defineProps<{
 .case-achievement {
   margin-top: 6rem;
   overflow: hidden;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
 }
 
 .case-achievement__list {
