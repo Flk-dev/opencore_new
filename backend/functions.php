@@ -18,6 +18,7 @@ add_action( 'rest_api_init', function () {
 
 	// Contacts
 	require_once __DIR__ . '/api/global/contacts.php';
+	require_once __DIR__ . '/api/global/festival.php';
 
 	// Text content pages
 	require_once __DIR__ . '/api/pages/slug.php';

@@ -1,8 +1,9 @@
 <template>
 <div class="block-header" :class="classes + '__block-header'">
   <h2 class="block-header__title fz-h2 fz-h1--mobile" :class="classTitle" v-html="title"></h2>
-  <div class="block-header__content" v-if="text">
-    <div class="block-header__text fz-caption" v-html="text"></div>
+  <div class="block-header__content">
+    <div class="block-header__text fz-caption" v-if="text" v-html="text"></div>
+    <slot />
   </div>
 </div>
 </template>
