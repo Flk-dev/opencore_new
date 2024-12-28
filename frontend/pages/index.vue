@@ -1,11 +1,19 @@
 <template>
   <HomeHero />
-  <SectionsCases :data="{ title: 'Помогаем выиграть гонку за рост продаж, долю рынка и лояльность целевой аудитории\n' }" />
-  <HomeSupporting />
+  <template v-if="post.data.content" v-for="content in post.data.content">
+    <component :is="contentLayouts[content.acf_fc_layout]" :data="content" />
+  </template>
 </template>
 
-<script>
+<script setup lang="ts">
+import { HomeAdvantages } from '#components';
 
+const route = useRoute();
+const contentLayouts = ref( {
+  advantages: HomeAdvantages,
+} );
+
+const { result: post, error } = await useApi( '/template/home', {}, '', true );
 </script>
 
 <style scoped lang="scss">

@@ -26,6 +26,7 @@ add_action( 'rest_api_init', function () {
 	require_once __DIR__ . '/api/menu/header.php';
 
 	// Pages
+	require_once __DIR__ . '/api/home/page.php';
 	require_once __DIR__ . '/api/contacts/page.php';
 	require_once __DIR__ . '/api/career/page.php';
 	require_once __DIR__ . '/api/methodology/page.php';
