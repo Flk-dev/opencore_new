@@ -7,6 +7,8 @@
 
 <script setup lang="ts">
 import {
+  HomeCases,
+  HomeService,
   HomeWeWork,
   HomeReturn,
   HomeReviews,
@@ -16,6 +18,8 @@ import {
 
 const route = useRoute();
 const contentLayouts = ref( {
+  cases: HomeCases,
+  service: HomeService,
   we_work: HomeWeWork,
   return: HomeReturn,
   reviews: HomeReviews,

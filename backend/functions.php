@@ -104,6 +104,7 @@ function on_filter_post_objects( $field, $keys, $fields = [] ) {
 				$data = [
 					'post_id'    => $item->ID,
 					'post_title' => $item->post_title,
+					'post_slug'  => $item->post_name,
 				];
 
 				if ( ! empty( $fields[ $key ] ) ) {

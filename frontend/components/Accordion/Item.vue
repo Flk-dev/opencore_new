@@ -14,6 +14,9 @@
     <div class="accordion-item__body" v-if="text">
       <div class="accordion-item__content">
         <div class="accordion-item__text" v-html="text"></div>
+        <NuxtLink v-if="isMore && to" :to="to" class="accordion-item__button btn--ripple _white">
+          <span>Подробнее</span>
+        </NuxtLink>
       </div>
     </div>
   </div>
@@ -25,7 +28,9 @@ const props = defineProps<{
   title: string,
   text: string,
   counter?: string,
-  titleClass?: string
+  titleClass?: string,
+  isMore?: boolean,
+  to?: string
 }>();
 
 const active = ref(false);

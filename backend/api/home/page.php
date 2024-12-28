@@ -14,6 +14,7 @@ register_rest_route( OS_API_NAMESPACE, '/template/home', [
 		    [
 			    'advantages' => 'select',
 			    'reviews'    => 'select',
+			    'service'    => 'select',
 		    ],
 		    [
 			    'advantages' => [
@@ -26,6 +27,9 @@ register_rest_route( OS_API_NAMESPACE, '/template/home', [
 				    'title'     => '',
 				    'post'      => '',
 				    'text_home' => '',
+			    ],
+			    'service' => [
+			    	'home_text' => ''
 			    ]
 		    ]
 	    );
