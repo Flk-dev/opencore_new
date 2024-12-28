@@ -6,12 +6,13 @@
 </template>
 
 <script setup lang="ts">
-import { HomeAdvantages, HomeFestival } from '#components';
+import { HomeReviews, HomeFestival, HomeAdvantages } from '#components';
 
 const route = useRoute();
 const contentLayouts = ref( {
   advantages: HomeAdvantages,
   festival: HomeFestival,
+  reviews: HomeReviews,
 } );
 
 const { result: post, error } = await useApi( '/template/home', {}, '', true );

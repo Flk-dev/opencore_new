@@ -1,3 +1,30 @@
+<template>
+  <div class="reviews-item">
+    <div class="reviews-item__title fz-h3 fz-h2--mobile" v-html="title"></div>
+    <div class="reviews-item__content">
+      <div class="reviews-item__text" v-if="text" v-html="text"></div>
+      <div class="reviews-item__client">
+        <img v-if="logo" :src="logo" class="reviews-item__client-logo">
+        <div class="reviews-item__client-content" v-if="name || post">
+          <div class="reviews-item__client-name" v-if="name">{{ name }}</div>
+          <div class="reviews-item__client-post fz-caption" v-if="post" v-html="post"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+defineProps<{
+  title: string,
+  text?: string,
+  name?: string,
+  post?: string,
+  logo?: string
+}>();
+</script>
+
+<style scoped lang="scss">
 .reviews-item {
   padding: 3rem;
   border: .15rem solid var(--fg-blue);
@@ -59,3 +86,5 @@
     }
   }
 }
+
+</style>
