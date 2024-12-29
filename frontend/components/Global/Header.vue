@@ -1,7 +1,7 @@
 <template>
   <MenuMain />
 
-  <header class="header">
+  <header class="header" :class="{ '_fixed': fixed }">
     <div class="header__container container">
       <button class="header__burger burger" @click="setActive">
         <span class="burger__line"></span>
@@ -39,6 +39,24 @@ const setActive = () => {
 
   body.classList.add( '_lock', 'menu--open' );
 }
+
+const fixed = ref( false );
+onMounted(() => {
+  window.addEventListener('scroll', () => {
+    if ( window.pageYOffset > 100 ){
+      fixed.value = true;
+    } else {
+      fixed.value = false;
+    }
+  });
+});
+
+// window.addEventListener('scroll', () => {
+//   console.log( window.pageYOffset );
+//   // if ( window.pageYOffset > 100 ){
+//   //   //fixed.value = true;
+//   // }
+// } );
 </script>
 
 <style scoped lang="scss">
