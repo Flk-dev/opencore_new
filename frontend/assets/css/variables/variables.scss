@@ -105,4 +105,11 @@
 
   --mb-block-header-secodary: 4rem;
   --mb-block-header-third: 6rem;
+
+  --pt-page: 6rem;
+  --pd-page: 20rem;
+
+  @media (max-width: $tablet) {
+    --pd-page: 18rem;
+  }
 }

@@ -214,13 +214,17 @@ h4, .fz-h4 {
   }
 }
 
-.page-paddings {
-  padding-top: 6rem;
-  padding-bottom: 20rem;
+.page-pd-bottom {
 
-  @media (max-width: $tablet) {
-    padding-bottom: 18rem;
-  }
+}
+
+.page-paddings {
+  padding-top: var(--pt-page);
+  padding-bottom: var(--pd-page);
+}
+
+.page-pd-bottom {
+  padding-bottom: var(--pd-page);
 }
 
 .item--cover {
