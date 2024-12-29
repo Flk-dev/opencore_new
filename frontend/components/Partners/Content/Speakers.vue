@@ -1,5 +1,5 @@
 <template>
-  <SectionsSpeakers :title="data.title" :data="data.select" />
+  <SectionSpeakers :title="data.title" :data="data.select" />
 </template>
 
 <script setup lang="ts">
