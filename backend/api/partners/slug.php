@@ -31,7 +31,9 @@ register_rest_route( OS_API_NAMESPACE, '/partners/(?P<slug>\S+)', [
 				    'post'       => '',
 				    'experience' => ''
 			    ],
-			    'cases' => [
+			    'cases'    => [
+				    'image'    => '',
+				    'subtitle'  => '',
 				    'taxonomy' => 'cases_cats',
 			    ]
 		    ]

@@ -109,7 +109,13 @@ function on_filter_post_objects( $field, $keys, $fields = [] ) {
 
 				if ( ! empty( $fields[ $key ] ) ) {
 					foreach ( $fields[ $key ] as $field_key => $default ) {
-						$data[ $field_key ] = on_get_field( $field_key, $item->ID, $default );
+						if ( $field_key === 'taxonomy' ){
+							$data['categories'] = get_term_format_data(
+								wp_get_post_terms( $item->ID, $default )
+							);
+						} else {
+							$data[ $field_key ] = on_get_field( $field_key, $item->ID, $default );
+						}
 					}
 				}
 
