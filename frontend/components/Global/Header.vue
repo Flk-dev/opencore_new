@@ -101,21 +101,15 @@ onMounted(() => {
   height: 2.3rem;
 }
 
-//.header__logo {
-//  position: absolute;
-//  bottom: 0;
-//  /*bottom: 4.6rem;
-//  left: 0;
-//  width: 100%;
-//  text-align: center;
-//  display: flex;
-//  align-items: center;
-//  justify-content: center;*/
-//
-//  & svg {
-//    width: 100%;
-//  }
-//}
+.header__logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  & svg {
+    width: 100%;
+  }
+}
 
 .menu--open {
   & .header {

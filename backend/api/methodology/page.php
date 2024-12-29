@@ -12,21 +12,22 @@ register_rest_route( OS_API_NAMESPACE, '/template/methodology', [
             return get_wp_error();
         }
 
-//        $content = on_filter_post_objects(
-//            on_get_field( 'content', $page[0]->ID ),
-//            [
-//                'histories' => 'select',
-//            ],
-//            [
-//                'histories' => [
-//                    'image'    => '',
-//                    'subtitle' => '',
-//                ],
-//            ]
-//        );
+        $content = on_filter_post_objects(
+            on_get_field( 'content', $page[0]->ID ),
+            [
+                'cases' => 'select',
+            ],
+            [
+	            'cases'    => [
+		            'image'    => '',
+		            'subtitle'  => '',
+		            'taxonomy' => 'cases_cats',
+	            ]
+            ]
+        );
 
         return get_format_data( [
-            'content' => on_get_field( 'content', $page[0]->ID )
+            'content' => $content
         ] );
     },
 

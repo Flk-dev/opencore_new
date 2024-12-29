@@ -20,7 +20,8 @@ defineProps<{
   image: string,
   categories?: object,
   subtitle?: string,
-  title: string
+  title: string,
+  slug: string,
 }>();
 </script>
 

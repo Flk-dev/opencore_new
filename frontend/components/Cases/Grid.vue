@@ -9,7 +9,7 @@
             :image="item.image"
             :categories="item.categories"
             :subtitle="item.subtitle"
-            :slug="item.slug"
+            :slug="item.post_slug"
         />
       </div>
     </div>
@@ -22,7 +22,7 @@
             :image="item.image"
             :categories="item.categories"
             :subtitle="item.subtitle"
-            :slug="item.slug"
+            :slug="item.post_slug"
         />
       </div>
     </div>
