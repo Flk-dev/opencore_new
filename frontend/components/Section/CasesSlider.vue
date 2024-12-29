@@ -59,4 +59,10 @@ defineProps<{
     }
   }
 }
+
+.cases-slider {
+  ::v-deep .cases-item {
+    margin-bottom: 0;
+  }
+}
 </style>

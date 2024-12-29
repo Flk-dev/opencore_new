@@ -16,6 +16,7 @@ register_rest_route( OS_API_NAMESPACE, '/template/learning', [
 			on_get_field( 'content', $page[0]->ID ),
 			[
 				'teachers' => 'select',
+				'cases' => 'select',
 			],
 			[
 				'teachers' => [
@@ -23,6 +24,11 @@ register_rest_route( OS_API_NAMESPACE, '/template/learning', [
 					'experience' => '',
 					'post'       => '',
 				],
+                'cases'    => [
+                    'image'    => '',
+                    'subtitle'  => '',
+                    'taxonomy' => 'cases_cats',
+                ]
 			]
 		);
 
