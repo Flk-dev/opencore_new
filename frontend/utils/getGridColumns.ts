@@ -32,16 +32,15 @@ export default ( data: object ) => {
         return cols;
     }
 
-    return computed(() => {
-        data.forEach((element, index) => {
-            index += 1;
-            if (index % 2 === 0) {
-                cols.value.col_2.push(element);
-            } else {
-                cols.value.col_1.push(element);
-            }
-        });
-
-        return cols;
+    data.forEach((element, index) => {
+        index += 1;
+        if (index % 2 === 0) {
+            cols.value.col_2.push(element);
+        } else {
+            cols.value.col_1.push(element);
+        }
     });
+
+
+    return cols;
 }
