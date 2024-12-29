@@ -11,8 +11,6 @@
     </template>
 
   </div>
-
-  <SectionsFooterButton btn="Пригласить на выступление" action="invite" />
 </template>
 
 <script setup lang="ts">
