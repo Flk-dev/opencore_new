@@ -29,6 +29,7 @@ add_action( 'rest_api_init', function () {
 
 	// Pages
 	require_once __DIR__ . '/api/home/page.php';
+	require_once __DIR__ . '/api/about/page.php';
 	require_once __DIR__ . '/api/contacts/page.php';
 	require_once __DIR__ . '/api/career/page.php';
 	require_once __DIR__ . '/api/methodology/page.php';
