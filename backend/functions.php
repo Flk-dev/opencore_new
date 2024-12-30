@@ -51,6 +51,7 @@ add_action( 'rest_api_init', function () {
 	require_once __DIR__ . '/api/learning/page.php';
 
 	// Cases
+	require_once __DIR__ . '/api/cases/page.php';
 	require_once __DIR__ . '/api/cases/slug.php';
 
 	// Services
