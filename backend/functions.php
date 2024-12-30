@@ -54,6 +54,7 @@ add_action( 'rest_api_init', function () {
 	require_once __DIR__ . '/api/cases/slug.php';
 
 	// Services
+	require_once __DIR__ . '/api/services/page.php';
 	require_once __DIR__ . '/api/services/slug.php';
 } );
 
@@ -152,6 +153,13 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 		'page_title'  => 'Настройки: Отзывы',
 		'menu_title'  => 'Настройки: Отзывы',
 		'parent_slug' => 'edit.php?post_type=reviews',
+	] );
+
+	// Options page for services
+	acf_add_options_sub_page( [
+		'page_title'  => 'Настройки: Услуги',
+		'menu_title'  => 'Настройки: Услуги',
+		'parent_slug' => 'edit.php?post_type=services',
 	] );
 
 //	acf_add_options_sub_page( [
