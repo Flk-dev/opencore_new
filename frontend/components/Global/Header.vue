@@ -1,6 +1,4 @@
 <template>
-  <MenuMain />
-
   <header class="header" :class="{ '_fixed': fixed }">
     <div class="header__container container">
       <button class="header__burger burger" @click="setActive">
@@ -25,6 +23,8 @@
       </button>
     </div>
   </header>
+
+  <MenuMain />
 </template>
 
 <script setup lang="ts">
