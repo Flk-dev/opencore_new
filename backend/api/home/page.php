@@ -12,11 +12,17 @@ register_rest_route( OS_API_NAMESPACE, '/template/home', [
 	    $content = on_filter_post_objects(
 		    on_get_field( 'content', $page_id ),
 		    [
+			    'cases'      => 'select',
 			    'advantages' => 'select',
 			    'reviews'    => 'select',
 			    'service'    => 'select',
 		    ],
 		    [
+			    'cases'      => [
+				    'image'    => '',
+				    'subtitle' => '',
+				    'taxonomy' => 'cases_cats',
+			    ],
 			    'advantages' => [
 				    'icon'  => '',
 				    'title' => '',
@@ -28,8 +34,8 @@ register_rest_route( OS_API_NAMESPACE, '/template/home', [
 				    'post'      => '',
 				    'text_home' => '',
 			    ],
-			    'service' => [
-			    	'home_text' => ''
+			    'service'    => [
+				    'home_text' => ''
 			    ]
 		    ]
 	    );
