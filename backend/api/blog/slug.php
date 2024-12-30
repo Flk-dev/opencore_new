@@ -18,15 +18,27 @@ register_rest_route( OS_API_NAMESPACE, '/blog/(?P<slug>\S+)', [
 			return get_wp_error();
 		}
 
-		$categories = get_term_format_data( wp_get_post_terms( $post[0]->ID, 'blog_cats' ) );
+		$content = on_filter_post_objects(
+			on_get_field( 'content', $post[0]->ID, [] ),
+			[
+				'cases'    => 'select'
+			],
+			[
+				'cases'    => [
+					'image'    => '',
+					'subtitle'  => '',
+					'taxonomy' => 'cases_cats',
+				]
+			]
+		);
 
 		return get_format_data( [
 			'ID'         => $post[0]->ID,
 			'title'      => $post[0]->post_title,
-			'image'      => get_field( 'image', $post[0]->ID ) ?? '',
-			'content'    => get_field( 'content', $post[0]->ID ) ?? [],
-			'time_read'  => get_field( 'time_read', $post[0]->ID ) ?? '',
-			'categories' => $categories
+			'image'      => on_get_field( 'image', $post[0]->ID ),
+			'content'    => $content,
+			'time_read'  => on_get_field( 'time_read', $post[0]->ID ),
+			'categories' => get_term_format_data( wp_get_post_terms( $post[0]->ID, 'blog_cats' ) )
 		] );
 	},
 
