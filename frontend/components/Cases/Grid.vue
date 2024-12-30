@@ -1,5 +1,4 @@
 <template>
-  {{ columns }}
   <div class="cases__grid parallax" v-if="columns.value.col_1.length">
     <div class="cases__col">
       <div class="cases__left">
