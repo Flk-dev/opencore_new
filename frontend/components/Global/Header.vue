@@ -1,7 +1,7 @@
 <template>
   <header class="header" :class="{ '_fixed': fixed }">
     <div class="header__container container">
-      <button class="header__burger burger" @click="setActive">
+      <button class="header__burger burger" @click="openMenu">
         <span class="burger__line"></span>
         <span class="burger__line"></span>
         <span class="burger__line"></span>
@@ -18,17 +18,18 @@
           <path d="M1361.65 182.682H1251.02L1289.37 2.59375H1400L1396.11 20.851H1305.58L1291.97 83.6172H1380.23L1376.34 101.658H1288.08L1275.01 164.425H1365.54L1361.65 182.682Z" fill="#0000FF"/>
         </svg>
       </NuxtLink>
-      <button class="header__button btn--ripple _white callback--open">
+      <button class="header__button btn--ripple _white callback--open" @click="toggleCallback">
         <span>Связаться с нами</span>
       </button>
     </div>
   </header>
 
   <MenuMain />
+  <GlobalCallback :is-open="isOpen" @close="toggleCallback" />
 </template>
 
 <script setup lang="ts">
-const setActive = () => {
+const openMenu = () => {
   const body = document.body;
 
   if ( body.classList.contains( 'menu--open' ) ) {
@@ -50,6 +51,13 @@ onMounted(() => {
     }
   });
 });
+
+const isOpen = ref( false );
+const toggleCallback = () => {
+  const body = document.body;
+  body.classList.toggle( '_lock' );
+  isOpen.value = ! isOpen.value;
+}
 </script>
 
 <style scoped lang="scss">

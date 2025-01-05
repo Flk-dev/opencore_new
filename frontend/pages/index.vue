@@ -1,6 +1,7 @@
 <template>
   <HomeHero />
-  <template v-if="post.data.content" v-for="content in post.data.content">
+
+  <template v-if="post.content" v-for="content in post.content">
     <component :is="contentLayouts[content.acf_fc_layout]" :data="content" />
   </template>
 
@@ -18,8 +19,7 @@ import {
   HomeAdvantages
 } from '#components';
 
-const route = useRoute();
-const contentLayouts = ref( {
+const contentLayouts: any = ref( {
   cases: HomeCases,
   service: HomeService,
   we_work: HomeWeWork,
@@ -29,7 +29,7 @@ const contentLayouts = ref( {
   advantages: HomeAdvantages,
 } );
 
-const { result: post, error } = await useApi( '/template/home', {}, '', true );
+const { result: post } = await useApi( '/template/home', {}, '', true );
 </script>
 
 <style scoped lang="scss">

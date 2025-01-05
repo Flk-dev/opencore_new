@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="to" v-if="to" class="btn">
+  <NuxtLink :to="to" v-if="to" class="btn btn--ripple">
     <span>{{ title }}</span>
   </NuxtLink>
   <button class="btn" v-else>
