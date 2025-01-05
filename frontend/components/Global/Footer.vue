@@ -41,6 +41,7 @@
     </div>
   </footer>
 
+  <GlobalCookie />
 </template>
 
 <script setup lang="ts">
