@@ -34,6 +34,8 @@
 textarea.form__input {
   resize: none;
   overflow: hidden;
+  height: auto;
+  max-height: fit-content;
 }
 
 .form__button {

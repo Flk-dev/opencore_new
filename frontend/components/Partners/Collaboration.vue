@@ -1,9 +1,9 @@
 <template>
-  <SectionSliderLogos class="partners__collaboration" v-if="collaborate.data.list" :slider="collaborate.data.list" :title="collaborate.data.title" />
+  <SectionSliderLogos class="partners__collaboration" v-if="post.list" :slider="post.list" :title="post.title" />
 </template>
 
 <script setup lang="ts">
-const { result: collaborate } = await useApi( '/template/partners/collaborate', {}, 'partners/collaborate' );
+const { result: post } = await useApi( '/template/partners/collaborate', {}, 'partners/collaborate' );
 </script>
 
 <style scoped lang="scss">

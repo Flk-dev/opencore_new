@@ -14,7 +14,7 @@
           <GlobalBlockHeader title="Мы всегда рады новым знакомствам, давайте сделаем вместе что-нибудь классное" classes="partners" class-title="fz-h1--tablet" />
           <div class="partners__grid">
             <PartnersCard
-                v-for="post in post.data.list"
+                v-for="post in post.list"
                 :key="post.ID"
                 :id="post.ID"
                 :title="post.title"
