@@ -50,13 +50,6 @@ onMounted(() => {
     }
   });
 });
-
-// window.addEventListener('scroll', () => {
-//   console.log( window.pageYOffset );
-//   // if ( window.pageYOffset > 100 ){
-//   //   //fixed.value = true;
-//   // }
-// } );
 </script>
 
 <style scoped lang="scss">

@@ -19,7 +19,6 @@ withDefaults(defineProps<{
   btnTitle: 'Получить КП',
   action: 'socialize'
 });
-
 </script>
 
 <style scoped lang="scss">

@@ -6,7 +6,7 @@
     </div>
     <div class="menu__list">
       <div class="menu__list">
-        <div class="menu__item" v-for="item in post.data.menu" :key="item.id" :data-title="item.title">
+        <div class="menu__item" v-for="item in post.menu" :key="item.id" :data-title="item.title">
           <NuxtLink :to="item.url" class="menu__link" v-if="item.content" @click="close">{{ item.title }}</NuxtLink>
         </div>
       </div>
@@ -18,7 +18,7 @@
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 
-const { result: post, error } = await useApi( '/menu/header/', {}, 'menu/header' );
+const { result: post } = await useApi( '/menu/header/', {}, 'menu/header' );
 
 const slider = ref(null);
 const onSwiper = (swiper) => {
