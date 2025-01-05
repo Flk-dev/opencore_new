@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
-  site: { indexable: false },
   devtools: { enabled: true },
   vite: {
     css: {
@@ -15,7 +14,8 @@ export default defineNuxtConfig({
   css: ['~/assets/css/style.scss'],
   runtimeConfig: {
     public: {
-      WP_DEV: 'https://klishintest.ru/wp-json/opencore/v1',
+      //WP_DEV: 'https://klishintest.ru/wp-json/opencore/v1',
+      WP_DEV: 'http://openscrore.local/wp-json/opencore/v1',
     }
   },
 })

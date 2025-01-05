@@ -10,11 +10,11 @@
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
+withDefaults(defineProps<{
   title?: string,
-  btnTitle: string,
+  btnTitle?: string,
   btnClass?: string
-  action: string,
+  action?: string,
 }>(), {
   btnTitle: 'Получить КП',
   action: 'socialize'

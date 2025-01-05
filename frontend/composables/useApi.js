@@ -10,15 +10,14 @@ export default async ( url, options = {}, slug = '', is_error = false ) => {
     const { data: result, error, status } = await useAsyncData( `${ slug }`, () =>
             $fetch( `${ WP_DEV }${ url }`, options ).catch( ( error ) => error.data ), {
             transform: ( resData ) => {
-                return resData;
+                return resData.data ? resData.data : resData;
             },
         },
     );
 
     const errorHandler = () => {
         if ( is_error ) {
-            if ( result.value.data.hasOwnProperty( 'status' ) && result.value.data.status === 404 ) {
-                console.log( result.value.data );
+            if ( result.value.hasOwnProperty( 'status' ) && result.value.data.status === 404 ) {
                 throw createError( { statusCode: 404, statusMessage: 'Page Not Found' } );
             }
         }

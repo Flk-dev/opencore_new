@@ -1,10 +1,10 @@
 <template>
   <div>
-    <GlobalHeader />
+
       <NuxtLayout>
         <NuxtPage/>
       </NuxtLayout>
-    <GlobalFooter />
+
   </div>
 </template>
 

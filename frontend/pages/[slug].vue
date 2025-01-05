@@ -2,12 +2,12 @@
   <div class="content__page page-paddings">
     <div class="content__page-container container">
       <div class="content__page-left">
-        <GlobalBlockHeader class="content__page-title fz-h1--mobile" :title="post.data.title" />
-        <div class="content__page-subtitle fz-h3 fz-h2--mobile" v-if="post.data.subtitle">{{ post.data.subtitle }}</div>
+        <GlobalBlockHeader class="content__page-title fz-h1--mobile" :title="post.title" />
+        <div class="content__page-subtitle fz-h3 fz-h2--mobile" v-if="post.subtitle">{{ post.subtitle }}</div>
       </div>
-      <div class="content__page-blocks" v-if="post.data.page_content.length">
+      <div class="content__page-blocks" v-if="post.page_content.length">
         <div class="content__page-block content__text"
-             v-for="content in post.data.page_content"
+             v-for="content in post.page_content"
              v-html="content.text">
         </div>
       </div>
@@ -15,11 +15,14 @@
   </div>
 
   <GlobalFooterButton />
+  <ModalsDefault title="Давайте общаться" >
+    <ModalsMain />
+  </ModalsDefault>
 </template>
 
 <script setup lang="ts">
 const route = useRoute();
-const { result: post, error } = await useApi( '/pages/' + route.params.slug + '/', {}, '', true );
+const { result: post } = await useApi( '/pages/' + route.params.slug + '/', {}, '', true );
 </script>
 
 <style scoped lang="scss">
@@ -74,4 +77,5 @@ const { result: post, error } = await useApi( '/pages/' + route.params.slug + '/
     max-width: 24rem;
   }
 }
+
 </style>
