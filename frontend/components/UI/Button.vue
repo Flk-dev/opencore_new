@@ -1,8 +1,8 @@
 <template>
-  <NuxtLink :to="to" v-if="to" ref="button" class="btn btn--ripple">
+  <NuxtLink :to="to" v-if="to" ref="button" class="btn btn--ripple" @mouseover="onMouseOver">
     <span>{{ title }}</span>
   </NuxtLink>
-  <button class="btn btn--ripple" ref="button" v-else>
+  <button class="btn btn--ripple" ref="button" v-else @mouseover="onMouseOver">
     <span>{{ title }}</span>
   </button>
 </template>
@@ -13,17 +13,13 @@ defineProps<{
   to?: string
 }>();
 
-const button = ref( '' );
-onMounted( () => {
-  // console.log( button.value );
-  // button.value.addEventListener( "mouseover", ( event: any ) => {
-  //   const x = event.clientX - event.target.getBoundingClientRect().left;
-  //   const y = event.clientY - event.target.getBoundingClientRect().top;
-  //
-  //   button.value.style.setProperty( "--xPos", x + "px" );
-  //   button.value.style.setProperty( "--yPos", y + "px" );
-  // } );
-} )
+const onMouseOver = ( event: any ) => {
+  const x = event.clientX - event.target.getBoundingClientRect().left;
+  const y = event.clientY - event.target.getBoundingClientRect().top;
+
+  event.currentTarget.style.setProperty( "--xPos", x + "px" );
+  event.currentTarget.style.setProperty( "--yPos", y + "px" );
+}
 </script>
 
 <style lang="scss">

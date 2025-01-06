@@ -18,9 +18,7 @@
           <path d="M1361.65 182.682H1251.02L1289.37 2.59375H1400L1396.11 20.851H1305.58L1291.97 83.6172H1380.23L1376.34 101.658H1288.08L1275.01 164.425H1365.54L1361.65 182.682Z" fill="#0000FF"/>
         </svg>
       </NuxtLink>
-      <button class="header__button btn--ripple _white callback--open" @click="toggleCallback">
-        <span>Связаться с нами</span>
-      </button>
+      <UIButton title="Связаться с нами" class="header__button" @click="toggleCallback" />
     </div>
   </header>
 
@@ -95,6 +93,15 @@ const toggleCallback = () => {
   color: var(--fg-white);
   border-radius: 1rem;
   transition: var(--tr-regular);
+  max-width: 18rem;
+
+  &:before {
+    background: var(--fg-white);
+  }
+
+  &:hover {
+    color: var(--fg-blue);
+  }
 }
 
 .header__logo svg {

@@ -220,6 +220,7 @@
   position: absolute;
   max-width: 100%;
   display: inline-block;
+  width: 100%;
 
   //&-img {
   //  width: 100%;
