@@ -9,6 +9,9 @@
           <div class="reviews-item__client-name" v-if="name">{{ name }}</div>
           <div class="reviews-item__client-post fz-caption" v-if="post" v-html="post"></div>
         </div>
+        <NuxtLink v-if="cases" class="reviews-item__case fz-caption" :to="{name: 'cases-slug', params: {slug: cases.post_name}}">
+          смотреть кейс
+        </NuxtLink>
       </div>
     </div>
   </div>
@@ -20,7 +23,8 @@ defineProps<{
   text?: string,
   name?: string,
   post?: string,
-  logo?: string
+  logo?: string,
+  cases?: object
 }>();
 </script>
 
@@ -34,6 +38,12 @@ defineProps<{
   justify-content: space-between;
   min-height: 55.5rem;
   height: 100%;
+
+  &:hover {
+    & .reviews-item__case {
+      opacity: 1;
+    }
+  }
 
   @media (max-width: $mobile) {
     min-height: 44rem;
@@ -59,6 +69,7 @@ defineProps<{
 .reviews-item__client {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .reviews-item__client-logo {
@@ -87,6 +98,23 @@ defineProps<{
       display: none;
     }
   }
+}
+
+.reviews-item__case {
+  position: absolute;
+  bottom: .9rem;
+  left: 4.7rem;
+  background: var(--fg-blue);
+  color: var(--fg-white);
+  height: 3.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  border-radius: 1rem;
+  opacity: 0;
+  z-index: 5;
+  transition: var(--tr-regular);
 }
 
 </style>

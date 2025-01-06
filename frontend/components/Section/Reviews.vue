@@ -16,6 +16,7 @@
               :post="item.post"
               :text="item.text_home"
               :logo="item.logo"
+              :cases="item.case"
           />
         </swiper-slide>
       </swiper>
