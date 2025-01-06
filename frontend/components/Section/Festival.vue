@@ -77,7 +77,7 @@ await callOnce(async () => {
 .festival__title {
   line-height: 100%;
 
-  & br {
+  :deep(br) {
     display: none;
   }
 

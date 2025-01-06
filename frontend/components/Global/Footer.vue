@@ -42,6 +42,7 @@
   </footer>
 
   <GlobalCookie />
+  <GlobalScrollIcon />
 </template>
 
 <script setup lang="ts">
