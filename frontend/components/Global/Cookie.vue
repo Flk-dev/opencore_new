@@ -1,5 +1,4 @@
 <template>
-  {{ cookie }}
   <div class="cookie" :class="{ '_hide': ! isOpen }">
     <div class="cookie__container container">
       <div class="cookie__block">
@@ -16,18 +15,19 @@
 </template>
 
 <script setup lang="ts">
-const isOpen = ref( true );
+const isOpen = ref( false );
 const cookie = useCookie('is_cookie');
 
-onMounted( () => {
-  if ( ! cookie.value ) {
-    isOpen.value = true;
-  }
-} )
+if (  ! cookie || cookie.value === undefined ) {
+  isOpen.value = true;
+}
 
 const submit = () => {
   cookie.value = 'true';
+
+  close();
 };
+
 const close = () => {
   isOpen.value = false;
 };
