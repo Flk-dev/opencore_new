@@ -1,7 +1,12 @@
 <template>
   <section class="we-work section" v-if="weWork.list.length">
     <div class="we-work__container container">
-      <GlobalBlockHeader :title="title" classes="we-work" />
+      <GlobalBlockHeader :title="title" classes="we-work">
+        <div class="block-header__text fz-caption" v-if="text" v-html="text"></div>
+        <div class="block-header__logo" v-if="logo">
+          <img :src="logo" alt="">
+        </div>
+      </GlobalBlockHeader>
       <div class="we-work__grid" v-for="(list, listKey) in weWork.list" :key="listKey">
         <div class="we-work__slide">
           <div class="we-work__item" v-for="(cell, cellKey) in list.leader_cell" :key="cellKey">
@@ -25,7 +30,7 @@ defineProps<{
   is_button: boolean
 }>();
 
-const weWork = useState('weWork');
+const weWork :object  = useState('weWork');
 const config = useRuntimeConfig();
 
 await callOnce(async () => {
@@ -48,50 +53,63 @@ await callOnce(async () => {
 }
 
 .we-work__block-header {
-   & ::v-deep .block-header__right {
+  & :deep(.block-header__title) {
+    max-width: 88.1rem;
+  }
+
+  & :deep(.block-header__text) {
     max-width: 33.3rem;
+    color: var(--fg-black-75);
+    opacity: .75;
   }
 
-  @media (max-width: $tablet) {
-    & .block-header__right {
-      max-width: 45rem;
-    }
-
-    & .block-header__title {
-      font-size: 4rem;
-      margin-bottom: 2rem;
-    }
-
-    .block-header__right {
-      display: flex;
-      align-items: center;
-
-      & .we-work__block-header__text {
-        order: 2;
-        padding-left: 2.8rem;
-        font-size: var(--fz-caption);
-        letter-spacing: var(--lc-caption);
-        line-height: var(--lh-caption);
-      }
-
-      & .we-work__block-header__pic {
-        min-width: 9.7rem;
-        order: 1;
-      }
-    }
+  & :deep(.block-header__logo) {
+    margin-top: 2rem;
   }
-
-  @media (max-width: $mobile) {
-    & .block-header__title {
-      font-size: 2.4rem;
-      line-height: 100%;
-      margin-bottom: 2rem;
-
-      & br {
-        display: none;
-      }
-    }
-  }
+  // & :deep() .block-header__right {
+  //  max-width: 33.3rem;
+  //}
+  //
+  //@media (max-width: $tablet) {
+  //  & .block-header__right {
+  //    max-width: 45rem;
+  //  }
+  //
+  //  & .block-header__title {
+  //    font-size: 4rem;
+  //    margin-bottom: 2rem;
+  //  }
+  //
+  //  .block-header__right {
+  //    display: flex;
+  //    align-items: center;
+  //
+  //    & .we-work__block-header__text {
+  //      order: 2;
+  //      padding-left: 2.8rem;
+  //      font-size: var(--fz-caption);
+  //      letter-spacing: var(--lc-caption);
+  //      line-height: var(--lh-caption);
+  //    }
+  //
+  //    & .we-work__block-header__pic {
+  //      min-width: 9.7rem;
+  //      order: 1;
+  //    }
+  //  }
+  //}
+  //
+  //@media (max-width: $mobile) {
+  //  & .block-header__title {
+  //    font-size: 2.4rem;
+  //    line-height: 100%;
+  //    margin-bottom: 2rem;
+  //
+  //    & br {
+  //      display: none;
+  //    }
+  //  }
+  //}
 }
 
 .we-work__block-header__text {

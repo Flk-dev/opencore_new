@@ -33,6 +33,7 @@ defineProps<{
   flex-direction: column;
   justify-content: space-between;
   min-height: 55.5rem;
+  height: 100%;
 
   @media (max-width: $mobile) {
     min-height: 44rem;
@@ -41,6 +42,7 @@ defineProps<{
 
 .reviews-item__title {
   color: var(--fg-blue);
+  margin-bottom: 6rem;
 }
 
 .reviews-item__content {
@@ -75,7 +77,7 @@ defineProps<{
 
 .reviews-item__client-post {
   color: var(--fg-gray-2);
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 
   @media (max-width: $mobile) {
     font-size: 1.2rem;

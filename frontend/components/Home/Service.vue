@@ -26,31 +26,38 @@ const props = defineProps<{
   }
 }>();
 
-const cols = ref( {
-  col_1: [],
-  col_2: [],
-} );
-
 const columns = computed(() => {
-  const list = props.data.select;
-  if ( list.length ) {
-    list.forEach( ( element, index ) => {
-      index += 1;
-      if ( index % 2 === 0 ) {
-        cols.value.col_2.push( element );
-      } else {
-        cols.value.col_1.push( element );
-      }
-    } );
-  }
-
-  return cols;
+  return getGridColumns( props.data.select )
 });
+
+// const cols = ref( {
+//   col_1: [],
+//   col_2: [],
+// } );
+//
+// const columns = computed(() => {
+//   const list = props.data.select;
+//   if ( list.length ) {
+//     list.forEach( ( element, index ) => {
+//       index += 1;
+//       if ( index % 2 === 0 ) {
+//         cols.value.col_2.push( element );
+//       } else {
+//         cols.value.col_1.push( element );
+//       }
+//     } );
+//   }
+//
+//   return cols;
+// });
 </script>
 
 <style scoped lang="scss">
-.supporting__block-header .block-header__title {
-  max-width: 65.2rem;
+.supporting__block-header {
+
+  & :deep(.block-header__title) {
+    max-width: 65.2rem;
+  }
 }
 
 @media (max-width: $mobile) {

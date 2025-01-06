@@ -1,5 +1,5 @@
 <template>
-  <section class="advantages section" v-if="select">
+  <section class="advantages section" ref="advantages" v-if="select">
     <div class="advantages__container container">
       <GlobalBlockHeader :title="title" classes="advantages" />
       <div class="advantages__grid">
