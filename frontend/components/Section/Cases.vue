@@ -1,7 +1,10 @@
 <template>
   <section class="cases section">
     <div class="cases__container container">
-      <GlobalBlockHeader :title="title" classes="cases" />
+      <GlobalBlockHeader
+          :title="title"
+          classes="cases"
+      />
       <CasesGrid :data="data" />
       <slot />
     </div>
@@ -9,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   title?: string,
   data: object,
 }>();
@@ -27,18 +30,10 @@ const props = defineProps<{
 }
 
 .cases__block-header {
-  margin-bottom: 6rem;
+  margin-bottom: 10rem;
 
-  & .block-header__title {
-    max-width: 90.9rem;
-  }
-
-  @media (max-width: $tablet) {
-    margin-bottom: 8rem;
-  }
-
-  @media (max-width: $mobile) {
-    margin-bottom: 6rem;
+  & :deep( .block-header__title ) {
+    max-width: 86rem;
   }
 }
 

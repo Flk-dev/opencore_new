@@ -1,7 +1,7 @@
 <template>
-  <div class="cases__grid parallax" v-if="columns.value.col_1.length">
+  <div class="cases__grid parallax" v-if="columns.value.col_1.length" ref="grid">
     <div class="cases__col">
-      <div class="cases__left">
+      <div class="cases__left" ref="colLeft">
         <CasesCard
             v-for="item in columns.value.col_1"
             :key="item.post_id"
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="cases__col">
-      <div class="cases__right" v-if="columns.value.col_2.length">
+      <div class="cases__right" v-if="columns.value.col_2.length" ref="colRight">
         <CasesCard
             v-for="item in columns.value.col_2"
             :key="item.post_id"
@@ -37,6 +37,36 @@ const props = defineProps<{
 const columns = computed(() => {
   return getGridColumns( props.data )
 });
+
+const grid = ref( '' );
+const colLeft = ref( '' );
+const colRight = ref( '' );
+
+// const onScroll = ( event: any ) => {
+//   const colLeftRect = colLeft.value.getBoundingClientRect();
+//   const colRightRect = colRight.value.getBoundingClientRect();
+//
+//   const colLeftHeight = colLeft.value.clientHeight;
+//   const colRightHeight = colRight.value.clientHeight;
+//   const travel = colLeftHeight - colRightHeight;
+//
+//   const topOfColumns = ( grid.value.getBoundingClientRect().top + window.scrollY );
+//   const columns = grid.value.getBoundingClientRect().height - window.innerHeight;
+//   const scrollInterval = columns / travel;
+//
+//   const scrolled = document.scrollingElement.scrollTop;
+//
+//   const e = Math.round( ( scrolled ) - topOfColumns ) / scrollInterval;
+//   const b = scrolled >= ( colLeftRect.top + window.scrollY ) + colRightRect.height - window.innerHeight;
+//
+//   if ( scrolled >= topOfColumns && b == false ) {
+//     colRight.value.style.transform = "translate3d(0px, " + ( e ) + "px, 0px)";
+//   }
+// }
+//
+// onMounted( () => {
+//   window.addEventListener( 'scroll', onScroll );
+// } );
 </script>
 
 <style scoped lang="scss">

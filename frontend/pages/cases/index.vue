@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-const { result: post, error } = await useApi( '/cases' );
+const { result: post } = await useApi( '/cases' );
 </script>
 
 <style scoped lang="scss">
