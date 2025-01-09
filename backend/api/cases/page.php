@@ -8,7 +8,7 @@ register_rest_route( OS_API_NAMESPACE, '/cases', [
 
 		$args = [
 			'post_type'      => 'cases',
-			'posts_per_page' => - 1
+			'posts_per_page' => 10,
 		];
 
 		if ( ! empty( $category ) && $category !== 'all' ) {
@@ -18,6 +18,10 @@ register_rest_route( OS_API_NAMESPACE, '/cases', [
 					'terms'    => [ $category ]
 				]
 			];
+		}
+
+		if ( ! empty( $page ) ) {
+			$args['paged'] = $page;
 		}
 
 		$cases = get_posts( $args );

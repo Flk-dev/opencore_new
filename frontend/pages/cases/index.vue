@@ -13,38 +13,47 @@
     <div class="cases__container container">
       <CasesFilter :data="categories" @filter="filter" />
       <CasesGrid class="cases--archive" :data="posts" />
+      <GlobalLoadmore  @loadMore="loadMore" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const termId: any = ref( 0 );
-
 const { result: categories } = await useApi( '/cases/categories', {}, '/cases/categories' );
-const { data: posts } : any = await useAsyncData(
-    'cases-post',
+
+const termId: any = ref( 0 );
+const page: any = ref( 1 );
+const posts: array = ref( [] );
+
+await useAsyncData(
+    'cases',
     () : any => $fetch(getApiUrl( '/cases/' ), {
       params: {
-        category: termId.value
+        category: termId.value,
+        page: page.value
       }
     }), {
-      watch: [termId],
+      watch: [termId, page],
       transform: ( resData : object ) => {
-        return resData.data ? resData.data : resData;
+        posts.value = page.value === 1 ? resData.data : [ ...posts.value, ...resData.data ];
       },
     },
 );
 
-
-const filter = async (id: number | string) => {
+const filter = (id: number | string) => {
   termId.value = id;
+  page.value = 1;
+};
+
+const loadMore = ( event: any ) => {
+  page.value++;
 };
 
 </script>
 
 <style scoped lang="scss">
 .cases--archive {
-  & ::v-deep .cases__col {
+  & :deep(.cases__col) {
     border: none;
 
     &:after {
