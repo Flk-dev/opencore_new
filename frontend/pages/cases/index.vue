@@ -11,14 +11,35 @@
 
   <div class="cases page-pd-bottom">
     <div class="cases__container container">
-      <CasesFilter :data="post.data.categories" />
-      <CasesGrid class="cases--archive" :data="post.data.list" />
+      <CasesFilter :data="categories" @filter="filter" />
+      <CasesGrid class="cases--archive" :data="posts" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const { result: post } = await useApi( '/cases' );
+const termId: any = ref( 0 );
+
+const { result: categories } = await useApi( '/cases/categories', {}, '/cases/categories' );
+const { data: posts } : any = await useAsyncData(
+    'cases-post',
+    () : any => $fetch(getApiUrl( '/cases/' ), {
+      params: {
+        category: termId.value
+      }
+    }), {
+      watch: [termId],
+      transform: ( resData : object ) => {
+        return resData.data ? resData.data : resData;
+      },
+    },
+);
+
+
+const filter = async (id: number | string) => {
+  termId.value = id;
+};
+
 </script>
 
 <style scoped lang="scss">

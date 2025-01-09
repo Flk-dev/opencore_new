@@ -2,9 +2,9 @@
   <div class="cats__menu">
     <div class="cats__menu-container container">
       <div class="cats__menu-list" v-if="data.length">
-        <button class="cats__menu-link _active" data-id="all">Все</button>
+        <button class="cats__menu-link _active" data-id="all" @click="$emit('filter', 'all')">Все</button>
         <template v-for="category in data">
-          <button class="cats__menu-link" :data-id="category.term_id">{{ category.name }}</button>
+          <button class="cats__menu-link" :data-id="category.term_id" @click="$emit('filter', category.term_id)">{{ category.name }}</button>
         </template>
       </div>
     </div>

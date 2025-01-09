@@ -7,8 +7,11 @@ export default async ( url, options = {}, slug = '', is_error = false ) => {
         slug = route.params.slug;
     }
 
-    const { data: result, error, status } = await useAsyncData( `${ slug }`, () =>
-            $fetch( `${ WP_DEV }${ url }`, options ).catch( ( error ) => error.data ), {
+    const { data: result, error, status, refresh } = await useAsyncData(
+        `${ slug }`,
+        () => $fetch( `${ WP_DEV }${ url }`, {
+            params: options,
+        } ).catch( ( error ) => error.data ), {
             transform: ( resData ) => {
                 return resData.data ? resData.data : resData;
             },
@@ -30,5 +33,6 @@ export default async ( url, options = {}, slug = '', is_error = false ) => {
         result,
         error,
         status,
+        refresh
     };
 }

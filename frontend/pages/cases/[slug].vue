@@ -2,11 +2,11 @@
   <div class="case page-paddings">
     <div class="case__header">
       <div class="container">
-        <h1 class="case__title fz-h2 fz-h1--tablet" v-if="post.data.post_title">{{ post.data.post_title }}</h1>
+        <h1 class="case__title fz-h2 fz-h1--tablet" v-if="post.post_title">{{ post.post_title }}</h1>
       </div>
     </div>
-    <div class="case__content" v-if="post.data.content">
-      <component v-for="content in post.data.content" :is="contentLayouts[content.acf_fc_layout]" :data="content" />
+    <div class="case__content" v-if="post.content">
+      <component v-for="content in post.content" :is="contentLayouts[content.acf_fc_layout]" :data="content" />
     </div>
   </div>
 </template>
