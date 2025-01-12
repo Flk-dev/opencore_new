@@ -1,25 +1,28 @@
 <template>
   <div class="learning__complex learning-complex">
     <div class="learning__container container">
-      <GlobalBlockHeader :title="data.title" classes="learning-video"/>
+      <GlobalBlockHeader :title="data.title" classes="learning-video" class-title="fz-h1--tablet"/>
       <div class="learning-complex__text fz-h4" v-if="data.text" v-html="data.text"></div>
-      <swiper
-          class="learning-complex__swiper"
-          :slides-per-view="2.6"
-          :loop="true"
-      >
-        <swiper-slide v-for="(item, index) in data.list" :key="index">
-          <div class="learning-complex__item">
-            <div class="learning-complex__item-card">
-              <div>
-                <div class="learning-complex__item-number">{{ ( index + 1 ) }}</div>
-                <h4 class="learning-complex__item-title fz-h4" v-html="item.title"></h4>
+      <div class="learning-complex__slider">
+        <swiper
+            class="learning-complex__swiper"
+            :slides-per-view="1.2"
+            :loop="true"
+            :breakpoints="{ '576': { slidesPerView: 1.4 }, '992': { slidesPerView: 2.6 } }"
+        >
+          <swiper-slide v-for="(item, index) in data.list" :key="index">
+            <div class="learning-complex__item">
+              <div class="learning-complex__item-card">
+                <div>
+                  <div class="learning-complex__item-number">{{ ( index + 1 ) }}</div>
+                  <h4 class="learning-complex__item-title fz-h4 fz-h2--mobile" v-html="item.title"></h4>
+                </div>
+                <div class="learning-complex__item-text content__text" v-html="item.text"></div>
               </div>
-              <div class="learning-complex__item-text content__text" v-html="item.text"></div>
             </div>
-          </div>
-        </swiper-slide>
-      </swiper>
+          </swiper-slide>
+        </swiper>
+      </div>
 
       <UIButton title="Получить бесплатную консультацию" class="learning-complex__btn" />
     </div>
@@ -43,25 +46,37 @@ defineProps<{
 .learning-video__block-header {
   margin-bottom: 3rem;
   max-width: 64.4rem;
+
+  @media (max-width: $mobile) {
+    margin-bottom: 0;
+  }
 }
 
 .learning-complex__text {
   max-width: 50.9rem;
   margin-bottom: 10rem;
+
+  @media (max-width: $mobile) {
+    margin-bottom: 6rem;
+  }
 }
 
 .learning-complex__item {
   padding: 0 4rem;
   position: relative;
 
-  &:after {
+  &:before {
     content: '';
     position: absolute;
-    right: -.5rem;
+    left: 0;
     top: 0;
     height: 100%;
     width: .1rem;
     background: var(--fg-black);
+  }
+
+  @media (max-width: $mobile) {
+    padding: 0 2rem;
   }
 }
 
@@ -72,6 +87,12 @@ defineProps<{
   line-height: 100%;
   color: var(--fg-blue);
   margin-bottom: 1.5rem;
+
+  @media (max-width: $mobile) {
+    font-size: 4rem;
+    line-height: 100%;
+    margin-bottom: 1.5rem;
+  }
 }
 
 .learning-complex__item-card {
@@ -86,14 +107,22 @@ defineProps<{
   --lh: 120%;
 
   --mb-ul-li: 1.5rem;
-}
 
-.learning-complex__swiper {
-  margin-right: var(--m-m-container);
+  @media (max-width: $mobile) {
+    --fz: 1.5rem;
+  }
 }
 
 .learning-complex__btn {
   margin-top: 10rem;
+
+  @media (max-width: $mobile) {
+    margin-top: 6rem;
+  }
+}
+
+.learning-complex__slider {
+  margin-right: var(--m-m-container);
 }
 
 </style>

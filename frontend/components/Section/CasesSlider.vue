@@ -5,10 +5,10 @@
       <div class="cases-slider__slider">
         <swiper
             class="cases-slider__swiper"
-            :slides-per-view="1"
+            :slides-per-view="1.05"
             :loop="true"
-            :space-between="20"
-            :breakpoints="{ '576': { slidesPerView: 'auto' } }"
+            :space-between="10"
+            :breakpoints="{ '576': { slidesPerView: 'auto', spaceBetween: 20 } }"
         >
           <swiper-slide v-for="item in data" :key="item.post_id">
             <CasesCard
@@ -53,15 +53,19 @@ defineProps<{
     &:nth-child(2n + 2) {
       max-width: 52rem;
 
-      ::v-deep .cases-item__media-pic {
+      :deep(.cases-item__media-pic) {
         height: 30.5rem;
       }
+    }
+    
+    @media (max-width: $mobile) {
+      max-width: 34rem;
     }
   }
 }
 
 .cases-slider {
-  ::v-deep .cases-item {
+  :deep(.cases-item) {
     margin-bottom: 0;
   }
 }

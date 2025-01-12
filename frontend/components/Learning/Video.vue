@@ -1,7 +1,7 @@
 <template>
   <div class="learning__video learning-video">
     <div class="learning__container container">
-      <GlobalBlockHeader :title="data.title" classes="learning-video"/>
+      <GlobalBlockHeader :title="data.title" classes="learning-video" class-title="fz-h1--tablet"/>
       <div class="learning-video__video" v-if="data.link">
         <div class="learning-video__bg" :style="{ backgroundImage: 'url('+ data.preview +')' }"></div>
         <button class="learning-video__play">
@@ -11,7 +11,7 @@
         </button>
       </div>
       <div class="learning-video__info" v-if="data.text || data.logo">
-        <div class="learning-video__text fz-h3" v-if="data.text" v-html="data.text"></div>
+        <div class="learning-video__text fz-h3 fz-h2--mobile" v-if="data.text" v-html="data.text"></div>
         <div class="learning-video__logo" v-if="data.logo">
           <img :src="data.logo" alt="">
         </div>
@@ -35,6 +35,10 @@ defineProps<{
 <style scoped lang="scss">
 .learning-video__block-header {
   margin-bottom: 5rem;
+
+  @media (max-width: $tablet) {
+    margin-bottom: 3rem;
+  }
 }
 
 .learning-video__video {
@@ -43,6 +47,15 @@ defineProps<{
   justify-content: center;
   height: 70rem;
   position: relative;
+
+  @media (max-width: $tablet) {
+    height: auto;
+    padding-bottom: 42.5%;
+  }
+
+  @media (max-width: $mobile) {
+    padding-bottom: 53%;
+  }
 }
 
 .learning-video__bg {
@@ -58,8 +71,15 @@ defineProps<{
 }
 
 .learning-video__play {
-  position: relative;
+  position: absolute;
   z-index: 5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  @media (max-width: $mobile) {
+    max-width: 2rem;
+  }
 }
 
 .learning-video__info {
@@ -67,14 +87,35 @@ defineProps<{
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: $mobile) {
+    margin-top: 2rem;
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 
 .learning-video__text {
   max-width: 101.9rem;
 
-  ::v-deep & a {
+  :deep(a) {
     color: var(--fg-blue);
     text-decoration: underline;
+  }
+
+  @media (max-width: $tablet) {
+    max-width: 56.7rem;
+  }
+
+  @media (max-width: $mobile) {
+    max-width: 100%;
+  }
+}
+
+.learning-video__logo {
+  @media (max-width: $mobile) {
+    max-width: 4.2rem;
+    margin-top: 2rem;
   }
 }
 

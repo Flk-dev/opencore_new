@@ -3,7 +3,7 @@
     <div class="accordion-item__head" v-if="title">
       <div class="accordion-item__head-left" :class="titleClass">
         <div class="accordion-item__counter" v-if="counter">{{ counter }}</div>
-        <div class="accordion-item__title" v-html="title"></div>
+        <div class="accordion-item__title fz-h2--mobile" v-html="title"></div>
       </div>
       <div class="accordion-item__icon">
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -149,12 +149,12 @@ if ( props.titleClass ) {
 }
 
 
-@media (max-width: $mobile) {
-  .accordion-item__title {
-    font-size: 2rem;
-    line-height: 100%;
-    letter-spacing: -.02rem;
-  }
-}
+//@media (max-width: $mobile) {
+//  .accordion-item__title {
+//    font-size: 2rem;
+//    line-height: 100%;
+//    letter-spacing: -.02rem;
+//  }
+//}
 
 </style>

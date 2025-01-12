@@ -9,8 +9,8 @@
     </svg>
   </GlobalPageHeader>
 
-  <div class="learning page-pd-bottom" v-if="post.data.content">
-    <div class="learning__block" v-for="content in post.data.content">
+  <div class="learning page-pd-bottom" v-if="post.content">
+    <div class="learning__block" v-for="content in post.content">
       <component :is="contentLayouts[content.acf_fc_layout]" :data="content" />
     </div>
   </div>
@@ -26,9 +26,7 @@ import {
   LearningFormat,
   LearningCases,
 } from '#components';
-
-const route = useRoute();
-const contentLayouts = ref( {
+const contentLayouts: any = ref( {
   video: LearningVideo,
   whos: LearningWhos,
   learn: LearningWe,
@@ -38,7 +36,7 @@ const contentLayouts = ref( {
   cases: LearningCases,
 } );
 
-const { result: post, error } = await useApi( '/template/learning' );
+const { result: post } = await useApi( '/template/learning' );
 </script>
 
 <style scoped lang="scss">
