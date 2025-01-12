@@ -29,6 +29,10 @@ defineProps<{
     align-items: flex-start;
     margin-bottom: 6rem;
   }
+
+  @media (max-width: $mobile) {
+    margin-bottom: 4rem;
+  }
 }
 
 .block-header__title {

@@ -1,7 +1,7 @@
 <template>
   <div class="history-card">
     <UIImage :image="image" classes_pic="history-card__image item--cover" />
-    <h3 class="history-card__title fz-h3">{{ title }}</h3>
+    <h3 class="history-card__title fz-h3 fz-h2--mobile">{{ title }}</h3>
     <div class="history-card__subtitle fz-body" v-if="subtitle">{{ subtitle }}</div>
     <button class="history-card__button btn--ripple">
       <span>Подробнее</span>
@@ -19,14 +19,26 @@ defineProps<{
 </script>
 
 <style scoped lang="scss">
-::v-deep .history-card__image {
+:deep(.history-card__image) {
   height: 55rem;
   border-radius: 1.5rem;
   margin-bottom: 2.5rem;
+
+  @media (max-width: $tablet) {
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: $mobile) {
+    height: 33rem;
+  }
 }
 
 .history-card__subtitle {
   margin-top: 1.5rem;
+
+  @media (max-width: $mobile) {
+    margin-top: .5rem;
+  }
 }
 
 .history-card__button {
@@ -45,6 +57,10 @@ defineProps<{
 
   &:hover {
     color: var(--fg-white);
+  }
+
+  @media (max-width: $mobile) {
+    margin-top: 2.6rem;
   }
 }
 

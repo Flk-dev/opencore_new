@@ -173,7 +173,7 @@ const colRight = ref( '' );
   //}
 
   @media (max-width: $mobile) {
-    
+
   }
 }
 </style>

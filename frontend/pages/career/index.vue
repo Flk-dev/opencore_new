@@ -9,7 +9,7 @@
     </svg>
   </GlobalPageHeader>
   <div class="career page-pd-bottom">
-    <template v-if="post.data.content" v-for="content in post.data.content">
+    <template v-if="post.content" v-for="content in post.content">
       <component :is="contentLayouts[content.acf_fc_layout]" :data="content" />
     </template>
   </div>
@@ -20,15 +20,14 @@
 <script setup lang="ts">
 import { CareerNumbers, CareerValues, CareerExpertise, CareerHistory } from '#components';
 
-const route = useRoute();
-const contentLayouts = ref( {
+const contentLayouts: any = ref( {
   numbers: CareerNumbers,
   values: CareerValues,
   expertise: CareerExpertise,
   histories: CareerHistory,
 } );
 
-const { result: post, error } = await useApi( '/template/career', {}, '', true );
+const { result: post } = await useApi( '/template/career' );
 </script>
 
 <style scoped lang="scss">
