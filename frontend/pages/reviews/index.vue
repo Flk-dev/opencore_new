@@ -11,7 +11,7 @@
 
   <div class="reviews page-paddings">
     <div class="reviews__container container">
-      <GlobalBlockHeader :title="post.data.title" classes="reviews" />
+      <GlobalBlockHeader :title="post.title" classes="reviews" class-title="fz-h3--tablet fz-h2--mobile" />
       <div class="reviews__grid" v-if="columns.value.col_1.length">
         <div class="reviews__col" v-for="(reviews, index) in columns.value" :key="index">
           <template v-if="reviews.length">
@@ -34,10 +34,10 @@
 </template>
 
 <script setup lang="ts">
-const { result: post, error } = await useApi( '/template/reviews' );
+const { result: post } = await useApi( '/template/reviews' );
 
 const columns = computed(() => {
-  return getGridColumns( post.value.data.list )
+  return getGridColumns( post.value.list )
 });
 
 </script>
@@ -50,12 +50,25 @@ const columns = computed(() => {
 .reviews__block-header {
   max-width: 84.7rem;
   margin-bottom: 10.7rem;
+
+  @media (max-width: $tablet) {
+    max-width: 55.3rem;
+  }
+
+  @media (max-width: $mobile) {
+    margin-bottom: 9.7rem;
+  }
 }
 
 .reviews__grid {
   display: grid;
   grid-template-columns: repeat( 2, 1fr );
   gap: 2rem;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }
 
 </style>

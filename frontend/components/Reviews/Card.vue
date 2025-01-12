@@ -1,6 +1,6 @@
 <template>
   <div class="reviews-item">
-    <h3 class="reviews-item__title fz-h3">{{ title }}</h3>
+    <h3 class="reviews-item__title fz-h3 fz-h2--mobile" v-if="title" v-html="title"></h3>
     <div class="reviews-item__flex" v-if="logo || name">
       <div class="reviews-item__logo" v-if="logo">
         <img :src="logo" :alt="title">
@@ -48,6 +48,11 @@ defineProps<{
 .reviews-item__logo {
   min-width: 8.8rem;
   margin-right: 1.5rem;
+
+  @media (max-width: $mobile) {
+    min-width: 6.6rem;
+    max-width: 6.6rem;
+  }
 }
 
 .reviews-item__logo img {
@@ -55,7 +60,9 @@ defineProps<{
 }
 
 .reviews-item__name {
-
+  @media (max-width: $mobile) {
+    font-size: 1.6rem;
+  }
 }
 
 .reviews-item__post {
