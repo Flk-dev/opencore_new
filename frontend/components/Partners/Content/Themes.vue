@@ -1,8 +1,8 @@
 <template>
   <div class="partner__themes partner-themes">
     <div class="partner-themes__container container">
-      <BlockHeader :title="data.title" classes="partner-themes" />
-      <ScrollLineText :data="data.row" classes="partner-themes" />
+      <GlobalBlockHeader :title="data.title" classes="partner-themes" />
+      <GlobalScrollText :data="data.row" classes="partner-themes" />
     </div>
 
     <PartnersContentGallery :data="data.gallery" classes="partner-themes" />

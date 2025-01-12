@@ -35,6 +35,14 @@ defineProps<{
   & :deep( .block-header__title ) {
     max-width: 86rem;
   }
+
+  @media (max-width: $tablet) {
+    margin-bottom: 6rem;
+  }
+
+  @media (max-width: $mobile) {
+    margin-bottom: 4rem;
+  }
 }
 
 .cases__btn  {

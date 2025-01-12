@@ -200,6 +200,12 @@ h4, .fz-h4 {
     font-size: var(--fz-regular);
     line-height: var(--lh-regular);
   }
+
+  .fz-caption--mobile {
+    font-size: var(--fz-caption);
+    line-height: var(--lh-caption);
+    letter-spacing: var(--lc-caption);
+  }
 }
 
 .section {

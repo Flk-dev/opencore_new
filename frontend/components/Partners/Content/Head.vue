@@ -21,8 +21,12 @@ defineProps<{
 </script>
 
 <style scoped lang="scss">
-.partner-head + ::v-deep div {
+.partner-head + :deep(div) {
   margin-top: var(--mt-content-block-secondary);
+
+  @media (max-width: $tablet) {
+    margin-top: 6rem;
+  }
 
   @media (max-width: $tablet) {
     margin-top: 3rem;
@@ -31,14 +35,18 @@ defineProps<{
 
 .partner-head__content {
   max-width: 80.2rem;
+
+  @media (max-width: $tablet) {
+    max-width: 70.8rem;
+  }
+
+  @media (max-width: $mobile) {
+    max-width: 32rem;
+  }
 }
 
 .partner-head__category {
-  margin-bottom: 3.5rem;
-
-  @media (max-width: $tablet) {
-    margin-bottom: 3rem;
-  }
+  margin-bottom: 3rem;
 
   @media (max-width: $mobile) {
     margin-bottom: 1.5rem;

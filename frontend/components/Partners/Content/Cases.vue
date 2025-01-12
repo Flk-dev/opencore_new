@@ -20,8 +20,18 @@ defineProps<{
 }
 
 .partner__cases {
-  ::v-deep .cases__block-header {
+  :deep(.cases__block-header) {
     max-width: 110rem;
+  }
+}
+
+.partner__cases {
+  :deep(.cases__col) {
+    padding-bottom: 5.5rem;
+
+    @media (max-width: $tablet) {
+      padding-bottom: 0;
+    }
   }
 }
 </style>

@@ -115,4 +115,8 @@
   @media (max-width: $tablet) {
     --pd-page: 18rem;
   }
+
+  @media (max-width: $mobile) {
+    --pd-page: 12rem;
+  }
 }

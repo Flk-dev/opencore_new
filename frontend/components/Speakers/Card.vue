@@ -5,8 +5,8 @@
     </div>
     <div class="speakers-item__content">
       <div class="speakers-item__main">
-        <div class="speakers-item__name fz-h4">{{ title }}</div>
-        <div class="speakers-item__post fz-body" v-if="post" v-html="post"></div>
+        <div class="speakers-item__name fz-h4 fz-h2--mobile">{{ title }}</div>
+        <div class="speakers-item__post fz-body fz-caption--mobile" v-if="post" v-html="post"></div>
       </div>
       <div class="speakers-item__experience" v-if="experience">
         <div class="speakers-item__experience-title fz-body">Опыт</div>
@@ -53,6 +53,7 @@ defineProps<{
 
   @media (max-width: $mobile) {
     height: 35.7rem;
+    margin-bottom: 2rem;
   }
 }
 
@@ -85,12 +86,20 @@ defineProps<{
 .speakers-item__experience-title {
   color: var(--fg-blue);
   margin-bottom: 1.5rem;
+
+  @media (max-width: $mobile) {
+    margin-bottom: 1rem;
+  }
 }
 
 .speakers-item__experience-text {
   --fz: var(--fz-caption);
   --lh: var(--lh-caption);
   --m-bottom: 1.5rem;
+
+  @media (max-width: $mobile) {
+    --m-bottom: 1rem;
+  }
 }
 
 </style>

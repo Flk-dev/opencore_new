@@ -82,7 +82,7 @@ const colRight = ref( '' );
 
 .cases__col {
   &:first-child {
-    ::v-deep .cases-item:nth-child(2n + 1) {
+    :deep(.cases-item:nth-child(2n + 1)) {
       max-width: 52rem;
       margin-left: auto;
 
@@ -93,7 +93,7 @@ const colRight = ref( '' );
   }
 
   &:last-child {
-    ::v-deep .cases-item:nth-child(2n + 2) {
+    :deep(.cases-item:nth-child(2n + 2)) {
       max-width: 52rem;
     }
   }
@@ -113,6 +113,10 @@ const colRight = ref( '' );
     height: 100%;
     width: .15rem;
     background: var(--fg-blue);
+
+    @media  (max-width: $tablet) {
+      display: none;
+    }
   }
 
   &:last-child {
@@ -126,6 +130,16 @@ const colRight = ref( '' );
     & .cases-item._small {
       margin-left: 0;
     }
+
+    @media (max-width: $tablet) {
+      padding: 0;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    width: 100%;
+    padding: 0;
+    border-top: none;
   }
 
   //@media (max-width: $tablet) {
@@ -159,7 +173,7 @@ const colRight = ref( '' );
   //}
 
   @media (max-width: $mobile) {
-    margin-bottom: 6rem;
+    
   }
 }
 </style>

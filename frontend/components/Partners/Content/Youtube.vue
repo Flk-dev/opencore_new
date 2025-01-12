@@ -3,8 +3,8 @@
   <div class="partner-video__container container">
     <div class="partner-video__content">
       <div>
-        <h2 class="partner-video__title fz-h2">{{ data.title }}</h2>
-        <div class="partner-video__text fz-h4" v-if="data.text" v-html="data.text"></div>
+        <h2 class="partner-video__title fz-h2 fz-h1--mobile">{{ data.title }}</h2>
+        <div class="partner-video__text fz-h4 fz-h2--mobile" v-if="data.text" v-html="data.text"></div>
       </div>
       <div class="partner-video__logo">
         <div class="partner-video__logo-media">

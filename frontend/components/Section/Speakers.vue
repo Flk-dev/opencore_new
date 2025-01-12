@@ -2,9 +2,9 @@
   <section class="speakers section">
     <div class="speakers__container container">
       <GlobalBlockHeader :title="title" classes="speakers" />
-      <div class="speakers-gallery__slider">
+      <div class="speakers__slider">
         <swiper
-            class="speakers-gallery__swiper"
+            class="speakers__swiper"
             :slides-per-view="1"
             :space-between="30"
             :breakpoints="{ '576': { slidesPerView: 1.5 } }"
@@ -35,11 +35,11 @@ defineProps<{
 </script>
 
 <style scoped lang="scss">
-.speakers-gallery__slider {
+.speakers__slider {
   margin: 0 var(--m-m-container);
 }
 
-.speakers-gallery__swiper {
+.speakers__swiper {
   padding: 0 var(--p-container);
 }
 
