@@ -1,16 +1,16 @@
 <template>
   <div class="methodology__route route" v-if="data.list.length">
     <div class="container">
-      <GlobalBlockHeader :title="data.title" classes="route" />
+      <GlobalBlockHeader :title="data.title" classes="route" class-title="fz-h1" />
       <div class="route__grid">
         <div class="route-item" v-for="(item, dataKey) in data.list" :key="dataKey">
           <div class="route-item__line"></div>
           <div class="route-item__left fz-h3">
             <div class="route-item__counter">{{ dataKey + 1 }}</div>
-            <h3 class="route-item__title" v-if="item.title" v-html="item.title"></h3>
-          </div>
-          <div class="route-item__right">
-            <ContentText class="route-item__text" v-if="item.text" :text="item.text" />
+          <h3 class="route-item__title" v-if="item.title" v-html="item.title"></h3>
+        </div>
+        <div class="route-item__right">
+          <ContentText class="route-item__text" v-if="item.text" :text="item.text" />
             <div class="route-item__accordion accordion" v-if="item.list.length">
               <AccordionItem
                   v-for="(item, key) in item.list"
@@ -58,6 +58,13 @@ defineProps<{
   margin-right: var(--m-m-container);
   border-top: .15rem solid var(--fg-blue);
   padding: 4rem 2rem 0;
+
+  @media (max-width: $tablet) {
+    padding: 0;
+    border-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .route-item {
@@ -69,6 +76,13 @@ defineProps<{
   &:last-child {
     padding-bottom: 0;
   }
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    padding: 2rem 0;
+    border-top: .15rem solid var(--fg-black);
+  }
 }
 
 .route-item__line {
@@ -79,6 +93,10 @@ defineProps<{
   width: .15rem;
   height: calc(100% + 4rem);
   background-color: var(--fg-blue);
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
 }
 
 .route-item__left {
@@ -93,6 +111,10 @@ defineProps<{
 
 .route-item__right {
   padding-left: 5.8rem;
+
+  @media (max-width: $tablet) {
+    padding-left: 0;
+  }
 }
 
 .route-item__text {
@@ -101,6 +123,10 @@ defineProps<{
 
 .route-item__result {
   margin-top: 6rem;
+
+  @media (max-width: $mobile) {
+    margin-top: 2rem;
+  }
 }
 
 .route-item__text {

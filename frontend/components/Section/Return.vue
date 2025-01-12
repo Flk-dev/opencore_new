@@ -2,7 +2,7 @@
   <section class="return">
     <div class="return__container container">
       <div class="return__col return__col--first">
-        <GlobalBlockHeader :title="title" classes="return" />
+        <GlobalBlockHeader :title="title" classes="return" class-title="fz-h1--tablet" />
       </div>
       <div class="return__col return__col--last">
         <h4 class="return__subtitle fz-h4 fz-h2--mobile" v-if="bigText" v-html="bigText"></h4>

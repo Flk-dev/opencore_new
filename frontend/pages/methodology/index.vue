@@ -9,8 +9,8 @@
     </svg>
   </GlobalPageHeader>
 
-  <div class="methodology page-pd-bottom" v-if="post.data.content">
-    <template v-if="post.data.content" v-for="content in post.data.content">
+  <div class="methodology page-pd-bottom" v-if="post.content">
+    <template v-if="post.content" v-for="content in post.content">
       <component :is="contentLayouts[content.acf_fc_layout]" :data="content" />
     </template>
   </div>
@@ -24,14 +24,14 @@ import {
   MethodologyCases
 } from '#components';
 
-const contentLayouts = ref( {
+const contentLayouts: any = ref( {
   advantages: MethodologyAdvantages,
   back: MethodologyReturn,
   route: MethodologyRoute,
   cases: MethodologyCases,
 } );
 
-const { result: post, error } = await useApi( '/template/methodology', {}, '', true );
+const { result: post } = await useApi( '/template/methodology' );
 </script>
 
 <style scoped lang="scss">

@@ -1,6 +1,6 @@
 <template>
   <div class="block-header" :class="classes + '__block-header'">
-    <h2 class="block-header__title fz-h2 fz-h1--mobile" :class="classTitle" v-html="title"></h2>
+    <h2 class="block-header__title fz-h1--mobile" :class="[ ( classTitle === 'fz-h1' ? 'fz-h1' : 'fz-h2' ), classTitle ]" v-html="title"></h2>
     <div class="block-header__content">
       <div class="block-header__text fz-caption" v-if="text" v-html="text"></div>
       <slot />
@@ -9,12 +9,13 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   title?: string,
   classes?: string,
   text?: string,
   classTitle?: string,
 }>();
+
 </script>
 
 <style scoped lang="scss">
