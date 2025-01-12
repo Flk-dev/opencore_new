@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <GlobalFooterButton />
+  <GlobalFooterButton action="default" />
   <ModalsDefault title="Давайте общаться" >
     <ModalsMain />
   </ModalsDefault>
@@ -53,7 +53,7 @@ const { result: post } = await useApi( '/pages/' + route.params.slug + '/', {}, 
     margin-bottom: 0;
   }
 
-  & ::v-deep a {
+  & :deep(a) {
     text-decoration: underline;
   }
 

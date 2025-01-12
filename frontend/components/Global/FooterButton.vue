@@ -4,7 +4,7 @@
       <slot name="footer" v-if="$slots.footer" />
       <div v-else>
         <div class="footer__button-title fz-h1" v-if="title" v-html="title"></div>
-        <button class="footer__button-btn btn--ripple _white" :class="btnClass" :data-modal="action">
+        <button class="footer__button-btn btn--ripple _white" :class="btnClass" :data-modal="action" @click="openModal">
           <span>{{ btnTitle }}</span>
         </button>
       </div>
@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   title?: string,
   btnTitle?: string,
   btnClass?: string
@@ -22,6 +22,12 @@ withDefaults(defineProps<{
   btnTitle: 'Получить КП',
   action: 'socialize'
 });
+
+const openModal = () => {
+  if ( props.action ) {
+    document.querySelector( `#${props.action}` ).classList.add( 'modal--open' );
+  }
+};
 </script>
 
 <style scoped lang="scss">
