@@ -21,7 +21,7 @@ import {
 } from '#components';
 
 const route = useRoute();
-const contentLayouts = ref( {
+const contentLayouts: any = ref( {
   text: CasesContentText,
   achievement: CasesContentAchievement,
   image: CasesContentImage,

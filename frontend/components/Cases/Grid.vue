@@ -86,8 +86,22 @@ const colRight = ref( '' );
       max-width: 52rem;
       margin-left: auto;
 
+      @media (max-width: $tablet) {
+        margin-left: 0;
+      }
+
       & .cases-item__media-pic {
         height: 39.7rem;
+
+        @media (max-width: $tablet) {
+          height: 31rem;
+        }
+      }
+    }
+
+    @media (max-width: $tablet) {
+      :deep(.cases-item:nth-child(4n + 1)) {
+        margin-left: auto;
       }
     }
   }
@@ -95,6 +109,12 @@ const colRight = ref( '' );
   &:last-child {
     :deep(.cases-item:nth-child(2n + 2)) {
       max-width: 52rem;
+    }
+
+    @media (max-width: $tablet) {
+      :deep(.cases-item:nth-child(4n + 4)) {
+        margin-left: auto;
+      }
     }
   }
 }
