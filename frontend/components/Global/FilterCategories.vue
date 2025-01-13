@@ -25,6 +25,8 @@ defineProps<{
 .cats__menu-list {
   display: flex;
   align-content: center;
+  overflow-y: auto;
+  margin-right: var(--m-m-container);
 }
 
 .cats__menu-link {

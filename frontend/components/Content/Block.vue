@@ -48,7 +48,7 @@ defineProps<{
     --lh: 130%;
     --m-bottom: 3rem;
 
-    ::v-deep & img {
+    :deep(img) {
       width: 100%;
       height: auto;
       border-radius: var(--br-regular);
@@ -59,35 +59,64 @@ defineProps<{
       }
     }
 
-    ::v-deep h2,
-    ::v-deep h3,
-    ::v-deep h4,
-    ::v-deep h5,
-    ::v-deep h6 {
+    :deep(h2),
+    :deep(h3),
+    :deep(h4),
+    :deep(h5),
+    :deep(h6) {
       margin: 0 0 5.6rem auto;
       max-width: var(--w-title);
-    }
 
-    ::v-deep p {
-      &:not(:has(iframe, img)) {
-        max-width: var(--w-text);
-        margin-left: auto;
+      @media (max-width: $mobile) {
+        margin: 0 0 3rem;
       }
     }
 
-    ::v-deep p:has(iframe) {
-      margin: 6rem 0;
+    @media (max-width: $mobile) {
+      :deep(h2) {
+        font-size: var(--fz-h1);
+        line-height: var(--lh-h1);
+        letter-spacing: var(--lc-h1);
+      }
     }
 
-    ::v-deep iframe {
+    :deep(p) {
+      &:not(:has(iframe, img)) {
+        max-width: var(--w-text);
+        margin-left: auto;
+
+        @media (max-width: $tablet) {
+          margin-left: 0;
+        }
+      }
+    }
+
+    :deep(p:has(iframe)) {
+      margin: 6rem 0;
+
+      @media (max-width: $mobile) {
+        margin: 4rem 0;
+      }
+    }
+
+    :deep(iframe) {
       width: 100%;
       min-height: 78.8rem;
       border-radius: var(--br-regular);
       max-width: 100%;
+
+      @media (max-width: $tablet) {
+        min-height: 40rem;
+      }
+
+      @media (max-width: $mobile) {
+        min-height: 18.9rem;
+        height: 18.9rem;
+      }
     }
 
-    ::v-deep ul,
-    ::v-deep ol {
+    :deep(ul),
+    :deep(ol) {
       max-width: var(--w-text);
       margin-left: auto;
     }

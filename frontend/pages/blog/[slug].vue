@@ -12,20 +12,20 @@
     </div>
 
     <BlogContentHead
-        :title="post.data.title"
-        :image="post.data.image"
-        :read-time="post.data.time_read"
-        :categories="post.data.categories"
+        :title="post.title"
+        :image="post.image"
+        :read-time="post.time_read"
+        :categories="post.categories"
     />
 
-    <div class="article__content" v-if="post.data.content">
-      <component v-for="content in post.data.content" :is="contentLayouts[content.acf_fc_layout]" :data="content" />
+    <div class="article__content" v-if="post.content">
+      <component v-for="content in post.content" :is="contentLayouts[content.acf_fc_layout]" :data="content" />
     </div>
   </div>
 
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {
   BlogContentText,
   BlogContentButton,
@@ -33,13 +33,13 @@ import {
 } from '#components';
 
 const route = useRoute();
-const contentLayouts = ref( {
+const contentLayouts : any = ref( {
   block: BlogContentText,
   button: BlogContentButton,
   cases: BlogContentCases,
 } );
 
-const { result: post, error } = await useApi( '/blog/' + route.params.slug, {}, true );
+const { result: post } = await useApi( '/blog/' + route.params.slug, {}, true );
 </script>
 
 <style scoped lang="scss">
@@ -49,6 +49,10 @@ const { result: post, error } = await useApi( '/blog/' + route.params.slug, {}, 
 
 .article__back {
   margin-bottom: 3.3rem;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
 }
 
 .article__back-link {

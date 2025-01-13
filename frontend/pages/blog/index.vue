@@ -32,10 +32,10 @@
 </template>
 
 <script setup lang="ts">
-const { result: post, error } = await useApi( '/blog' );
+const { result: post } = await useApi( '/blog' );
 
 const columns = computed(() => {
-  return getGridColumns(  post.value.data )
+  return getGridColumns(  post.value )
 });
 </script>
 
@@ -53,14 +53,14 @@ const columns = computed(() => {
 
 .blog__col {
   &:first-child {
-    ::v-deep .blog-item:nth-child(2n + 1) {
+    :deep(.blog-item:nth-child(2n + 1)) {
       max-width: 52rem;
       margin-left: auto;
     }
   }
 
   &:last-child {
-    ::v-deep .blog-item:nth-child(2n + 2) {
+    :deep(.blog-item:nth-child(2n + 2)) {
       max-width: 52rem;
     }
   }

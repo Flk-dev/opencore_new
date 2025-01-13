@@ -12,6 +12,13 @@ defineProps<{
 </script>
 
 <style scoped lang="scss">
+.article__content {
+  :deep(.content__text) {
+    --m-bottom: 1.5rem;
+  }
+}
+
+
 //.article__block {
 //  margin-top: 18rem;
 //}

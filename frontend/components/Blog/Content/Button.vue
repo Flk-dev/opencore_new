@@ -17,5 +17,9 @@ defineProps<{
 <style scoped lang="scss">
 .article__button {
   margin-top: 18rem;
+
+  @media (max-width: $mobile) {
+    margin-top: 12rem;
+  }
 }
 </style>
