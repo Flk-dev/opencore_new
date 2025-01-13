@@ -14,15 +14,15 @@
       <h1 class="contacts__title fz-h2 fz-h1--tablet fz-h1--mobile">Давайте вместе сделаем<br> что-то классное</h1>
       <div class="contacts__flex">
         <div class="contacts__main">
-          <GlobalRoundVideo class="contacts__video _big" :link="post.data.video.link" :preview="post.data.video.preview" />
+          <GlobalRoundVideo class="contacts__video _big" :link="post.video.link" :preview="post.video.preview" />
           <div class="contacts__main-content">
-            <div class="contacts__hello fz-h4" v-if="post.data.hello_text" v-html="post.data.hello_text"></div>
-            <ContactsSocials classes="contacts__direct" :socials="post.data.socials_direct" />
+            <div class="contacts__hello fz-h4" v-if="post.hello_text" v-html="post.hello_text"></div>
+            <ContactsSocials classes="contacts__direct" :socials="post.socials_direct" />
           </div>
         </div>
-        <ContactsSocials title="Можете подписаться на&nbsp;наши соц сети" class="contacts__socials--right" :socials="post.data.socials" />
+        <ContactsSocials title="Можете подписаться на&nbsp;наши соц сети" class="contacts__socials--right" :socials="post.socials" />
       </div>
-      <ContactsAddresses classes="contacts__addresses" v-if="post.data.addresses" :items="post.data.addresses" />
+      <ContactsAddresses classes="contacts__addresses" v-if="post.addresses" :items="post.addresses" />
     </div>
   </div>
 
@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-const { result: post, error } = await useApi( '/template/contacts' );
+const { result: post } = await useApi( '/template/contacts' );
 </script>
 
 <style scoped lang="scss">
@@ -68,6 +68,11 @@ const { result: post, error } = await useApi( '/template/contacts' );
 }
 
 .contacts__video {
+  @media (max-width: $tablet) {
+    min-width: 23.5rem !important;
+    height: 23.5rem !important;
+  }
+
   @media (max-width: $mobile) {
     min-width: 100% !important;
     padding-bottom: 100% !important;
@@ -87,7 +92,7 @@ const { result: post, error } = await useApi( '/template/contacts' );
 .contacts__hello {
   margin-bottom: 6rem;
 
-  & ::v-deep p {
+  :deep(p) {
     margin-bottom: 1.5rem;
 
     &:last-child {
@@ -110,8 +115,8 @@ const { result: post, error } = await useApi( '/template/contacts' );
     align-items: flex-start;
     margin-top: 6rem;
 
-    ::v-deep .contact-socials__title {
-      width: 20.4rem;
+    :deep(.contact-socials__title) {
+      width: 23.5rem;
       max-width: 100%;
       margin-bottom: 0;
 
@@ -122,8 +127,8 @@ const { result: post, error } = await useApi( '/template/contacts' );
       }
     }
 
-    ::v-deep .contact-socials__list {
-      width: calc(100% - 20.4rem);
+    :deep(.contact-socials__list) {
+      width: calc(100% - 23.5rem);
       padding-left: 2.9rem;
 
       @media (max-width: $mobile) {
