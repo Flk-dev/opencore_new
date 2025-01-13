@@ -7,12 +7,17 @@
           <img :src="logo" alt="">
         </div>
       </GlobalBlockHeader>
-      <div class="we-work__grid" v-for="(list, listKey) in weWork.list" :key="listKey">
-        <div class="we-work__slide">
+      <div class="we-work__list">
+        <Vue3Marquee
+            v-for="(list, listKey) in weWork.list"
+            :key="listKey"
+            class="we-work__slide"
+            :direction="listKey === 1 ? 'reverse' : 'normal'"
+            duration="30">
           <div class="we-work__item" v-for="(cell, cellKey) in list.leader_cell" :key="cellKey">
             <img :src="cell.logo" class="we-work__item-img" alt="">
           </div>
-        </div>
+        </Vue3Marquee>
       </div>
       <UIButton title="Наш подход" to="/methodology/" class="we-work__btn btn--ripple" />
     </div>
@@ -66,50 +71,6 @@ await callOnce(async () => {
   & :deep(.block-header__logo) {
     margin-top: 2rem;
   }
-  // & :deep() .block-header__right {
-  //  max-width: 33.3rem;
-  //}
-  //
-  //@media (max-width: $tablet) {
-  //  & .block-header__right {
-  //    max-width: 45rem;
-  //  }
-  //
-  //  & .block-header__title {
-  //    font-size: 4rem;
-  //    margin-bottom: 2rem;
-  //  }
-  //
-  //  .block-header__right {
-  //    display: flex;
-  //    align-items: center;
-  //
-  //    & .we-work__block-header__text {
-  //      order: 2;
-  //      padding-left: 2.8rem;
-  //      font-size: var(--fz-caption);
-  //      letter-spacing: var(--lc-caption);
-  //      line-height: var(--lh-caption);
-  //    }
-  //
-  //    & .we-work__block-header__pic {
-  //      min-width: 9.7rem;
-  //      order: 1;
-  //    }
-  //  }
-  //}
-  //
-  //@media (max-width: $mobile) {
-  //  & .block-header__title {
-  //    font-size: 2.4rem;
-  //    line-height: 100%;
-  //    margin-bottom: 2rem;
-  //
-  //    & br {
-  //      display: none;
-  //    }
-  //  }
-  //}
 }
 
 .we-work__block-header__text {
@@ -129,60 +90,19 @@ await callOnce(async () => {
   }
 }
 
-//.we-work__grid-container {
-//    white-space: nowrap;
-//}
-//
-//.we-work__item {
-//  --items-per-page: 4;
-//  display: inline-block;
-//  min-width: calc(100% / var(--items-per-page)); /* Display 3 items at a time */
-//  box-sizing: border-box;
-//  padding: 20px;
-//  text-align: center;
-//  background-color: #f2f2f2;
-//  border: 1px solid #ccc;
-//}
-
-//.we-work__item {
-//  margin-right: 10rem;
-//  min-width: 26rem;
-//}
-
-@keyframes slide{
-  from {
-    transform:translateX(0);
-
-  }
-  to {
-    transform:translateX(-100%);
-  }
-}
-
-@keyframes slideBack{
-  from {
-    transform:translateX(-100%);
-
-  }
-  to {
-    transform:translateX(0);
-  }
-}
-
-.we-work__grid {
-  display: flex;
-  flex-wrap: nowrap;
-
-  &._2 .we-work__slide {
-    margin: 2rem 0;
-    //animation: 35s slideBack infinite linear;
-  }
+.we-work__list {
+  margin-left: var(--m-m-container);
+  margin-right: var(--m-m-container);
 }
 
 .we-work__slide {
   display: flex;
   flex-wrap: nowrap;
-  //animation: 35s slide infinite linear;
+  margin-bottom: 2rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .we-work__item {
@@ -193,10 +113,4 @@ await callOnce(async () => {
     margin-right: 8rem;
   }
 }
-
-.we-work__grid:hover .we-work__slide {
-  animation-play-state: paused;
-}
-
-
 </style>

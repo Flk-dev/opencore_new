@@ -14,7 +14,7 @@
     <div class="accordion-item__body" v-if="text">
       <div class="accordion-item__content">
         <div class="accordion-item__text" v-html="text"></div>
-        <NuxtLink v-if="isMore && to" :to="to" class="accordion-item__button btn--ripple _white">
+        <NuxtLink v-if="isMore && to" :to="to" class="accordion-item__button btn--ripple _white" @mouseover="animateButton( $event )">
           <span>Подробнее</span>
         </NuxtLink>
       </div>

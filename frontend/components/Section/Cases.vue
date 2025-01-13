@@ -5,6 +5,7 @@
           :title="title"
           classes="cases"
       />
+      <slot name="filters"></slot>
       <CasesGrid :data="data" />
       <slot />
     </div>
@@ -15,6 +16,7 @@
 defineProps<{
   title?: string,
   data: object,
+  categories?: object
 }>();
 </script>
 

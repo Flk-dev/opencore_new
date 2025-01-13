@@ -5,34 +5,24 @@
         <img v-if="festival.logo" :src="festival.logo" alt="">
       </GlobalBlockHeader>
 
-      <div class="festival__slider" v-for="(row, rowKey) in festival.list" :key="rowKey">
-        <swiper
-            class="festival__swiper"
-            :loop="true"
-            :free-mode="true"
-            :space-between="60"
-            :grab-cursor="true"
-            :slides-per-view="'auto'"
-            :autoplay="{ delay: 1, disableOnInteraction: true }"
-            :speed="10000"
-            :free-mode-momentum="10000"
-        >
-          <swiper-slide v-for="(item, key) in row.awards_cell">
-            <div class="festival__item">
+      <div class="festival__list">
+        <Vue3Marquee
+            v-for="(list, listKey) in festival.list"
+            :key="listKey"
+            class="festival__row"
+            :direction="listKey === 1 ? 'reverse' : 'normal'"
+            duration="70">
+          <div class="festival__item" v-for="(item, cellKey) in list.awards_cell" :key="cellKey">
               <div class="festival__title fz-h3" v-if="item.text" v-html="item.text"></div>
               <div class="festival__label fz-caption" v-if="item.prize" v-html="item.prize"></div>
-            </div>
-          </swiper-slide>
-        </swiper>
+          </div>
+        </Vue3Marquee>
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
-
 const festival = useState('festival');
 const config = useRuntimeConfig();
 
@@ -51,7 +41,7 @@ await callOnce(async () => {
 .festival__block-header {
   align-items: flex-start;
 
-  & ::v-deep .block-header__title {
+  :deep(.block-header__title) {
     max-width: 110rem;
   }
 
@@ -62,11 +52,25 @@ await callOnce(async () => {
   }
 }
 
+.festival__row {
+  margin-bottom: 5.5rem;
+  overflow-y: hidden;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.festival__list {
+  margin: 0 var(--m-m-container);
+}
+
 .festival__item {
   display: flex;
   align-items: center;
   white-space: nowrap;
   max-width: fit-content;
+  margin-right: 6rem;
 }
 
 .festival__slider .swiper-slide {
@@ -99,37 +103,4 @@ await callOnce(async () => {
     font-size: 1.2rem;
   }
 }
-
-.festival__slider .swiper-wrapper {
-  -webkit-transition-timing-function:linear!important;
-  -o-transition-timing-function:linear!important;
-  transition-timing-function:linear!important;
-}
-
-.festival__slider {
-  margin: var(--m-m-container);
-  margin-bottom: 6rem;
-
-  &._back {
-    direction: rtl;
-
-    & .festival__title {
-      order: 2;
-      text-align: left;
-    }
-
-    & .festival__label {
-      order: 1;
-    }
-  }
-}
-
-.festival__slider .swiper {
-  padding-bottom: 1rem;
-}
-
-.festival__item {
-  //margin-right: 6rem;
-}
-
 </style>

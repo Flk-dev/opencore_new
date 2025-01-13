@@ -14,7 +14,8 @@
     "nuxt": "^3.15.0",
     "swiper": "^11.1.15",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "vue3-marquee": "^4.2.2"
   },
   "devDependencies": {
     "sass": "^1.83.0"

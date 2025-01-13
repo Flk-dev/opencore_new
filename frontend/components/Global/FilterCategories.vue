@@ -1,12 +1,24 @@
 <template>
   <div class="cats__menu">
-    <div class="cats__menu-container container">
-      <div class="cats__menu-list" v-if="data.length">
-        <button class="cats__menu-link _active" data-id="all" @click="$emit('filter', 'all')">Все</button>
-        <template v-for="category in data">
-          <button class="cats__menu-link" :data-id="category.term_id" @click="$emit('filter', category.term_id)">{{ category.name }}</button>
-        </template>
-      </div>
+    <div class="cats__menu-list" v-if="data.length">
+      <button
+          class="cats__menu-link"
+          data-id="all"
+          @click="filter( 'all', 'all')"
+          :class="{ '_active': activeIndex === 'all' }"
+      >
+        Все
+      </button>
+      <template v-for="(category, key) in data" :key="key">
+        <button
+            class="cats__menu-link"
+            :data-id="category.term_id"
+            @click="filter( category.term_id, key)"
+            :class="{ '_active': activeIndex === key }"
+        >
+          {{ category.name }}
+        </button>
+      </template>
     </div>
   </div>
 </template>
@@ -15,6 +27,13 @@
 defineProps<{
   data: object,
 }>();
+
+const activeIndex = ref<string|number>( 'all' );
+const emit = defineEmits( [ 'filter' ] );
+const filter = ( id: any, index: number|string ) => {
+  emit( 'filter', id );
+  activeIndex.value = index;
+}
 </script>
 
 <style scoped lang="scss">

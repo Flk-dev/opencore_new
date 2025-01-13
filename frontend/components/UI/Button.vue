@@ -1,8 +1,8 @@
 <template>
-  <NuxtLink :to="to" v-if="to" ref="button" class="btn btn--ripple" @mouseover="onMouseOver">
+  <NuxtLink :to="to" v-if="to" ref="button" class="btn btn--ripple" @mouseover="animateButton( $event )">
     <span>{{ title }}</span>
   </NuxtLink>
-  <button class="btn btn--ripple" ref="button" v-else @mouseover="onMouseOver">
+  <button class="btn btn--ripple" ref="button" v-else @mouseover="animateButton( $event )">
     <span>{{ title }}</span>
   </button>
 </template>
@@ -12,14 +12,6 @@ defineProps<{
   title: string,
   to?: string
 }>();
-
-const onMouseOver = ( event: any ) => {
-  const x = event.clientX - event.target.getBoundingClientRect().left;
-  const y = event.clientY - event.target.getBoundingClientRect().top;
-
-  event.currentTarget.style.setProperty( "--xPos", x + "px" );
-  event.currentTarget.style.setProperty( "--yPos", y + "px" );
-}
 </script>
 
 <style lang="scss">
