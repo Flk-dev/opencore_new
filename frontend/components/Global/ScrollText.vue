@@ -1,10 +1,17 @@
 <template>
   <section class="scroll-text" :class="classes + '__scroll-text'">
-    <div class="scroll-text__row" v-for="row in data">
+    <Vue3Marquee
+        class="scroll-text__row"
+        v-for="( row, key ) in data"
+        :key="key"
+        :direction="key % 2 === 0 ? 'reverse' : 'normal'"
+        duration="20"
+        :clone="true"
+    >
       <div class="scroll-text__item fz-h4 fz-h2--mobile" v-for="cell in row.cell">
         {{ cell.text }}
       </div>
-    </div>
+    </Vue3Marquee>
   </section>
 </template>
 
@@ -18,6 +25,7 @@ defineProps<{
 <style scoped lang="scss">
 .scroll-text {
   overflow: hidden;
+  margin: 0 var(--m-m-container)
 }
 
 .scroll-text__row {

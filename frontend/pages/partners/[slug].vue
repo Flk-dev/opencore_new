@@ -14,10 +14,10 @@
   <GlobalFooterButton>
     <template v-slot:footer>
       <div class="footer__button-grid">
-        <button class="footer__button-btn btn--ripple _white">
+        <button class="footer__button-btn btn--ripple _white" @mouseover="animateButton( $event )">
           <span>Сделать совместный проект</span>
         </button>
-        <button class="footer__button-btn btn--ripple _white">
+        <button class="footer__button-btn btn--ripple _white" @mouseover="animateButton( $event )">
           <span>Я подрядчик</span>
         </button>
       </div>

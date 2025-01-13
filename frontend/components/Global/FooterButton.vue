@@ -4,7 +4,11 @@
       <slot name="footer" v-if="$slots.footer" />
       <div v-else>
         <div class="footer__button-title fz-h1" v-if="title" v-html="title"></div>
-        <button class="footer__button-btn btn--ripple _white" :class="btnClass" :data-modal="action" @click="openModal">
+        <button
+            class="footer__button-btn btn--ripple _white"
+            :class="btnClass" :data-modal="action"
+            @click="openModal"
+            @mouseover="animateButton( $event )">
           <span>{{ btnTitle }}</span>
         </button>
       </div>
