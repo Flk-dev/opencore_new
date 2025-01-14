@@ -12,6 +12,9 @@ export default defineNuxtConfig({
     }
   },
   css: ['~/assets/css/style.scss'],
+  modules: [
+    '@pinia/nuxt',
+  ],
   runtimeConfig: {
     public: {
       //WP_DEV: 'https://klishintest.ru/wp-json/opencore/v1',
