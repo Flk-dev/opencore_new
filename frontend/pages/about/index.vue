@@ -25,6 +25,7 @@ import {
   AboutWin,
   AboutAdvantages,
   AboutValues,
+  AboutLeaders,
 } from '#components';
 
 const contentLayouts: any = ref( {
@@ -33,6 +34,7 @@ const contentLayouts: any = ref( {
   win: AboutWin,
   adavantages: AboutAdvantages,
   values: AboutValues,
+  leaders: AboutLeaders,
 } );
 
 const { result: post } = await useApi( '/template/about', {}, '', false );

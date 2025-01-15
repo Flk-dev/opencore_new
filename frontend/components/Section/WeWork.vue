@@ -7,7 +7,7 @@
           <img :src="logo" alt="">
         </div>
       </GlobalBlockHeader>
-      <div class="we-work__list">
+      <div class="we-work__rows">
         <Vue3Marquee
             v-for="(list, listKey) in weWork.list"
             :key="listKey"
@@ -19,20 +19,34 @@
           </div>
         </Vue3Marquee>
       </div>
-      <UIButton title="Наш подход" to="/methodology/" class="we-work__btn btn--ripple" />
+      <template v-if="withList && weWork.data">
+        <button class="we-work__open" :class="{ '_active' : isActive }" @click="toggleList">
+          <span>{{ isActive ? 'скрыть список клиентов' : 'посмотреть список клиентов' }}</span>
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.5652 14.4806L1 14.4806V13.9106L11.5652 13.9106C12.9099 13.9106 14 12.8205 14 11.4758V1L14.5968 1V11.4758C14.5968 12.8205 15.6869 13.9106 17.0315 13.9106L27.5 13.9106V14.4806L17.0315 14.4806C15.6868 14.4806 14.5968 15.5707 14.5968 16.9154L14.5968 27.5L14 27.5L14 16.9154C14 15.5707 12.9099 14.4806 11.5652 14.4806Z" fill="#0000FF" stroke="#0000FF"/>
+          </svg>
+        </button>
+        <div class="we-work__list" :class="{ '_active' : isActive }">
+          <div class="we-work__list-col" v-for="( item, key ) in weWork.data" :key="key">
+            <div class="we-work__list-cat fz-caption">{{ item.name }}</div>
+            <div class="we-work__list-row">
+              <div class="we-work__list-item" v-for="post in item.posts" :key="post.post_id">{{ post.post_title }}</div>
+            </div>
+          </div>
+        </div>
+      </template>
+      <UIButton v-else title="Наш подход" to="/methodology/" class="we-work__btn btn--ripple" />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
-
 defineProps<{
   title: string,
   text?: string,
   logo?: string,
-  is_button: boolean
+  is_button: boolean,
+  withList?: boolean,
 }>();
 
 const weWork :object  = useState('weWork');
@@ -41,6 +55,11 @@ const config = useRuntimeConfig();
 await callOnce(async () => {
   weWork.value = await $fetch(`${ config.public.WP_DEV }/we-work`);
 });
+
+const isActive = ref( false );
+const toggleList = () => {
+  isActive.value = !isActive.value;
+}
 </script>
 
 <style scoped lang="scss">
@@ -90,7 +109,7 @@ await callOnce(async () => {
   }
 }
 
-.we-work__list {
+.we-work__rows {
   margin-left: var(--m-m-container);
   margin-right: var(--m-m-container);
 }
@@ -111,6 +130,57 @@ await callOnce(async () => {
 
   @media (max-width: $tablet) {
     margin-right: 8rem;
+  }
+}
+
+.we-work__open {
+  display: flex;
+  align-items: center;
+  color: var(--fg-blue);
+  font-size: var(--fz-button);
+  line-height: var(--lh-button);
+  margin-top: 10rem;
+
+  & span {
+    text-decoration: underline;
+  }
+
+  & svg {
+    margin-left: 1.5rem;
+  }
+}
+
+.we-work__list {
+  display: grid;
+  grid-template-columns: 0fr;
+  row-gap: 6rem;
+  column-gap: 5rem;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s;
+
+  &._active {
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 8rem;
+  }
+}
+
+.we-work__list-cat {
+  color: var(--fg-blue);
+  margin-bottom: 3rem;
+}
+
+.we-work__list-item {
+  font-size: var(--fz-button);
+  line-height: var(--lh-button);
+  margin-bottom: 1.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 </style>
