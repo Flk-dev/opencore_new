@@ -1,5 +1,17 @@
 <template>
-  <div class="reviews-item">
+  <div
+      class="reviews-item"
+      @click="modal.open( ModalsReview, {
+        isWhite: true,
+        title: title,
+        full: full,
+        logo: logo,
+        name: name,
+        post: post,
+        width: 680,
+        isBlueTitle: true
+      } )"
+  >
     <h3 class="reviews-item__title fz-h3 fz-h2--mobile" v-if="title" v-html="title"></h3>
     <div class="reviews-item__flex" v-if="logo || name">
       <div class="reviews-item__logo" v-if="logo">
@@ -14,17 +26,23 @@
 </template>
 
 <script setup lang="ts">
+import {ModalsReview} from "#components";
+
 defineProps<{
   id: string,
   name: string,
   title?: string,
   post?: string,
-  logo?: string
+  logo?: string,
+  full?: string,
 }>();
+
+const modal = useModal();
 </script>
 
 <style scoped lang="scss">
 .reviews-item {
+  cursor: pointer;
   padding: 3rem;
   border-radius: var(--br-regular);
   border: .15rem solid var(--fg-blue);

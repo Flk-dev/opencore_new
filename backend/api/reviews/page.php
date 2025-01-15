@@ -16,6 +16,7 @@ register_rest_route( OS_API_NAMESPACE, '/template/reviews', [
 					'logo'       => get_field( 'logo', $review->ID ),
 					'title'      => get_field( 'title', $review->ID ),
 					'post'       => get_field( 'post', $review->ID ),
+					'full'       => get_field( 'full', $review->ID ),
 				];
 			}
 		}

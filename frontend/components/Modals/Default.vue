@@ -6,6 +6,7 @@
           'modal--open': isOpen,
           'modal--scrollable': isScrollable,
           'modal--white': ( props.isWhite ? true : false ),
+          'modal--title-blue': ( props.isBlueTitle ? true : false ),
         }, `modal-w--${( props.width ? props.width : 900 )}`]"
     >
       <div class="modal__bg" @click="modal.close"></div>
@@ -90,6 +91,18 @@ computed( () => {
       width: 80rem;
     }
   }
+
+  &-w--680 {
+    & .modal__content {
+      width: 68rem;
+    }
+  }
+
+  &--title-blue {
+    & .modal__title {
+      color: var(--fg-blue);
+    }
+  }
 }
 
 .modal__bg {
@@ -142,7 +155,7 @@ computed( () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 4.5rem;
+  min-width: 4.5rem;
   height: 4.5rem;
   border-radius: 50%;
   border: .1rem solid var(--fg-blue);

@@ -23,6 +23,7 @@
                 :title="review.title"
                 :post="review.post"
                 :logo="review.logo"
+                :full="review.full"
             />
           </template>
         </div>
