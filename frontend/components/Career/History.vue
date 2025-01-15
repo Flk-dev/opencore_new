@@ -15,6 +15,7 @@
                 :title="item.post_title"
                 :subtitle="item.subtitle"
                 :image="item.image"
+                :text="item.text"
             />
           </swiper-slide>
         </swiper>

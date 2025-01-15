@@ -14,7 +14,11 @@
       </NuxtLink>
       <div class="partners-item__description content__text" v-if="description" v-html="description"></div>
     </div>
-    <NuxtLink  class="partners-item__more fz-link btn--ripple" :to="{ name: 'partners-slug', params: { slug: slug } }">
+    <NuxtLink
+        class="partners-item__more fz-link btn--ripple"
+        :to="{ name: 'partners-slug', params: { slug: slug } }"
+        @mouseover="animateButton( $event )"
+    >
       <span>Подробнее</span>
     </NuxtLink>
   </div>

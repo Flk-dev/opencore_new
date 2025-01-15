@@ -3,27 +3,33 @@
     <UIImage :image="image" classes_pic="history-card__image item--cover" />
     <h3 class="history-card__title fz-h3 fz-h2--mobile">{{ title }}</h3>
     <div class="history-card__subtitle fz-body" v-if="subtitle">{{ subtitle }}</div>
-    <button class="history-card__button btn--ripple" @click="modal.open( ModalsCareer, {
-      title: 'Test',
-      text: 'Test',
-    } )">
+    <button
+        class="history-card__button btn--ripple"
+        @mouseover="animateButton( $event )"
+        @click="modal.open( ModalsCareerHistory, {
+          title: title,
+          text: subtitle,
+          fullText: text,
+          isWhite: true,
+          width: '800'
+      } )"
+    >
       <span>Подробнее</span>
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
-import {ModalsCareer} from "#components";
+import {ModalsCareerHistory} from "#components";
 
 defineProps<{
   image?: string,
   title: string,
-  subtitle?: string
+  subtitle?: string,
+  text?: string
 }>();
 
 const modal = useModal();
-
-
 </script>
 
 <style scoped lang="scss">

@@ -21,6 +21,7 @@ register_rest_route( OS_API_NAMESPACE, '/template/career', [
 				'histories' => [
 					'image'    => '',
 					'subtitle' => '',
+					'text'     => '',
 				],
 			]
 		);
