@@ -1,5 +1,4 @@
 <template>
-  {{data}}
   <div class="methodology__route route" v-if="data.list.length">
     <div class="container">
       <GlobalBlockHeader :title="data.title" classes="route" class-title="fz-h1" />
