@@ -24,7 +24,14 @@
         </swiper>
       </div>
 
-      <UIButton title="Получить бесплатную консультацию" class="learning-complex__btn" />
+      <UIButton
+          title="Получить бесплатную консультацию"
+          class="learning-complex__btn"
+          @click="modal.open( ModalsLearningFree, {
+            title: 'Узнайте, как улучшить бренд уже сегодня!',
+            text: 'Оставьте заявку, и наш специалист свяжется с вами, чтобы обсудить ваши задачи. Мы поможем вам понять, какие шаги нужны для создания сильного и уникального бренда.',
+          } )"
+      />
     </div>
   </div>
 </template>
@@ -32,6 +39,7 @@
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
+import {ModalsLearningFree} from "#components";
 
 defineProps<{
   data: {
@@ -40,6 +48,8 @@ defineProps<{
     list: object
   }
 }>();
+
+const modal = useModal();
 </script>
 
 <style scoped lang="scss">

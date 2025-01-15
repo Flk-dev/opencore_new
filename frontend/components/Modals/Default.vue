@@ -147,10 +147,6 @@ computed( () => {
   justify-content: space-between;
 }
 
-.modal__header-main {
-  max-width: 60.3rem;
-}
-
 .modal__close {
   display: flex;
   align-items: center;

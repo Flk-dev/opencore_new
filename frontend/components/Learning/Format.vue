@@ -10,15 +10,26 @@
           </div>
         </div>
       </div>
-      <UIButton title="Связаться с нами" class="learning-format__btn btn--ripple" />
+      <UIButton
+          title="Связаться с нами"
+          class="learning-format__btn"
+          @click="modal.open( ModalsLearningCallUs, {
+            title: 'Хотите пройти обучение?',
+            text: 'Заполните форму, чтобы мы помогли вам выбрать оптимальный формат обучения и согласовать все детали.',
+          } )"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import {ModalsLearningCallUs} from "#components";
+
 defineProps<{
   data: object
 }>();
+
+const modal = useModal();
 </script>
 
 <style scoped lang="scss">
