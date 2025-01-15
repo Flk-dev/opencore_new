@@ -1,4 +1,5 @@
 <template>
+  {{data}}
   <div class="methodology__route route" v-if="data.list.length">
     <div class="container">
       <GlobalBlockHeader :title="data.title" classes="route" class-title="fz-h1" />
@@ -6,18 +7,21 @@
         <div class="route-item" v-for="(item, dataKey) in data.list" :key="dataKey">
           <div class="route-item__line"></div>
           <div class="route-item__left fz-h3">
-            <div class="route-item__counter">{{ dataKey + 1 }}</div>
-          <h3 class="route-item__title" v-if="item.title" v-html="item.title"></h3>
+            <div class="route-item__counter fz-h1--mobile">{{ dataKey + 1 }}</div>
+            <h3 class="route-item__title fz-h1--mobile" v-if="item.title" v-html="item.title"></h3>
         </div>
         <div class="route-item__right">
-          <ContentText class="route-item__text" v-if="item.text" :text="item.text" />
+          <div class="route-item__text">
+            <ContentText v-if="item.text" :text="item.text" />
+            <RoundVideo class="route-item__video" :preview="item.video_preview" :link="item.video"  />
+          </div>
             <div class="route-item__accordion accordion" v-if="item.list.length">
               <AccordionItem
-                  v-for="(item, key) in item.list"
+                  v-for="(list, key) in item.list"
                   :key="key"
-                  :title="item.title"
+                  :title="list.title"
                   :counter="( dataKey + 1 ) + '.' + ( key + 1 )"
-                  :text="item.text"
+                  :text="list.text"
                   titleClass="fz-h4"
 
                   class="_small"
@@ -35,6 +39,8 @@
 </template>
 
 <script setup lang="ts">
+import RoundVideo from "~/components/Global/RoundVideo.vue";
+
 defineProps<{
   data: {
     title: string,
@@ -119,6 +125,31 @@ defineProps<{
 
 .route-item__text {
   margin-bottom: 6rem;
+  position: relative;
+
+  & :deep(.content__text) {
+    --fz: var(--fz-body-b);
+    --lh: var(--fz-body-b);
+
+    @media (max-width: $tablet) {
+      padding-right: 2rem;
+    }
+
+    @media (max-width: $mobile) {
+      padding-right: 0;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  @media (max-width: $mobile) {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 }
 
 .route-item__result {
@@ -129,13 +160,33 @@ defineProps<{
   }
 }
 
-.route-item__text {
-  --fz: var(--fz-body-b);
-  --lh: var(--fz-body-b);
-}
-
 .route-item__subtitle {
   margin-bottom: 2rem;
   color: var(--fg-blue);
+}
+
+.route-item__video {
+  position: absolute;
+  left: -9.5rem;
+  top: 0;
+  min-width: 7.5rem;
+  height: 7.5rem;
+
+  :deep(.video-round__play) {
+    max-width: 1.9rem;
+  }
+
+  @media (max-width: $tablet) {
+    position: relative;
+    left: 0;
+    top: 0;
+    min-width: 9rem;
+    height: 9rem;
+    max-width: 9rem;
+  }
+
+  @media (max-width: $mobile) {
+    margin-top: 2rem;
+  }
 }
 </style>

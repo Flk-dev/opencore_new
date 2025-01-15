@@ -14,6 +14,8 @@
       <component :is="contentLayouts[content.acf_fc_layout]" :data="content" />
     </template>
   </div>
+
+  <GlobalFooterButton />
 </template>
 
 <script setup lang="ts">
