@@ -15,13 +15,7 @@
             </div>
             <div class="modal__text fz-body" v-if="text" v-html="text"></div>
           </div>
-          <div class="modal__form">
-            <slot name="form" />
-          </div>
-          <UIButton title="Отправить" class="_white modal__submit" />
-          <div class="modal__policy">
-            Отправляя форму, вы подтверждаете согласие на обработку ваших <a href="#">персональных данных.</a>
-          </div>
+          <component :is="view" v-model="model"></component>
         </div>
       </div>
     </div>
@@ -30,7 +24,6 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-
 defineProps<{
   title?: string,
   text?: string,
@@ -39,15 +32,17 @@ defineProps<{
 const isScrollable = ref( false );
 const modalContent: any = ref( null );
 
-onMounted( () => {
+const model = ref({});
+
+computed( () => {
+  console.log( modalContent.value );
   if (modalContent.value.getBoundingClientRect().height > window.innerHeight) {
     isScrollable.value = true;
   }
 } );
 
 const modal = useModal();
-const { isOpen } = storeToRefs(modal);
-
+const { isOpen, view } = storeToRefs(modal);
 </script>
 
 <style scoped lang="scss">
@@ -126,17 +121,17 @@ const { isOpen } = storeToRefs(modal);
   background: var(--fg-white);
 }
 
-.modal__form {
+:global(.modal__form) {
   padding: 1rem 4rem 4rem;
   background: var(--fg-white);
   border-radius: var(--br-regular);
 }
 
-.modal__submit {
+:global(.modal__submit) {
   margin-top: 3rem;
 }
 
-.modal__policy {
+:global(.modal__policy) {
   margin-top: 1rem;
   color: var(--fg-white);
   font-size: 1.2rem;
@@ -148,7 +143,7 @@ const { isOpen } = storeToRefs(modal);
   }
 }
 
-.modal__text {
+:global(.modal__text) {
   max-width: 74.2rem;
   margin: 2rem 0 0;
   color: var(--fg-white);

@@ -15,9 +15,6 @@
   </div>
 
   <GlobalFooterButton action="default" />
-  <ModalsDefault title="Давайте общаться" >
-    <ModalsMain />
-  </ModalsDefault>
 </template>
 
 <script setup lang="ts">

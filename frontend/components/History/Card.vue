@@ -3,18 +3,26 @@
     <UIImage :image="image" classes_pic="history-card__image item--cover" />
     <h3 class="history-card__title fz-h3 fz-h2--mobile">{{ title }}</h3>
     <div class="history-card__subtitle fz-body" v-if="subtitle">{{ subtitle }}</div>
-    <button class="history-card__button btn--ripple">
+    <button class="history-card__button btn--ripple" @click="modal.open( ModalsCareer, {
+      title: 'Test',
+      text: 'Test',
+    } )">
       <span>Подробнее</span>
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
+import {ModalsCareer} from "#components";
+
 defineProps<{
   image?: string,
   title: string,
   subtitle?: string
 }>();
+
+const modal = useModal();
+
 
 </script>
 

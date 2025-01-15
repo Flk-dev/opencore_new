@@ -8,37 +8,21 @@
             class="footer__button-btn btn--ripple _white"
             :class="btnClass" :data-modal="action"
             @mouseover="animateButton( $event )"
-            @click="modal.open"
+            @click="action ? modal.open( ModalsMain, {
+              title: 'Давайте общаться'
+            } ) : null"
         >
           <span>{{ btnTitle }}</span>
-        </button>
-        <button
-            class="footer__button-btn btn--ripple _white"
-            :class="btnClass" :data-modal="action"
-            @mouseover="animateButton( $event )"
-            @click="modal.open"
-        >
-          <span>Test</span>
         </button>
       </div>
     </div>
   </div>
-
-  <ModalsDefault title="Давайте общаться">
-    <template v-slot:form>
-      <ModalsMain />
-    </template>
-  </ModalsDefault>
-
-  <ModalsDefault title="Давайте общаться 2">
-    <template v-slot:form>
-      <ModalsMain />
-    </template>
-  </ModalsDefault>
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
+import {ModalsMain} from "#components";
+
+withDefaults(defineProps<{
   title?: string,
   btnTitle?: string,
   btnClass?: string

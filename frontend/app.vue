@@ -5,6 +5,7 @@
         <NuxtPage/>
       </NuxtLayout>
     <GlobalFooter />
+    <ModalsDefault />
   </div>
 </template>
 
