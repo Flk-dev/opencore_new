@@ -1,7 +1,7 @@
 <template>
   <section class="we-work section" v-if="weWork.list.length">
     <div class="we-work__container container">
-      <GlobalBlockHeader :title="title" classes="we-work">
+      <GlobalBlockHeader :title="title" classes="we-work" class-title="fz-h1--tablet">
         <div class="block-header__text fz-caption" v-if="text" v-html="text"></div>
         <div class="block-header__logo" v-if="logo">
           <img :src="logo" alt="">
@@ -81,14 +81,31 @@ const toggleList = () => {
     max-width: 88.1rem;
   }
 
+  & :deep(.block-header__content) {
+    @media (max-width: $tablet) {
+      margin-top: 2.5rem;
+    }
+  }
+
   & :deep(.block-header__text) {
     max-width: 33.3rem;
     color: var(--fg-black-75);
     opacity: .75;
+
+    @media (max-width: $tablet) {
+      margin-top: 0;
+      order: 2;
+      margin-left: 2.8rem;
+    }
   }
 
   & :deep(.block-header__logo) {
     margin-top: 2rem;
+
+    @media (max-width: $tablet) {
+      margin-top: 0;
+      order: 1;
+    }
   }
 }
 
@@ -148,6 +165,10 @@ const toggleList = () => {
   & svg {
     margin-left: 1.5rem;
   }
+
+  @media (max-width: $tablet) {
+    margin: 8rem auto 0;
+  }
 }
 
 .we-work__list {
@@ -166,12 +187,34 @@ const toggleList = () => {
     visibility: visible;
     grid-template-columns: repeat(5, 1fr);
     margin-top: 8rem;
+
+    @media (max-width: $tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr;
+      margin-top: 6rem;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    column-gap: 6rem;
+    row-gap: 6rem;
+  }
+
+  @media (max-width: $mobile) {
+    row-gap: 4rem;
   }
 }
 
 .we-work__list-cat {
   color: var(--fg-blue);
   margin-bottom: 3rem;
+
+  @media (max-width: $mobile) {
+    margin-bottom: 1.5rem;
+  }
 }
 
 .we-work__list-item {

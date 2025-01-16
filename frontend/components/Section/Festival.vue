@@ -1,7 +1,7 @@
 <template>
   <section class="festival section" v-if="festival.list.length">
     <div class="festival__container container">
-      <GlobalBlockHeader :title="festival.title" classes="festival">
+      <GlobalBlockHeader :title="festival.title" classes="festival" class-title="fz-h1--tablet">
         <img v-if="festival.logo" :src="festival.logo" alt="">
       </GlobalBlockHeader>
 
@@ -59,6 +59,14 @@ await callOnce(async () => {
   &:last-child {
     margin-bottom: 0;
   }
+  
+  @media (max-width: $tablet) {
+    margin-bottom: 4rem;
+  }
+
+  @media (max-width: $mobile) {
+    margin-bottom: 3rem;
+  }
 }
 
 .festival__list {
@@ -83,6 +91,10 @@ await callOnce(async () => {
 
   :deep(br) {
     display: none;
+
+    @media (max-width: $mobile) {
+      display: block;
+    }
   }
 
   @media (max-width: $mobile) {

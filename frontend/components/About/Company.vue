@@ -1,8 +1,7 @@
 <template>
   <div class="about__company about-company">
     <div class="container">
-      {{ data }}
-      <GlobalBlockHeader :title="data.title" classes="about-company"/>
+      <GlobalBlockHeader :title="data.title" classes="about-company" class-title="fz-h1--tablet"/>
       <div class="about-company__content">
         <ContentText :text="data.text" class="about-company__text"/>
         <GlobalRoundVideo
@@ -31,6 +30,10 @@ defineProps<{
 .about-company__block-header {
   max-width: 106rem;
   margin-bottom: 4rem;
+
+  @media (max-width: $mobile) {
+    margin-bottom: 2rem;
+  }
 }
 
 .about-company__content {
@@ -38,16 +41,41 @@ defineProps<{
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
+  @media (max-width: $tablet) {
+    padding-left: 0;
+  }
+
+  @media (max-width: $mobile) {
+    flex-direction: column;
+  }
 }
 
 .about-company__text {
   max-width: 57.3rem;
 
-  --fz: var(---fz-txt-case);
+  --fz: var(--fz-txt-case);
   --lh: var(--lh-txt-case);
+
+  @media (max-width: $tablet) {
+    max-width: 43.7rem;
+  }
+
+  @media (max-width: $mobile) {
+    --fz: var(--fz-body-b);
+    --lh: var(--lh-body-b);
+  }
 }
 
 .about-company__video {
   margin-top: -18rem;
+
+  @media (max-width: $tablet) {
+    margin-top: 0;
+  }
+
+  @media (max-width: $mobile) {
+    margin-top: 4rem;
+  }
 }
 </style>

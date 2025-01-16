@@ -9,13 +9,12 @@
     </svg>
   </GlobalPageHeader>
   <div class="about page-pd-bottom">
-    <pre>
-    {{post.content}}
-    </pre>
     <div v-if="post.content">
       <component v-for="content in post.content" :is="contentLayouts[content.acf_fc_layout]" :data="content" class="about__block" />
     </div>
   </div>
+
+  <GlobalFooterButton />
 </template>
 
 <script setup lang="ts">
@@ -26,6 +25,8 @@ import {
   AboutAdvantages,
   AboutValues,
   AboutLeaders,
+  AboutTeam,
+  AboutBiggest,
 } from '#components';
 
 const contentLayouts: any = ref( {
@@ -35,6 +36,8 @@ const contentLayouts: any = ref( {
   adavantages: AboutAdvantages,
   values: AboutValues,
   leaders: AboutLeaders,
+  team: AboutTeam,
+  biggest: AboutBiggest,
 } );
 
 const { result: post } = await useApi( '/template/about', {}, '', false );

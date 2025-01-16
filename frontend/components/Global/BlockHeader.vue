@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   title?: string,
   classes?: string,
   text?: string,
@@ -25,6 +25,10 @@ const props = defineProps<{
   justify-content: space-between;
   margin-bottom: 8rem;
 
+  &.mb--40 {
+    margin-bottom: 4rem;
+  }
+
   @media (max-width: $tablet) {
     flex-direction: column;
     align-items: flex-start;
@@ -38,9 +42,16 @@ const props = defineProps<{
 
 .block-header__title {
   @media (max-width: $tablet) {
-    ::v-deep & br {
+    :deep(br) {
       display: none;
     }
+  }
+}
+
+.block-header__content {
+  @media (max-width: $tablet) {
+    display: flex;
+    align-items: center;
   }
 }
 </style>
