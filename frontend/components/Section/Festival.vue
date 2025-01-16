@@ -45,6 +45,12 @@ await callOnce(async () => {
     max-width: 110rem;
   }
 
+  @media (max-width: $tablet) {
+    :deep(.block-header__content) {
+      margin-top: 4rem;
+    }
+  }
+
   @media (max-width: $mobile) {
     & .block-header__content img {
       max-width: 15rem;

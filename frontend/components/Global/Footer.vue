@@ -56,7 +56,7 @@ const contacts = useState('contacts');
   color: var(--fg-white);
 
   @media (max-width: $mobile) {
-    padding: 4rem 0 2rem;
+    padding: 3rem 0 2rem;
   }
 }
 

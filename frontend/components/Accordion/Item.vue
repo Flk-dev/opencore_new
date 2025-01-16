@@ -98,6 +98,10 @@ if ( props.titleClass ) {
   cursor: pointer;
   text-align: left;
   width: 100%;
+
+  @media (max-width: $mobile) {
+    align-items: center;
+  }
 }
 
 .accordion-item__head-left {
@@ -115,6 +119,10 @@ if ( props.titleClass ) {
     transition: var(--tr-regular);
   }
   margin-top: .7rem;
+
+  @media (max-width: $mobile) {
+    margin-top: 0;
+  }
 }
 
 .accordion-item__body {

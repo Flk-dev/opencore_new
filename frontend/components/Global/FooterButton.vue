@@ -45,6 +45,10 @@ const modal = useModal();
 .footer__button {
   padding: 2rem 0 7.5rem;
   background-color: var(--fg-blue);
+  
+  @media (max-width: $tablet) {
+    padding: 2rem 0;
+  }
 }
 
 ::v-global(.footer__button-grid) {

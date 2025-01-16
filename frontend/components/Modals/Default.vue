@@ -15,7 +15,7 @@
           <div class="modal__header">
             <div class="modal__header-flex">
               <div class="modal__header-main">
-                <div class="modal__title fz-h3" v-html="props.title"></div>
+                <div class="modal__title fz-h3 fz-h1--mobile" v-html="props.title"></div>
                 <div class="modal__text fz-body" v-if="props.text" v-html="props.text"></div>
               </div>
               <button class="modal__close" @click="modal.close">
@@ -135,6 +135,11 @@ computed( () => {
   z-index: 5;
   border-radius: var(--br-regular);
   padding: 3rem;
+
+  @media (max-width: $tablet) {
+    padding: 2rem;
+    width: calc(100% - (var(--p-container) * 2));
+  }
 }
 .modal__header {
   color: var(--fg-white);
@@ -156,12 +161,25 @@ computed( () => {
   border-radius: 50%;
   border: .1rem solid var(--fg-blue);
   background: var(--fg-white);
+  
+  @media (max-width: $mobile) {
+    min-width: 3.3rem;
+    height: 3.3rem;
+
+    & svg {
+      max-width: 1.5rem;
+    }
+  }
 }
 
 :global(.modal__form) {
   padding: 1rem 4rem 4rem;
   background: var(--fg-white);
   border-radius: var(--br-regular);
+
+  @media (max-width: $mobile) {
+    padding: .5rem 3rem 3rem;
+  }
 }
 
 :global(.modal__submit) {

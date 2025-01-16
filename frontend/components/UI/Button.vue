@@ -1,9 +1,9 @@
 <template>
   <NuxtLink :to="to" v-if="to" ref="button" class="btn btn--ripple" @mouseover="animateButton( $event )">
-    <span>{{ title }}</span>
+    <span v-html="title"></span>
   </NuxtLink>
   <button class="btn btn--ripple" ref="button" v-else @mouseover="animateButton( $event )">
-    <span>{{ title }}</span>
+    <span v-html="title"></span>
   </button>
 </template>
 

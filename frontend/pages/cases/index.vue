@@ -10,8 +10,8 @@
   </GlobalPageHeader>
 
   <div class="cases page-pd-bottom">
-    <CasesFilter :data="categories" @filter="filter" />
     <div class="cases__container container">
+      <CasesFilter :data="categories" @filter="filter" />
       <CasesGrid class="cases--archive" :data="posts" />
       <GlobalLoadmore  @loadMore="loadMore" />
     </div>

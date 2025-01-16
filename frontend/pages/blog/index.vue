@@ -9,8 +9,8 @@
     </svg>
   </GlobalPageHeader>
   <div class="blog page-pd-bottom">
-    <BlogFilters />
     <div class="blog__container container">
+      <BlogFilters />
       <div class="blog__grid" v-if="columns.value && columns.value.col_1.length">
         <div class="blog__col" v-for="(blog, colIndex) in columns.value" :key="colIndex">
           <BlogCard

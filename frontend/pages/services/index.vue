@@ -11,11 +11,11 @@
 
   <div class="services page-pd-bottom">
     <div class="container">
-      <ServicesHead :title="post.data.title" :subtitle="post.data.subtitle" :video="post.data.video" />
-      <ServicesFilter :categories="post.data.categories" />
+      <ServicesHead :title="post.title" :subtitle="post.subtitle" :video="post.video" />
+      <ServicesFilter :categories="post.categories" />
       <div class="services__row">
         <ServicesCard
-            v-for="item in post.data.list"
+            v-for="item in post.list"
             :key="item.post_id"
             :title="item.post_title"
             :slug="item.post_slug"
@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-const { result: post, error } = await useApi( '/services' );
+const { result: post } = await useApi( '/services' );
 </script>
 
 <style scoped lang="scss">

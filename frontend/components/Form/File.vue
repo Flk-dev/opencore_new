@@ -41,11 +41,19 @@ defineProps<{
   justify-content: space-between;
   padding: 2.415rem 2rem 1.415rem;
   border-bottom: .15rem solid var(--fg-black);
+
+  @media (max-width: $mobile) {
+    padding: 2.5rem 1rem 1.5rem;
+  }
 }
 
 .form__file-title {
   font-size: 2.2rem;
   line-break: 120%;
   color: var(--fg-black-50);
+  
+  @media (max-width: $mobile) {
+    font-size: 1.5rem;
+  }
 }
 </style>

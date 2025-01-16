@@ -9,16 +9,16 @@
           <span>Назад (все услуги)</span>
         </button>
         <div class="service__head-flex">
-          <h1 class="service__head-title service__title fz-h2">{{ post.data.post_title }}</h1>
+          <h1 class="service__head-title service__title fz-h2">{{ post.post_title }}</h1>
           <div class="service__head-content">
-            <h3 class="service__head-subtitle" v-if="post.data.subtitle" v-html="post.data.subtitle"></h3>
-            <ContentText class="service__head-text" v-if="post.data.full_text" :text="post.data.full_text" />
+            <h3 class="service__head-subtitle" v-if="post.subtitle" v-html="post.subtitle"></h3>
+            <ContentText class="service__head-text" v-if="post.full_text" :text="post.full_text" />
           </div>
         </div>
       </div>
     </div>
-    <div class="service__content" v-if="post.data.content">
-      <component v-for="content in post.data.content" :is="contentLayouts[content.acf_fc_layout]" :data="content" />
+    <div class="service__content" v-if="post.content">
+      <component v-for="content in post.content" :is="contentLayouts[content.acf_fc_layout]" :data="content" />
     </div>
   </div>
 
@@ -35,7 +35,7 @@ import {
 } from '#components';
 
 const route = useRoute();
-const contentLayouts = ref({
+const contentLayouts: any = ref({
   when: ServicesContentWhen,
   cases: ServicesContentCases,
   include: ServicesContentInclude,
@@ -43,7 +43,7 @@ const contentLayouts = ref({
   advatanges: ServicesContentAdvantages,
 } );
 
-const { result: post, error } = await useApi( '/services/' + route.params.slug, {}, '', true );
+const { result: post } = await useApi( '/services/' + route.params.slug, {}, '', true );
 </script>
 
 <style scoped lang="scss">

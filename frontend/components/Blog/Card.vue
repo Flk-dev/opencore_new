@@ -32,9 +32,13 @@ const props = defineProps<{
   &:last-child {
     margin-bottom: 0;
   }
+
+  @media (max-width: $mobile) {
+    margin-bottom: 6rem;
+  }
 }
 
-::v-deep .blog-item__image {
+:deep(.blog-item__image) {
   margin-bottom: 2rem;
 }
 
@@ -66,6 +70,6 @@ const props = defineProps<{
 
 .blog-item__time {
   color: var(--fg-black-50);
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
 }
 </style>
