@@ -74,5 +74,9 @@ const filter = ( id: any, index: number|string ) => {
     border-color: var(--fg-blue);
     color: var(--fg-blue);
   }
+
+  @media (max-width: $mobile) {
+    min-height: 3.8rem;
+  }
 }
 </style>
