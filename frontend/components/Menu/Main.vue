@@ -88,7 +88,7 @@ const close = () => {
     left: 1.5rem;
     top: 9.1rem;
 
-    & .c-contacts__item {
+    :deep(.c-contacts__item) {
       margin-bottom: .5rem !important;
       line-height: 110%;
 
@@ -97,9 +97,24 @@ const close = () => {
       }
     }
 
-    & .c-contacts__link {
+    :deep(.c-contacts__link) {
       font-size: 1rem;
       line-height: 110%;
+
+    }
+  }
+
+  :deep(.c-contacts__item) {
+    margin-bottom: .5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  :deep(.c-contacts__link) {
+    &._email {
+      text-decoration: underline;
     }
   }
 }
@@ -127,6 +142,7 @@ const close = () => {
 
 .menu__contacts-contacts {
   text-align: left;
+  margin-bottom: 2rem;
 }
 
 .menu__link {
@@ -140,12 +156,12 @@ const close = () => {
   text-transform: uppercase;
   transition: var(--tr-regular);
 
-  @media (max-width: $tablet) {
-    font-size: 8.8rem;
-  }
-
+  //@media (max-width: $tablet) {
+  //  font-size: 8.8rem;
+  //}
+  //
   @media (max-width: $mobile) {
-    font-size: 4.4rem;
+    font-size: 2.4rem;
   }
 
   &:hover {
@@ -167,7 +183,15 @@ const close = () => {
   padding-top: var(--p-top);
 
   @media (max-width: $tablet) {
-    right: var(--p-container)
+    right: auto;
+    left: 0;
+    padding-left: var(--p-container);
+  }
+}
+
+.menu__contacts {
+  @media (max-width: $tablet) {
+    display: none !important;
   }
 }
 

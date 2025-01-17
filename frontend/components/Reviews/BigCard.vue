@@ -52,7 +52,6 @@ defineProps<{
 
 .reviews-item__title {
   color: var(--fg-blue);
-  margin-bottom: 6rem;
 }
 
 .reviews-item__content {
@@ -60,6 +59,7 @@ defineProps<{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-top: 3rem;
 
   @media (max-width: $mobile) {
     min-height: 31.3rem;

@@ -18,7 +18,7 @@ defineProps<{
 .btn {
   display: block;
   width: 100%;
-  padding: 3rem 0;
+  padding: 2.2rem 0 2.6rem;
   font-size: var(--fz-button);
   line-height: var(--lh-button);
   border: .15rem solid var(--fg-blue);

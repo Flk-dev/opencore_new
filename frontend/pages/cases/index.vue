@@ -23,9 +23,7 @@ const { result: categories } = await useApi( '/cases/categories', {}, '/cases/ca
 
 const termId: any = ref( 0 );
 const page: any = ref( 1 );
-const posts: array = ref( [] );
-
-await useAsyncData(
+const { data: posts }   =await useAsyncData(
     'cases',
     () : any => $fetch(getApiUrl( '/cases/' ), {
       params: {
@@ -35,7 +33,7 @@ await useAsyncData(
     }), {
       watch: [termId, page],
       transform: ( resData : object ) => {
-        posts.value = page.value === 1 ? resData.data : [ ...posts.value, ...resData.data ];
+        return page.value === 1 ? resData.data : [ ...posts.value, ...resData.data ];
       },
     },
 );

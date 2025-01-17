@@ -94,12 +94,12 @@ defineProps<{
 .partners-item__more {
   display: inline-flex;
   margin-top: 4rem;
-  padding: 1.5rem 2rem;
+  padding: 1.1rem 2rem 1.3rem;
   color: var(--fg-blue);
   border: .15rem solid var(--fg-blue);
   border-radius: 1rem;
   max-width: fit-content;
-  line-height: 60%;
+  line-height: 100%;
 
   &:hover {
     color: var(--fg-white);

@@ -1,5 +1,5 @@
 <template>
-  <div class="accordion-item" @click="open" :class="{ '_active': active }">
+  <div class="accordion-item" @click="open" :class="{ 'accordion-item--white': isWhite, '_active': active }">
     <div class="accordion-item__head" v-if="title">
       <div class="accordion-item__head-left" :class="titleClass">
         <div class="accordion-item__counter" v-if="counter">{{ counter }}</div>
@@ -30,7 +30,8 @@ const props = defineProps<{
   counter?: string,
   titleClass?: string,
   isMore?: boolean,
-  to?: string
+  to?: string,
+  isWhite?: boolean
 }>();
 
 const active = ref(false);
@@ -74,6 +75,27 @@ if ( props.titleClass ) {
 
     & .accordion-item__content {
       padding-top: 2rem;
+    }
+  }
+
+  &--white {
+    & .accordion-item__head {
+      align-items: center;
+    }
+
+    &._active {
+      background: var(--fg-white);
+      color: var(--fg-blue);
+
+
+      & .accordion-item__icon svg path {
+        fill: var(--fg-blue);
+        stroke: var(--fg-blue);
+      }
+
+      & .accordion-item__text {
+        color: var(--fg-black);
+      }
     }
   }
 

@@ -13,7 +13,8 @@
             :key="listKey"
             class="we-work__slide"
             :direction="listKey === 1 ? 'reverse' : 'normal'"
-            duration="30">
+            duration="40"
+            clone="true">
           <div class="we-work__item" v-for="(cell, cellKey) in list.leader_cell" :key="cellKey">
             <img :src="cell.logo" class="we-work__item-img" alt="">
           </div>

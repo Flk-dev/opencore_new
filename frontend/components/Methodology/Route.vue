@@ -21,8 +21,8 @@
                   :title="list.title"
                   :counter="( dataKey + 1 ) + '.' + ( key + 1 )"
                   :text="list.text"
-                  titleClass="fz-h4"
-
+                  title-class="fz-h4"
+                  is-white="true"
                   class="_small"
               />
             </div>
@@ -128,7 +128,7 @@ defineProps<{
 
   & :deep(.content__text) {
     --fz: var(--fz-body-b);
-    --lh: var(--fz-body-b);
+    --lh: var(--lh-body-b);
 
     @media (max-width: $tablet) {
       padding-right: 2rem;

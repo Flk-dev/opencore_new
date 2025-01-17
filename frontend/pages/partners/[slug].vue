@@ -11,32 +11,12 @@
     </template>
   </div>
 
-  <GlobalFooterButton>
-    <template v-slot:footer>
-      <div class="footer__button-grid">
-        <button
-            class="footer__button-btn btn--ripple _white"
-            @mouseover="animateButton( $event )"
-            @click="modal.open( ModalsPartnerSuggest, {
-              title: 'Предложите партнёрство<br> для реализации проекта!',
-              text: 'Мы открыты для партнёрств! Если у вас есть идея для совместного проекта или вы хотите предложить Opencore роль партнёра в вашем проекте, заполните форму ниже. Мы с радостью рассмотрим ваши предложения и свяжемся с вами для обсуждения дальнейших шагов.'
-            } )"
-        >
-          <span>Сделать совместный проект</span>
-        </button>
-        <button
-            class="footer__button-btn btn--ripple _white"
-            @mouseover="animateButton( $event )"
-            @click="modal.open( ModalsPartnerAlways, {
-              title: 'Мы всегда открыты для новых партнеров.',
-              text: 'Если у вас есть опыт в брендинге, маркетинге, дизайне, веб-разработке или других областях, заполните форму, чтобы присоединиться к пулу подрядчиков.'
-            } )"
-        >
-          <span>Я подрядчик</span>
-        </button>
-      </div>
-    </template>
-  </GlobalFooterButton>
+  <GlobalFooterButton
+      btnTitle="Пригласить на выступление"
+      @click="modal.open( ModalsPartnerInvite, {
+        title: 'Давайте общаться'
+      } )"
+  />
 </template>
 
 <script setup lang="ts">
@@ -46,7 +26,7 @@ import {
   PartnersContentYoutube,
   PartnersContentSpeakers,
   PartnersContentCases,
-  ModalsPartnerSuggest, ModalsPartnerAlways,
+  ModalsPartnerInvite
 } from '#components';
 
 const route = useRoute();

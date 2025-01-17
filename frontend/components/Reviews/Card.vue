@@ -47,14 +47,31 @@ const modal = useModal();
   border-radius: var(--br-regular);
   border: .15rem solid var(--fg-blue);
   margin-bottom: 2rem;
+  transition: all .3s;
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  $root: &;
+
+  &:hover {
+    background: var(--fg-blue);
+    color: var(--fg-white);
+
+    #{$root}__title {
+      color: var(--fg-white);
+    }
+
+    #{$root}__post {
+      color: var(--fg-white);
+    }
   }
 }
 
 .reviews-item__title {
   color: var(--fg-blue);
+  transition: all .3s;
 }
 
 .reviews-item__flex {
@@ -86,6 +103,7 @@ const modal = useModal();
 .reviews-item__post {
   margin-top: 1rem;
   color: var(--fg-a1);
+  transition: all .3s;
 }
 
 </style>

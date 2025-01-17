@@ -104,7 +104,7 @@ const toggleCallback = () => {
 }
 
 .header__button {
-  padding: 1.2rem 2rem;
+  padding: 1.05rem 2rem 1.15rem;
   font-size: var(--fz-caption);
   line-height: var(--lh-caption);
   letter-spacing: var(--lc-caption);

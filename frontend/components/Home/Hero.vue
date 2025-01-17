@@ -110,17 +110,18 @@
 .hero__title {
   max-width: 110rem;
   font-size: 7.2rem;
-  line-height: 80%;
+  line-height: 100%;
   letter-spacing: -.04rem;
   font-weight: 600;
   font-family: var(--ff-extended);
-  margin: 0;
+  margin: -1.2rem 0 0;
 
   @media (max-width: $tablet) {
     width: 100%;
     font-size: 5rem;
     line-height: 110%;
     margin-bottom: 6rem;
+    margin-top: 0;
   }
 
   @media (max-width: $mobile) {

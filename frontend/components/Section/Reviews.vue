@@ -20,7 +20,11 @@
           />
         </swiper-slide>
       </swiper>
-      <NuxtLink to="reviews" class="reviews__button btn btn--ripple">
+      <NuxtLink
+          to="reviews"
+          class="reviews__button btn btn--ripple"
+          @mouseover="animateButton($event)"
+      >
         <span>Все отзывы</span>
       </NuxtLink>
     </div>
@@ -40,7 +44,7 @@ defineProps<{
 <style scoped lang="scss">
 .reviews__block-header {
   & :deep(.block-header__title) {
-    max-width: 105rem;
+    max-width: 100rem;
   }
 }
 

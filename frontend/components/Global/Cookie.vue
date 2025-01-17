@@ -2,8 +2,8 @@
   <div class="cookie" :class="{ '_hide': ! isOpen }">
     <div class="cookie__container container">
       <div class="cookie__block">
-        <div class="cookie__text">
-          Наш сайт использует куки. Продолжая им пользоваться, вы соглашаетесь на обработку персональных данных в соответствии с <a href="#">политикой конфиденциальности.</a>
+        <div class="cookie__text fz-body">
+          Наш сайт использует куки. Продолжая им пользоваться,<br> вы соглашаетесь с&nbsp;<a href="#">условиями использования.</a>
         </div>
         <div class="cookie__actions">
           <button class="cookie__actions-btn cookie__submit fz-link" @click="submit">Принять</button>
@@ -57,6 +57,11 @@ const close = () => {
   background: rgba(232, 232, 234, .7);
   backdrop-filter: blur(4.6rem);
   width: 100%;
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .cookie__text {
@@ -66,11 +71,32 @@ const close = () => {
     color: var(--fg-blue);
     text-decoration: underline;
   }
+
+  @media (max-width: $tablet) {
+    font-size: var(--fz-caption);
+    line-height: var(--lh-caption);
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: $mobile) {
+    max-width: 75%;
+
+    & br {
+      display: none;
+    }
+  }
 }
 
 .cookie__actions {
   display: flex;
   align-items: center;
+
+  @media (max-width: $tablet) {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
 }
 
 .cookie__actions-btn {
@@ -82,6 +108,16 @@ const close = () => {
 
   &:last-child {
     margin-right: 0;
+  }
+
+  @media (max-width: $tablet) {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  @media (max-width: $mobile) {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
   }
 }
 </style>

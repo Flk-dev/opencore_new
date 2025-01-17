@@ -192,10 +192,11 @@ computed( () => {
   font-size: 1.2rem;
   line-height: 110%;
 
-  & a {
-    text-decoration: underline;
-    color: var(--fg-white);
-  }
+}
+
+:global(.modal__policy a) {
+  text-decoration: underline;
+  color: var(--fg-white);
 }
 
 :global(.modal__text) {

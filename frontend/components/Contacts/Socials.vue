@@ -24,7 +24,6 @@ defineProps<{
 
 .contact-socials__title {
   margin-bottom: 6rem;
-  line-height: 85%;
   max-width: 30.3rem;
 }
 

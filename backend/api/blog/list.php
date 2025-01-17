@@ -2,11 +2,29 @@
 
 register_rest_route( OS_API_NAMESPACE, '/blog', [
 	'methods'  => 'GET',
-	'callback' => function () {
-		$blog = get_posts( [
-			'post_type'      => 'blog',
-			'posts_per_page' => - 1
-		] );
+	'callback' => function ( WP_REST_Request $request ) {
+        $page     = $request->get_param( 'page' );
+        $category = $request->get_param( 'category' );
+
+        $args = [
+            'post_type'      => 'blog',
+            'posts_per_page' => 8,
+        ];
+
+        if ( ! empty( $category ) && $category !== 'all' ) {
+            $args['tax_query'] = [
+                [
+                    'taxonomy' => 'blog_cats',
+                    'terms'    => [ $category ]
+                ]
+            ];
+        }
+
+        if ( ! empty( $page ) ) {
+            $args['paged'] = $page;
+        }
+
+		$blog = get_posts( $args );
 
 		if ( ! empty( $blog ) ) {
 			foreach ( $blog as $key => $item ) {

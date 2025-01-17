@@ -11,7 +11,9 @@
             :key="listKey"
             class="festival__row"
             :direction="listKey === 1 ? 'reverse' : 'normal'"
-            duration="70">
+            duration="80"
+            clone="true"
+        >
           <div class="festival__item" v-for="(item, cellKey) in list.awards_cell" :key="cellKey">
               <div class="festival__title fz-h3" v-if="item.text" v-html="item.text"></div>
               <div class="festival__label fz-caption" v-if="item.prize" v-html="item.prize"></div>

@@ -17,8 +17,8 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      //WP_DEV: 'https://klishintest.ru/wp-json/opencore/v1',
-      WP_DEV: 'http://openscrore.local/wp-json/opencore/v1',
+      WP_DEV: 'https://klishintest.ru/wp-json/opencore/v1',
+      //WP_DEV: 'http://openscrore.local/wp-json/opencore/v1',
     }
   },
 })

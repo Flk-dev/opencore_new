@@ -10,21 +10,9 @@
   </GlobalPageHeader>
   <div class="blog page-pd-bottom">
     <div class="blog__container container">
-      <BlogFilters />
-      <div class="blog__grid" v-if="columns.value && columns.value.col_1.length">
-        <div class="blog__col" v-for="(blog, colIndex) in columns.value" :key="colIndex">
-          <BlogCard
-              v-for="item in blog"
-              :key="item.post_id"
-              :title="item.post_title"
-              :slug="item.post_slug"
-              :image="item.image"
-              :time-read="item.time_read"
-              :categories="item.categories"
-              :col-index="colIndex"
-          />
-        </div>
-      </div>
+      <BlogFilters @filter="filter" />
+      <BlogGrid :data="posts" />
+      <GlobalLoadmore v-if="posts.length" class="blog__loadmore"  @loadMore="loadMore" />
     </div>
   </div>
 
@@ -32,38 +20,44 @@
 </template>
 
 <script setup lang="ts">
-const { result: post } = await useApi( '/blog' );
+const termId: any = ref( 0 );
+const page: any = ref( 1 );
 
-const columns = computed(() => {
-  return getGridColumns(  post.value )
-});
+const { data: posts } = await useAsyncData(
+    'blog',
+    (): any => $fetch(getApiUrl('/blog/'), {
+      params: {
+        category: termId.value,
+        page: page.value
+      }
+    }), {
+      watch: [termId, page],
+      transform: (resData: object) => {
+        return (page.value === 1 ? resData.data : [...posts.value, ...resData.data]);
+      },
+    },
+);
+
+const filter = (id: number | string) => {
+  termId.value = id;
+  page.value = 1;
+};
+
+const loadMore = ( event: any ) => {
+  page.value++;
+};
 </script>
 
 <style scoped lang="scss">
-.blog__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
+.blog__loadmore {
+  margin-top: 14rem;
 
   @media (max-width: $tablet) {
-    grid-template-columns: 1fr;
-    row-gap: 8rem;
+    margin-top: 10rem;
+  }
+
+  @media (max-width: $mobile) {
+    margin-top: 9rem;
   }
 }
-
-.blog__col {
-  &:first-child {
-    :deep(.blog-item:nth-child(2n + 1)) {
-      max-width: 52rem;
-      margin-left: auto;
-    }
-  }
-
-  &:last-child {
-    :deep(.blog-item:nth-child(2n + 2)) {
-      max-width: 52rem;
-    }
-  }
-}
-
 </style>

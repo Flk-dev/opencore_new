@@ -61,6 +61,7 @@ defineProps<{
 
 .return__block-header {
   margin-bottom: 0;
+  max-width: 68.8rem;
 
   @media (max-width: $tablet) {
     margin-bottom: 4rem;
@@ -70,6 +71,9 @@ defineProps<{
 .return__caption {
   max-width: 47rem;
   margin-top: 2rem;
+}
 
+.return__subtitle {
+  max-width: 64rem;
 }
 </style>

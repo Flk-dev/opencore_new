@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   image?: string,
   title: string,
   slug: string,
@@ -27,7 +27,7 @@ const props = defineProps<{
 
 <style scoped lang="scss">
 .blog-item {
-  margin-bottom: 8rem;
+  margin-bottom: 25rem;
 
   &:last-child {
     margin-bottom: 0;

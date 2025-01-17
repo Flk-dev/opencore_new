@@ -9,7 +9,7 @@
         <div class="speakers-item__post fz-body fz-caption--mobile" v-if="post" v-html="post"></div>
       </div>
       <div class="speakers-item__experience" v-if="experience">
-        <div class="speakers-item__experience-title fz-body">Опыт</div>
+        <div class="speakers-item__experience-title fz-body">Опыт:</div>
         <div class="speakers-item__experience-text content__text" v-html="experience"></div>
       </div>
     </div>
@@ -72,7 +72,7 @@ defineProps<{
 
 .speakers-item__post {
   color: var(--fg-black-75);
-  margin-top: 1.3rem;
+  margin-top: .8rem;
 
   @media (max-width: $tablet) {
     margin-top: 1rem;
