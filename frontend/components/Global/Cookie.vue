@@ -39,7 +39,7 @@ const close = () => {
   bottom: 2rem;
   left: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 998;
   transition: transform .4s, opacity 3s;
 
   &._hide {

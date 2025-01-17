@@ -124,7 +124,7 @@ const toggleCallback = () => {
   }
 
   @media (max-width: $tablet) {
-    padding: .5rem 1rem;
+    padding: .6rem 1rem .8rem;
     max-width: fit-content;
   }
 

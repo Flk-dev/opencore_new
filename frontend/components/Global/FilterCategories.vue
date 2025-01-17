@@ -46,6 +46,12 @@ const filter = ( id: any, index: number|string ) => {
   align-content: center;
   overflow-y: auto;
   margin-right: var(--m-m-container);
+  
+  @media (max-width: $tablet) {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
 
 .cats__menu-link {

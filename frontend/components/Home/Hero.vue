@@ -2,7 +2,7 @@
   <section class="hero" ref="section">
     <div class="hero__container container">
       <div class="hero__header">
-        <h1 class="hero__title">Стратегический брендинг для лидерства на рынке</h1>
+        <h1 class="hero__title">Стратегический брендинг для&nbsp;лидерства на&nbsp;рынке</h1>
         <div class="hero__video" style="background-image: url('/img/hero/video.jpg')">
           <div class="hero__video-play">
             <svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -125,7 +125,7 @@
   }
 
   @media (max-width: $mobile) {
-    font-size: 4rem;
+    font-size: 3.8rem;
     line-height: 100%;
     margin-bottom: 4rem;
     letter-spacing: -.08rem;

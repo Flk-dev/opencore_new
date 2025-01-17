@@ -90,7 +90,7 @@ defineProps<{
 }
 
 .cases-item__project {
-  margin: 2rem 0 1.5rem;
+  margin: 2rem 0 1.2rem;
   line-height: 85%;
   color: var(--fg-black-75);
   opacity: .75;
