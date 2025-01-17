@@ -89,7 +89,6 @@ const contacts = useState('contacts');
   }
 
   @media (max-width: $mobile) {
-    margin-top: 4rem;
   }
 }
 
