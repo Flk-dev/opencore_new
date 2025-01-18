@@ -14,9 +14,12 @@
     <div class="accordion-item__body" v-if="text">
       <div class="accordion-item__content">
         <div class="accordion-item__text" v-html="text"></div>
-        <NuxtLink v-if="isMore && to" :to="to" class="accordion-item__button btn--ripple _white" @mouseover="animateButton( $event )">
-          <span>Подробнее</span>
-        </NuxtLink>
+        <UIButton
+            v-if="isMore"
+            :to="to"
+            title="Подробнее"
+            class="accordion-item__button btn--white btn--size-xs"
+        />
       </div>
     </div>
   </div>
@@ -169,13 +172,7 @@ if ( props.titleClass ) {
 }
 
 .accordion-item__button {
-  display: inline-block;
   margin-top: 3rem;
-  padding: 1.3rem 2rem;
-  font-size: var(--fz-caption);
-  color: var(--fg-white);
-  border: .15rem solid var(--fg-white);
-  border-radius: 1.5rem;
 }
 
 

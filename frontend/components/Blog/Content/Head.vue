@@ -8,7 +8,7 @@
             Время прочения {{ readTime }}
           </div>
         </div>
-        <UIButton title="Подписаться на рассылку" class="article__head-btn _border _small" />
+        <UIButton title="Подписаться на рассылку" class="article__head-btn btn--border btn--small" />
       </div>
       <UIImage :image="image" :title="title" class="article__head-image">
         <div class="article__cats" v-if="categories">

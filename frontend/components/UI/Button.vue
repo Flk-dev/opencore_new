@@ -43,6 +43,8 @@ onMounted( () => {
 
 <style lang="scss">
 .btn {
+  $root: &;
+
   display: block;
   width: 100%;
   padding: 2.2rem 0 2.6rem;
@@ -56,12 +58,15 @@ onMounted( () => {
   position: relative;
   transition: var(--tr-regular);
 
-  &._white {
-    border-color: var(--fg-white);
+  &--size-xs {
+    max-width: fit-content;
+    padding: 1.1rem 2rem 1.3rem;
+    font-size: var(--fz-caption);
     color: var(--fg-white);
+    border-radius: var(--br-secondary);
   }
 
-  &._border {
+  &--border {
     color: var(--fg-blue);
   }
 
@@ -69,56 +74,59 @@ onMounted( () => {
     color: var(--fg-white);
   }
 
-  &._small {
+  &--small {
     font-size: 2rem;
     letter-spacing: -.02rem;
     line-height: 110%;
     border-radius: var(--br-secondary);
   }
 
+  &--ripple {
+    position: relative;
+    overflow: hidden;
+    z-index: 5;
+
+    & span {
+      position: relative;
+      transition: all .3s;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      background-color: var(--fg-blue);
+      width: 0;
+      height: 0;
+      left: var(--xPos);
+      top: var(--yPos);
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      transition: width .9s, height .9s;
+      z-index: -1;
+    }
+
+    &:hover::before {
+      width: var(--width);
+      height: var(--height);
+      transition: width .9s, height .9s;
+    }
+  }
+
+  &--white {
+    border-color: var(--fg-white);
+    color: var(--fg-white);
+
+    &:before {
+      background-color: var(--fg-white);
+    }
+
+    &:hover span {
+      color: var(--fg-blue);
+    }
+  }
+
   @media (max-width: $tablet) {
     padding: 2.4rem 0;
-  }
-}
-
-.btn--ripple {
-  position: relative;
-  overflow: hidden;
-  z-index: 5;
-
-  & span {
-    position: relative;
-    transition: all .3s;
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    background-color: var(--fg-blue);
-    width: 0;
-    height: 0;
-    left: var(--xPos);
-    top: var(--yPos);
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    transition: width .9s, height .9s;
-    z-index: -1;
-  }
-
-  &:hover::before {
-    width: var(--width);
-    height: var(--height);
-    transition: width .9s, height .9s;
-  }
-
-  &._white {
-    &::before {
-      background: var(--fg-white);
-    }
-
-    &:hover {
-      color: var(--fg-blue) !important;
-    }
   }
 }
 </style>
