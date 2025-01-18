@@ -36,7 +36,7 @@ defineProps<{
   margin-top: 8rem;
 }
 
-.case-tasks + ::v-deep .content {
+.case-tasks + :deep(.content) {
   --mt-block: 8rem;
 }
 

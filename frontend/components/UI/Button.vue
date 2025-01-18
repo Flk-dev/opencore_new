@@ -1,8 +1,21 @@
 <template>
-  <NuxtLink :to="to" v-if="to" ref="button" class="btn btn--ripple" @mouseover="animateButton( $event )">
+  <NuxtLink
+      v-if="to"
+      :to="to"
+      ref="button"
+      :class="classes"
+      :style="{ '--width': width + 'px', '--height': width + 'px' }"
+      @mouseover="animateButton( $event )">
     <span v-html="title"></span>
   </NuxtLink>
-  <button class="btn btn--ripple" ref="button" v-else @mouseover="animateButton( $event )">
+  <button
+      v-else
+      ref="button"
+      :class="classes"
+      :style="{ '--width': width + 'px', '--height': width + 'px' }"
+      @mouseover="animateButton( $event )"
+      :title="title"
+  >
     <span v-html="title"></span>
   </button>
 </template>
@@ -12,6 +25,20 @@ defineProps<{
   title: string,
   to?: string
 }>();
+
+const button: any = ref( null );
+const classes: object = ref( [ 'btn', 'btn--ripple' ] );
+const width = ref( 0 );
+
+onMounted( () => {
+  if ( button.value.$el ){
+    width.value = button.value.$el.offsetWidth;
+  } else {
+    width.value = button.value.offsetWidth;
+  }
+
+  width.value *= 2;
+} )
 </script>
 
 <style lang="scss">
@@ -57,11 +84,11 @@ defineProps<{
 .btn--ripple {
   position: relative;
   overflow: hidden;
+  z-index: 5;
 
   & span {
     position: relative;
-    z-index: 5;
-    transition: var(--tr-regular);
+    transition: all .3s;
   }
 
   &::before {
@@ -74,12 +101,14 @@ defineProps<{
     top: var(--yPos);
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    transition: width 0.8s, height 0.8s;
+    transition: width .9s, height .9s;
+    z-index: -1;
   }
 
   &:hover::before {
-    width: 300%;
-    height: 300%;
+    width: var(--width);
+    height: var(--height);
+    transition: width .9s, height .9s;
   }
 
   &._white {

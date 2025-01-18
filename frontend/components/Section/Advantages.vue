@@ -30,7 +30,7 @@ defineProps<{
 }
 
 .advantages__block-header {
-  ::v-deep & .block-header__title {
+  :deep(.block-header__title){
     max-width: 85.8rem;
   }
 }

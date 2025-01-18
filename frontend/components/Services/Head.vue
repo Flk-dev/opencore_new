@@ -36,7 +36,7 @@ defineProps<{
 .services-head__title {
   margin: 0;
 
-  ::v-deep & a {
+  :deep(a) {
     color: var(--fg-blue);
     text-decoration: underline;
   }

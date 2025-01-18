@@ -49,7 +49,7 @@ const { result: post } = await useApi( '/template/learning' );
 }
 
 .learning__block {
-  ::v-deep .speakers {
+  :deep(.speakers) {
     padding: 0;
   }
 }

@@ -145,7 +145,7 @@ defineProps<{
   line-height: var(--lh-body-b);
   color: var(--fg-black-75);
 
-  & ::v-deep a {
+  & :deep(a) {
     text-decoration: underline;
   }
 }

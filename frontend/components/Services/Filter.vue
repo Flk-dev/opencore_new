@@ -19,7 +19,7 @@ defineProps<{
 .services-filter__list {
   margin-top: 3rem;
 
-  & ::v-deep .container {
+  & :deep(.container) {
     max-width: 100%;
     padding: 0;
   }

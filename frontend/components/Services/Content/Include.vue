@@ -37,11 +37,11 @@ defineProps<{
   align-items: flex-start;
   margin-bottom: var(--mb-block-header-third);
 
-  ::v-deep .block-header__title {
+  :deep(.block-header__title) {
     max-width: 60rem;
   }
 
-  ::v-deep .block-header__content {
+  :deep(.block-header__content) {
     max-width: 47.7rem;
   }
 }

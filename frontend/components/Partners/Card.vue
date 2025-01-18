@@ -85,7 +85,7 @@ defineProps<{
 
     --mb-ul-li: 1.5rem;
 
-    ::v-deep br {
+    :deep(br) {
       display: none;
     }
   }

@@ -15,7 +15,7 @@ defineProps<{
 .article__cases {
   margin-top: var(--mt-content-third);
 
-  & ::v-deep .cases-slider__block-header {
+  :deep(.cases-slider__block-header) {
     margin-bottom: 4rem;
   }
 }
