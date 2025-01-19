@@ -86,7 +86,7 @@ onMounted( () => {
     overflow: hidden;
     z-index: 5;
 
-    & span {
+    & > span {
       position: relative;
       transition: all .3s;
     }

@@ -43,7 +43,7 @@ const filter = (id: number | string) => {
   page.value = 1;
 };
 
-const loadMore = ( event: any ) => {
+const loadMore = () => {
   page.value++;
 };
 </script>

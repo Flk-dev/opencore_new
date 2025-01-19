@@ -27,73 +27,74 @@ defineProps<{
 
 <style scoped lang="scss">
 .cases-item {
+  --image-height: 57rem;
+  --small-card: 52rem;
+
   display: block;
   margin-bottom: 8rem;
 
   @media (max-width: $mobile) {
     margin-bottom: 6rem;
   }
-}
 
-.cases-item__media {
-  position: relative;
-}
+  &__media {
+    position: relative;
+    margin-bottom: 2rem;
 
-.cases-item__categories {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  display: flex;
-  align-items: center;
+    &-pic {
+      height: var(--image-height);
+      position: relative;
 
-  @media (max-width: $mobile) {
-    flex-wrap: wrap;
-  }
-}
+      @media (max-width: $mobile) {
+        --image-height: 19.2rem;
+      }
+    }
 
-.cases-item__category {
-  background: var(--fg-white);
-  padding: .75rem 1.5rem;
-  font-size: 1.4rem;
-  line-height: 110%;
-  border-radius: 1rem;
-  margin-right: .5rem;
 
-  &:last-child {
-    margin-right: 0;
+    &-img {
+      border-radius: var(--br-regular);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
   }
 
-  @media (max-width: $mobile) {
-    font-size: 1.2rem;
-    margin-bottom: .5rem;
+  &__categories {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    align-items: center;
   }
-}
 
-.cases-item__media-pic {
-  height: 57rem;
-  position: relative;
+  &__category {
+    background: var(--fg-white);
+    padding: .75rem 1.5rem;
+    font-size: 1.4rem;
+    line-height: 110%;
+    border-radius: 1rem;
+    margin-right: .5rem;
 
-  @media (max-width: $mobile) {
-    height: 19.2rem !important;
+    &:last-child {
+      margin-right: 0;
+    }
+
+    @media (max-width: $mobile) {
+      font-size: 1.2rem;
+      margin-bottom: .5rem;
+    }
   }
-}
 
-.cases-item__media-img {
-  border-radius: var(--br-regular);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.cases-item__project {
-  margin: 2rem 0 1.2rem;
-  line-height: 85%;
-  color: var(--fg-black-75);
-  opacity: .75;
+  &__project {
+    margin-bottom: 1.2rem;
+    line-height: 85%;
+    color: var(--fg-black-75);
+    opacity: .75;
+  }
 }
 
 </style>

@@ -4,6 +4,7 @@
       <GlobalBlockHeader
           :title="title"
           classes="cases"
+          class-title="fz-h1--tablet"
       />
       <slot name="filters"></slot>
       <CasesGrid :data="data" />
