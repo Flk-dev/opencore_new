@@ -124,6 +124,7 @@ const refLogo = ref( null );
 
   @media (max-width: $mobile) {
     min-width: 6rem;
+    max-width: 6rem;
   }
 }
 
@@ -138,6 +139,7 @@ const refLogo = ref( null );
   @media (max-width: $mobile) {
     font-size: 1.2rem;
     line-height: 110%;
+    margin-top: .5rem;
 
     & br {
       display: none;

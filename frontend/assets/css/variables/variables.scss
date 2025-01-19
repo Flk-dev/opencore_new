@@ -25,7 +25,7 @@
 
   --fz-h1: 7rem;
   --lh-h1: 100%;
-  --lc-h1: -.08rem;
+  --lc-h1: -.2rem;
 
   @media (max-width: $tablet) {
     --fz-h1: 4rem;
@@ -33,7 +33,6 @@
 
   @media (max-width: $mobile) {
     --fz-h1: 2.4rem;
-    --lc-h1: -0.08rem;
   }
 
   --fz-h2: 5rem;

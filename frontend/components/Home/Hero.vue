@@ -200,6 +200,14 @@
     flex-wrap: nowrap;
     margin-left: var(--m-m-container);
     margin-right: var(--m-m-container);
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      background: transparent;
+    }
   }
 }
 

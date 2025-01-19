@@ -42,6 +42,10 @@ const filter = async (id: number | string) => {
 .home__cases {
   :deep(.cases__block-header) {
     max-width: 90.9rem;
+
+    @media (max-width: $mobile) {
+      margin-bottom: 6rem;
+    }
   }
 }
 </style>

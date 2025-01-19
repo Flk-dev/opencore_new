@@ -2,24 +2,26 @@
   <section class="reviews section" v-if="select.length">
     <div class="reviews__container container">
       <GlobalBlockHeader classes="reviews" :title="title" />
-      <swiper
-          class="reviews__swiper"
-          :slides-per-view="1.1"
-          :space-between="10"
-          :breakpoints="{ '576': { slidesPerView: 1.6 }, '992': { slidesPerView: 3 } }"
-      >
-        <swiper-slide v-for="item in select" :key="item.id">
-          <ReviewsBigCard
-              :id="item.post_id"
-              :name="item.post_title"
-              :title="item.title"
-              :post="item.post"
-              :text="item.text_home"
-              :logo="item.logo"
-              :cases="item.case"
-          />
-        </swiper-slide>
-      </swiper>
+      <div class="reviews__slider">
+        <swiper
+            class="reviews__swiper"
+            :slides-per-view="1.1"
+            :space-between="10"
+            :breakpoints="{ '576': { slidesPerView: 1.6 }, '992': { slidesPerView: 3 } }"
+        >
+          <swiper-slide v-for="item in select" :key="item.id">
+            <ReviewsBigCard
+                :id="item.post_id"
+                :name="item.post_title"
+                :title="item.title"
+                :post="item.post"
+                :text="item.text_home"
+                :logo="item.logo"
+                :cases="item.case"
+            />
+          </swiper-slide>
+        </swiper>
+      </div>
       <UIButton
         title="Все отзывы"
         class="reviews__button"

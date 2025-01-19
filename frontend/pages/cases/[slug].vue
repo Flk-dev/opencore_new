@@ -16,6 +16,7 @@ import {
   CasesContentText,
   CasesContentAchievement,
   CasesContentImage,
+  CasesContentVideo,
   CasesContentTasks,
   CasesContentTeam
 } from '#components';
@@ -25,11 +26,12 @@ const contentLayouts: any = ref( {
   text: CasesContentText,
   achievement: CasesContentAchievement,
   image: CasesContentImage,
+  video: CasesContentVideo,
   tasks: CasesContentTasks,
   team: CasesContentTeam,
 } );
 
-const { result: post, error } = await useApi( '/cases/' + route.params.slug, {}, '', true );
+const { result: post } = await useApi( '/cases/' + route.params.slug, {}, '', true );
 </script>
 
 <style scoped lang="scss">
@@ -40,5 +42,9 @@ const { result: post, error } = await useApi( '/cases/' + route.params.slug, {},
 .case__title {
   max-width: 104.5rem;
   margin: 0 0 6rem;
+
+  @media (max-width: $mobile) {
+    margin: 0 0 3rem;
+  }
 }
 </style>

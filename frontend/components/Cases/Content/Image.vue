@@ -15,6 +15,10 @@ defineProps<{
 <style scoped lang="scss">
 .case-image {
   margin-top: 6rem;
+
+  @media (max-width: $mobile) {
+    margin-top: 3rem;
+  }
 }
 
 .case-image__image {

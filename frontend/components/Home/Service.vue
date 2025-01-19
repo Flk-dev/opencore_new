@@ -57,6 +57,10 @@ const columns = computed(() => {
 
   & :deep(.block-header__title) {
     max-width: 65.2rem;
+
+    @media (max-width: $mobile) {
+      max-width: 30.8rem;
+    }
   }
 }
 
