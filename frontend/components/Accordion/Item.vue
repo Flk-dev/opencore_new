@@ -76,6 +76,7 @@ if ( props.titleClass ) {
   &__counter {
     min-width: 4.7rem;
     margin-right: 3.3rem;
+    transition: var(--tr-regular);
   }
 
   &__icon {
@@ -110,37 +111,23 @@ if ( props.titleClass ) {
     margin-top: 3rem;
   }
 
-  &:hover:not(._active) {
-    border-color: var(--fg-blue);
+  @media (any-hover: hover) {
+    &:hover:not(._active) {
+      border-color: var(--fg-blue);
 
-    #{$root}__head {
-      & path {
-        stroke: var(--fg-blue);
-      }
-    }
-
-    #{$root}__title {
-      color: var(--fg-blue);
-      transition: var(--tr-regular);
-    }
-  }
-
-  &--white {
-    #{$root}__head {
-      align-items: center;
-    }
-
-    &._active {
-      background: var(--fg-white);
-      color: var(--fg-blue);
-
-      #{$root}__icon svg path {
-        fill: var(--fg-blue);
-        stroke: var(--fg-blue);
+      #{$root}__head {
+        & path {
+          stroke: var(--fg-blue);
+        }
       }
 
-      #{$root}__text {
-        color: var(--fg-black);
+      #{$root}__title {
+        color: var(--fg-blue);
+        transition: var(--tr-regular);
+      }
+
+      #{$root}__counter {
+        color: var(--fg-blue);
       }
     }
   }
@@ -166,6 +153,26 @@ if ( props.titleClass ) {
 
     #{$root}__content {
       padding-top: 2rem;
+    }
+  }
+
+  &--white {
+    #{$root}__head {
+      align-items: center;
+    }
+
+    &._active {
+      background: var(--fg-white) !important;
+      color: var(--fg-blue) !important;
+
+      #{$root}__icon svg path {
+        fill: var(--fg-blue);
+        stroke: var(--fg-blue);
+      }
+
+      #{$root}__text {
+        color: var(--fg-black);
+      }
     }
   }
 
