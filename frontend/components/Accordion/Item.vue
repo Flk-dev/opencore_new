@@ -57,32 +57,76 @@ if ( props.titleClass ) {
   margin-bottom: var(--m-bottom);
   transition: var(--tr-regular);
 
-  &._active {
-    background: var(--fg-blue);
+  $root: &;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+
+    &-left {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+
+  &__counter {
+    min-width: 4.7rem;
+    margin-right: 3.3rem;
+  }
+
+  &__icon {
+    & svg,
+    & path {
+      transition: var(--tr-regular);
+    }
+  }
+
+  &__body {
+    opacity: 0;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    grid-template-rows: 0fr;
+    display: grid;
+    transition: all 0.4s;
+
+    & > * {
+      min-height: 0;
+      transition: var(--tr-regular);
+    }
+  }
+
+  &__text {
+    max-width: 41.3rem;
+    color: var(--fg-white-75);
+  }
+
+  &__button {
+    margin-top: 3rem;
+  }
+
+  &:hover:not(._active) {
     border-color: var(--fg-blue);
-    color: var(--fg-white);
 
-    & .accordion-item__icon svg {
-      transform: rotate(-45deg);
+    #{$root}__head {
+      & path {
+        stroke: var(--fg-blue);
+      }
     }
 
-    & .accordion-item__icon svg path {
-      fill: var(--fg-white);
-      stroke: var(--fg-white);
-    }
-
-    & .accordion-item__body {
-      opacity: 1;
-      grid-template-rows: 1fr;
-    }
-
-    & .accordion-item__content {
-      padding-top: 2rem;
+    #{$root}__title {
+      color: var(--fg-blue);
+      transition: var(--tr-regular);
     }
   }
 
   &--white {
-    & .accordion-item__head {
+    #{$root}__head {
       align-items: center;
     }
 
@@ -90,15 +134,38 @@ if ( props.titleClass ) {
       background: var(--fg-white);
       color: var(--fg-blue);
 
-
-      & .accordion-item__icon svg path {
+      #{$root}__icon svg path {
         fill: var(--fg-blue);
         stroke: var(--fg-blue);
       }
 
-      & .accordion-item__text {
+      #{$root}__text {
         color: var(--fg-black);
       }
+    }
+  }
+
+  &._active {
+    background: var(--fg-blue);
+    border-color: var(--fg-blue);
+    color: var(--fg-white);
+
+    #{$root}__icon svg {
+      transform: rotate(-45deg);
+    }
+
+    #{$root}__icon svg path {
+      fill: var(--fg-white);
+      stroke: var(--fg-white);
+    }
+
+    #{$root}__body {
+      opacity: 1;
+      grid-template-rows: 1fr;
+    }
+
+    #{$root}__content {
+      padding-top: 2rem;
     }
   }
 
@@ -115,73 +182,5 @@ if ( props.titleClass ) {
     margin-bottom: 1.5rem;
   }
 }
-
-.accordion-item__head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  cursor: pointer;
-  text-align: left;
-  width: 100%;
-
-  @media (max-width: $mobile) {
-    align-items: center;
-  }
-}
-
-.accordion-item__head-left {
-  display: flex;
-  align-items: flex-start;
-}
-
-.accordion-item__counter {
-  min-width: 4.7rem;
-  margin-right: 3.3rem;
-}
-
-.accordion-item__icon {
-  & svg {
-    transition: var(--tr-regular);
-  }
-  margin-top: .7rem;
-
-  @media (max-width: $mobile) {
-    margin-top: 0;
-  }
-}
-
-.accordion-item__body {
-  opacity: 0;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  width: 100%;
-  grid-template-rows: 0fr;
-  display: grid;
-  transition: all 0.4s;
-}
-
-.accordion-item__body > * {
-  min-height: 0;
-  transition: var(--tr-regular);
-}
-
-.accordion-item__text {
-  max-width: 41.3rem;
-  color: var(--fg-white-75);
-}
-
-.accordion-item__button {
-  margin-top: 3rem;
-}
-
-
-//@media (max-width: $mobile) {
-//  .accordion-item__title {
-//    font-size: 2rem;
-//    line-height: 100%;
-//    letter-spacing: -.02rem;
-//  }
-//}
 
 </style>

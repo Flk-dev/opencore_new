@@ -20,13 +20,12 @@
           />
         </swiper-slide>
       </swiper>
-      <NuxtLink
-          to="reviews"
-          class="reviews__button btn btn--ripple"
-          @mouseover="animateButton($event)"
-      >
-        <span>Все отзывы</span>
-      </NuxtLink>
+      <UIButton
+        title="Все отзывы"
+        class="reviews__button"
+        to="reviews"
+
+      />
     </div>
   </section>
 </template>
