@@ -4,16 +4,13 @@
       <slot name="footer" v-if="$slots.footer" />
       <div v-else>
         <div class="footer__button-title fz-h1" v-if="title" v-html="title"></div>
-        <button
-            class="footer__button-btn btn--ripple _white"
-            :class="btnClass" :data-modal="action"
-            @mouseover="animateButton( $event )"
-            @click="action ? modal.open( ModalsMain, {
+        <UIButton
+          :title="btnTitle"
+          :class="[ 'footer__button-btn btn--white', btnClass ]"
+          @click="action ? modal.open( ModalsMain, {
               title: 'Давайте общаться'
             } ) : null"
-        >
-          <span>{{ btnTitle }}</span>
-        </button>
+        />
       </div>
     </div>
   </div>

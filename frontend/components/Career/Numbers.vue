@@ -11,10 +11,11 @@
           <div class="career-numbers__item-text fz-body" v-if="item.text" v-html="item.text"></div>
         </div>
       </div>
-      <div class="career-numbers__button">
-        <NuxtLink v-if="data.button && data.button_link" :to="data.button_link" class="btn btn--ripple">
-          <span>{{ data.button }}</span>
-        </NuxtLink>
+      <div class="career-numbers__button" v-if="data.button && data.button_link">
+        <UIButton
+          :title="data.button"
+          :to="data.button_link"
+        />
       </div>
     </div>
   </div>

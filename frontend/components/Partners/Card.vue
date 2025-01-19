@@ -14,13 +14,11 @@
       </NuxtLink>
       <div class="partners-item__description content__text" v-if="description" v-html="description"></div>
     </div>
-    <NuxtLink
-        class="partners-item__more fz-link btn--ripple"
+    <UIButton
+        title="Подробнее"
+        class="partners-item__more btn--size-xs btn--border"
         :to="{ name: 'partners-slug', params: { slug: slug } }"
-        @mouseover="animateButton( $event )"
-    >
-      <span>Подробнее</span>
-    </NuxtLink>
+    />
   </div>
 
 </template>
@@ -92,18 +90,7 @@ defineProps<{
 }
 
 .partners-item__more {
-  display: inline-flex;
   margin-top: 4rem;
-  padding: 1.1rem 2rem 1.3rem;
-  color: var(--fg-blue);
-  border: .15rem solid var(--fg-blue);
-  border-radius: 1rem;
-  max-width: fit-content;
-  line-height: 100%;
-
-  &:hover {
-    color: var(--fg-white);
-  }
 }
 
 </style>

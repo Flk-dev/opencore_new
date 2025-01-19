@@ -82,6 +82,10 @@ onMounted( () => {
     padding: 2.5rem 0 2.5rem;
   }
 
+  &--border {
+    color: var(--fg-blue);
+  }
+
   &--ripple {
     position: relative;
     overflow: hidden;
