@@ -64,7 +64,7 @@ defineProps<{
     :deep(h4),
     :deep(h5),
     :deep(h6) {
-      margin: 0 0 5.6rem auto;
+      margin: 6rem 0 5.6rem auto;
       max-width: var(--w-title);
 
       @media (max-width: $mobile) {

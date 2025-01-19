@@ -79,6 +79,7 @@ onMounted( () => {
     letter-spacing: -.02rem;
     line-height: 110%;
     border-radius: var(--br-secondary);
+    padding: 2.5rem 0 2.5rem;
   }
 
   &--ripple {
