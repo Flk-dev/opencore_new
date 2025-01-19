@@ -48,8 +48,12 @@ const filter = ( id: any, index: number|string ) => {
   margin-right: var(--m-m-container);
   
   @media (max-width: $tablet) {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
     &::-webkit-scrollbar {
-      display: none;
+      width: 0;
+      background: transparent;
     }
   }
 }

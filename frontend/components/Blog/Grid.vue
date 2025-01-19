@@ -48,6 +48,10 @@ const columns = computed(() => {
   &:last-child {
     :deep(.blog-item:first-child) {
       margin-top: 17rem;
+
+      @media (max-width: $mobile) {
+        margin-top: 0;
+      }
     }
 
     :deep(.blog-item:nth-child(2n + 2)) {

@@ -19,7 +19,6 @@ const animateButton = ( event: any ) => {
 
 <style scoped lang="scss">
 .loadmore {
-  margin-top: var(--mt-content-block-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,6 +26,15 @@ const animateButton = ( event: any ) => {
   height: 8rem;
   border-radius: 50%;
   background: var(--fg-blue);
-  margin: 0 auto;
+  margin: var(--mt-content-block-secondary) auto 0;
+
+  @media (max-width: $mobile) {
+    width: 6rem;
+    height: 6rem;
+
+    & svg {
+      max-width: 4.3rem;
+    }
+  }
 }
 </style>
