@@ -59,6 +59,9 @@ defineProps<{
 
   @media (max-width: $tablet) {
     max-width: 43.7rem;
+
+    --fz: var(--fz-body-b);
+    --lh: var(--lh-body-b);
   }
 
   @media (max-width: $mobile) {

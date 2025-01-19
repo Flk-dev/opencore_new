@@ -165,7 +165,21 @@ const toggleList = () => {
 
   & svg {
     margin-left: 1.5rem;
+    margin-top: .8rem;
+
+    transition: var(--tr-regular);
+
+    @media (max-width: $tablet) {
+      margin-top: 0;
+    }
   }
+
+  &._active {
+    & svg {
+      transform: rotate(45deg);
+    }
+  }
+
 
   @media (max-width: $tablet) {
     margin: 8rem auto 0;
