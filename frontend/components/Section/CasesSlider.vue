@@ -2,11 +2,12 @@
   <section class="cases-slider section">
     <div class="cases-slider__container container">
       <GlobalBlockHeader :title="title" classes="cases-slider" />
-      <div class="cases-slider__slider">
+      <div class="cases-slider__slider" @mousemove="changeCursor">
+        <UIPullCursor ref="cursor" />
         <swiper
             class="cases-slider__swiper"
             :slides-per-view="1.05"
-            :loop="true"
+            :loop="false"
             :space-between="10"
             :breakpoints="{ '576': { slidesPerView: 'auto', spaceBetween: 20 } }"
         >
@@ -33,11 +34,27 @@ defineProps<{
   title: string,
   data: object
 }>();
+
+const cursor = ref( null );
+const changeCursor = ( event: any ) => {
+  const x = event.clientX;
+  const y = event.clientY;
+
+  cursor.value.$el.style.left = x + 'px';
+  cursor.value.$el.style.top = y + 'px';
+}
 </script>
 
 <style scoped lang="scss">
 .cases-slider__slider {
   margin: 0 var(--m-m-container);
+  cursor: none !important;
+
+  &:hover {
+    :deep(.pull__cursor) {
+      opacity: 1;
+    }
+  }
 }
 
 .cases-slider__block-header {
@@ -46,18 +63,19 @@ defineProps<{
 
 .cases-slider__swiper {
   padding-left: var(--p-container);
+  padding-right: var(--p-container);
 
   & .swiper-slide {
-    max-width: 68rem;
+    width: 68rem;
 
     &:nth-child(2n + 2) {
       max-width: 52rem;
 
       :deep(.cases-item__media-pic) {
-        height: 30.5rem;
+        --image-height: 30.5rem;
       }
     }
-    
+
     @media (max-width: $mobile) {
       max-width: 34rem;
     }

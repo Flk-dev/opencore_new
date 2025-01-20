@@ -46,7 +46,7 @@ defineProps<{
       position: relative;
 
       @media (max-width: $mobile) {
-        --image-height: 19.2rem;
+        --image-height: 19.2rem !important;
       }
     }
 

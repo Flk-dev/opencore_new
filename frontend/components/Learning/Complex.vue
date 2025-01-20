@@ -7,7 +7,7 @@
         <swiper
             class="learning-complex__swiper"
             :slides-per-view="1.2"
-            :loop="true"
+            :loop="false"
             :breakpoints="{ '576': { slidesPerView: 1.4 }, '992': { slidesPerView: 2.6 } }"
         >
           <swiper-slide v-for="(item, index) in data.list" :key="index">
@@ -133,6 +133,12 @@ const modal = useModal();
 
 .learning-complex__slider {
   margin-right: var(--m-m-container);
+  margin-left: var(--m-m-container);
+}
+
+.learning-complex__swiper {
+  padding-left: var(--p-container);
+  padding-right: var(--p-container);
 }
 
 </style>

@@ -2,7 +2,8 @@
   <section class="speakers section">
     <div class="speakers__container container">
       <GlobalBlockHeader :title="title" classes="speakers" />
-      <div class="speakers__slider">
+      <div class="speakers__slider" @mousemove="changeCursor">
+        <UIPullCursor ref="cursor" />
         <swiper
             class="speakers__swiper"
             :slides-per-view="1"
@@ -32,11 +33,27 @@ defineProps<{
   title?: string,
   data: object
 }>();
+
+const cursor = ref( null );
+const changeCursor = ( event: any ) => {
+  const x = event.clientX;
+  const y = event.clientY;
+
+  cursor.value.$el.style.left = x + 'px';
+  cursor.value.$el.style.top = y + 'px';
+}
 </script>
 
 <style scoped lang="scss">
 .speakers__slider {
   margin: 0 var(--m-m-container);
+  cursor: none !important;
+
+  &:hover {
+    :deep(.pull__cursor) {
+      opacity: 1;
+    }
+  }
 }
 
 .speakers__swiper {
