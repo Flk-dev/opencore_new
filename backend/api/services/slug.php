@@ -21,8 +21,39 @@ register_rest_route( OS_API_NAMESPACE, '/services/(?P<slug>\S+)', [
 	    $content = on_filter_post_objects(
 		    on_get_field( 'content', $post[0]->ID, [] ),
 		    [
-			    'advatanges' => 'select',
-			    'cases'      => 'select'
+			    'advatanges'   => 'select',
+			    'cases'        => 'select',
+			    'with_service' => function () use ( $post ) {
+				    $terms = wp_get_post_terms( $post[0]->ID, 'services_cat', [ 'fields' => 'id' ] );
+				    $args  = [
+					    'post_type'      => 'services',
+					    'posts_per_page' => 5,
+					    'posts__not_in'  => $post[0]->ID
+				    ];
+
+				    if ( ! empty( $terms ) ) {
+					    $args['tax_query'] = [
+						    [
+							    'taxonomy' => 'services_cat',
+							    'terms'    => $terms
+						    ]
+					    ];
+				    }
+
+				    $related = get_posts( $args );
+
+				    if ( ! empty( $related ) ) {
+					    foreach ( $related as $key => $item ) {
+						    $related[ $key ] = [
+							    'post_id'    => $item->post_title,
+							    'post_title' => $item->post_title,
+							    'post_slug'  => $item->post_name,
+						    ];
+					    }
+				    }
+
+				    return $related;
+			    }
 		    ],
 		    [
 			    'advatanges' => [

@@ -69,7 +69,6 @@ defineProps<{
 
     &-title {
       text-decoration: underline;
-      line-height: 90%;
     }
   }
 }

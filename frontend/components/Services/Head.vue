@@ -27,23 +27,23 @@ defineProps<{
   align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 13rem;
-}
 
-.services-head__content {
-  max-width: 95.7rem;
-}
-
-.services-head__title {
-  margin: 0;
-
-  :deep(a) {
-    color: var(--fg-blue);
-    text-decoration: underline;
+  &__content {
+    max-width: 95.7rem;
   }
-}
 
-.services-head__subtitle {
-  margin-top: 2.5rem;
-  color: var(--fg-black-75);
+  &__title {
+    margin: 0;
+
+    :deep(a) {
+      color: var(--fg-blue);
+      border-bottom: .3rem solid var(--fg-blue);
+    }
+  }
+
+  &__subtitle {
+    margin-top: 2.5rem;
+    color: var(--fg-black-75);
+  }
 }
 </style>

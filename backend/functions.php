@@ -101,32 +101,37 @@ function on_get_field( $selector, $post_id, $default = '' ) {
 function on_filter_post_objects( $field, $keys, $fields = [] ) {
 	foreach ( $keys as $key => $value ) {
 		$find = array_search( $key, array_column( $field, 'acf_fc_layout' ) );
-		if ( $find !== false && ! empty( $field[ $find ][ $value ] ) ) {
-			$new = $field[ $find ][ $value ];
 
-			foreach ( $new as $item_key => $item ) {
-				$data = [
-					'post_id'    => $item->ID,
-					'post_title' => $item->post_title,
-					'post_slug'  => $item->post_name,
-				];
+		if ( is_callable( $value ) ){
+			$field[ $find ]['value'] = $value();
+		} else {
+			if ( $find !== false && ! empty( $field[ $find ][ $value ] ) ) {
+				$new = $field[ $find ][ $value ];
 
-				if ( ! empty( $fields[ $key ] ) ) {
-					foreach ( $fields[ $key ] as $field_key => $default ) {
-						if ( $field_key === 'taxonomy' ){
-							$data['categories'] = get_term_format_data(
-								wp_get_post_terms( $item->ID, $default )
-							);
-						} else {
-							$data[ $field_key ] = on_get_field( $field_key, $item->ID, $default );
+				foreach ( $new as $item_key => $item ) {
+					$data = [
+						'post_id'    => $item->ID,
+						'post_title' => $item->post_title,
+						'post_slug'  => $item->post_name,
+					];
+
+					if ( ! empty( $fields[ $key ] ) ) {
+						foreach ( $fields[ $key ] as $field_key => $default ) {
+							if ( $field_key === 'taxonomy' ){
+								$data['categories'] = get_term_format_data(
+									wp_get_post_terms( $item->ID, $default )
+								);
+							} else {
+								$data[ $field_key ] = on_get_field( $field_key, $item->ID, $default );
+							}
 						}
 					}
+
+					$new[ $item_key ] = $data;
 				}
 
-				$new[ $item_key ] = $data;
+				$field[ $find ][ $value ] = $new;
 			}
-
-			$field[ $find ][ $value ] = $new;
 		}
 	}
 

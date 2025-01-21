@@ -31,7 +31,8 @@ import {
   ServicesContentCases,
   ServicesContentInclude,
   ServicesContentReturn,
-  ServicesContentAdvantages
+  ServicesContentAdvantages,
+  ServicesContentWith
 } from '#components';
 
 const route = useRoute();
@@ -41,6 +42,7 @@ const contentLayouts: any = ref({
   include: ServicesContentInclude,
   return: ServicesContentReturn,
   advatanges: ServicesContentAdvantages,
+  with_service: ServicesContentWith,
 } );
 
 const { result: post } = await useApi( '/services/' + route.params.slug, {}, '', true );

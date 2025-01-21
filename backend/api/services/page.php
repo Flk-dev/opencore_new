@@ -47,6 +47,12 @@ register_rest_route( OS_API_NAMESPACE, '/services', [
 		}
 
 		return get_format_data( [
+			'title'      => on_get_field( 'services_title', 'option' ),
+			'subtitle'   => on_get_field( 'services_subtitle', 'option' ),
+			'video'      => [
+				'preview' => on_get_field( 'services_video_preview', 'option' ),
+				'link'    => on_get_field( 'services_video_link', 'option' ),
+			],
 			'types'      => $types,
 			'categories' => $categories
 		] );

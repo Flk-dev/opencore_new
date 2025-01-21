@@ -11,6 +11,7 @@
 
   <div class="services page-pd-bottom">
     <div class="services__container container">
+      <ServicesHead :title="post.title" :subtitle="post.subtitle" :video="post.video" />
       <ServicesFilter v-if="post.types" :categories="post.types" />
       <div class="services__row" v-if="post.categories">
         <ServicesCard
