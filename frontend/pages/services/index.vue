@@ -10,22 +10,19 @@
   </GlobalPageHeader>
 
   <div class="services page-pd-bottom">
-    <div class="container">
-      <ServicesHead :title="post.title" :subtitle="post.subtitle" :video="post.video" />
-      <ServicesFilter :categories="post.categories" />
-      <div class="services__row">
+    <div class="services__container container">
+      <ServicesFilter v-if="post.types" :categories="post.types" />
+      <div class="services__row" v-if="post.categories">
         <ServicesCard
-            v-for="item in post.list"
-            :key="item.post_id"
-            :title="item.post_title"
-            :slug="item.post_slug"
-            :text="item.text"
-            :list="item.list"
+          v-for="category in post.categories"
+          :key="category.term_id"
+          :name="category.name"
+          :description="category.description"
+          :posts="category.posts"
         />
       </div>
     </div>
   </div>
-
   <GlobalFooterButton />
 </template>
 

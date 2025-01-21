@@ -1,7 +1,7 @@
 <template>
-  <div class="services__filter services-filter" v-if="categories.length">
-    <div class="services-filter__title fz-h4">Какой тип брендинга вас интересует?</div>
-    <GlobalFilterCategories class="services-filter__list" :data="categories" />
+  <div class="services__filter" v-if="categories.length">
+    <div class="services__filter-title fz-h4">Какой тип брендинга вас интересует?</div>
+    <GlobalFilterCategories class="services__filter-list" :data="categories" hide-all="true" />
   </div>
 </template>
 
@@ -12,16 +12,16 @@ defineProps<{
 </script>
 
 <style scoped lang="scss">
-.services-filter {
+.services__filter {
   margin-bottom: 6rem;
-}
 
-.services-filter__list {
-  margin-top: 3rem;
+  &-list {
+    margin-top: 3rem;
 
-  & :deep(.container) {
-    max-width: 100%;
-    padding: 0;
+    & :deep(.container) {
+      max-width: 100%;
+      padding: 0;
+    }
   }
 }
 </style>

@@ -2,6 +2,7 @@
   <div class="cats__menu">
     <div class="cats__menu-list" v-if="data.length">
       <button
+          v-if="!hideAll"
           class="cats__menu-link"
           data-id="all"
           @click="filter( 'all', 'all')"
@@ -26,6 +27,7 @@
 <script setup lang="ts">
 defineProps<{
   data: object,
+  hideAll?: boolean,
 }>();
 
 const activeIndex = ref<string|number>( 'all' );

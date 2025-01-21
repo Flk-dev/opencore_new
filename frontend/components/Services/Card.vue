@@ -1,24 +1,27 @@
 <template>
-  <NuxtLink :to="{ name: 'services-slug', params: { slug: slug } }" class="services-item">
-    <div class="services-item__title fz-h2">{{ title }}</div>
+  <div class="services-item">
+    <h2 class="services-item__title" v-html="name"></h2>
     <div class="services-item__content">
-      <ContentText class="services-item__text" :text="text" />
-      <div class="services-item__list" v-if="list.length">
-        <div class="services-item__list-item" v-for="item in list">
-          <span class="services-item__list-icon" v-if="item.is_icon">🔥</span>
-          <span class="services-item__list-text fz-link" v-html="item.text"></span>
-        </div>
+      <div class="services-item__text" v-if="description" v-html="description"></div>
+      <div class="services-item__posts" v-if="posts">
+        <NuxtLink
+            class="services-item__post"
+            v-for="post in posts" :key="post.post_id"
+            :to="{ name: 'services-slug', params: { slug: post.post_slug } }"
+        >
+          <div class="services-item__post-fire" v-if="post.is_fire">🔥</div>
+          <div class="services-item__post-title fz-link" v-html="post.post_title"></div>
+        </NuxtLink>
       </div>
     </div>
-  </NuxtLink>
+  </div>
 </template>
 
 <script setup lang="ts">
 defineProps<{
-  title: string,
-  slug: string,
-  text?: string,
-  list?: object
+  name: string,
+  description: string,
+  posts?: Array<string>,
 }>();
 </script>
 
@@ -29,44 +32,45 @@ defineProps<{
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-}
+  border-top: .15rem solid var(--fg-black);
 
-.services-item__title {
-  color: var(--fg-blue);
-  max-width: 56.5rem;
-}
+  &__title {
+    color: var(--fg-blue);
+    max-width: 56.5rem;
+  }
 
-.services-item__content {
-  width: 79.8rem;
-  max-width: 100%;
-}
+  &__content {
+    width: 79.8rem;
+    max-width: 100%;
+  }
 
-.services-item__text {
-  --fz: var(--fz-txt-case);
-  --lh: var(--lh-txt-case);
-}
+  &__text {
+    --fz: var(--fz-txt-case);
+    --lh: var(--lh-txt-case);
+  }
 
-.services-item__list {
-  margin-top: 6rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  row-gap: 3rem;
-  column-gap: 1.5rem;
-}
+  &__posts {
+    margin-top: 6rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 3rem;
+    column-gap: 1.5rem;
+  }
 
-.services-item__list-item {
-  position: relative;
-  padding-left: 2.9rem;
-}
+  &__post {
+    position: relative;
+    padding-left: 2.9rem;
 
-.services-item__list-icon {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
+    &-fire {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
 
-.services-item__list-text {
-  text-decoration: underline;
-  line-height: 90%;
+    &-title {
+      text-decoration: underline;
+      line-height: 90%;
+    }
+  }
 }
 </style>
