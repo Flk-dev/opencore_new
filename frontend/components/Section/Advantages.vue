@@ -15,12 +15,32 @@
   </section>
 </template>
 
-
 <script setup lang="ts">
 defineProps<{
   title?: string,
   select: object
 }>();
+
+//let observer = null;
+const advantages = ref( false );
+
+// onMounted(() => {
+//   observer = new IntersectionObserver(callback, {
+//     threshold: 0.5, // proportion of element visible to trigger action
+//   });
+//   observer.observe(advantages.value)
+// })
+//
+// const callback = (entries: any, observer: any) => {
+//   entries.forEach((entry: any) => {
+//     if (entry.isIntersecting) {
+//       document.querySelector('.scroll__icon').classList.add('scroll__icon--white');
+//     } else {
+//       document.querySelector('.scroll__icon').classList.remove('scroll__icon--white');
+//     }
+//   })
+// }
+
 </script>
 
 <style scoped lang="scss">

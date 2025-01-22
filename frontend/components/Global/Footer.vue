@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="footer section--blue">
     <div class="footer__container container">
       <div class="footer__main">
         <div class="footer__main-left">

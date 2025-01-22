@@ -1,5 +1,5 @@
 <template>
-  <header class="header" :class="{ '_fixed': fixed }">
+  <header class="header" :class="{ '_fixed': fixed, 'header--white': isWhite }">
     <div class="header__container container">
       <NuxtLink to="/" class="header__logo logo">
         <div class="logo__pc">

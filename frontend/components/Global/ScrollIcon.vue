@@ -63,7 +63,7 @@ onMounted(() => {
   justify-content: center;
 
   opacity: 0;
-  transition: var(--tr-regular);
+  transition: transform .2s;
   transition-delay: .5s;
 
   &._active {
@@ -72,6 +72,15 @@ onMounted(() => {
 
   @media (max-width: $tablet) {
     display: none;
+  }
+
+  &--white {
+    background: var(--fg-white);
+    color: var(--fg-blue);
+
+    & path {
+      fill: var(--fg-blue);
+    }
   }
 }
 
