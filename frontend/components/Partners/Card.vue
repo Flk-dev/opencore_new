@@ -5,7 +5,7 @@
         <p v-for="category in categories">{{ category.name }}</p>
       </div>
       <NuxtLink :to="{ name: 'partners-slug', params: { slug: slug } }" class="partners-item__header">
-        <h3 class="partners-item__title fz-h1--mobile">{{ title }}</h3>
+        <h3 class="partners-item__title fz-h1--mobile" v-html="title"></h3>
         <div class="partners-item__icon">
           <svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M33.0547 33.5215L32.7296 11.6561C32.7099 10.3306 31.1065 9.68041 30.1691 10.6178L6.60438 34.1825L5.35547 32.9336L28.99 9.29908C29.917 8.37209 29.2924 6.78564 27.9823 6.73936L5.47756 5.94431L6.98222 4.43966L32.9326 5.35643L34.1815 6.60534L34.5594 32.0168L33.0547 33.5215Z" fill="#0000FF"/>

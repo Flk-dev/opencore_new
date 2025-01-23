@@ -12,6 +12,7 @@
 
   &:last-child {
     margin-bottom: 0;
+    margin-left: auto;
   }
 
   @media (max-width: $tablet) {
@@ -30,6 +31,5 @@
 
   & .burger__line:last-child {
     width: 0;
-    margin-left: auto;
   }
 }

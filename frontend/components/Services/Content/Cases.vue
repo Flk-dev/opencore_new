@@ -17,5 +17,9 @@ defineProps<{
 .service__projects {
   padding: 0;
   margin-top: var(--mt-content-block);
+
+  :deep(.block-header){
+    margin-bottom: 6rem;
+  }
 }
 </style>

@@ -4,7 +4,8 @@
       class="btn--white modal__submit"
   />
   <div class="modal__policy">
-    Отправляя форму, вы подтверждаете согласие на обработку ваших <a href="#">персональных данных.</a>
+    Отправляя форму, вы подтверждаете согласие на обработку ваших
+    <NuxtLink to="privacy-policy" @click="modal.close()">персональных данных.</NuxtLink>
   </div>
 </template>
 
@@ -14,6 +15,9 @@ withDefaults(defineProps<{
 }>(), {
   title: 'Отправить',
 });
+
+const modal = useModal();
+
 
 </script>
 

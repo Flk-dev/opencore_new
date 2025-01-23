@@ -14,7 +14,7 @@
       :class="classes"
       :style="{ '--width': width + 'px', '--height': width + 'px' }"
       @mouseover="animateButton( $event )"
-      :title="title"
+      title=""
   >
     <span v-html="title"></span>
   </button>
@@ -106,14 +106,14 @@ onMounted( () => {
       top: var(--yPos);
       transform: translate(-50%, -50%);
       border-radius: 50%;
-      transition: width .9s, height .9s;
+      transition: width .6s, height .6s;
       z-index: -1;
     }
 
     &:hover::before {
       width: var(--width);
       height: var(--height);
-      transition: width .9s, height .9s;
+      transition: width 1s, height 1s;
     }
   }
 

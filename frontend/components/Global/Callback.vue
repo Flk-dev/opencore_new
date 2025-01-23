@@ -31,7 +31,7 @@
             />
           </div>
           <div class="form__button">
-            <UIButton title="Отправить" class="_white" />
+            <UIButton title="Отправить" class="btn--white" />
           </div>
         </div>
       </div>

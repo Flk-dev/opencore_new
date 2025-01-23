@@ -92,6 +92,7 @@ const modal = useModal();
 .learning-format__item-text {
   --fz: var(--fz-body-b);
   --lh: var(--fz-body-b);
+  --mb-ul-li: 1rem;
 
   @media (max-width: $mobile) {
     --mb-ul-li: 1.5rem;

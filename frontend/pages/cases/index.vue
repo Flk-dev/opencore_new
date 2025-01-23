@@ -16,6 +16,8 @@
       <GlobalLoadmore  @loadMore="loadMore" />
     </div>
   </div>
+
+  <GlobalFooterButton />
 </template>
 
 <script setup lang="ts">

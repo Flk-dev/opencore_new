@@ -95,6 +95,10 @@ defineProps<{
     color: var(--fg-black-75);
     opacity: .75;
   }
+
+  &__title {
+    letter-spacing: normal;
+  }
 }
 
 </style>

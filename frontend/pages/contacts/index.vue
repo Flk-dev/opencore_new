@@ -11,7 +11,7 @@
 
   <div class="contacts page-pd-bottom">
     <div class="contacts__container container">
-      <h1 class="contacts__title fz-h2 fz-h1--tablet fz-h1--mobile">Давайте вместе сделаем<br> что-то классное</h1>
+      <h1 class="contacts__title fz-h1--tablet fz-h1--mobile">Давайте вместе сделаем<br> что-то классное</h1>
       <div class="contacts__flex">
         <div class="contacts__main">
           <GlobalRoundVideo class="contacts__video _big" :link="post.video.link" :preview="post.video.preview" />
@@ -45,8 +45,9 @@ const { result: post } = await useApi( '/template/contacts' );
 }
 
 .contacts__title {
-  max-width: 94.1rem;
-  margin: 0 0 6rem;
+  max-width: 105rem;
+  margin: 0 0 7.5rem;
+  font-weight: 600;
 
   @media (max-width: $mobile) {
     margin-bottom: 3rem;

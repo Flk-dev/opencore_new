@@ -51,7 +51,7 @@ const { result: post } = await useApi( '/pages/' + route.params.slug + '/', {}, 
   }
 
   & :deep(a) {
-    text-decoration: underline;
+    border-bottom: .15rem solid var(--fg-blue);
   }
 
   @media (max-width: $tablet) {

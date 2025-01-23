@@ -1,7 +1,7 @@
 <template>
   <div class="cases__grid parallax" v-if="columns.value.col_1.length" ref="grid">
     <div class="cases__col">
-      <div class="cases__left" ref="colLeft">
+      <div ref="colLeft">
         <CasesCard
             v-for="item in columns.value.col_1"
             :key="item.post_id"
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="cases__col">
-      <div class="cases__right" v-if="columns.value.col_2.length" ref="colRight">
+      <div ref="colRight" v-if="columns.value.col_2.length">
         <CasesCard
             v-for="item in columns.value.col_2"
             :key="item.post_id"
@@ -38,35 +38,37 @@ const columns = computed(() => {
   return getGridColumns( props.data )
 });
 
-const grid = ref( '' );
-const colLeft = ref( '' );
-const colRight = ref( '' );
+const grid: any = ref( null );
+const colLeft: any = ref( null );
+const colRight: any = ref( null );
 
-// const onScroll = ( event: any ) => {
-//   const colLeftRect = colLeft.value.getBoundingClientRect();
-//   const colRightRect = colRight.value.getBoundingClientRect();
-//
-//   const colLeftHeight = colLeft.value.clientHeight;
-//   const colRightHeight = colRight.value.clientHeight;
-//   const travel = colLeftHeight - colRightHeight;
-//
-//   const topOfColumns = ( grid.value.getBoundingClientRect().top + window.scrollY );
-//   const columns = grid.value.getBoundingClientRect().height - window.innerHeight;
-//   const scrollInterval = columns / travel;
-//
-//   const scrolled = document.scrollingElement.scrollTop;
-//
-//   const e = Math.round( ( scrolled ) - topOfColumns ) / scrollInterval;
-//   const b = scrolled >= ( colLeftRect.top + window.scrollY ) + colRightRect.height - window.innerHeight;
-//
-//   if ( scrolled >= topOfColumns && b == false ) {
-//     colRight.value.style.transform = "translate3d(0px, " + ( e ) + "px, 0px)";
-//   }
-// }
-//
-// onMounted( () => {
-//   window.addEventListener( 'scroll', onScroll );
-// } );
+onMounted( () => {
+  window.addEventListener( 'scroll', onScroll );
+} );
+
+const onScroll = () => {
+  if ( ! colRight.value || ! colLeft.value ) {
+    return;
+  }
+
+  const leftRect = colLeft.value.getBoundingClientRect();
+  const rightRect = colRight.value.getBoundingClientRect();
+  const gridRect = grid.value.getBoundingClientRect();
+
+  const travel = leftRect.height - rightRect.height
+  const offsetTop = gridRect.top + window.scrollY;
+  const cols = grid.value.getBoundingClientRect().height - window.innerHeight;
+  const interval = cols / travel;
+
+  const scrolled: any = document.scrollingElement.scrollTop;
+
+  const e = Math.round( ( scrolled ) - offsetTop ) / interval;
+  const b = scrolled >= ( leftRect.top + window.scrollY ) + rightRect.height - window.innerHeight;
+
+  if ( scrolled >= offsetTop && b == false ) {
+    colRight.value.style.transform = "translate3d(0px, " + ( e ) + "px, 0px)";
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -86,16 +88,11 @@ const colRight = ref( '' );
       max-width: 52rem;
       margin-left: auto;
 
+      --image-height: 31rem;
+
       @media (max-width: $tablet) {
         margin-left: 0;
-      }
-
-      & .cases-item__media-pic {
-        height: 39.7rem;
-
-        @media (max-width: $tablet) {
-          height: 31rem;
-        }
+        --image-height: 30.5rem;
       }
     }
 
@@ -109,6 +106,7 @@ const colRight = ref( '' );
   &:last-child {
     :deep(.cases-item:nth-child(2n + 2)) {
       max-width: 52rem;
+      --image-height: 31rem;
     }
 
     @media (max-width: $tablet) {
@@ -161,36 +159,6 @@ const colRight = ref( '' );
     padding: 0;
     border-top: none;
   }
-
-  //@media (max-width: $tablet) {
-  //  width: 100%;
-  //  padding: 0;
-  //  margin-bottom: 8rem;
-  //  border-top: none;
-  //
-  //  &:after {
-  //    display: none !important;
-  //  }
-  //
-  //  &:first-child .cases-item:nth-child(3n + 3) {
-  //    margin-left: inherit;
-  //    margin-right: auto;
-  //  }
-  //
-  //  &:last-child {
-  //    margin-bottom: 0;
-  //    padding: 0 !important;
-  //
-  //    & .cases-item._small {
-  //      margin-left: auto;
-  //    }
-  //
-  //    & .cases-item:nth-child(4n + 2) {
-  //      margin-right: auto;
-  //      margin-left: 0;
-  //    }
-  //  }
-  //}
 
   @media (max-width: $mobile) {
 

@@ -14,11 +14,17 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   title?: string,
   subtitle?: string,
   video: object,
 }>();
+
+const title = computed( () => {
+  return props.title;
+  //return props.title.replace(/<a/g, '<nuxt-link');
+} );
+
 </script>
 
 <style scoped lang="scss">

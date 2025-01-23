@@ -28,7 +28,9 @@
             </div>
             <div class="route-item__result" v-if="item.result">
               <div class="route-item__subtitle fz-h4">Результат</div>
-              <ContentText class="route-item__text" :text="item.result" />
+              <div class="route-item__text">
+                <ContentText :text="item.result" />
+              </div>
             </div>
           </div>
         </div>

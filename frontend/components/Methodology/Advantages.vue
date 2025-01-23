@@ -1,7 +1,7 @@
 <template>
   <div class="methodology__advantages methodology-advantages" v-if="data.list.length">
     <div class="container">
-      <GlobalBlockHeader :title="data.title" classes="methodology-advantages" class-title="fz-h1--tablet" />
+      <GlobalBlockHeader :title="data.title" classes="methodology-advantages" class-title="fz-h1" />
       <div class="methodology-advantages__grid">
         <div class="methodology-advantages__item" v-for="(item, key) in data.list" :key="key">
           <div class="methodology-advantages__item-icon" v-if="item.icon">

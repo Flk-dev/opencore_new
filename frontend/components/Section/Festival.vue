@@ -47,6 +47,12 @@ await callOnce(async () => {
     max-width: 110rem;
   }
 
+  :deep(.block-header__content) {
+    & img {
+      max-width: 20.2rem;
+    }
+  }
+
   @media (max-width: $tablet) {
     :deep(.block-header__content) {
       margin-top: 4rem;
@@ -61,19 +67,20 @@ await callOnce(async () => {
 }
 
 .festival__row {
-  margin-bottom: 5.5rem;
+  margin-bottom: 5rem;
   overflow-y: hidden;
+  padding-bottom: .5rem;
 
   &:last-child {
     margin-bottom: 0;
   }
   
   @media (max-width: $tablet) {
-    margin-bottom: 4rem;
+    margin-bottom: 4.5rem;
   }
 
   @media (max-width: $mobile) {
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
 }
 

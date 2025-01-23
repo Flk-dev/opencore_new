@@ -34,7 +34,7 @@
         :value="form.file"
     />
 
-    <FormTextarea
+    <FormInput
         name="comment"
         placeholder="Расскажите кратко о задаче"
         v-model="form.comment"

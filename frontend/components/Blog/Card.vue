@@ -81,5 +81,10 @@ const to = ref( {
     color: var(--fg-black-50);
     margin-bottom: 1rem;
   }
+
+  &__title {
+    display: block;
+    max-width: 80%;
+  }
 }
 </style>

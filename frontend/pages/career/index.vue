@@ -15,7 +15,7 @@
   </div>
 
   <GlobalFooterButton
-      title="Создайте свою историю успеха с&nbsp;нашей командой!"
+      title="Создайте свою историю успеха<br> с&nbsp;нашей командой!"
       btn-title="Стать частью команды"
       @click="modal.open( ModalsPartnerAlways, {
         title: 'Мы всегда открыты для новых партнеров.',

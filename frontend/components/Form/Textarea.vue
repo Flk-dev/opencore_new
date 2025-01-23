@@ -5,7 +5,9 @@
         :placeholder="placeholder"
         :value="value"
         @input="handleInput($event)"
-        class="form__input" />
+        class="form__input"
+        ref="textarea"
+    />
   </div>
 </template>
 
@@ -17,11 +19,15 @@ defineProps<{
   value: string,
 }>();
 
+const textarea = ref(null);
+
 const handleInput = ($event: any) => {
   emit('update:modelValue', $event.target.value)
 }
 </script>
 
 <style scoped lang="scss">
-
+.form__input {
+  height: auto;
+}
 </style>

@@ -156,11 +156,10 @@ const toggleList = () => {
   align-items: center;
   color: var(--fg-blue);
   font-size: var(--fz-button);
-  line-height: var(--lh-button);
   margin-top: 10rem;
 
   & span {
-    text-decoration: underline;
+    border-bottom: .15rem solid var(--fg-blue);
   }
 
   & svg {

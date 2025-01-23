@@ -42,6 +42,10 @@ const columns = computed(() => {
     :deep(.blog-item:nth-child(2n + 1)) {
       max-width: 52rem;
       margin-left: auto;
+
+      & .blog-item__title {
+        max-width: 100%;
+      }
     }
   }
 
@@ -56,6 +60,10 @@ const columns = computed(() => {
 
     :deep(.blog-item:nth-child(2n + 2)) {
       max-width: 52rem;
+
+      & .blog-item__title {
+        max-width: 100%;
+      }
     }
   }
 }

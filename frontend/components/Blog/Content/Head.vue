@@ -93,6 +93,22 @@ defineProps<{
 .article__head-image {
   position: relative;
   max-width: 80rem;
+  width: 100%;
+
+  :deep( .image__picture ) {
+    height: 51rem;
+    position: relative;
+  }
+
+  :deep( .image__img ) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 
   @media (max-width: $tablet) {
    max-width: none;
@@ -103,16 +119,6 @@ defineProps<{
       height: 38.8rem;
       max-width: none;
       border-radius: 0;
-
-      & .image__img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-      }
 
       @media (max-width: $mobile) {
         height: 24.2rem;

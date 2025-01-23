@@ -5,7 +5,7 @@
         v-for="( row, key ) in data"
         :key="key"
         :direction="key % 2 === 0 ? 'reverse' : 'normal'"
-        duration="20"
+        :duration="key % 2 === 0 ? 30 : 40"
         :clone="true"
     >
       <div class="scroll-text__item fz-h4 fz-h2--mobile" v-for="cell in row.cell">
