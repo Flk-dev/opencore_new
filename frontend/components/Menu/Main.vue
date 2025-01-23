@@ -54,27 +54,46 @@ const list = ref( null );
 const after = ref( null );
 const before = ref( null );
 const afterText = ref( 'Образование' );
-
-const height = ref(0);
-
-onMounted( () => {
-  height.value = window.innerHeight - 50;
-} );
-
-const slider = ref(null);
-const onProgress = (e: any) => {
-  slider.value = e.detail[0];
-};
-
-const onSlideChange = ( e: any ) => {
-  const slide = slider.value.slides[slider.value.activeIndex];
-  if ( ! slide ) {
-    return;
-  }
-
-  const item = slide.querySelector( '.menu__item' );
-  afterText.value = item.dataset.title;
-}
+//
+// const height = ref(0);
+//
+// onMounted( () => {
+//   height.value = window.innerHeight;
+//   calc();
+//
+//   window.addEventListener('resize', () => {
+//     calc();
+//     height.value = window.innerHeight;
+//   });
+// } );
+//
+// const slider = ref(null);
+// const onProgress = (e: any) => {
+//   slider.value = e.detail[0];
+// };
+//
+// const onSlideChange = ( e: any ) => {
+//   const slide = slider.value.slides[slider.value.activeIndex];
+//   if ( ! slide ) {
+//     return;
+//   }
+//
+//   const item = slide.querySelector( '.menu__item' );
+//   afterText.value = item.dataset.title;
+// }
+//
+// const calcHeight = () => {
+//   height.value = window.innerHeight;
+// }
+//
+// const calc = () => {
+//   const rectList = list.value.getBoundingClientRect();
+//
+//   const _TOP = 8;
+//   const beforeTop = (( rectList.height - 70 ) / 2) - _TOP;
+//   before.value.style.top = beforeTop + 'px';
+//   after.value.style.top = ( beforeTop + 25 ) + 'px';
+// };
 </script>
 
 <style scoped lang="scss">
