@@ -56,6 +56,41 @@
     }
   }
 
+  & .gallery {
+    display: grid;
+    gap: 3rem;
+
+    &-item {
+      margin: 0 !important;
+      float: none !important;
+      width: auto !important;
+    }
+
+    & br {
+      display: none !important;
+    }
+
+    &-columns {
+      &-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      &-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      &-4 {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      &-5 {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    & img {
+      margin: 0 !important;
+      border: none !important;
+    }
+  }
+
   @media (max-width: $mobile) {
     --m-bottom: 1.5rem;
   }
