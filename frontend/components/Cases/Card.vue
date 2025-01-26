@@ -99,6 +99,12 @@ defineProps<{
   &__title {
     letter-spacing: normal;
   }
+
+  @media (max-width: $tablet) {
+    &:nth-child(4n + 3) {
+      margin-left: 0 !important;
+    }
+  }
 }
 
 </style>

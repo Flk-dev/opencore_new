@@ -1,9 +1,9 @@
 <template>
-  <div class="cases__grid parallax" v-if="columns.value.col_1.length" ref="grid">
+  <div class="cases__grid parallax" v-if="columns.value.colLeft.length" ref="grid">
     <div class="cases__col">
       <div ref="colLeft">
         <CasesCard
-            v-for="item in columns.value.col_1"
+            v-for="item in columns.value.colLeft"
             :key="item.post_id"
             :title="item.post_title"
             :image="item.image"
@@ -14,9 +14,9 @@
       </div>
     </div>
     <div class="cases__col">
-      <div ref="colRight" v-if="columns.value.col_2.length">
+      <div ref="colRight" v-if="columns.value.colRight.length">
         <CasesCard
-            v-for="item in columns.value.col_2"
+            v-for="item in columns.value.colRight"
             :key="item.post_id"
             :title="item.post_title"
             :image="item.image"
@@ -34,8 +34,37 @@ const props = defineProps<{
   data: object
 }>();
 
+const windowWidth = ref( 0 );
+const setWindowWidth = () => {
+  windowWidth.value = window.innerWidth;
+}
+
+onMounted( () => {
+  setWindowWidth();
+  window.addEventListener('resize', setWindowWidth);
+} )
+
 const columns = computed(() => {
-  return getGridColumns( props.data )
+  const data: object = ref({
+    colLeft: [],
+    colRight: [],
+  });
+
+  if (windowWidth.value < 992) {
+    data.value.colLeft = props.data;
+    data.value.colRight = [];
+  } else {
+    props.data.forEach((element: Array<string>, index: number) => {
+      index += 1;
+      if (index % 2 === 0) {
+        data.value.colRight.push(element);
+      } else {
+        data.value.colLeft.push(element);
+      }
+    });
+  }
+
+  return data;
 });
 
 const grid: any = ref( null );
@@ -87,19 +116,7 @@ const onScroll = () => {
     :deep(.cases-item:nth-child(2n + 1)) {
       max-width: 52rem;
       margin-left: auto;
-
       --image-height: 31rem;
-
-      @media (max-width: $tablet) {
-        margin-left: 0;
-        --image-height: 30.5rem;
-      }
-    }
-
-    @media (max-width: $tablet) {
-      :deep(.cases-item:nth-child(4n + 1)) {
-        margin-left: auto;
-      }
     }
   }
 
@@ -107,12 +124,6 @@ const onScroll = () => {
     :deep(.cases-item:nth-child(2n + 2)) {
       max-width: 52rem;
       --image-height: 31rem;
-    }
-
-    @media (max-width: $tablet) {
-      :deep(.cases-item:nth-child(4n + 4)) {
-        margin-left: auto;
-      }
     }
   }
 }
