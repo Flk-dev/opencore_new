@@ -13,10 +13,10 @@ register_rest_route( OS_API_NAMESPACE, '/template/reviews', [
 				$reviews[ $key ] = [
 					'post_id'    => $review->ID,
 					'post_title' => $review->post_title,
-					'logo'       => get_field( 'logo', $review->ID ),
-					'title'      => get_field( 'title', $review->ID ),
-					'post'       => get_field( 'post', $review->ID ),
-					'full'       => get_field( 'full', $review->ID ),
+					'logo'       => on_get_field( 'logo', $review->ID, '' ),
+					'title'      => on_get_field( 'title', $review->ID, '' ),
+					'post'       => on_get_field( 'post', $review->ID, '' ),
+					'full'       => on_get_field( 'full', $review->ID, '' ),
 				];
 			}
 		}

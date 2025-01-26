@@ -49,11 +49,14 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .scroll__icon {
+  $root: &;
+
   position: fixed;
   bottom: 2rem;
   right: 2rem;
   border-radius: 50%;
   background: var(--fg-blue);
+  border: 1.5px solid var(--fg-blue);
   z-index: 998;
   width: 9.1rem;
   height: 9.1rem;
@@ -63,11 +66,15 @@ onMounted(() => {
   justify-content: center;
 
   opacity: 0;
-  transition: transform .2s;
-  transition-delay: .5s;
+  transition: transform .2s, background .3s;
+  transition-delay: .5s, 0s;
 
   &._active {
     opacity: 1;
+  }
+
+  & path {
+    transition: var(--tr-regular);
   }
 
   @media (max-width: $tablet) {
@@ -82,24 +89,32 @@ onMounted(() => {
       fill: var(--fg-blue);
     }
   }
-}
 
-.scroll__icon-text {
-  width: 100%;
-  height: 100%;
+  &-text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center center;
+    transition: transform .5s ease-out;
+  }
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  &-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
-  transform-origin: center center;
-  transition: transform .5s ease-out;
-}
+  @media (any-hover: hover) {
+    &:not(&--white):hover {
+      background: none;
 
-.scroll__icon-logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+      & path {
+        fill: var(--fg-blue);
+      }
+    }
+  }
 }
 </style>

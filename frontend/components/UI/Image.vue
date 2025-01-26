@@ -1,6 +1,6 @@
 <template>
   <div class="image" :class="classes" v-if="image">
-    <picture class="image__picture" :class="classes_pic">
+    <picture class="image__picture" :class="classesPic">
       <img :src="image" class="image__img" :alt="title">
     </picture>
     <slot />
@@ -8,11 +8,11 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   image?: string,
   title?: string,
   classes?: string,
-  classes_pic?: string
+  classesPic?: string
 }>();
 </script>
 

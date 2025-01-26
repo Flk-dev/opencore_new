@@ -34,6 +34,7 @@ register_rest_route( OS_API_NAMESPACE, '/template/home', [
 					'post'      => '',
 					'text_home' => '',
 					'case'      => '',
+					'full'      => '',
 				],
 				'service'    => [
 					'home_text' => ''

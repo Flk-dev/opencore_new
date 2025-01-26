@@ -18,6 +18,7 @@
                 :text="item.text_home"
                 :logo="item.logo"
                 :cases="item.case"
+                :full="item.full"
             />
           </swiper-slide>
         </swiper>

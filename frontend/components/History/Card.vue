@@ -1,6 +1,6 @@
 <template>
   <div class="history-card">
-    <UIImage :image="image" classes_pic="history-card__image item--cover" />
+    <UIImage :image="image" classes-pic="history-card__image item--cover" />
     <h3 class="history-card__title fz-h3 fz-h2--mobile">{{ title }}</h3>
     <div class="history-card__subtitle fz-body" v-if="subtitle">{{ subtitle }}</div>
     <UIButton

@@ -8,23 +8,39 @@ register_rest_route( OS_API_NAMESPACE, '/cases/(?P<slug>\S+)', [
 		    return get_wp_error();
 	    }
 
-	    $post = get_posts( [
+	    global $post;
+
+	    $get = get_posts( [
 		    'name'           => $slug,
 		    'post_type'      => 'cases',
 		    'posts_per_page' => 1
 	    ] );
 
-	    if ( empty( $post ) ) {
+	    if ( empty( $get ) ) {
 		    return get_wp_error();
 	    }
 
-	    $categories = get_term_format_data( wp_get_post_terms( $post[0]->ID, 'cases_cats' ) );
+	    $post = $get[0];
+
+	    $categories = get_term_format_data( wp_get_post_terms( $get[0]->ID, 'cases_cats' ) );
+
+	    $get_next_post = get_adjacent_post( false, '', false );
+	    $next_case     = [];
+
+	    if ( ! empty( $get_next_post ) ){
+		    $next_case = [
+		    	'image' => on_get_field( 'image', $get_next_post->ID, '' ),
+		    	'title' => $get_next_post->post_title,
+			    'link'  => $get_next_post->post_name,
+		    ];
+	    }
 
 	    return get_format_data( [
-		    'post_id'    => $post[0]->ID,
-		    'post_title' => $post[0]->post_title,
+		    'post_id'    => $get[0]->ID,
+		    'post_title' => $get[0]->post_title,
 		    'categories' => $categories,
-		    'content'    => on_get_field( 'content', $post[0]->ID, [] )
+		    'content'    => on_get_field( 'content', $get[0]->ID, [] ),
+		    'next'       => $next_case
 	    ] );
     },
 
