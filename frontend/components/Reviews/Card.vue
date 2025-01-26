@@ -46,6 +46,8 @@ const modal = useModal();
   padding: 3rem;
   border-radius: var(--br-regular);
   border: 1.5px solid var(--fg-blue);
+  backdrop-filter: blur(34px);
+  background: rgba(255, 255, 255, 0.7);
   margin-bottom: 2rem;
   transition: all .3s;
 

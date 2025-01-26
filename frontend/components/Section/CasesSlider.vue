@@ -10,6 +10,7 @@
             :loop="false"
             :space-between="10"
             :breakpoints="{ '576': { slidesPerView: 'auto', spaceBetween: 20 } }"
+            @sliderMove="test"
         >
           <swiper-slide v-for="item in data" :key="item.post_id">
             <CasesCard
@@ -43,17 +44,29 @@ const changeCursor = ( event: any ) => {
   cursor.value.$el.style.left = x + 'px';
   cursor.value.$el.style.top = y + 'px';
 }
+
+const test = ( event: any, pos: any ) => {
+  const x = pos.clientX;
+  const y = pos.clientY;
+
+  cursor.value.$el.style.left = x + 'px';
+  cursor.value.$el.style.top = y + 'px';
+}
 </script>
 
 <style scoped lang="scss">
 .cases-slider__slider {
   margin: 0 var(--m-m-container);
-  cursor: none !important;
+  cursor: none;
 
   &:hover {
     :deep(.pull__cursor) {
       opacity: 1;
     }
+  }
+
+  :deep( .cases-item ) {
+    cursor: none;
   }
 }
 

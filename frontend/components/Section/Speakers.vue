@@ -9,6 +9,7 @@
             :slides-per-view="1"
             :space-between="30"
             :breakpoints="{ '576': { slidesPerView: 1.5 } }"
+            @sliderMove="test"
         >
           <swiper-slide v-for="(item, index) in data" :key="item.id">
             <SpeakersCard
@@ -38,6 +39,14 @@ const cursor = ref( null );
 const changeCursor = ( event: any ) => {
   const x = event.clientX;
   const y = event.clientY;
+
+  cursor.value.$el.style.left = x + 'px';
+  cursor.value.$el.style.top = y + 'px';
+}
+
+const test = ( event: any, pos: any ) => {
+  const x = pos.clientX;
+  const y = pos.clientY;
 
   cursor.value.$el.style.left = x + 'px';
   cursor.value.$el.style.top = y + 'px';
