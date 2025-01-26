@@ -10,9 +10,9 @@
   </GlobalPageHeader>
   <div class="blog page-pd-bottom">
     <div class="blog__container container">
-      <BlogFilters @filter="filter" />
-      <BlogGrid :data="posts" />
-      <GlobalLoadmore v-if="posts.length" class="blog__loadmore"  @loadMore="loadMore" />
+        <BlogFilters @filter="filter" />
+        <BlogGrid :data="posts" />
+        <GlobalLoadmore v-if="posts.length" class="blog__loadmore"  @loadMore="loadMore" />
     </div>
   </div>
 

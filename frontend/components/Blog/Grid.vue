@@ -55,6 +55,16 @@ const columns = computed(() => {
 </script>
 
 <style scoped lang="scss">
+.list-enter-active,
+.list-leave-active {
+  transition: opacity 0.3s, transform .5s;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 1;
+  transform: translateY(-20%);
+}
+
 .blog__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
