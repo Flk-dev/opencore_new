@@ -1,18 +1,5 @@
 <template>
-  <div class="blog__grid" v-if="columns.value && columns.value.col_1.length">
-    <div class="blog__col" v-for="(blog, colIndex) in columns.value" :key="colIndex">
-      <BlogCard
-          v-for="item in blog"
-          :key="item.post_id"
-          :title="item.post_title"
-          :slug="item.post_slug"
-          :image="item.image"
-          :time-read="item.time_read"
-          :categories="item.categories"
-          :col-index="colIndex"
-      />
-    </div>
-  </div>
+  {{ cols }}
 </template>
 
 <script setup lang="ts">
@@ -20,9 +7,55 @@ const props = defineProps<{
   data: object
 }>();
 
-const columns = computed(() => {
-  return getGridColumns( props.data )
-});
+// const cols = ref( {
+//   colLeft: [],
+//   colRight: []
+// } );
+
+const cols = computed( () => {
+  // let data = {
+  //   colLeft: [],
+  //   colRight: [],
+  // };
+
+  //console.log( WindowInstanceMap.innerHeight );
+
+  // props.data.forEach((item: any, key: number) => {
+  //   if (key % 2 === 0) {
+  //     data.colRight.push(item);
+  //   } else {
+  //     data.colLeft.push(item);
+  //   }
+  // })
+
+  //return data;
+} );
+
+// const filter = () => {
+//   if (props.data.length === 0) {
+//     return;
+//   }
+//
+//   if ( window.innerWidth < 992 ){
+//     cols.value.colLeft = props.data;
+//     cols.value.colRight = [];
+//   } else {
+//     cols.value.colLeft = [];
+//     cols.value.colRight = [];
+//     props.data.forEach((item: any, key: number) => {
+//       if (key % 2 === 0) {
+//         cols.value.colRight.push(item);
+//       } else {
+//         cols.value.colLeft.push(item);
+//       }
+//     })
+//   }
+// };
+//
+// onMounted( () => {
+//   filter();
+//   window.addEventListener( 'resize', filter )
+// } )
 </script>
 
 <style scoped lang="scss">

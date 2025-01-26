@@ -50,7 +50,7 @@ defineProps<{
 
 .service-when__item {
   border-radius: var(--br-regular);
-  border: .15rem solid var(--fg-blue);
+  border: 1.5px solid var(--fg-blue);
   min-height: 30rem;
   display: flex;
   flex-direction: column;

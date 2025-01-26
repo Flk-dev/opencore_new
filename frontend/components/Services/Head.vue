@@ -43,7 +43,7 @@ const title = computed( () => {
 
     :deep(a) {
       color: var(--fg-blue);
-      border-bottom: .3rem solid var(--fg-blue);
+      border-bottom: 3px solid var(--fg-blue);
     }
   }
 

@@ -62,7 +62,7 @@ const modal = useModal();
 
 .learning-format__item {
   padding: 3rem;
-  border: .15rem solid var(--fg-blue);
+  border: 1.5px solid var(--fg-blue);
   color: var(--fg-blue);
   min-height: 35rem;
   display: flex;

@@ -63,7 +63,7 @@ const filter = ( id: any, index: number|string ) => {
 .cats__menu-link {
   padding: 0 2rem;
   font-size: var(--fz-caption);
-  border: .15rem solid var(--fg-black);
+  border: 1.5px solid var(--fg-black);
   border-radius: 1.5rem;
   min-height: 4.1rem;
   display: flex;

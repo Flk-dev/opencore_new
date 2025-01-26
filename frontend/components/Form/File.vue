@@ -40,7 +40,7 @@ defineProps<{
   align-items: center;
   justify-content: space-between;
   padding: 2.415rem 2rem 1.415rem;
-  border-bottom: .15rem solid var(--fg-black);
+  border-bottom: 1.5px solid var(--fg-black);
 
   @media (max-width: $mobile) {
     padding: 2.5rem 1rem 1.5rem;

@@ -120,7 +120,7 @@ const onScroll = () => {
 .cases__col {
   width: 50%;
   padding: 2rem 1.5rem 13.5rem var(--p-container);
-  border-top: .15rem solid var(--fg-blue);
+  border-top: 1.5px solid var(--fg-blue);
   position: relative;
 
   &:after {

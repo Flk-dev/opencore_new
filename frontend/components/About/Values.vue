@@ -56,7 +56,7 @@ defineProps<{
   min-width: var(--width);
   max-width: var(--width);
   background: var(--fg-white);
-  border: .1rem solid var(--fg-blue);
+  border: 1px solid var(--fg-blue);
   border-radius: var(--br-regular);
   padding: 3rem;
   display: flex;

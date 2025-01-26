@@ -38,7 +38,7 @@ defineProps<{
 .addresses-item {
   padding: 3rem 0;
   margin-bottom: 9rem;
-  border-top: .15rem solid var(--fg-black);
+  border-top: 1.5px solid var(--fg-black);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;

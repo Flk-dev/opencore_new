@@ -41,8 +41,8 @@ defineProps<{
 }
 
 .return__col {
-  --border: .15rem solid var(--fg-white);
-  border-top: .15rem solid var(--fg-white);
+  --border: 1.5px solid var(--fg-white);
+  border-top: 1.5px solid var(--fg-white);
   border-right: var(--border);
   padding-top: 3rem;
   min-height: 29rem;

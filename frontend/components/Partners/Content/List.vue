@@ -67,7 +67,7 @@ const upCounter = () => {
 
 .partner-list__item {
   padding: 3rem 0;
-  border-top: .15rem solid var(--fg-blue);
+  border-top: 1.5px solid var(--fg-blue);
 
   @media (max-width: $mobile) {
     padding: 2rem 0;

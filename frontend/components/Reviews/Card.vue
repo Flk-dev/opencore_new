@@ -45,7 +45,7 @@ const modal = useModal();
   cursor: pointer;
   padding: 3rem;
   border-radius: var(--br-regular);
-  border: .15rem solid var(--fg-blue);
+  border: 1.5px solid var(--fg-blue);
   margin-bottom: 2rem;
   transition: all .3s;
 

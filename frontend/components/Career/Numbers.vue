@@ -54,7 +54,7 @@ defineProps<{
   align-items: flex-start;
   justify-content: space-between;
   padding: 3rem 0;
-  border-top: .15rem solid var(--fg-blue);
+  border-top: 1.5px solid var(--fg-blue);
   margin-bottom: 6rem;
 
   @media (max-width: $tablet) {

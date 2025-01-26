@@ -79,7 +79,7 @@ defineProps<{
   display: flex;
   align-items: center;
   justify-content: center;
-  border: .1rem solid var(--fg-blue);
+  border: 1px solid var(--fg-blue);
 
   @media (max-width: $tablet) {
     margin-top: 4rem;

@@ -79,7 +79,7 @@ const refLogo = ref( null );
 
 .reviews-item {
   padding: 3rem;
-  border: .15rem solid var(--fg-blue);
+  border: 1.5px solid var(--fg-blue);
   border-radius: var(--br-regular);
   display: flex;
   flex-direction: column;
@@ -120,6 +120,8 @@ const refLogo = ref( null );
 
   & img {
     border-radius: var(--br-regular);
+    width: 100%;
+    height: auto;
   }
 
   @media (max-width: $mobile) {

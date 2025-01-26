@@ -63,7 +63,7 @@ defineProps<{
 .route__grid {
   margin-left: var(--m-m-container);
   margin-right: var(--m-m-container);
-  border-top: .15rem solid var(--fg-blue);
+  border-top: 1.5px solid var(--fg-blue);
   padding: 4rem 2rem 0;
 
   @media (max-width: $tablet) {
@@ -88,7 +88,7 @@ defineProps<{
     grid-template-columns: 1fr;
     gap: 4rem;
     padding: 2rem 0;
-    border-top: .15rem solid var(--fg-black);
+    border-top: 1.5px solid var(--fg-black);
   }
 }
 

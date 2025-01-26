@@ -40,18 +40,9 @@ defineProps<{
 }>();
 
 const modal = useModal();
-const { isOpen, view, props } = storeToRefs(modal);
-
-const isScrollable = ref( true );
-const modalContent: any = ref( null );
+const { isOpen, isScrollable, view, props } = storeToRefs(modal);
 
 const model = ref({});
-
-computed( () => {
-  if (modalContent.value.getBoundingClientRect().height > window.innerHeight) {
-    isScrollable.value = true;
-  }
-} );
 </script>
 
 <style scoped lang="scss">

@@ -32,7 +32,7 @@ defineProps<{
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  border-top: .15rem solid var(--fg-black);
+  border-top: 1.5px solid var(--fg-black);
 
   &__title {
     color: var(--fg-blue);

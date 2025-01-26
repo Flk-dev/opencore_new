@@ -52,7 +52,7 @@ defineProps<{
   align-items: flex-start;
   padding: 3rem 0;
   margin-bottom: 9rem;
-  border-top: .15rem solid var(--fg-black);
+  border-top: 1.5px solid var(--fg-black);
 
   &:last-child {
     margin-bottom: 0;

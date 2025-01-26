@@ -63,7 +63,7 @@ const contacts = useState('contacts');
 .footer__button {
   display: block;
   width: 100%;
-  border: .15rem solid var(--fg-white);
+  border: 1.5px solid var(--fg-white);
   font-size: var(--fz-button);
   line-height: var(--lh-button);
   padding: 5.9rem 1rem;

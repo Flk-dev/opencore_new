@@ -19,7 +19,7 @@ defineProps<{
 <style scoped lang="scss">
 .advantages-item {
   padding-top: 2rem;
-  border-top: .15rem solid var(--fg-white);
+  border-top: 1.5px solid var(--fg-white);
 }
 
 .advantages-item__icon {

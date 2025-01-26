@@ -42,7 +42,7 @@ defineProps<{
   white-space: nowrap;
   padding: 3rem;
   color: var(--fg-blue);
-  border: .15rem solid var(--fg-blue);
+  border: 1.5px solid var(--fg-blue);
   border-radius: var(--br-regular);
   margin-right: 2rem;
   line-height: 60%;

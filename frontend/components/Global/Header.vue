@@ -109,7 +109,7 @@ const toggleCallback = () => {
   line-height: var(--lh-caption);
   letter-spacing: var(--lc-caption);
   background: var(--fg-blue);
-  border: .1rem solid var(--fg-blue);
+  border: 1px solid var(--fg-blue);
   color: var(--fg-white);
   border-radius: 1rem;
   transition: var(--tr-regular);

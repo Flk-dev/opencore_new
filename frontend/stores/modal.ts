@@ -1,21 +1,29 @@
 import { markRaw } from "vue";
 import {defineStore} from "pinia";
 
-const lockBody = () => {
-    if ( document.querySelector( 'body' ) ) {
-        document.querySelector( 'body' ).classList.add( '_lock' );
-    }
+const lockUnlockBody = () => {
+    document.querySelector( 'body' ).classList.toggle( '_lock' );
 };
 
-const unlockBody = () => {
-    if ( document.querySelector( 'body' ) ) {
-        document.querySelector( 'body' ).classList.remove( '_lock' );
-    }
-};
+const isScrollable = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            const modal: any = document.querySelector(".modal");
+            const content: any = modal.querySelector(".modal__content");
+
+            if (content.getBoundingClientRect().height > window.innerHeight) {
+                resolve(true );
+            } else {
+                resolve(false );
+            }
+        }, 5);
+    });
+}
 
 export const useModal = defineStore('modal', {
     state: () => ({
         isOpen: false,
+        isScrollable: false,
         view: {},
         props: {}
     }),
@@ -27,14 +35,19 @@ export const useModal = defineStore('modal', {
                 this.props = props;
             }
 
-            lockBody();
+            isScrollable().then((value: boolean) => {
+                this.isScrollable = value;
+            });
+
+            lockUnlockBody();
         },
         close() {
             this.isOpen = false;
             this.view = {};
             this.props = {};
+            this.isScrollable = false;
 
-            unlockBody();
+            lockUnlockBody();
         }
     }
 })

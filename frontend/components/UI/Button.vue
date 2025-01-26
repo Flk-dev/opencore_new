@@ -50,7 +50,7 @@ onMounted( () => {
   padding: 2.2rem 0 2.6rem;
   font-size: var(--fz-button);
   line-height: var(--lh-button);
-  border: .15rem solid var(--fg-blue);
+  border: 1.5px solid var(--fg-blue);
   border-radius: var(--br-regular);
   text-align: center;
   color: var(--fg-blue);

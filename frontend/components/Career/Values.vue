@@ -58,7 +58,7 @@ defineProps<{
 
 .career-values__round {
   border-radius: 50%;
-  border: .15rem solid var(--fg-white);
+  border: 1.5px solid var(--fg-white);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,7 +77,7 @@ defineProps<{
 
 .career-values__item {
   border-radius: 50%;
-  border: .15rem solid var(--fg-white);
+  border: 1.5px solid var(--fg-white);
   width: 87.5rem;
   max-width: 100%;
   height: 23.7rem;
