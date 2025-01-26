@@ -27,12 +27,20 @@ const to = ref( {
   params: {
     slug: props.slug,
   }
-} )
+} );
 </script>
 
 <style scoped lang="scss">
 .blog-item {
   margin-bottom: 25rem;
+  //opacity: 0;
+  //transform: translateY(-50%);
+  transition: opacity .2s, transform .8s;
+
+  &--active {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   &:last-child {
     margin-bottom: 0;

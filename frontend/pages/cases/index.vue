@@ -27,7 +27,7 @@ const { result: categories } = await useApi( '/cases/categories', {}, '/cases/ca
 
 const termId: any = ref( 0 );
 const page: any = ref( 1 );
-const { data: posts }   =await useAsyncData(
+const { data: posts } = await useAsyncData(
     'cases',
     () : any => $fetch(getApiUrl( '/cases/' ), {
       params: {

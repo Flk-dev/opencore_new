@@ -1,5 +1,18 @@
 <template>
-  {{ cols }}
+  <div class="blog__grid" v-if="columns.value && columns.value.colLeft.length">
+    <div class="blog__col" v-for="(blog, colIndex) in columns.value" :key="colIndex">
+      <BlogCard
+          v-for="item in blog"
+          :key="item.post_id"
+          :title="item.post_title"
+          :slug="item.post_slug"
+          :image="item.image"
+          :time-read="item.time_read"
+          :categories="item.categories"
+          :col-index="colIndex"
+      />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -7,55 +20,38 @@ const props = defineProps<{
   data: object
 }>();
 
-// const cols = ref( {
-//   colLeft: [],
-//   colRight: []
-// } );
+const windowWidth = ref( 0 );
+const setWindowWidth = () => {
+  windowWidth.value = window.innerWidth;
+}
 
-const cols = computed( () => {
-  // let data = {
-  //   colLeft: [],
-  //   colRight: [],
-  // };
+onMounted( () => {
+  setWindowWidth();
+  window.addEventListener('resize', setWindowWidth);
+} )
 
-  //console.log( WindowInstanceMap.innerHeight );
+const columns = computed(() => {
+  const data: object = ref({
+    colLeft: [],
+    colRight: [],
+  });
 
-  // props.data.forEach((item: any, key: number) => {
-  //   if (key % 2 === 0) {
-  //     data.colRight.push(item);
-  //   } else {
-  //     data.colLeft.push(item);
-  //   }
-  // })
+  if (windowWidth.value < 992) {
+    data.value.colLeft = props.data;
+    data.value.colRight = [];
+  } else {
+    props.data.forEach((element, index) => {
+      index += 1;
+      if (index % 2 === 0) {
+        data.value.colRight.push(element);
+      } else {
+        data.value.colLeft.push(element);
+      }
+    });
+  }
 
-  //return data;
-} );
-
-// const filter = () => {
-//   if (props.data.length === 0) {
-//     return;
-//   }
-//
-//   if ( window.innerWidth < 992 ){
-//     cols.value.colLeft = props.data;
-//     cols.value.colRight = [];
-//   } else {
-//     cols.value.colLeft = [];
-//     cols.value.colRight = [];
-//     props.data.forEach((item: any, key: number) => {
-//       if (key % 2 === 0) {
-//         cols.value.colRight.push(item);
-//       } else {
-//         cols.value.colLeft.push(item);
-//       }
-//     })
-//   }
-// };
-//
-// onMounted( () => {
-//   filter();
-//   window.addEventListener( 'resize', filter )
-// } )
+  return data;
+});
 </script>
 
 <style scoped lang="scss">
