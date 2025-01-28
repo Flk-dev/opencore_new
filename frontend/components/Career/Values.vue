@@ -30,7 +30,7 @@
   }
 
   &__block {
-    padding: 2.1rem 0;
+    padding: 2.1rem 0 1.9rem;
     background: var(--fg-blue);
     color: var(--fg-white);
     border-radius: var(--br-regular);

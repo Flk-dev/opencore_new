@@ -1,5 +1,5 @@
 <template>
-  <div class="circle">
+  <div class="circle" :style="{ height: roundHeight + 'px' }">
     <div class="circle__round" :style="{ height: roundHeight + 'px' }">
       <div :style="{ height: roundHeightDiv + 'px' }"></div>
     </div>
@@ -30,8 +30,8 @@ defineProps<{
 }>();
 
 const items = ref( [] );
-const roundHeight = ref( 90 );
-const roundHeightDiv = ref( 90 );
+const roundHeight = ref( 110 );
+const roundHeightDiv = ref( 110 );
 
 onMounted( () => {
   items.value.forEach((item: any) => {
@@ -56,7 +56,7 @@ const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
   position: relative;
 
   &__list {
-    padding: 4.5rem 0;
+    padding: 5.5rem 0;
   }
 
   &__round {
@@ -66,7 +66,7 @@ const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
     width: 100%;
     height: 0;
     overflow: hidden;
-    transition: height 2s;
+    transition: height 2s,;
 
     & div {
       border: .15rem solid var(--fg-white);
@@ -98,8 +98,8 @@ const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
 
     &--1,
     &--3 {
-      width: 131.1rem;
-      height: 27.7rem;
+      width: 128.5rem;
+      height: 27.2rem;
 
       @media (max-width: $tablet) {
         width: 65.2rem;
