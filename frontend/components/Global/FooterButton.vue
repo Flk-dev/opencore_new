@@ -1,5 +1,5 @@
 <template>
-  <div class="footer__button">
+  <div class="footer__button section--blue">
     <div class="footer__button-container container">
       <slot name="footer" v-if="$slots.footer" />
       <div v-else>

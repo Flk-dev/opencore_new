@@ -5,6 +5,8 @@
         <NuxtPage/>
       </NuxtLayout>
     <GlobalFooter />
+    <GlobalCookie />
+    <GlobalScrollIcon />
     <ModalsDefault />
   </div>
 </template>

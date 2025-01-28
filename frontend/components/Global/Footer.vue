@@ -1,5 +1,7 @@
 <template>
-  <footer class="footer section--blue">
+  <footer
+      class="footer section--blue"
+  >
     <div class="footer__container container">
       <div class="footer__main">
         <div class="footer__main-left">
@@ -40,9 +42,6 @@
       </div>
     </div>
   </footer>
-
-  <GlobalCookie />
-  <GlobalScrollIcon />
 </template>
 
 <script setup lang="ts">

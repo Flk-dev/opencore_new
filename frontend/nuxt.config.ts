@@ -14,6 +14,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/style.scss'],
   modules: [
     '@pinia/nuxt',
+    '@vueuse/nuxt',
   ],
   runtimeConfig: {
     public: {
