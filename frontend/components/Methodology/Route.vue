@@ -6,8 +6,10 @@
         <div class="route-item" v-for="(item, dataKey) in data.list" :key="dataKey">
           <div class="route-item__line"></div>
           <div class="route-item__left fz-h3">
-            <div class="route-item__counter fz-h1--mobile">{{ dataKey + 1 }}</div>
-            <h3 class="route-item__title fz-h1--mobile" v-if="item.title" v-html="item.title"></h3>
+            <div class="route-item__sticky">
+              <div class="route-item__counter fz-h1--mobile">{{ dataKey + 1 }}</div>
+              <h3 class="route-item__title fz-h1--mobile" v-if="item.title" v-html="item.title"></h3>
+            </div>
         </div>
         <div class="route-item__right">
           <div class="route-item__text">
@@ -53,24 +55,24 @@ defineProps<{
 <style scoped lang="scss">
 .route {
   margin-top: var(--mt-content-block);
-}
 
-.route__block-header {
-  justify-content: flex-end;
-  padding-right: 4.6rem;
-}
+  &__block-header {
+    justify-content: flex-end;
+    padding-right: 4.6rem;
+  }
 
-.route__grid {
-  margin-left: var(--m-m-container);
-  margin-right: var(--m-m-container);
-  border-top: 1.5px solid var(--fg-blue);
-  padding: 4rem 2rem 0;
+  &__grid {
+    margin-left: var(--m-m-container);
+    margin-right: var(--m-m-container);
+    border-top: 1.5px solid var(--fg-blue);
+    padding: 4rem 2rem 0;
 
-  @media (max-width: $tablet) {
-    padding: 0;
-    border-top: 0;
-    margin-left: 0;
-    margin-right: 0;
+    @media (max-width: $tablet) {
+      padding: 0;
+      border-top: 0;
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 }
 
@@ -90,104 +92,111 @@ defineProps<{
     padding: 2rem 0;
     border-top: 1.5px solid var(--fg-black);
   }
-}
 
-.route-item__line {
-  position: absolute;
-  top: -4rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: .15rem;
-  height: calc(100% + 4rem);
-  background-color: var(--fg-blue);
-
-  @media (max-width: $tablet) {
-    display: none;
-  }
-}
-
-.route-item__left {
-  display: flex;
-  align-items: flex-start;
-}
-
-.route-item__title {
-  margin-left: 1.7rem;
-  max-width: 53rem;
-}
-
-.route-item__right {
-  padding-left: 5.8rem;
-
-  @media (max-width: $tablet) {
-    padding-left: 0;
-  }
-}
-
-.route-item__text {
-  margin-bottom: 6rem;
-  position: relative;
-
-  & :deep(.content__text) {
-    --fz: var(--fz-body-b);
-    --lh: var(--lh-body-b);
+  &__line {
+    position: absolute;
+    top: -4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: .15rem;
+    height: calc(100% + 4rem);
+    background-color: var(--fg-blue);
 
     @media (max-width: $tablet) {
-      padding-right: 2rem;
-    }
-
-    @media (max-width: $mobile) {
-      padding-right: 0;
+      display: none;
     }
   }
 
-  @media (max-width: $tablet) {
+  &__left {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
   }
 
-  @media (max-width: $mobile) {
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-}
+  &__right {
+    padding-left: 5.8rem;
 
-.route-item__result {
-  margin-top: 6rem;
-
-  @media (max-width: $mobile) {
-    margin-top: 2rem;
-  }
-}
-
-.route-item__subtitle {
-  margin-bottom: 2rem;
-  color: var(--fg-blue);
-}
-
-.route-item__video {
-  position: absolute;
-  left: -9.5rem;
-  top: 0;
-  min-width: 7.5rem;
-  height: 7.5rem;
-
-  :deep(.video-round__play) {
-    max-width: 1.9rem;
+    @media (max-width: $tablet) {
+      padding-left: 0;
+    }
   }
 
-  @media (max-width: $tablet) {
+  &__sticky {
+    display: flex;
+    align-items: flex-start;
+    position: sticky;
+    top: 5rem;
+  }
+
+  &__title {
+    margin-left: 1.7rem;
+    max-width: 53rem;
+  }
+
+  &__subtitle {
+    margin-bottom: 2rem;
+    color: var(--fg-blue);
+  }
+
+  &__text {
+    margin-bottom: 6rem;
     position: relative;
-    left: 0;
-    top: 0;
-    min-width: 9rem;
-    height: 9rem;
-    max-width: 9rem;
+
+    & :deep(.content__text) {
+      --fz: var(--fz-body-b);
+      --lh: var(--lh-body-b);
+
+      @media (max-width: $tablet) {
+        padding-right: 2rem;
+      }
+
+      @media (max-width: $mobile) {
+        padding-right: 0;
+      }
+    }
+
+    @media (max-width: $tablet) {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
   }
 
-  @media (max-width: $mobile) {
-    margin-top: 2rem;
+  &__result {
+    margin-top: 6rem;
+
+    @media (max-width: $mobile) {
+      margin-top: 2rem;
+    }
+  }
+
+  &__video {
+    position: absolute;
+    left: -9.5rem;
+    top: 0;
+    min-width: 7.5rem;
+    height: 7.5rem;
+
+    :deep(.video-round__play) {
+      max-width: 1.9rem;
+    }
+
+    @media (max-width: $tablet) {
+      position: relative;
+      left: 0;
+      top: 0;
+      min-width: 9rem;
+      height: 9rem;
+      max-width: 9rem;
+    }
+
+    @media (max-width: $mobile) {
+      margin-top: 2rem;
+    }
   }
 }
 </style>
