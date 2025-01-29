@@ -49,8 +49,8 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const logo = ref( null );
-const slider = ref( null );
+const logo: any = ref( null );
+const slider: any = ref( null );
 
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.defaults({
@@ -222,6 +222,12 @@ const setPosition = () => {
     @media (max-width: $tablet) {
       margin-right: 6rem;
     }
+  }
+}
+
+.menu--open {
+  & .hero__logo {
+    opacity: 0;
   }
 }
 
