@@ -46,9 +46,9 @@ html {
     font-size: #{'calc(var(--fz-modifier) * var(--base-size))'};
   }
 
-  @media (max-width: $laptop-xlg) {
-    font-size: #{'calc(var(--fz-modifier) * var(--base-size))'};
-  }
+  //@media (max-width: $laptop-xlg) {
+  //  font-size: #{'calc(var(--fz-modifier) * var(--base-size))'};
+  //}
 
   @media (max-width: $desktop-lgz) {
     --fz-modifier: 0.620834;

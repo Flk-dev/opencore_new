@@ -4,7 +4,7 @@
       <MenuContacts />
       <GlobalSocials />
     </div>
-    <div class="menu__list" ref="list">
+    <div class="menu__list" ref="list" :style="{ 'padding-top': paddingTopMenu + 'px' }">
       <div class="menu__data">
         <div class="menu__before" ref="before">
           <svg width="280" height="77" viewBox="0 0 280 77" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -23,77 +23,86 @@
         </div>
         <div class="menu__after fz-headline" ref="after">{{ afterText }}</div>
       </div>
-      <swiper-container
-          direction="vertical"
-          :space-between="0"
-          :mousewheel="true"
-          :centered-slides="true"
-          slides-per-view="auto"
-          :loop="true"
-          :height="height"
-          @swiperprogress="onProgress"
-          @swiperslidechange="onSlideChange"
-      >
-        <swiper-slide v-for="item in post.menu" :key="item.id">
-          <div class="menu__item" :data-title="item.title">
-            <NuxtLink :to="item.url" class="menu__link"> {{ item.content }}</NuxtLink>
-          </div>
-        </swiper-slide>
-      </swiper-container>
+      <div class="menu__slider">
+        <swiper-container
+            class="menu__swiper"
+            direction="vertical"
+            :space-between="0"
+            :mousewheel="true"
+            :centered-slides="true"
+            slides-per-view="auto"
+            :loop="true"
+            :height="sliderHeight"
+            @swiperprogress="onProgress"
+            @swiperslidechange="onSlideChange"
+        >
+          <swiper-slide v-for="item in post.menu" :key="item.id">
+            <div class="menu__item" ref="items" :data-title="item.title">
+              <NuxtLink :to="item.url" class="menu__link"> {{ item.content }}</NuxtLink>
+            </div>
+          </swiper-slide>
+        </swiper-container>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { register } from 'swiper/element/bundle';
-  register();
+import { register } from 'swiper/element/bundle';
+register();
 
 const { result: post } = await useApi( '/menu/header/', {}, 'menu/header' );
 
+const slider = ref( null );
 const list = ref( null );
+const items = ref( null );
 const after = ref( null );
 const before = ref( null );
 const afterText = ref( 'Образование' );
-//
-// const height = ref(0);
-//
-// onMounted( () => {
-//   height.value = window.innerHeight;
-//   calc();
-//
-//   window.addEventListener('resize', () => {
-//     calc();
-//     height.value = window.innerHeight;
-//   });
-// } );
-//
-// const slider = ref(null);
-// const onProgress = (e: any) => {
-//   slider.value = e.detail[0];
-// };
-//
-// const onSlideChange = ( e: any ) => {
-//   const slide = slider.value.slides[slider.value.activeIndex];
-//   if ( ! slide ) {
-//     return;
-//   }
-//
-//   const item = slide.querySelector( '.menu__item' );
-//   afterText.value = item.dataset.title;
-// }
-//
-// const calcHeight = () => {
-//   height.value = window.innerHeight;
-// }
-//
-// const calc = () => {
-//   const rectList = list.value.getBoundingClientRect();
-//
-//   const _TOP = 8;
-//   const beforeTop = (( rectList.height - 70 ) / 2) - _TOP;
-//   before.value.style.top = beforeTop + 'px';
-//   after.value.style.top = ( beforeTop + 25 ) + 'px';
-// };
+
+const sliderHeight: Ref<number> = ref(0);
+const paddingTopMenu: Ref = ref(0);
+
+const headerHeight = ref( 50.2 );
+const { height: windowHeight } = useWindowSize();
+
+const { height: listHeight } = useElementBounding( list );
+const { height: beforeHeight } = useElementBounding( before );
+
+onMounted( () => {
+  countMenuData();
+} );
+
+const countMenuData = () => {
+  headerHeight.value = document.querySelector( '.header' ).getBoundingClientRect().height;
+  paddingTopMenu.value = headerHeight.value;
+  sliderHeight.value = windowHeight.value - headerHeight.value;
+
+  const BEFORE_COEF = 7;
+
+  const middle = ( (listHeight.value - headerHeight.value) / 2 )
+      + ( items.value[0].getBoundingClientRect().height / 2 );
+
+  const beforeCount = (middle - ( beforeHeight.value / 2 )) + BEFORE_COEF;
+  const afterCount = middle;
+
+  before.value.style.top = beforeCount + 'px';
+  after.value.style.top = afterCount + 'px';
+};
+
+const onProgress = (e: any) => {
+  slider.value = e.detail[0];
+};
+
+const onSlideChange = ( e: any ) => {
+  const slide = slider.value.slides[slider.value.activeIndex];
+  if ( ! slide ) {
+    return;
+  }
+
+  const item = slide.querySelector( '.menu__item' );
+  afterText.value = item.dataset.title;
+}
 </script>
 
 <style scoped lang="scss">
@@ -144,6 +153,7 @@ const afterText = ref( 'Образование' );
     line-height: 100%;
     text-transform: uppercase;
     transition: var(--tr-regular);
+    padding: 0 1rem;
 
     @media (max-width: $tablet) {
       font-size: 8.8rem;
@@ -205,6 +215,16 @@ const afterText = ref( 'Образование' );
   &__after {
     left: calc( 100% + 1rem );
     white-space: nowrap;
+  }
+
+  &__contacts {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+
+    & .socials {
+      margin-top: 1.5rem;
+    }
   }
 }
 

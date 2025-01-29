@@ -228,6 +228,7 @@ const setPosition = () => {
 .menu--open {
   & .hero__logo {
     opacity: 0;
+    display: none;
   }
 }
 

@@ -42,6 +42,8 @@
   border-radius: 50%;
   background: var(--fg-white);
   position: relative;
+  border: 1.5px solid var(--fg-white);
+  transition: var(--tr-regular);
   //display: flex;
   //align-items: center;
   //justify-content: center;
@@ -51,6 +53,18 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  & path {
+    transition: var(--tr-regular);
+  }
+
+  &:hover {
+    background: none;
+
+    & path {
+      fill: var(--fg-white);
+    }
   }
 }
 
