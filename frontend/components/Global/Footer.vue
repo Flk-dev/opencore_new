@@ -57,76 +57,97 @@ const contacts = useState('contacts');
   @media (max-width: $mobile) {
     padding: 3rem 0 2rem;
   }
-}
 
-.footer__button {
-  display: block;
-  width: 100%;
-  border: 1.5px solid var(--fg-white);
-  font-size: var(--fz-button);
-  line-height: var(--lh-button);
-  padding: 5.9rem 1rem;
-  text-align: center;
-  border-radius: var(--br-regular);
+  &__main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
 
-  @media (max-width: $tablet) {
-    padding: 5rem 0;
+    @media (max-width: $tablet) {
+      flex-wrap: wrap;
+    }
+
+    &-left {
+      display: flex;
+      align-items: flex-start;
+
+      @media (max-width: $mobile) {
+        flex-wrap: wrap;
+      }
+    }
   }
 
-  @media (max-width: $mobile) {
-    padding: 2.8rem 0;
-  }
-}
+  &__title {
+    margin-bottom: 2.8rem;
 
-.footer__main {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-
-  @media (max-width: $tablet) {
-    flex-wrap: wrap;
+    @media (max-width: $mobile) {
+      margin-bottom: 1.3rem;
+    }
   }
 
-  @media (max-width: $mobile) {
-  }
-}
-
-.footer__title {
-  margin-bottom: 2.8rem;
-
-  @media (max-width: $mobile) {
-    margin-bottom: 1.3rem;
-  }
-}
-
-.footer__main-left {
-  display: flex;
-  align-items: flex-start;
-
-  @media (max-width: $mobile) {
-    flex-wrap: wrap;
-  }
-}
-
-.footer__alert {
-  margin-top: 3rem;
-
-  @media (max-width: $mobile) {
-    margin-top: 2rem;
-  }
-}
-
-.footer__logo {
-  margin-top: 3.5rem;
-
-  @media (max-width: $tablet) {
+  &__alert {
     margin-top: 3rem;
+
+    @media (max-width: $mobile) {
+      margin-top: 2rem;
+    }
+  }
+
+  &__logo {
+    margin-top: 3.5rem;
+
+    @media (max-width: $tablet) {
+      margin-top: 3rem;
+    }
+
+    &-img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__menu {
+    margin-left: 21.5rem;
+
+    @media (max-width: $mobile) {
+      margin-left: 0;
+      margin-top: 3.5rem;
+    }
+
+    &-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      & li {
+        margin-bottom: .9rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        & a {
+          display: inline-block;
+          color: var(--fg-white);
+          position: relative;
+
+          &:before {
+            content: '';
+            position: absolute;
+            bottom: -.3rem;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--fg-white);
+            transition: width .3s;
+          }
+
+          &:hover:before {
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 }
-
-.footer__logo-img {
-  width: 100%;
-  height: auto;
-}
-
 </style>

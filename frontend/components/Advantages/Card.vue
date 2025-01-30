@@ -20,39 +20,38 @@ defineProps<{
 .advantages-item {
   padding-top: 2rem;
   border-top: 1.5px solid var(--fg-white);
-}
 
-.advantages-item__icon {
-  margin-bottom: 5.2rem;
+  &__icon {
+    margin-bottom: 5.2rem;
 
-  @media (max-width: $mobile) {
-    margin-bottom: 3rem;
-  }
-}
-
-.advantages-item__title {
-  @media (max-width: $tablet) {
-    & br {
-      display: none;
-    }
-  }
-}
-
-.advantages-item__text {
-  margin-top: 3rem;
-  max-width: 44rem;
-
-  @media (max-width: $tablet) {
-    max-width: 100%;
-
-    & br {
-      display: none;
+    @media (max-width: $mobile) {
+      margin-bottom: 3rem;
     }
   }
 
-  @media (max-width: $mobile) {
-    margin-top: 2rem;
+  &__title {
+    @media (max-width: $tablet) {
+      :deep(br) {
+        display: none;
+      }
+    }
+  }
+
+  &__text {
+    margin-top: 3rem;
+    max-width: 44rem;
+
+    @media (max-width: $tablet) {
+      max-width: 100%;
+
+      & br {
+        display: none;
+      }
+    }
+
+    @media (max-width: $mobile) {
+      margin-top: 2rem;
+    }
   }
 }
-
 </style>
