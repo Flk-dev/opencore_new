@@ -8,6 +8,7 @@
   --mb-ul-li: .5rem;
   --wh-ul-icon: .6rem;
   --pd-ul-icon: .5rem;
+  --top-ul-icon: 1rem;
 
   font-size: var(--fz);
   line-height: var(--lh);
@@ -47,7 +48,7 @@
         content: '';
         position: absolute;
         left: 0;
-        top: 1rem;
+        top: var(--top-ul-icon);
         background: var(--fg-blue);
         border-radius: .2rem;
         width: var(--wh-ul-icon);

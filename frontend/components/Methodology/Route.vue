@@ -1,31 +1,33 @@
 <template>
-  <div class="methodology__route route" v-if="data.list.length">
+  {{ data }}
+  <div class="methodology__route route" v-if="data.select.length">
     <div class="container">
       <GlobalBlockHeader :title="data.title" classes="route" class-title="fz-h1" />
       <div class="route__grid">
-        <div class="route-item" v-for="(item, dataKey) in data.list" :key="dataKey">
+        <div class="route-item" v-for="(item, dataKey) in data.select" :key="dataKey">
           <div class="route-item__line"></div>
           <div class="route-item__left fz-h3">
             <div class="route-item__sticky">
               <div class="route-item__counter fz-h1--mobile">{{ dataKey + 1 }}</div>
-              <h3 class="route-item__title fz-h1--mobile" v-if="item.title" v-html="item.title"></h3>
+              <h3 class="route-item__title fz-h1--mobile" v-if="item.post_title" v-html="item.post_title"></h3>
             </div>
-        </div>
-        <div class="route-item__right">
-          <div class="route-item__text">
-            <ContentText v-if="item.text" :text="item.text" />
-            <RoundVideo class="route-item__video" :preview="item.video_preview" :link="item.video"  />
           </div>
+          <div class="route-item__right">
+            <div class="route-item__text">
+              <ContentText v-if="item.text" :text="item.text" />
+              <RoundVideo class="route-item__video" :preview="item.video_preview" :link="item.video_link"  />
+            </div>
             <div class="route-item__accordion accordion" v-if="item.list.length">
               <AccordionItem
                   v-for="(list, key) in item.list"
                   :key="key"
                   :title="list.title"
                   :counter="( dataKey + 1 ) + '.' + ( key + 1 )"
-                  :text="list.text"
+                  :text="list.list"
+                  :is-two-column="list.is_two_colums"
                   title-class="fz-h4"
                   is-white="true"
-                  class="_small"
+                  class="_small route-item__accordion-item"
               />
             </div>
             <div class="route-item__result" v-if="item.result">
@@ -47,7 +49,7 @@ import RoundVideo from "~/components/Global/RoundVideo.vue";
 defineProps<{
   data: {
     title: string,
-    list: object
+    select: object
   }
 }>();
 </script>
@@ -196,6 +198,23 @@ defineProps<{
 
     @media (max-width: $mobile) {
       margin-top: 2rem;
+    }
+  }
+
+  &__accordion-item {
+    padding-left: 0;
+    padding-right: 0;
+
+    &._active {
+      :deep(.accordion-item__content) {
+        padding-top: 4rem;
+      }
+    }
+
+    :deep( .content__text ){
+      --fz: var(--fz-caption);
+      --lh: var(--lh-caption);
+      --top-ul-icon: .8rem;
     }
   }
 }

@@ -1,4 +1,5 @@
 <template>
+
   <div class="accordion-item" @click="open" :class="{ 'accordion-item--white': isWhite, '_active': active }">
     <div class="accordion-item__head" v-if="title">
       <div class="accordion-item__head-left" :class="titleClass">
@@ -13,7 +14,25 @@
     </div>
     <div class="accordion-item__body" v-if="text">
       <div class="accordion-item__content">
-        <div class="accordion-item__text" v-html="text"></div>
+        <div class="accordion-item__list" v-if="isArray( text )">
+          <div
+              v-for="( gridItem, gridKey ) in text"
+              class="accordion-item__grid"
+              :class="{ '_2': gridItem.is_two_colums ? gridItem.is_two_colums : false }"
+              :key="gridKey"
+          >
+            <div
+                class="accordion-item__text"
+                v-for="( textItem, key ) in gridItem.texts"
+                :key="key"
+            >
+              <ContentText :text="textItem.text" />
+            </div>
+          </div>
+        </div>
+        <div v-else class="accordion-item__text">
+          <ContentText :text="text" />
+        </div>
         <UIButton
             v-if="isMore"
             :to="to"
@@ -34,7 +53,8 @@ const props = defineProps<{
   titleClass?: string,
   isMore?: boolean,
   to?: string,
-  isWhite?: boolean
+  isWhite?: boolean,
+  isTwoColumns?: boolean,
 }>();
 
 const active = ref(false);
@@ -46,6 +66,14 @@ const titleClass = ref( 'fz-h3' );
 if ( props.titleClass ) {
   titleClass.value = props.titleClass;
 }
+
+const isArray = ( value ) => {
+  if ( Array.isArray( value ) ) {
+    return true;
+  }
+
+  return false;
+};
 
 </script>
 
@@ -105,6 +133,11 @@ if ( props.titleClass ) {
   &__text {
     max-width: 41.3rem;
     color: var(--fg-white-75);
+
+    :deep( .content__text ) {
+      --fz: var(--fz-body-b);
+      --lh: var(--lh-body-b);
+    }
   }
 
   &__button {
@@ -187,6 +220,24 @@ if ( props.titleClass ) {
   @media (max-width: $mobile) {
     padding: 2rem 1rem;
     margin-bottom: 1.5rem;
+  }
+
+  &__grid {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 3rem;
+
+    & #{$root}__text {
+      max-width: 100%;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &._2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
 
