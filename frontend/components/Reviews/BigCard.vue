@@ -1,7 +1,7 @@
 <template>
   <div
       class="reviews-item"
-      @click="modal.open( ModalsReview, {
+      @click="cases && modal.open( ModalsReview, {
         isWhite: true,
         title: title,
         full: full,
@@ -16,7 +16,15 @@
     <div class="reviews-item__content">
       <div class="reviews-item__text" v-if="text" v-html="text"></div>
       <div class="reviews-item__client">
-        <div class="reviews-item__client-logo" ref="refLogo">
+        <NuxtLink
+            v-if="cases"
+            :to="{name: 'cases-slug', params: {slug: cases.post_name}}"
+            class="reviews-item__client-logo _link"
+            ref="refLogo"
+        >
+          <img v-if="logo" :src="logo">
+        </NuxtLink>
+        <div v-else class="reviews-item__client-logo" ref="refLogo">
           <img v-if="logo" :src="logo">
         </div>
         <div class="reviews-item__client-content" v-if="name || post">
@@ -24,10 +32,6 @@
           <div class="reviews-item__client-post fz-caption" v-if="post" v-html="post"></div>
         </div>
       </div>
-
-      <NuxtLink v-if="cases" ref="refCase" class="reviews-item__case fz-caption" :to="{name: 'cases-slug', params: {slug: cases.post_name}}">
-        смотреть кейс
-      </NuxtLink>
     </div>
   </div>
 </template>
@@ -47,8 +51,14 @@ defineProps<{
 
 const modal = useModal();
 
-const refCase = ref( null );
-const refLogo = ref( null );
+// const refLogo = ref( null );
+//
+// const { elementX, elementY, isOutside } = useMouseInElement(refLogo);
+
+// const refCase = ref( null );
+// const refLogo = ref( null );
+//
+// const { x, y, elementX, elementY, isOutside } = useMouseInElement(refLogo);
 // const changeCursor = ( event: any ) => {
 //   const rect = refLogo.value.getBoundingClientRect();
 //   const x = event.clientX; // получаем координату X мыши
@@ -78,7 +88,24 @@ const refLogo = ref( null );
 </script>
 
 <style scoped lang="scss">
+.reviews__cursor {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: var(--fg-blue);
+  color: var(--fg-white);
+  height: 3.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  border-radius: 1rem;
+  opacity: 1;
+  z-index: 5;
+  transition: opacity .3s;
+}
+
 .reviews-item {
+  position: relative;
   cursor: pointer;
   padding: 3rem;
   border: 1.5px solid var(--fg-blue);
@@ -117,6 +144,7 @@ const refLogo = ref( null );
     &-logo {
       min-width: 8.8rem;
       margin-right: 1.5rem;
+      position: relative;
 
       & img {
         border-radius: var(--br-regular);
@@ -151,7 +179,7 @@ const refLogo = ref( null );
   }
 
   &__case {
-    position: absolute;
+    position: fixed;
     transform: translate(-50%, -50%);
     background: var(--fg-blue);
     color: var(--fg-white);
@@ -161,7 +189,7 @@ const refLogo = ref( null );
     justify-content: center;
     padding: 0 1rem;
     border-radius: 1rem;
-    opacity: 0;
+    opacity: 1;
     z-index: 5;
     transition: opacity .3s;
   }
