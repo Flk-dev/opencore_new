@@ -66,10 +66,10 @@ const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
     width: 100%;
     height: 0;
     overflow: hidden;
-    transition: height 2s,;
+    transition: height 2s;
 
     & div {
-      border: .15rem solid var(--fg-white);
+      border: 1.5px solid var(--fg-white);
       width: 100%;
       border-radius: 50%;
     }

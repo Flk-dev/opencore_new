@@ -108,6 +108,15 @@ const isArray = ( value ) => {
   }
 
   &__icon {
+    --width: 2.8rem;
+    height: var(--width);
+    width: var(--width);
+
+    & svg {
+      width: 100%;
+      height: 100%;
+    }
+
     & svg,
     & path {
       transition: var(--tr-regular);

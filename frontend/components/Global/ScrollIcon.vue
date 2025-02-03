@@ -91,13 +91,18 @@ onMounted(() => {
   }
 
   &-text {
-    width: 100%;
-    height: 100%;
+    width: calc(100% - .9rem);
+    height: calc(100% - .9rem);
     display: flex;
     align-items: center;
     justify-content: center;
     transform-origin: center center;
     transition: transform .5s ease-out;
+
+    & svg {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &-logo {

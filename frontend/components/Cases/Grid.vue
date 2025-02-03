@@ -138,9 +138,9 @@ const onScroll = () => {
     content: '';
     position: absolute;
     top: 0;
-    right: -.075rem;
+    right: -.05px;
     height: 100%;
-    width: .15rem;
+    width: 1.5px;
     background: var(--fg-blue);
 
     @media  (max-width: $tablet) {

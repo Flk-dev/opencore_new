@@ -24,7 +24,7 @@ defineProps<{
 .biggest-item {
   padding: 3rem;
   border-radius: var(--br-regular);
-  border: .15rem solid var(--fg-blue);
+  border: 1.5px solid var(--fg-blue);
   min-height: 36.9rem;
   display: flex;
   flex-direction: column;

@@ -69,6 +69,7 @@ defineProps<{
     left: 1rem;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
   }
 
   &__category {
@@ -78,6 +79,7 @@ defineProps<{
     line-height: 110%;
     border-radius: 1rem;
     margin-right: .5rem;
+    margin-bottom: .5rem;
 
     &:last-child {
       margin-right: 0;

@@ -79,6 +79,10 @@ onMounted( () => {
   window.addEventListener("resize", setPosition);
 } );
 
+computed( () => {
+  setPosition();
+} )
+
 const setPosition = () => {
   slider.value.style.bottom = (logo.value.getBoundingClientRect().height + 40) + 'px';
 };
@@ -212,8 +216,14 @@ const setPosition = () => {
   }
 
   &-item {
-    min-width: 26rem;
+    width: 26rem;
+    max-width: 100%;
     margin-right: 10rem;
+
+    & img {
+      width: 100%;
+      height: auto;
+    }
 
     &:last-child {
       margin-right: 0;
