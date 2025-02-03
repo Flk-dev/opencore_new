@@ -1,13 +1,14 @@
 <template>
   <NuxtLayout>
     <div class="error__page">
-      <div class="error__page-glitch">
-        <img src="/img/404/404.png" alt="">
+      <GlobalHeader :is-white="true" />
+      <div class="error__page-content">
+        <div class="error__page-glitch">
+          <img src="/img/404/404.png" alt="">
+        </div>
+        <div class="error__page-text fz-headline">Кажется вы попали не на ту страницу...</div>
+        <UIButton title="На главную" class="error__page-btn btn--white" to="/" />
       </div>
-      <div class="error__page-text fz-headline">Кажется вы попали не на ту страницу...</div>
-      <NuxtLink to="/" class="error__page-btn">
-        На главную
-      </NuxtLink>
     </div>
   </NuxtLayout>
 </template>
@@ -18,9 +19,12 @@
 
 <style scoped lang="scss">
 .error__page {
-  padding: 29.7rem 0 2rem;
   background-color: #3B3B3B;
   color: var(--fg-white);
+
+  &-content {
+    padding: 29.7rem 0 2rem;
+  }
 }
 
 .error__page-glitch {

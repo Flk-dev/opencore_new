@@ -1,5 +1,5 @@
 <template>
-  <header class="header" :class="{ '_fixed': fixed }">
+  <header class="header" :class="{ '_fixed': fixed, 'header--white': isWhite ? isWhite : false }">
     <div class="header__container container">
       <NuxtLink to="/" class="header__logo logo" :class="route.path == '/' ? 'header__logo--home' : ''">
         <div class="logo__pc">
@@ -30,7 +30,7 @@
         <span class="burger__line"></span>
         <span class="burger__line"></span>
       </button>
-      <UIButton title="Связаться <span>с нами</span>" class="header__button" @click="toggleCallback" />
+      <UIButton title="Связаться <span>с нами</span>" class="header__button" :class="{ 'btn--white-fill': isWhite ? isWhite : false }" @click="toggleCallback" />
     </div>
   </header>
 
@@ -39,6 +39,10 @@
 </template>
 
 <script setup lang="ts">
+defineProps<{
+  isWhite?: boolean
+}>();
+
 const openMenu = () => {
   const body = document.body;
 
@@ -89,6 +93,20 @@ const route = useRoute();
   @media (max-width: $tablet) {
     padding: 2rem 0;
   }
+
+  &--white {
+    :deep(.burger__line) {
+      border-color: var(--fg-white);
+    }
+
+    &._fixed {
+      background: none;
+    }
+
+    & .header__logo {
+      opacity: 0;
+    }
+  }
 }
 
 .header__container {
@@ -110,16 +128,9 @@ const route = useRoute();
   font-size: var(--fz-caption);
   line-height: var(--lh-caption);
   letter-spacing: var(--lc-caption);
-  background: var(--fg-blue);
-  border: 1px solid var(--fg-blue);
-  color: var(--fg-white);
   border-radius: 1rem;
   transition: var(--tr-regular);
   max-width: 18rem;
-
-  &:before {
-    background: var(--fg-white);
-  }
 
   &:hover {
     color: var(--fg-blue);

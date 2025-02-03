@@ -93,6 +93,7 @@ onMounted( () => {
 
     & > span {
       position: relative;
+      pointer-events: none;
       transition: all .3s;
     }
 
@@ -114,6 +115,21 @@ onMounted( () => {
       width: var(--width);
       height: var(--height);
       transition: width 1s, height 1s;
+    }
+  }
+
+  &--white-fill {
+    border-color: var(--fg-white);
+    background: var(--fg-white);
+    color: var(--fg-blue);
+
+    &:before {
+      background-color: var(--fg-blue);
+    }
+
+    &:hover {
+      border-color: var(--fg-blue);
+      color: var(--fg-white) !important;
     }
   }
 

@@ -12,7 +12,7 @@
           <button class="hero__video-button fz-link">Смотреть шоурил</button>
         </div>
       </div>
-      <div class="hero__slider" ref="slider">
+      <div class="hero__slider" :style="{ bottom: sliderBottom }">
         <div class="hero__slider-item">
           <img src="/img/hero/logos/logo-1.svg" alt="">
         </div>
@@ -50,7 +50,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const logo: any = ref( null );
-const slider: any = ref( null );
+const sliderBottom: any = ref( null );
 
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.defaults({
@@ -84,7 +84,7 @@ computed( () => {
 } )
 
 const setPosition = () => {
-  slider.value.style.bottom = (logo.value.getBoundingClientRect().height + 40) + 'px';
+  sliderBottom.value = (logo.value.getBoundingClientRect().height + 40) + 'px';
 };
 </script>
 

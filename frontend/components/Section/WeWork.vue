@@ -146,6 +146,11 @@ const toggleList = () => {
   margin-right: 10rem;
   min-width: 26rem;
 
+  & img {
+    width: 100%;
+    height: auto;
+  }
+
   @media (max-width: $tablet) {
     margin-right: 8rem;
   }
