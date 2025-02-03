@@ -1,13 +1,14 @@
 <template>
   <div>
-    <GlobalHeader />
       <NuxtLayout>
-        <NuxtPage/>
+        <GlobalTransition />
+        <GlobalHeader />
+          <NuxtPage/>
+        <GlobalFooter />
+        <GlobalCookie />
+        <GlobalScrollIcon />
+        <ModalsDefault />
       </NuxtLayout>
-    <GlobalFooter />
-    <GlobalCookie />
-    <GlobalScrollIcon />
-    <ModalsDefault />
   </div>
 </template>
 
@@ -20,3 +21,7 @@ await callOnce(async () => {
   contacts.value = await $fetch(`${ config.public.WP_DEV }/contacts`);
 });
 </script>
+
+<style lang="scss">
+
+</style>
