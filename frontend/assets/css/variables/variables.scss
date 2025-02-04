@@ -85,6 +85,11 @@
   --fz-txt-case: 2.8rem;
   --lh-txt-case: 130%;
 
+  @media (max-width: $mobile) {
+    --fz-txt-case: 1.8rem;
+    --lh-txt-case: 125%;
+  }
+
   --br-regular: 2rem;
   --br-secondary: 1.5rem;
 

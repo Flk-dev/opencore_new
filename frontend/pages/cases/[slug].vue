@@ -33,7 +33,8 @@ import {
   CasesContentImage,
   CasesContentVideo,
   CasesContentTasks,
-  CasesContentTeam
+  CasesContentTeam,
+  CasesContentTextImage
 } from '#components';
 
 const route = useRoute();
@@ -44,6 +45,7 @@ const contentLayouts: any = ref( {
   video: CasesContentVideo,
   tasks: CasesContentTasks,
   team: CasesContentTeam,
+  text_photo: CasesContentTextImage,
 } );
 
 const { result: post } = await useApi( '/cases/' + route.params.slug, {}, '', true );
