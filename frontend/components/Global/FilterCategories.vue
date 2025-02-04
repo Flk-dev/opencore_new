@@ -44,23 +44,12 @@ const filter = ( id: any, index: number|string ) => {
   activeIndex.value = index;
 }
 
-// onMounted( () => {
-//   //list.value.addEventListener("touchstart", handleStart, false);
-//   // list.value.addEventListener("touchend", handleEnd, false);
-//   // list.value.addEventListener("touchcancel", handleCancel, false);
-//   // list.value.addEventListener("touchmove", handleMove, false);
-// } )
-
 const swipe = ( event ) => {
   list.value.scrollBy({
     left: event.deltaY < 0 ? -30 : 30,
   });
 
   event.preventDefault();
-}
-
-const handleStart = (event: MouseEvent) => {
-  console.log( event );
 }
 </script>
 

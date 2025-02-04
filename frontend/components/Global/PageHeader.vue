@@ -1,5 +1,5 @@
 <template>
-  <div class="page__header" :class="{ 'page__header--sticky': isSticky }">
+  <div class="page__header" ref="pageHeader" :class="{ 'page__header--sticky': isSticky }">
     <div class="page__header-container container">
       <slot />
     </div>
@@ -12,11 +12,24 @@ withDefaults(defineProps<{
 }>(), {
   isSticky: false,
 });
+
+const pageHeader = ref( null );
+
+onMounted( () => {
+  window.addEventListener( 'scroll', () => {
+    if ( window.pageYOffset > 200 ) {
+      pageHeader.value.classList.add( 'page__header--sticky-active' );
+    } else {
+      pageHeader.value.classList.remove( 'page__header--sticky-active' );
+    }
+  })
+} )
 </script>
 
 <style lang="scss">
 .page__header {
   padding: 12rem 0;
+  transition: filter .3s;
 
   @media (max-width: $tablet) {
     padding: 10rem 0;
@@ -31,6 +44,10 @@ withDefaults(defineProps<{
     top: 0;
     z-index: -1;
     background: var(--fg-white);
+
+    &-active {
+      filter: blur(8px);
+    }
   }
 
   & svg {
