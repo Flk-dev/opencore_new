@@ -50,18 +50,20 @@ const columns = computed(() => {
     colRight: [],
   });
 
-  if (windowWidth.value < 992) {
-    data.value.colLeft = props.data;
-    data.value.colRight = [];
-  } else {
-    props.data.forEach((element: Array<string>, index: number) => {
-      index += 1;
-      if (index % 2 === 0) {
-        data.value.colRight.push(element);
-      } else {
-        data.value.colLeft.push(element);
-      }
-    });
+  if (props.data) {
+    if (windowWidth.value < 992) {
+      data.value.colLeft = props.data;
+      data.value.colRight = [];
+    } else {
+      props.data.forEach((element: Array<string>, index: number) => {
+        index += 1;
+        if (index % 2 === 0) {
+          data.value.colRight.push(element);
+        } else {
+          data.value.colLeft.push(element);
+        }
+      });
+    }
   }
 
   return data;

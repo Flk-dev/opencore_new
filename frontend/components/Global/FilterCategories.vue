@@ -1,6 +1,11 @@
 <template>
   <div class="cats__menu">
-    <div class="cats__menu-list" v-if="data.length">
+    <div
+        class="cats__menu-list"
+        v-if="data.length"
+        ref="list"
+        @wheel="swipe"
+    >
       <button
           v-if="!hideAll"
           class="cats__menu-link"
@@ -30,33 +35,58 @@ defineProps<{
   hideAll?: boolean,
 }>();
 
+const list = ref( null );
+
 const activeIndex = ref<string|number>( 'all' );
 const emit = defineEmits( [ 'filter' ] );
 const filter = ( id: any, index: number|string ) => {
   emit( 'filter', id );
   activeIndex.value = index;
 }
+
+// onMounted( () => {
+//   //list.value.addEventListener("touchstart", handleStart, false);
+//   // list.value.addEventListener("touchend", handleEnd, false);
+//   // list.value.addEventListener("touchcancel", handleCancel, false);
+//   // list.value.addEventListener("touchmove", handleMove, false);
+// } )
+
+const swipe = ( event ) => {
+  list.value.scrollBy({
+    left: event.deltaY < 0 ? -30 : 30,
+  });
+
+  event.preventDefault();
+}
+
+const handleStart = (event: MouseEvent) => {
+  console.log( event );
+}
 </script>
 
 <style scoped lang="scss">
 .cats__menu {
   margin-bottom: 2rem;
+  overflow: hidden;
+  margin-left: var(--m-m-container);
+  margin-right: var(--m-m-container);
 }
 
 .cats__menu-list {
   display: flex;
   align-content: center;
   overflow-y: auto;
-  margin-right: var(--m-m-container);
-  
-  @media (max-width: $tablet) {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  padding-left: var(--p-container);
+  padding-right: var(--p-container);
+  white-space: nowrap;
+  touch-action: pan-y;
 
-    &::-webkit-scrollbar {
-      width: 0;
-      background: transparent;
-    }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
   }
 }
 

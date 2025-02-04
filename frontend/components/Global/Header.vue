@@ -128,13 +128,19 @@ const route = useRoute();
   font-size: var(--fz-caption);
   line-height: var(--lh-caption);
   letter-spacing: var(--lc-caption);
+  //background: var(--fg-blue);
+  //color: var(--fg-white);
   border-radius: 1rem;
   transition: var(--tr-regular);
   max-width: 18rem;
 
-  &:hover {
-    color: var(--fg-blue);
-  }
+  //&:hover {
+  //  color: var(--fg-white);
+  //}
+
+  //&:before {
+  //  background: var(--fg-white);
+  //}
 
   @media (max-width: $tablet) {
     padding: .6rem 1rem .8rem;

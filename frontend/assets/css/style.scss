@@ -38,13 +38,9 @@ fieldset {
 
 html {
   overscroll-behavior: none;
-  --fz-modifier: 0.520834;
-  font-size: 10px;
-
-  @media (min-width: $desktop-lg) {
-    --fz-modifier: 0.67;
-    font-size: #{'calc(var(--fz-modifier) * var(--base-size))'};
-  }
+  --fz-modifier: 0.7;
+  //font-size: 10px;
+  font-size: #{'calc(var(--fz-modifier) * var(--base-size))'};
 
   //@media (max-width: $laptop-xlg) {
   //  font-size: #{'calc(var(--fz-modifier) * var(--base-size))'};
