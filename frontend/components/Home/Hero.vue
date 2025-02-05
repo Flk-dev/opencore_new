@@ -75,6 +75,11 @@ onMounted( () => {
     duration: 1,
   });
 
+  tl.to(logo.value, {
+    zIndex: 1001,
+    padding: 0
+  }, '<25%')
+
   setPosition();
   window.addEventListener("resize", setPosition);
 } );
@@ -248,8 +253,9 @@ const setPosition = () => {
   width: 17.7rem;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: 1rem;
-  z-index: 1001;
+  margin-top: 1.35rem;
+  padding: 0 var(--p-container);
+  //z-index: 1001;
 
   & a {
     display: block;
