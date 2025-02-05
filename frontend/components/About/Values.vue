@@ -1,12 +1,15 @@
 <template>
-  <div class="about__values about-values">
+  <div class="about__values about-values" v-element-visibility="onElementVisibility">
     <div class="container">
       <GlobalBlockHeader :title="data.title" classes="about-values" />
       <div class="about-values__list" v-if="data.select">
         <div
             class="about-values__item"
-            v-for="item in data.select"
-            :key="item.post_id">
+            v-for="(item, key) in data.select"
+            :key="item.post_id"
+            :class="key === 0 ? 'about-values__item--active' : ''"
+            ref="items"
+        >
             <div class="about-values__item-icon" v-if="item.icon">
               <img :src="item.icon" :alt="item.post_title" />
             </div>
@@ -21,16 +24,33 @@
 </template>
 
 <script setup lang="ts">
+import { vElementVisibility } from '@vueuse/components';
+import setActiveDelay from "~/utils/setActiveDelay";
+
 defineProps<{
   data: {
     title?: string,
     select?: object
   }
 }>();
+
+const items = ref( null );
+
+const onElementVisibility = ( state: boolean ) => {
+  if ( state ){
+    setActiveDelay(
+        '.about-values__item',
+        'about-values__item--active',
+        1000
+    );
+  }
+}
 </script>
 
 <style scoped lang="scss">
 .about-values {
+  overflow: hidden;
+
   @media (max-width: $mobile) {
     padding-bottom: 18rem;
   }
@@ -51,7 +71,7 @@ defineProps<{
 
 .about-values__item {
   --width: 37.9rem;
-  --coef: 13.6rem;
+  --coef: 12.4rem;
 
   min-width: var(--width);
   max-width: var(--width);
@@ -64,6 +84,14 @@ defineProps<{
   justify-content: space-between;
   min-height: 36rem;
   margin-right: calc( -1 * ((var(--width) - var(--coef)) - var(--coef)));
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all .7s;
+
+  &--active {
+    opacity: 1;
+    transform: translateX(0);
+  }
 
   &-icon {
     min-height: 10rem;
@@ -97,6 +125,12 @@ defineProps<{
     margin-right: 0;
     margin-bottom: calc( -1 * ((var(--width) - var(--coef)) - var(--coef)));
     min-height: 26rem;
+    transform: translateX(0) translateY(100%);
+
+    &--active {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
     & img {
       max-height: 7rem;
@@ -104,5 +138,3 @@ defineProps<{
   }
 }
 </style>
-
-На каждом этапе проекта — от постановки цели до бизнес-результата

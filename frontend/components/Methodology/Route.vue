@@ -9,12 +9,13 @@
             <div class="route-item__sticky">
               <div class="route-item__counter fz-h1--mobile">{{ dataKey + 1 }}</div>
               <h3 class="route-item__title fz-h1--mobile" v-if="item.post_title" v-html="item.post_title"></h3>
+              <RoundVideo class="route-item__video" :preview="item.video_preview" :link="item.video_link"  />
             </div>
           </div>
           <div class="route-item__right">
             <div class="route-item__text">
               <ContentText v-if="item.text" :text="item.text" />
-              <RoundVideo class="route-item__video" :preview="item.video_preview" :link="item.video_link"  />
+              <RoundVideo class="route-item__video _tablet" :preview="item.video_preview" :link="item.video_link"  />
             </div>
             <div class="route-item__accordion accordion" v-if="item.list.length">
               <AccordionItem
@@ -99,7 +100,7 @@ defineProps<{
     top: -4rem;
     left: 50%;
     transform: translateX(-50%);
-    width: .15rem;
+    width: 1.5px;
     height: calc(100% + 4rem);
     background-color: var(--fg-blue);
 
@@ -177,13 +178,16 @@ defineProps<{
 
   &__video {
     position: absolute;
-    left: -9.5rem;
+    right: -16.5rem;
     top: 0;
-    min-width: 7.5rem;
-    height: 7.5rem;
+    --width: 7.5rem;
+
+    &._tablet {
+      display: none;
+    }
 
     :deep(.video-round__play) {
-      max-width: 1.9rem;
+      max-width: 1.4rem;
     }
 
     @media (max-width: $tablet) {
@@ -193,6 +197,11 @@ defineProps<{
       min-width: 9rem;
       height: 9rem;
       max-width: 9rem;
+      display: none;
+
+      &._tablet {
+        display: block;
+      }
     }
 
     @media (max-width: $mobile) {

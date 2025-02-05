@@ -142,6 +142,10 @@ const route = useRoute();
   //  background: var(--fg-white);
   //}
 
+  &:before {
+    transition: width .5s, height .5s;
+  }
+
   @media (max-width: $tablet) {
     padding: .6rem 1rem .8rem;
     max-width: fit-content;

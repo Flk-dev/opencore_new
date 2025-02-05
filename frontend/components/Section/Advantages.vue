@@ -2,6 +2,7 @@
   <section
       class="advantages section section--blue"
       v-if="select"
+      ref="blueSection"
   >
     <div class="advantages__container container">
       <GlobalBlockHeader :title="title" classes="advantages" />
@@ -23,6 +24,34 @@ defineProps<{
   title?: string,
   select: object
 }>();
+
+const blueSection = ref( null );
+
+// const handleIntersect = (entries) => {
+//   entries.forEach((entry) => {
+//     if (entry.intersectionRatio > 0) { // when the yellow box is visible
+//       document.querySelector( '.scroll__icon' ).classList.add( 'scroll__icon--white' ); // the header
+//     } else {
+//       document.querySelector( '.scroll__icon' ).classList.remove( 'scroll__icon--white' );
+//     }
+//   });
+// };
+//
+// const createObserver = (element, callback) => {
+//   const options = {
+//     root: null, // defaults to browser viewport
+//     rootMargin: '0px',
+//     threshold: 0.0, // when the element is completely out of view
+//   };
+//
+//   const observer = new IntersectionObserver(callback, options);
+//   observer.observe(element);
+// };
+//
+// onMounted( () => {
+//   createObserver(blueSection.value, handleIntersect);
+// } )
+
 </script>
 
 <style scoped lang="scss">
