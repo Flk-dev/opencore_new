@@ -9,9 +9,9 @@
           <span>Назад (все услуги)</span>
         </button>
         <div class="service__head-flex">
-          <h1 class="service__head-title service__title fz-h2">{{ post.post_title }}</h1>
+          <h1 class="service__head-title service__title fz-h2 fz-h1--tablet">{{ post.post_title }}</h1>
           <div class="service__head-content">
-            <h3 class="service__head-subtitle" v-if="post.subtitle" v-html="post.subtitle"></h3>
+            <h3 class="service__head-subtitle fz-h4--tablet fz-h2--mobile" v-if="post.subtitle" v-html="post.subtitle"></h3>
             <ContentText class="service__head-text" v-if="post.full_text" :text="post.full_text" />
           </div>
         </div>
@@ -66,21 +66,39 @@ const { result: post } = await useApi( '/services/' + route.params.slug, {}, '',
   & svg {
     margin-right: 1.4rem;
   }
+
+  @media (max-width: $mobile) {
+    margin-bottom: 4rem;
+  }
 }
 
 .service__head-flex {
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    max-width: 64.7rem;
+  }
 }
 
 .service__title {
   margin: 0;
   max-width: 50.2rem;
+
+  @media (max-width: $tablet) {
+    max-width: 100%;
+    margin-bottom: 3rem;
+  }
 }
 
 .service__head-content {
   max-width: 75.7rem;
   width: 100%;
+
+  @media (max-width: $tablet) {
+    max-width: 100%;
+  }
 }
 
 .service__head-text {
@@ -89,6 +107,10 @@ const { result: post } = await useApi( '/services/' + route.params.slug, {}, '',
   color: var(--fg-black-75);
 
   --fz: var(--fz-body-b);
-  --lh: var(--fz-body-b)
+  --lh: var(--fz-body-b);
+
+  @media (max-width: $mobile) {
+    margin-top: 4rem;
+  }
 }
 </style>

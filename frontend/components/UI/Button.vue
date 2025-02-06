@@ -64,6 +64,14 @@ onMounted( () => {
     font-size: var(--fz-caption);
     color: var(--fg-white);
     border-radius: var(--br-secondary);
+
+    &:before {
+      transition: width 0.5s, height 0.5s !important;
+    }
+
+    @media (max-width: $tablet) {
+      padding: 1.1rem 1.8rem 1.3rem !important;
+    }
   }
 
   &--border {

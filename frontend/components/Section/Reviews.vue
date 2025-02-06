@@ -1,13 +1,13 @@
 <template>
   <section class="reviews section" v-if="select.length">
     <div class="reviews__container container">
-      <GlobalBlockHeader classes="reviews" :title="title" />
+      <GlobalBlockHeader classes="reviews" :title="title" class-title="fz-h1--tablet" />
       <div class="reviews__slider">
         <swiper
             class="reviews__swiper"
             :slides-per-view="1.1"
             :space-between="10"
-            :breakpoints="{ '576': { slidesPerView: 1.6 }, '992': { slidesPerView: 3 } }"
+            :breakpoints="{ '576': { slidesPerView: 1.57 }, '992': { slidesPerView: 3 } }"
         >
           <swiper-slide v-for="item in select" :key="item.id">
             <ReviewsBigCard
@@ -64,7 +64,14 @@ defineProps<{
 
 .reviews__slider  {
   @media (max-width: $tablet) {
+    //padding-left: var(--p-container);
+    //padding-right: var(--p-container);
+    margin-left: var(--m-m-container);
     margin-right: var(--m-m-container);
+
+    & .reviews__swiper {
+      padding: 0 var(--p-container)
+    }
   }
 }
 

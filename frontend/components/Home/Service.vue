@@ -1,7 +1,7 @@
 <template>
   <section class="supporting section">
     <div class="supporting__container container">
-      <GlobalBlockHeader :title="data.title" classes="supporting" />
+      <GlobalBlockHeader :title="data.title" classes="supporting" class-title="fz-h1--tablet" />
       <div class="supporting__grid" v-if="columns.value.col_1.length">
         <div class="supporting__col" v-for="( col, colKey ) in columns.value" :key="colKey">
           <AccordionItem
@@ -57,6 +57,10 @@ const columns = computed(() => {
 
   & :deep(.block-header__title) {
     max-width: 65.2rem;
+
+    @media (max-width: $tablet) {
+      max-width: 50.7rem;
+    }
 
     @media (max-width: $mobile) {
       max-width: 30.8rem;

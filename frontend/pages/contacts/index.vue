@@ -103,6 +103,7 @@ const { result: post } = await useApi( '/template/contacts' );
 
   @media (max-width: $tablet) {
     margin-bottom: 4rem;
+    max-width: 90%;
   }
 
   @media (max-width: $mobile) {

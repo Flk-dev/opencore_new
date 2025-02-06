@@ -93,6 +93,12 @@ onMounted( () => {
   &:last-child {
     margin-bottom: 0;
   }
+
+  @media (max-width: $tablet) {
+    :deep(br) {
+      display: none;
+    }
+  }
 }
 
 .learning-we__media {
@@ -105,6 +111,10 @@ onMounted( () => {
 
 .learning-we__item-counter {
   min-width: 12.5rem;
+
+  @media (max-width: $tablet) {
+    min-width: 6.5rem;
+  }
 
   @media (max-width: $mobile) {
     display: none;

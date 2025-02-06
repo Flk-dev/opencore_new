@@ -4,7 +4,7 @@
       v-if="select"
       ref="blueSection">
     <div class="advantages__container container">
-      <GlobalBlockHeader :title="title" classes="advantages" />
+      <GlobalBlockHeader :title="title" classes="advantages" class-title="fz-h1--tablet" />
       <div class="advantages__grid">
         <AdvantagesCard
             v-for="item in select"

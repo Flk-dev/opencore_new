@@ -62,7 +62,11 @@ defineProps<{
 
   &__text {
     margin-top: 3.5rem;
-    max-width: 32.7rem;
+    max-width: 30.7rem;
+
+    @media (max-width: $mobile) {
+      max-width: 41.7rem;
+    }
 
     @media (max-width: $mobile) {
       margin-top: 1.5rem;

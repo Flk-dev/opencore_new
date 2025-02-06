@@ -1,6 +1,6 @@
 <template>
   <div class="services-item">
-    <h2 class="services-item__title" v-html="name"></h2>
+    <h2 class="services-item__title fz-h1--tablet" v-html="name"></h2>
     <div class="services-item__content">
       <div class="services-item__text" v-if="description" v-html="description"></div>
       <div class="services-item__posts" v-if="posts">
@@ -10,7 +10,7 @@
             :to="{ name: 'services-slug', params: { slug: post.post_slug } }"
         >
           <div class="services-item__post-fire" v-if="post.is_fire">🔥</div>
-          <div class="services-item__post-title fz-link" v-html="post.post_title"></div>
+          <div class="services-item__post-title fz-link fz-body--mobile" v-html="post.post_title"></div>
         </NuxtLink>
       </div>
     </div>
@@ -34,9 +34,27 @@ defineProps<{
   justify-content: space-between;
   border-top: 1.5px solid var(--fg-black);
 
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    margin-bottom: 6rem;
+  }
+
+  @media (max-width: $mobile) {
+    padding: 2rem 0;
+    margin-bottom: 7rem;
+  }
+
   &__title {
     color: var(--fg-blue);
     max-width: 56.5rem;
+
+    @media (max-width: $tablet) {
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: $mobile) {
+      margin-bottom: 2rem;
+    }
   }
 
   &__content {
@@ -55,6 +73,12 @@ defineProps<{
     grid-template-columns: repeat(3, 1fr);
     row-gap: 3rem;
     column-gap: 1.5rem;
+
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr;
+      row-gap: 1.5rem;
+      margin-top: 4rem;
+    }
   }
 
   &__post {

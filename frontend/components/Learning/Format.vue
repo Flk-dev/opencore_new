@@ -93,6 +93,13 @@ const modal = useModal();
   --fz: var(--fz-body-b);
   --lh: var(--fz-body-b);
   --mb-ul-li: 1rem;
+  --top-ul-icon: .8rem;
+
+  @media (max-width: $tablet) {
+    :deep(ul) {
+      max-width: 80%;
+    }
+  }
 
   @media (max-width: $mobile) {
     --mb-ul-li: 1.5rem;

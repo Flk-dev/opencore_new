@@ -1,6 +1,6 @@
 <template>
   <div class="services__filter" v-if="categories.length">
-    <div class="services__filter-title fz-h4">Какой тип брендинга вас интересует?</div>
+    <div class="services__filter-title fz-h4 fz-h2--mobile">Какой тип брендинга вас интересует?</div>
     <GlobalFilterCategories class="services__filter-list" :data="categories" hide-all="true" />
   </div>
 </template>
@@ -15,8 +15,16 @@ defineProps<{
 .services__filter {
   margin-bottom: 6rem;
 
+  @media (max-width: $mobile) {
+    margin-top: 4rem;
+  }
+
   &-list {
     margin-top: 3rem;
+
+    @media (max-width: $mobile) {
+      margin-top: 2rem;
+    }
 
     & :deep(.container) {
       max-width: 100%;

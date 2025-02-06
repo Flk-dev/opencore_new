@@ -1,12 +1,12 @@
 <template>
 <div class="service-include" v-if="data.list.length">
   <div class="service__container container">
-    <GlobalBlockHeader :title="data.title" classes="service-include" :text="data.text" />
+    <GlobalBlockHeader :title="data.title" classes="service-include" :text="data.text" class-title="fz-h1--tablet" />
     <div class="service-include__list">
       <div class="service-include__item" v-for="(item, key) in data.list">
         <div class="service-include__item-main">
-          <div class="service-include__item-number fz-h2">{{ getFormatNumber( key + 1 ) }}</div>
-          <div class="service-include__item-title fz-h2" v-html="item.title"></div>
+          <div class="service-include__item-number fz-h2 fz-h1--tablet">{{ getFormatNumber( key + 1 ) }}</div>
+          <div class="service-include__item-title fz-h2 fz-h1--tablet" v-html="item.title"></div>
         </div>
         <div class="service-include__item-list" v-if="item.list.length">
           <div class="service-include__item-value fz-body" v-for="(listItem, listKey) in item.list" :key="listKey" v-html="listItem.text"></div>
@@ -39,10 +39,19 @@ defineProps<{
 
   :deep(.block-header__title) {
     max-width: 60rem;
+
+    @media (max-width: $tablet) {
+      max-width: 80%;
+    }
   }
 
   :deep(.block-header__content) {
     max-width: 47.7rem;
+    
+    @media (max-width: $tablet) {
+      margin-top: 1.5rem;
+      max-width: 58.3rem;
+    }
   }
 }
 
@@ -57,20 +66,51 @@ defineProps<{
   &:last-child {
     margin-bottom: 0;
   }
+
+  @media (max-width: $tablet) {
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: $mobile) {
+    padding: 2rem 0;
+    margin-bottom: 10rem;
+  }
 }
 
 .service-include__item-main {
   display: flex;
+
+  @media (max-width: $tablet) {
+    width: 100%;
+    margin-bottom: 6rem;
+  }
+
+  @media (max-width: $mobile) {
+    margin-bottom: 4rem;
+  }
 }
 
 .service-include__item-number {
   min-width: 8.9rem;
   color: var(--fg-blue);
+
+  @media (max-width: $tablet) {
+    min-width: auto;
+    margin-right: 2rem;
+  }
 }
 
 .service-include__item-title {
   color: var(--fg-blue);
   max-width: 52.4rem;
+
+  @media (max-width: $tablet) {
+    max-width: 100%;
+
+    :deep(br) {
+      display: none;
+    }
+  }
 }
 
 .service-include__item-list {
@@ -79,6 +119,16 @@ defineProps<{
   column-gap: 4rem;
   row-gap: 3rem;
   max-width: 82rem;
+
+  @media (max-width: $tablet) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: $mobile) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .service-include__item-value {

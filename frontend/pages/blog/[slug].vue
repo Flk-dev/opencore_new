@@ -23,6 +23,7 @@
     </div>
   </div>
 
+  <GlobalFooterButton />
 </template>
 
 <script setup lang="ts">

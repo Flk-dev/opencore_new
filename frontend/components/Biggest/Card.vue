@@ -41,6 +41,10 @@ defineProps<{
   &__subtitle {
     margin-top: 1rem;
     max-width: 50.4rem;
+
+    @media (max-width: $tablet) {
+      max-width: 45rem;
+    }
   }
 
   &__text {

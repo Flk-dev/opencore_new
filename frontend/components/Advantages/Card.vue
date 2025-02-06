@@ -24,6 +24,10 @@ defineProps<{
   &__icon {
     margin-bottom: 5.2rem;
 
+    @media (max-width: $tablet) {
+      margin-bottom: 4rem;
+    }
+
     @media (max-width: $mobile) {
       margin-bottom: 3rem;
     }

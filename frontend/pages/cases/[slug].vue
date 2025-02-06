@@ -24,6 +24,8 @@
     </div>
     <UIImage class="case__next-img" :image="post.next.image" classes-pic="item--cover" />
   </NuxtLink>
+
+  <GlobalFooterButton />
 </template>
 
 <script setup lang="ts">

@@ -81,7 +81,7 @@ const modal = useModal();
     left: 0;
     top: 0;
     height: 100%;
-    width: .1rem;
+    width: 1.5px;
     background: var(--fg-black);
   }
 
@@ -117,6 +117,7 @@ const modal = useModal();
   --lh: 120%;
 
   --mb-ul-li: 1.5rem;
+  --top-ul-icon: .8rem;
 
   @media (max-width: $mobile) {
     --fz: 1.5rem;

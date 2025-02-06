@@ -100,7 +100,7 @@ defineProps<{
 
   :deep(a) {
     color: var(--fg-blue);
-    text-decoration: underline;
+    border-bottom: 1.8px solid var(--fg-blue);
   }
 
   @media (max-width: $tablet) {

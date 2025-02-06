@@ -58,6 +58,11 @@ ScrollTrigger.defaults({
 });
 
 onMounted( () => {
+  setTimeout( () => {
+    setPosition();
+  }, 100 );
+  window.addEventListener("resize", setPosition);
+
   let tl = gsap.timeline({
     scrollTrigger: {
       trigger: '.home__cases',
@@ -79,14 +84,11 @@ onMounted( () => {
     zIndex: 1001,
     padding: 0
   }, '<25%')
-
-  setPosition();
-  window.addEventListener("resize", setPosition);
 } );
 
-computed( () => {
-  setPosition();
-} )
+// computed( () => {
+//   setPosition();
+// } )
 
 const setPosition = () => {
   sliderBottom.value = (logo.value.getBoundingClientRect().height + 40) + 'px';

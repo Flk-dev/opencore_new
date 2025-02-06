@@ -24,7 +24,7 @@ register_rest_route( OS_API_NAMESPACE, '/cases/(?P<slug>\S+)', [
 
 	    $categories = get_term_format_data( wp_get_post_terms( $get[0]->ID, 'cases_cats' ) );
 
-	    $get_next_post = get_adjacent_post( false, '', false );
+	    $get_next_post = get_adjacent_post( false, '', true );
 	    $next_case     = [];
 
 	    if ( ! empty( $get_next_post ) ){
