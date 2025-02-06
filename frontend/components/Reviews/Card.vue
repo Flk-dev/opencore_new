@@ -9,7 +9,8 @@
         name: name,
         post: post,
         width: 680,
-        isBlueTitle: true
+        isBlueTitle: true,
+        customClass: 'reviews'
       } )"
   >
     <h3 class="reviews-item__title fz-h3 fz-h2--mobile" v-if="title" v-html="title"></h3>

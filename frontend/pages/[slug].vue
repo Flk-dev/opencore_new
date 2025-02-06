@@ -2,7 +2,7 @@
   <div class="content__page page-paddings">
     <div class="content__page-container container">
       <div class="content__page-left">
-        <GlobalBlockHeader class="content__page-title fz-h1--mobile" :title="post.title" />
+        <GlobalBlockHeader class="content__page-title" :title="post.title" class-title="fz-h1--tablet fz-h1--mobile" />
         <div class="content__page-subtitle fz-h3 fz-h2--mobile" v-if="post.subtitle">{{ post.subtitle }}</div>
       </div>
       <div class="content__page-blocks" v-if="post.page_content.length">
@@ -36,6 +36,10 @@ const { result: post } = await useApi( '/pages/' + route.params.slug + '/', {}, 
 
 .content__page-title {
   margin: 0;
+
+  @media (max-width: $tablet) {
+    max-width: 60rem;
+  }
 }
 
 .content__page-block {

@@ -7,7 +7,11 @@
           'modal--scrollable': isScrollable,
           'modal--white': ( props.isWhite ? true : false ),
           'modal--title-blue': ( props.isBlueTitle ? true : false ),
-        }, `modal-w--${( props.width ? props.width : 900 )}`]"
+        },
+
+        `modal-w--${( props.width ? props.width : 900 )}`,
+        `modal--${( props.customClass ? props.customClass : '' )}`
+        ]"
     >
       <div class="modal__bg" @click="modal.close"></div>
       <div class="modal__overflow">
@@ -93,6 +97,10 @@ const model = ref({});
     & .modal__title {
       color: var(--fg-blue);
     }
+  }
+
+  &--reviews .modal__content {
+    border: 1.5px solid var(--fg-blue);
   }
 }
 

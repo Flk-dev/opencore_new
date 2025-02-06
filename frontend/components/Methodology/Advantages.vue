@@ -84,6 +84,10 @@ defineProps<{
   @media (max-width: $tablet) {
     --fz: var(--fz-caption);
     --lh: var(--lh-caption);
+
+    :deep(br) {
+      display: none;
+    }
   }
 
   @media (max-width: $mobile) {

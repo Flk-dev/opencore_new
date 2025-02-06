@@ -24,13 +24,13 @@ defineProps<{
 .partner-head + :deep(div) {
   margin-top: var(--mt-content-block-secondary);
 
-  @media (max-width: $tablet) {
-    margin-top: 6rem;
-  }
-
-  @media (max-width: $tablet) {
-    margin-top: 3rem;
-  }
+  //@media (max-width: $tablet) {
+  //  margin-top: 6rem;
+  //}
+  //
+  //@media (max-width: $mobile) {
+  //  margin-top: 3rem;
+  //}
 }
 
 .partner-head__content {

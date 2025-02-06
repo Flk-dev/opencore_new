@@ -1,7 +1,7 @@
 <template>
   <div class="career__numbers career-numbers">
     <div class="career-numbers__container container">
-      <h2 class="career-numbers__title fz-h2 fz-h1--tablet">{{ data.title }}</h2>
+      <h2 class="career-numbers__title fz-h2 fz-h1--tablet" v-html="data.title"></h2>
       <div class="career-numbers__list" v-if="data.list.length">
         <div class="career-numbers__item" v-for="(item, key) in data.list" :key="key">
           <div class="career-numbers__item-main">
@@ -99,8 +99,8 @@ defineProps<{
 }
 
 .career-numbers__item-text {
-  min-width: 30.1rem;
-  max-width: 30.1rem;
+  min-width: 34.1rem;
+  max-width: 34.1rem;
 
   @media (max-width: $mobile) {
     margin-top: 1rem;
