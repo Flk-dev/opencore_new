@@ -104,6 +104,8 @@ defineProps<{
 
   @media (max-width: $mobile) {
     margin-top: 1rem;
+    min-width: auto;
+    max-width: 27rem;
   }
 }
 

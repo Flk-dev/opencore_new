@@ -34,6 +34,10 @@ defineProps<{
     & img {
       filter: grayscale(100%);
       transition: all .3s;
+
+      @media (max-width: $mobile) {
+        object-position: top center;
+      }
     }
 
     @media (max-width: $mobile) {

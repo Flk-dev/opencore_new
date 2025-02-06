@@ -82,6 +82,7 @@ defineProps<{
     letter-spacing: var(--lc-h2);
 
     --mb-ul-li: 1.5rem;
+    --top-ul-icon: .6rem;
 
     :deep(br) {
       display: none;

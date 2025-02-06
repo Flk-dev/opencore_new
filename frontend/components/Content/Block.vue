@@ -54,9 +54,11 @@ defineProps<{
       border-radius: var(--br-regular);
       margin: 6rem 0;
 
-      @media (max-width: $mobile) {
-        margin: 3rem 0;
-      }
+    }
+
+    :deep(p:has(img)){
+      margin-left: var(--m-m-container);
+      margin-right: var(--m-m-container);
     }
 
     :deep(h2),

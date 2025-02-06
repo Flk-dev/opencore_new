@@ -21,8 +21,7 @@ defineProps<{
 <style scoped lang="scss">
 .contacts__video {
   position: relative;
-  min-width: 20.4rem;
-  height: 20.4rem;
+  --width: 20.4rem;
   border-radius: 50%;
   overflow: hidden;
   display: flex;

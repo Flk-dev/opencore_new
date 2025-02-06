@@ -71,6 +71,10 @@ defineProps<{
 .return__caption {
   max-width: 47rem;
   margin-top: 2rem;
+
+  @media (max-width: $mobile) {
+    max-width: 30rem;
+  }
 }
 
 .return__subtitle {

@@ -102,6 +102,10 @@ onMounted( () => {
 }
 
 .learning-we__media {
+  & svg {
+    height: auto;
+  }
+
   @media (max-width: $tablet) {
     order: 1;
     max-width: 52rem;

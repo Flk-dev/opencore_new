@@ -70,14 +70,15 @@ const { result: post } = await useApi( '/template/contacts' );
 
 .contacts__video {
   @media (max-width: $tablet) {
-    min-width: 23.5rem !important;
-    height: 23.5rem !important;
+    --width: 23.5rem !important;
   }
 
   @media (max-width: $mobile) {
-    min-width: 100% !important;
-    padding-bottom: 100% !important;
-    height: auto !important;
+    --width: 100% !important;
+    padding-bottom: 56.5%;
+    //min-width: 100% !important;
+    //padding-bottom: 100% !important;
+    //height: auto !important;
     margin-bottom: 3rem;
   }
 }

@@ -22,5 +22,9 @@
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity .3s;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
 }
 </style>

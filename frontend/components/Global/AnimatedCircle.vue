@@ -73,6 +73,10 @@ const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
       width: 100%;
       border-radius: 50%;
     }
+
+    @media (max-width: $mobile) {
+      display: none;
+    }
   }
 
   &-item {

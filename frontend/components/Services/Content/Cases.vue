@@ -25,5 +25,11 @@ defineProps<{
       margin-bottom: 4rem;
     }
   }
+
+  &-btn {
+    @media (max-width: $mobile) {
+      display: none;
+    }
+  }
 }
 </style>

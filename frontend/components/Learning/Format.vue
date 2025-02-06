@@ -86,6 +86,7 @@ const modal = useModal();
 
   @media (max-width: $mobile) {
     min-height: 25rem;
+    padding: 3rem 2rem;
   }
 }
 
@@ -103,6 +104,7 @@ const modal = useModal();
 
   @media (max-width: $mobile) {
     --mb-ul-li: 1.5rem;
+    --top-ul-icon: .6rem;
   }
 }
 
