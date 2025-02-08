@@ -8,7 +8,11 @@
       <GlobalBlockHeader :title="data.title" class-title="fz-h1--tablet" />
       <div class="learning-we__content">
         <div class="learning-we__list">
-          <div class="learning-we__item" v-for="(item, key) in data.list">
+          <div
+              class="learning-we__item"
+              v-for="(item, key) in data.list"
+              v-intersection-observer="onIntersectionObserver"
+          >
             <div class="learning-we__item-counter fz-h3">{{ getFormatNumber( (key + 1) ) }}</div>
             <div class="learning-we__item-text fz-h3 fz-h2--mobile" v-html="item.text"></div>
           </div>
@@ -16,12 +20,6 @@
         <div class="learning-we__media">
           <svg width="520" height="520" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg" ref="animatedSvg">
             <circle cx="260" cy="260" r="259.25" stroke="white" stroke-width="1.5"/>
-            <path d="M260.007 507C281.421 507 298.781 396.414 298.781 260C298.781 123.586 281.421 13 260.007 13C238.592 13 221.232 123.586 221.232 260C221.232 396.414 238.592 507 260.007 507Z" stroke="white" stroke-width="1.24121" stroke-miterlimit="10"/>
-            <path d="M260 298.774C396.414 298.774 507 281.414 507 259.999C507 238.585 396.414 221.224 260 221.224C123.586 221.224 13 238.585 13 259.999C13 281.414 123.586 298.774 260 298.774Z" stroke="white" stroke-width="1.24121" stroke-miterlimit="10"/>
-            <path d="M260 299.042C396.414 299.042 507 281.682 507 260.267C507 238.852 396.414 221.492 260 221.492C123.586 221.492 13 238.852 13 260.267C13 281.682 123.586 299.042 260 299.042Z" stroke="white" stroke-width="1.24121" stroke-miterlimit="10"/>
-            <path d="M260.007 507C281.421 507 298.781 396.414 298.781 260C298.781 123.586 281.421 13 260.007 13C238.592 13 221.232 123.586 221.232 260C221.232 396.414 238.592 507 260.007 507Z" stroke="white" stroke-width="1.24121" stroke-miterlimit="10"/>
-            <path d="M260 298.774C396.414 298.774 507 281.414 507 259.999C507 238.585 396.414 221.224 260 221.224C123.586 221.224 13 238.585 13 259.999C13 281.414 123.586 298.774 260 298.774Z" stroke="white" stroke-width="1.24121" stroke-miterlimit="10"/>
-            <path d="M434.666 434.624C449.808 419.482 383.888 329.011 287.429 232.551C190.969 136.092 100.498 70.1712 85.3553 85.3136C70.2128 100.456 136.133 190.927 232.593 287.387C329.052 383.846 419.524 449.767 434.666 434.624Z" stroke="white" stroke-width="1.24121" stroke-miterlimit="10"/>
             <path d="M260.007 507C281.421 507 298.781 396.414 298.781 260C298.781 123.586 281.421 13 260.007 13C238.592 13 221.232 123.586 221.232 260C221.232 396.414 238.592 507 260.007 507Z" stroke="white" stroke-width="1.24121" stroke-miterlimit="10"/>
             <path d="M260 298.774C396.414 298.774 507 281.414 507 259.999C507 238.585 396.414 221.224 260 221.224C123.586 221.224 13 238.585 13 259.999C13 281.414 123.586 298.774 260 298.774Z" stroke="white" stroke-width="1.24121" stroke-miterlimit="10"/>
             <path d="M287.429 287.392C383.888 190.933 449.808 100.461 434.666 85.3189C419.524 70.1765 329.052 136.097 232.593 232.556C136.133 329.016 70.2128 419.487 85.3553 434.63C100.498 449.772 190.969 383.852 287.429 287.392Z" stroke="white" stroke-width="1.24121" stroke-miterlimit="10"/>
@@ -36,7 +34,7 @@
 
 <script setup lang="ts">
 import Vivus from "vivus";
-import { vElementVisibility } from '@vueuse/components';
+import { vIntersectionObserver } from '@vueuse/components'
 
 defineProps<{
   data: {
@@ -50,11 +48,22 @@ const animatedSvg = ref(null);
 const vivus = ref( {} );
 
 onMounted( () => {
-  vivus.value = new Vivus(animatedSvg.value, {
-    duration: 200,
-    animTimingFunction: Vivus.EASE
-  });
-} )
+  vivus.value = new Vivus(
+      animatedSvg.value,
+      {
+        type: 'oneByOne',
+        duration: 1000,
+        animTimingFunction: Vivus.EASE,
+        pathTimingFunction: Vivus.EASE,
+      }
+  );
+} );
+
+const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
+  if (entry?.isIntersecting) {
+    entry.target.classList.add('learning-we__item--active');
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -89,9 +98,16 @@ onMounted( () => {
   padding: 2rem 0;
   border-top: 1.5px solid var(--fg-white);
   margin-bottom: 4rem;
+  opacity: 0;
+  transition: .8s all ease;
+  transition-delay: .8s;
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  &--active {
+    opacity: 1;
   }
 
   @media (max-width: $tablet) {

@@ -41,8 +41,8 @@ const rotate = () => {
 };
 
 onMounted(() => {
+  //scrollIcon.value.classList.add('scroll__icon--active');
   rotate();
-  scrollIcon.value.classList.add('scroll__icon--active');
   window.addEventListener('scroll', rotate);
 });
 </script>
@@ -64,9 +64,9 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateX(calc( 100% + 2rem ));
 
-  opacity: 0;
-  transition: transform .2s, background .3s;
+  transition: transform .2s, background .3s, right .3s;
   transition-delay: .5s, 0s;
 
   &--active {

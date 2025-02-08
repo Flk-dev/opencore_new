@@ -1,5 +1,10 @@
 <template>
-  <div class="service-when" v-if="data.list.length" :class="{ '_blue': data.is_blue }">
+  <div
+      class="service-when"
+      v-if="data.list.length"
+      :class="{ '_blue': data.is_blue }"
+      ref="services"
+  >
     <div class="service__container container">
       <GlobalBlockHeader :title="data.title" classes="service-when" class-title="fz-h1--tablet" />
       <div class="service-when__grid">
@@ -20,6 +25,7 @@ defineProps<{
     is_blue: boolean
   }
 }>();
+const services = ref(null);
 </script>
 
 <style scoped lang="scss">

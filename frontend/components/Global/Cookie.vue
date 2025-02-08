@@ -38,14 +38,14 @@ const close = () => {
   position: fixed;
   bottom: 2rem;
   left: 0;
-  width: 100%;
+  width: 90%;
   z-index: 998;
-  transition: transform .4s, opacity 3s;
+  //transition: transform .4s, opacity 3s;
 
-  &._hide {
+  /*&._hide {
     transform: translateY(100%);
     opacity: 0;
-  }
+  }*/
 }
 
 .cookie__block {
