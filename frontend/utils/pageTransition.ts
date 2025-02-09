@@ -89,13 +89,21 @@ export const initPageLoader = () => {
         duration: 1.4,
         ease: "Expo.easeInOut",
     },"<");
+    //
+    // tl.to(".transition", {
+    //     zIndex: -1
+    // },"<");
 }
 
 export const initPageIn = () => {
     const tl = gsap.timeline();
 
+    // tl.to(".transition", {
+    //     zIndex: 500
+    // },"<");
+
     tl.set(".transition__first",{
-        yPercent: 100
+        yPercent: 100,
     });
 
     tl.set(".transition__first-inner",{
@@ -142,4 +150,6 @@ export const initPageIn = () => {
         duration: 1.4,
         ease: "Expo.easeInOut",
     },"< 0.1");
+
+    document.querySelector('body').classList.remove( 'menu--open', '_lock' );
 }

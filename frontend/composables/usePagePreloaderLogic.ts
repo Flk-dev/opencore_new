@@ -7,7 +7,7 @@ export default () => {
         initWords();
     } );
 
-    nuxtApp.hook("page:loading:start", () => {
+    nuxtApp.hook("page:start", () => {
         initPageIn();
     });
 

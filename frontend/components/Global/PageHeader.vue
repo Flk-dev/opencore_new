@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   isSticky?: boolean;
 }>(), {
   isSticky: false,
@@ -17,10 +17,12 @@ const pageHeader = ref( null );
 
 onMounted( () => {
   window.addEventListener( 'scroll', () => {
-    if ( window.pageYOffset > 200 ) {
-      pageHeader.value.classList.add( 'page__header--sticky-active' );
-    } else {
-      pageHeader.value.classList.remove( 'page__header--sticky-active' );
+    if ( props.isSticky && pageHeader.value ) {
+      if (window.pageYOffset > 200) {
+        pageHeader.value.classList.add('page__header--sticky-active');
+      } else {
+        pageHeader.value.classList.remove('page__header--sticky-active');
+      }
     }
   })
 } )

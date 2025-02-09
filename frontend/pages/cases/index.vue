@@ -57,10 +57,14 @@ const loadMore = ( event: any ) => {
 .cases--archive {
   & :deep(.cases__col) {
     border: none;
-
-    &:after {
-      display: none;
-    }
   }
+
+  :deep(.cases__line) {
+    display: none !important;
+  }
+}
+
+.cases--archive:before {
+  display: none;
 }
 </style>

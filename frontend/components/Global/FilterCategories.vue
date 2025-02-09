@@ -1,5 +1,5 @@
 <template>
-  <div class="cats__menu">
+  <div class="cats__menu" v-if="data">
     <div
         class="cats__menu-list"
         v-if="data.length"
@@ -30,10 +30,12 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
-  data: object,
+withDefaults(defineProps<{
   hideAll?: boolean,
-}>();
+  data: object,
+}>(), {
+  hideAll: false,
+});
 
 const list = ref( null );
 

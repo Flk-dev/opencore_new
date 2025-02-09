@@ -1,7 +1,6 @@
 <template>
   <div>
       <NuxtLayout>
-        <GlobalTransition />
         <GlobalHeader />
           <NuxtPage/>
         <GlobalFooter />

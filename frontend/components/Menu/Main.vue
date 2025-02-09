@@ -38,7 +38,7 @@
         >
           <swiper-slide v-for="item in post.menu" :key="item.id">
             <div class="menu__item" ref="items" :data-title="item.title">
-              <NuxtLink :to="item.url" class="menu__link" @click="close"> {{ item.content }}</NuxtLink>
+              <NuxtLink :to="item.url" class="menu__link">{{ item.content }}</NuxtLink>
             </div>
           </swiper-slide>
         </swiper-container>

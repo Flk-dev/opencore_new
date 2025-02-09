@@ -1,13 +1,13 @@
 <template>
   <div class="services__filter" v-if="categories.length">
     <div class="services__filter-title fz-h4 fz-h2--mobile">Какой тип брендинга вас интересует?</div>
-    <GlobalFilterCategories class="services__filter-list" :data="categories" hide-all="true" />
+    <GlobalFilterCategories class="services__filter-list" :data="categories" :hide-all="true" />
   </div>
 </template>
 
 <script setup lang="ts">
 defineProps<{
-  categories?: object
+  categories: object
 }>();
 </script>
 

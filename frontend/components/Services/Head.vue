@@ -6,7 +6,7 @@
     </div>
     <GlobalRoundVideo
         class="services-head__video _middle"
-        v-if="video.link.length"
+        v-if="video"
         :preview="video.preview"
         :link="video.link"
     />
@@ -17,7 +17,7 @@
 const props = defineProps<{
   title?: string,
   subtitle?: string,
-  video: object,
+  video?: object,
 }>();
 
 const title = computed( () => {
