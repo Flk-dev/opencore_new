@@ -59,6 +59,7 @@ const model = ref({});
   width: 100%;
   height: 100%;
   z-index: 9999;
+  transition: trasform .4s, opacity .2s;
 
   &--scrollable {
     :deep(.modal__overflow) {
@@ -69,6 +70,14 @@ const model = ref({});
   &--open {
     opacity: 1;
     transform: translateY(0);
+
+    & .modal__bg {
+      opacity: 1;
+    }
+
+    & .modal__content {
+      transform: translateY(0);
+    }
   }
 
   &--white {
@@ -111,6 +120,8 @@ const model = ref({});
   width: 100%;
   height: 100%;
   background: var(--fg-black-75);
+  opacity: 0;
+  transition: opacity .2s;
 }
 
 .modal__overflow {
@@ -134,6 +145,8 @@ const model = ref({});
   z-index: 5;
   border-radius: var(--br-regular);
   padding: 3rem;
+  transform: translateY(-100%);
+  transition: transform .5s;
 
   @media (max-width: $tablet) {
     padding: 2rem;
