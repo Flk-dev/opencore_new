@@ -62,7 +62,7 @@ export const initPageLoader = () => {
         yPercent: -50,
         duration: 1.4,
         ease: "Power4.easeInOut",
-        delay: 3,
+        delay: 1,
         opacity: 0
     });
 
