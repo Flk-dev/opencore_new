@@ -26,7 +26,7 @@ export const initWords = () => {
         next.dataset.wordActive = true;
 
         min++;
-    }, 700);
+    }, 1000);
 }
 
 export const initPageLoader = () => {
@@ -62,7 +62,8 @@ export const initPageLoader = () => {
         yPercent: -50,
         duration: 1.4,
         ease: "Power4.easeInOut",
-        delay: 1,
+        delay: 3,
+        opacity: 0
     });
 
     tl.to(".transition__first",{

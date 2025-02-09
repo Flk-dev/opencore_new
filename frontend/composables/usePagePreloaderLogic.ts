@@ -1,4 +1,4 @@
-import {initPageLoader, initWords} from "~/utils/pageTransition";
+import {initPageIn, initPageLoader, initWords} from "~/utils/pageTransition";
 
 export default () => {
     const nuxtApp = useNuxtApp();
@@ -6,6 +6,10 @@ export default () => {
     onMounted( () => {
         initWords();
     } );
+
+    nuxtApp.hook("page:loading:start", () => {
+        initPageIn();
+    });
 
     nuxtApp.hook("page:finish", () => {
         initPageLoader();
