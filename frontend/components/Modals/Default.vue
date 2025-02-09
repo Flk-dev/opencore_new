@@ -140,18 +140,18 @@ const model = ref({});
     width: calc(100% - (var(--p-container) * 2));
   }
 }
-.modal__header {
+:global(.modal__header) {
   color: var(--fg-white);
   margin-bottom: 3rem;
 }
 
-.modal__header-flex {
+:global(.modal__header-flex) {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
 }
 
-.modal__close {
+:global(.modal__close) {
   display: flex;
   align-items: center;
   justify-content: center;

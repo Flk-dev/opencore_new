@@ -21,6 +21,7 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
     '@vueuse/nuxt',
+    'vue3-perfect-scrollbar/nuxt',
   ],
   runtimeConfig: {
     public: {
