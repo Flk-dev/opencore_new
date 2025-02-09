@@ -12,8 +12,10 @@
         `modal-w--${( props.width ? props.width : 900 )}`,
         `modal--${( props.customClass ? props.customClass : '' )}`
         ]"
+
+        @click="close"
     >
-      <div class="modal__bg" @click="modal.close"></div>
+      <div class="modal__bg"></div>
       <div class="modal__overflow">
         <div class="modal__content" ref="modalContent">
           <div class="modal__header">
@@ -47,6 +49,13 @@ const modal = useModal();
 const { isOpen, isScrollable, view, props } = storeToRefs(modal);
 
 const model = ref({});
+
+const close = ( event ) => {
+  const withinBoundaries = event.composedPath().includes( document.querySelector( '.modal__content' ) );
+  if ( ! withinBoundaries ) {
+    modal.close();
+  }
+}
 </script>
 
 <style scoped lang="scss">
