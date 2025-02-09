@@ -71,6 +71,8 @@ const { height: beforeHeight } = useElementBounding( before );
 
 onMounted( () => {
   countMenuData();
+
+  window.addEventListener( 'resize', countMenuData );
 } );
 
 const countMenuData = () => {
@@ -180,8 +182,8 @@ const close = () => {
     width: 27.9rem;
 
     & svg {
-      max-height: 7.699rem;
-      width: auto;
+      width: 100%;
+      height: auto;
 
       &._mobile {
         display: none;
