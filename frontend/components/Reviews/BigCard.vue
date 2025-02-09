@@ -1,7 +1,7 @@
 <template>
   <div
       class="reviews-item"
-      @click="cases && modal.open( ModalsReview, {
+      @click="! cases && modal.open( ModalsReview, {
         isWhite: true,
         title: title,
         full: full,
@@ -21,10 +21,15 @@
             :to="{name: 'cases-slug', params: {slug: cases.post_name}}"
             class="reviews-item__client-logo _link"
             ref="refLogo"
+            @mouseenter="setCursor( 'enter' )"
+            @mouseleave="setCursor( 'leave' )"
         >
           <img v-if="logo" :src="logo">
         </NuxtLink>
-        <div v-else class="reviews-item__client-logo" ref="refLogo">
+        <div
+            v-else class="reviews-item__client-logo"
+            ref="refLogo"
+        >
           <img v-if="logo" :src="logo">
         </div>
         <div class="reviews-item__client-content" v-if="name || post">
@@ -51,40 +56,13 @@ defineProps<{
 
 const modal = useModal();
 
-// const refLogo = ref( null );
-//
-// const { elementX, elementY, isOutside } = useMouseInElement(refLogo);
-
-// const refCase = ref( null );
-// const refLogo = ref( null );
-//
-// const { x, y, elementX, elementY, isOutside } = useMouseInElement(refLogo);
-// const changeCursor = ( event: any ) => {
-//   const rect = refLogo.value.getBoundingClientRect();
-//   const x = event.clientX; // получаем координату X мыши
-//   const y = event.clientY;
-//
-//   // const x = event.clientX;
-//   // const y = event.screenY;
-//   //
-//   // const rect = refLogo.value.getBoundingClientRect();
-//   //
-//   // console.log( rect );
-//
-//   // console.log( event.clientY, event.clientX );
-//   //
-//   // const rect = refLogo.value.getBoundingClientRect();
-//   // //
-//   // // const offLeft = x - rect.left;
-//   // // const offTop = y - rect.top;
-//   // // //
-//   // // refCase.value.$el.style.left = offLeft + 'px';
-//   //refCase.value.$el.style.top = ( y - rect.top) + 'px';
-// };
-//
-// // const setActive = () => {
-// //   refCase.value.$el.style.opacity = 1;
-// // }
+const setCursor = ( action: string ) => {
+  if ( action === 'enter' ) {
+    document.querySelector('.reviews__cursor').classList.add('reviews__cursor--active');
+  } else {
+    document.querySelector('.reviews__cursor').classList.remove('reviews__cursor--active');
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -145,6 +123,10 @@ const modal = useModal();
       min-width: 8.8rem;
       margin-right: 1.5rem;
       position: relative;
+
+      &._link:hover {
+        cursor: none;
+      }
 
       & img {
         border-radius: var(--br-regular);

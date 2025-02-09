@@ -2,7 +2,9 @@
   <section class="reviews section" v-if="select.length">
     <div class="reviews__container container">
       <GlobalBlockHeader classes="reviews" :title="title" class-title="fz-h1--tablet" />
-      <div class="reviews__slider">
+      <div class="reviews__cursor fz-caption" ref="reviewsCursor">смотреть кейс</div>
+
+      <div class="reviews__slider" @mousemove="changeCursor">
         <swiper
             class="reviews__swiper"
             :slides-per-view="1.1"
@@ -41,6 +43,16 @@ defineProps<{
   select: object,
   title?: string
 }>();
+
+const reviewsCursor = ref( null );
+const changeCursor = ( event: any ) => {
+
+  const x = event.clientX;
+  const y = event.clientY;
+
+  reviewsCursor.value.style.left = x + 'px';
+  reviewsCursor.value.style.top = y + 'px';
+}
 </script>
 
 <style scoped lang="scss">
@@ -72,6 +84,31 @@ defineProps<{
     & .reviews__swiper {
       padding: 0 var(--p-container)
     }
+  }
+}
+
+.reviews__cursor {
+  pointer-events: none;
+  padding: 0 1rem;
+  height: 3.1rem;
+  border-radius: var(--br-secondary);
+  background: var(--fg-blue);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-white);
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity .3s;
+
+  &--active {
+    opacity: 1;
+  }
+
+  @media (max-width: $tablet) {
+    display: none;
   }
 }
 

@@ -23,6 +23,10 @@
   opacity: 0;
   transition: opacity .3s;
 
+  &--active {
+    opacity: 1;
+  }
+
   @media (max-width: $tablet) {
     display: none;
   }
