@@ -145,7 +145,7 @@ const onScrollEvent = (event, action) => {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transform: translateX(100%);
+    transform: translateX(101%);
     transition: var(--tr-regular);
 
     @media (max-width: $tablet) {
