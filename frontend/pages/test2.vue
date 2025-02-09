@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { initWords, initPageIn } from "~/utils/pageTransition";
+import { initWords } from "~/utils/pageTransition";
 
 onMounted( () => {
   initWords();

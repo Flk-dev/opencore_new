@@ -1,16 +1,40 @@
 <template>
   <div class="transition">
     <div class="transition__block transition__first">
-      <div class="transition__first-inner"></div>
+      <div class="transition__first-inner">
+        <div class="transition__bg"></div>
+        <div class="transition__text">
+          <div class="transition__text-inner">
+            <div class="transition__text-item transition__text--first" data-word-active="true">core</div>
+            <div class="transition__text-item transition__text--secondary" data-word-active="false">steady</div>
+            <div class="transition__text-item transition__text--third" data-word-active="false">ready</div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="transition__block transition__last">
-      <div class="transition__last-inner"></div>
+      <div class="transition__last-inner">
+        <div class="transition__bg transition__bg--secondary"></div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+//import {initWords, initPageLoader} from "~/utils/pageTransition";
 
+usePagePreloaderLogic();
+
+// const nuxtApp = useNuxtApp();
+// nuxtApp.hook("page:start", () => {
+//   console.log( 'Page start' );
+//   initWords();
+// });
+//
+// nuxtApp.hook("page:finish", () => {
+//   console.log( 'Page finish' );
+//   initPageLoader();
+// });
 </script>
 
 <style scoped lang="scss">
@@ -63,7 +87,30 @@
 
 
     &--secondary {
-      background: var(--fg-black-50);
+      background: var(--fg-white);
+    }
+  }
+
+  &__text {
+    position: absolute;
+    width: 100%;
+    bottom: 4.2rem;
+    padding: 0 3.3rem;
+
+    &-item {
+      font-family: var(--ff-atyp);
+      font-style: italic;
+      font-size: 23.3rem;
+      line-height: 80%;
+      letter-spacing: -.4rem;
+      text-transform: uppercase;
+      color: var(--fg-white);
+      display: none;
+      transition: opacity .2s;
+
+      &[data-word-active="true"] {
+        display: block;
+      }
     }
   }
 }

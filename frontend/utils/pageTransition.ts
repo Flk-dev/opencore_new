@@ -1,7 +1,8 @@
 import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 
-let scroll;
+let timer: NodeJS.Timeout;
+let min: number = 1;
 
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.defaults({
@@ -9,20 +10,23 @@ ScrollTrigger.defaults({
 });
 
 export const initWords = () => {
-    let timer: NodeJS.Timeout;
-
     timer = setInterval(() => {
-        const item: any = document.querySelector('[data-word-active="true"]');
-        const next: any = item.nextSibling;
+        let item: any = document.querySelector('[data-word-active="true"]');
+        let next: any = item.nextSibling;
 
-        if (next) {
+        if ( ! next ) {
             item.dataset.wordActive = false;
-            next.dataset.wordActive = true;
-        } else {
-            clearInterval(timer);
-            initPageLoader();
+            item = document.querySelector('.transition__text--first');
+            item.dataset.wordActive = true;
+
+            return;
         }
-    }, 1000);
+
+        item.dataset.wordActive = false;
+        next.dataset.wordActive = true;
+
+        min++;
+    }, 700);
 }
 
 export const initPageLoader = () => {
@@ -32,9 +36,9 @@ export const initPageLoader = () => {
     const cookie = document.querySelector( '.cookie:not(._hide)' );
     const scrollIcon = document.querySelector('.scroll__icon');
 
-    tl.call(function() {
-        scroll.stop();
-    }, null, 0);
+    if (timer && min === 3){
+        clearInterval( timer );
+    }
 
     if ( scrollIcon ) {
         tl.set(scrollIcon, {
@@ -88,10 +92,6 @@ export const initPageLoader = () => {
 
 export const initPageIn = () => {
     const tl = gsap.timeline();
-
-    tl.call(function() {
-        scroll.start();
-    });
 
     tl.set(".transition__first",{
         yPercent: 100
