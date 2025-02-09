@@ -12,20 +12,34 @@
           <button class="hero__video-button fz-link">Смотреть шоурил</button>
         </div>
       </div>
-      <div class="hero__slider" :style="{ bottom: sliderBottom }">
-        <div class="hero__slider-item">
-          <img src="/img/hero/logos/logo-1.svg" alt="">
-        </div>
-        <div class="hero__slider-item">
-          <img src="/img/hero/logos/logo-2.svg" alt="">
-        </div>
-        <div class="hero__slider-item">
-          <img src="/img/hero/logos/logo-3.svg" alt="">
-        </div>
-        <div class="hero__slider-item">
-          <img src="/img/hero/logos/logo-4.svg" alt="">
-        </div>
-      </div>
+      <swiper-container
+          class="hero__slider"
+          :free-mode="true"
+          slides-per-view="auto"
+          :mousewheel="true"
+          :space-between="10"
+      >
+        <swiper-slide>
+          <div class="hero__slider-item">
+            <img src="/img/hero/logos/logo-1.svg" alt="">
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="hero__slider-item">
+            <img src="/img/hero/logos/logo-2.svg" alt="">
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="hero__slider-item">
+            <img src="/img/hero/logos/logo-3.svg" alt="">
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="hero__slider-item">
+            <img src="/img/hero/logos/logo-4.svg" alt="">
+          </div>
+        </swiper-slide>
+      </swiper-container>
       <div class="hero__logo" ref="logo">
         <NuxtLink to="/">
           <svg width="1400" height="186" viewBox="0 0 1400 186" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +64,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const logo: any = ref( null );
-const sliderBottom: any = ref( null );
 
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.defaults({
@@ -58,11 +71,6 @@ ScrollTrigger.defaults({
 });
 
 onMounted( () => {
-  setTimeout( () => {
-    setPosition();
-  }, 100 );
-  window.addEventListener("resize", setPosition);
-
   let tl = gsap.timeline({
     scrollTrigger: {
       trigger: '.home__cases',
@@ -90,9 +98,9 @@ onMounted( () => {
 //   setPosition();
 // } )
 
-const setPosition = () => {
-  sliderBottom.value = (logo.value.getBoundingClientRect().height + 40) + 'px';
-};
+// const setPosition = () => {
+//   sliderBottom.value = (logo.value.getBoundingClientRect().height + 40) + 'px';
+// };
 </script>
 
 <style scoped lang="scss">
@@ -202,43 +210,11 @@ const setPosition = () => {
 }
 
 .hero__slider {
-  display: flex;
-  align-items: center;
   position: absolute;
-  bottom: 24.2rem;
+  bottom: 22.5rem;
 
-  @media (max-width: $tablet) {
-    overflow-y: auto;
-    flex-wrap: nowrap;
-    margin-left: var(--m-m-container);
-    margin-right: var(--m-m-container);
-
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      width: 0;
-      background: transparent;
-    }
-  }
-
-  &-item {
-    width: 26rem;
-    max-width: 100%;
-    margin-right: 10rem;
-
-    & img {
-      width: 100%;
-      height: auto;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
-
-    @media (max-width: $tablet) {
-      margin-right: 6rem;
-    }
+  :deep(swiper-slide) {
+    width: 26rem !important;
   }
 }
 
