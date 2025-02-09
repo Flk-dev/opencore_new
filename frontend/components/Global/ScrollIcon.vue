@@ -51,9 +51,12 @@ onMounted(() => {
 .scroll__icon {
   $root: &;
 
+  --pos: 2rem;
+  --translate: calc(100% + var(--pos));
+
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: var(--pos);
+  right: var(--pos);
   border-radius: 50%;
   background: var(--fg-blue);
   border: 1.5px solid var(--fg-blue);
@@ -64,9 +67,9 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateX(calc( 100% + 2rem ));
+  transform: translateY(var(--translate));
 
-  transition: transform .2s, background .3s, right .3s;
+  transition: transform .3s, background .3s, right .3s;
   transition-delay: .5s, 0s;
 
   &--active {

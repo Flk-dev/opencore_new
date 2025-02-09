@@ -29,7 +29,7 @@ export const initPageLoader = () => {
     const tl = gsap.timeline();
 
     // Elements
-    const cookie = document.querySelector( '.cookie' );
+    const cookie = document.querySelector( '.cookie:not(._hide)' );
     const scrollIcon = document.querySelector('.scroll__icon');
 
     tl.call(function() {
@@ -38,17 +38,21 @@ export const initPageLoader = () => {
 
     if ( scrollIcon ) {
         tl.set(scrollIcon, {
-            xPercent: -120,
-            duration: 2,
+            yPercent: -120,
+            duration: 3,
+            ease: "Power4.easeInOut",
+            delay: 3,
         });
     }
 
-    // if(cookie) {
-    //     tl.set(cookie, {
-    //         yPercent: -150,
-    //         duration: 2,
-    //     });
-    // }
+    if(cookie) {
+        tl.set(cookie, {
+            yPercent: -120,
+            duration: 3,
+            ease: "Power4.easeInOut",
+            delay: 3
+        });
+    }
 
     tl.to(".transition__text",{
         yPercent: -50,

@@ -35,17 +35,20 @@ const close = () => {
 
 <style scoped lang="scss">
 .cookie {
+  --bottom: 2rem;
+  --translate: calc( 100% + var(--bottom));
+
   position: fixed;
-  bottom: 2rem;
+  bottom: var(--bottom);
   left: 0;
   width: 90%;
   z-index: 998;
-  //transition: transform .4s, opacity 3s;
+  transform: translateY(var(--translate));
+  transition: transform .3s, opacity 3s;
 
-  /*&._hide {
-    transform: translateY(100%);
-    opacity: 0;
-  }*/
+  &._hide {
+    transform: translateY(var(--translate)) !important;
+  }
 }
 
 .cookie__block {
