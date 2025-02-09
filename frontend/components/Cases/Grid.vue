@@ -132,6 +132,10 @@ const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
     width: 0;
     border-bottom: 1.5px solid var(--fg-blue);
     transition: width 3s;
+
+    @media (max-width: $tablet) {
+      display: none;
+    }
   }
 }
 
@@ -156,6 +160,10 @@ const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
   border-right: 1.5px solid var(--fg-blue);
   height: 100%;
   transition: height 3s;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
 }
 
 .cases__col {
@@ -180,6 +188,10 @@ const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
   padding: 2rem 1.5rem 13.5rem var(--p-container);
   position: relative;
 
+  @media (max-width: $tablet) {
+    padding: 0 var(--p-container)
+  }
+
   &:last-child {
     padding-left: 1.5rem;
     padding-right: var(--p-container);
@@ -191,15 +203,10 @@ const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
     & .cases-item._small {
       margin-left: 0;
     }
-
-    @media (max-width: $tablet) {
-      padding: 0;
-    }
   }
 
   @media (max-width: $tablet) {
     width: 100%;
-    padding: 0;
     border-top: none;
   }
 

@@ -12,34 +12,36 @@
           <button class="hero__video-button fz-link">Смотреть шоурил</button>
         </div>
       </div>
-      <swiper-container
-          class="hero__slider"
-          :free-mode="true"
-          slides-per-view="auto"
-          :mousewheel="true"
-          :space-between="10"
-      >
-        <swiper-slide>
-          <div class="hero__slider-item">
-            <img src="/img/hero/logos/logo-1.svg" alt="">
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="hero__slider-item">
-            <img src="/img/hero/logos/logo-2.svg" alt="">
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="hero__slider-item">
-            <img src="/img/hero/logos/logo-3.svg" alt="">
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="hero__slider-item">
-            <img src="/img/hero/logos/logo-4.svg" alt="">
-          </div>
-        </swiper-slide>
-      </swiper-container>
+      <div class="hero__slider">
+        <swiper-container
+            class="hero__slider-swiper"
+            :free-mode="true"
+            slides-per-view="auto"
+            :mousewheel="true"
+            :space-between="10"
+        >
+          <swiper-slide>
+            <div class="hero__slider-item">
+              <img src="/img/hero/logos/logo-1.svg" alt="">
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="hero__slider-item">
+              <img src="/img/hero/logos/logo-2.svg" alt="">
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="hero__slider-item">
+              <img src="/img/hero/logos/logo-3.svg" alt="">
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="hero__slider-item">
+              <img src="/img/hero/logos/logo-4.svg" alt="">
+            </div>
+          </swiper-slide>
+        </swiper-container>
+      </div>
       <div class="hero__logo" ref="logo">
         <NuxtLink to="/">
           <svg width="1400" height="186" viewBox="0 0 1400 186" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -75,7 +77,7 @@ onMounted( () => {
     scrollTrigger: {
       trigger: '.home__cases',
       start: "top bottom",
-      end: "top center",
+      end: "top left",
       scrub: true,
     }
   });
@@ -216,6 +218,12 @@ onMounted( () => {
   :deep(swiper-slide) {
     width: 26rem !important;
   }
+
+  @media (max-width: $tablet) {
+    position: relative;
+    bottom: 0;
+    margin: 0 var(--m-m-container);
+  }
 }
 
 .menu--open {
@@ -242,6 +250,10 @@ onMounted( () => {
   & svg {
     width: 100%;
     height: auto;
+  }
+
+  @media (max-width: $tablet) {
+    display: none;
   }
 }
 </style>

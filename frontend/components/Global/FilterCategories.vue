@@ -1,6 +1,6 @@
 <template>
   <div class="cats__menu">
-    <swiper-container
+    <swiper
         class="cats__menu-list"
         v-if="data.length"
         :free-mode="true"
@@ -33,12 +33,15 @@
           {{ category.name }}
         </button>
       </swiper-slide>
-    </swiper-container>
+    </swiper>
   </div>
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
+
+withDefaults(defineProps<{
   hideAll?: boolean,
   data: object,
 }>(), {
@@ -65,32 +68,20 @@ const swipe = ( event ) => {
 
 <style scoped lang="scss">
 .cats__menu {
-  margin-bottom: 2rem;
-  overflow: hidden;
-  margin-left: var(--m-m-container);
-  margin-right: var(--m-m-container);
-}
+  margin: 0 var(--m-m-container) 2rem;
 
-.cats__menu-list {
-  display: flex;
-  align-content: center;
-  overflow-y: auto;
-  padding-left: var(--p-container);
-  padding-right: var(--p-container);
-  white-space: nowrap;
-  touch-action: pan-y;
-
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    width: 0;
-    background: transparent;
+  &-list {
+    padding: 0 var(--p-container);
   }
 
-  //:deep(.swiper-slide) {
-  //  width: fit-content;
-  //}
+}
+
+//swiper-container::part(.swiper) {
+//  background-color: red;
+//}
+
+.cats__menu-list {
+  //white-space: nowrap;
 }
 
 .cats__menu-link {

@@ -80,7 +80,10 @@ const countMenuData = () => {
   paddingTopMenu.value = headerHeight.value;
   sliderHeight.value = windowHeight.value - headerHeight.value;
 
-  const BEFORE_COEF = 7;
+  let BEFORE_COEF = 7;
+  // if ( window.innerWidth < 992 ) {
+  //   BEFORE_COEF = 50
+  // }
 
   const middle = ( (listHeight.value - headerHeight.value) / 2 )
       + ( items.value[0].getBoundingClientRect().height / 2 );
@@ -140,7 +143,7 @@ const close = () => {
     padding-top: var(--p-top);
 
     @media (max-width: $tablet) {
-      right: var(--p-container)
+      right: 1rem;
     }
 
     & .swiper-slide-active .menu__link {
@@ -216,11 +219,21 @@ const close = () => {
         margin-top: .5rem;
       }
     }
+
+    @media (max-width: $tablet) {
+      flex-direction: column;
+      width: 22.7rem;
+      right: calc(100% - 0.5rem);
+    }
   }
 
   &__after {
     left: calc( 100% + 1rem );
     white-space: nowrap;
+
+    @media (max-width: $tablet) {
+      display: none;
+    }
   }
 
   &__contacts {
