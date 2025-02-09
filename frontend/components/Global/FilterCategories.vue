@@ -1,21 +1,29 @@
 <template>
-  <div class="cats__menu" v-if="data">
-    <div
+  <div class="cats__menu">
+    <swiper-container
         class="cats__menu-list"
         v-if="data.length"
-        ref="list"
-        @wheel="swipe"
+        :free-mode="true"
+        slides-per-view="auto"
+        :mousewheel="true"
+        :space-between="10"
     >
-      <button
-          v-if="!hideAll"
-          class="cats__menu-link"
-          data-id="all"
-          @click="filter( 'all', 'all')"
-          :class="{ '_active': activeIndex === 'all' }"
+      <swiper-slide style="width: fit-content !important;">
+        <button
+            v-if="!hideAll"
+            class="cats__menu-link"
+            data-id="all"
+            @click="filter( 'all', 'all')"
+            :class="{ '_active': activeIndex === 'all' }"
+        >
+          Все
+        </button>
+      </swiper-slide>
+      <swiper-slide
+          v-for="(category, key) in data"
+          :key="key"
+          style="width: fit-content !important;"
       >
-        Все
-      </button>
-      <template v-for="(category, key) in data" :key="key">
         <button
             class="cats__menu-link"
             :data-id="category.term_id"
@@ -24,13 +32,13 @@
         >
           {{ category.name }}
         </button>
-      </template>
-    </div>
+      </swiper-slide>
+    </swiper-container>
   </div>
 </template>
 
 <script setup lang="ts">
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   hideAll?: boolean,
   data: object,
 }>(), {
@@ -79,6 +87,10 @@ const swipe = ( event ) => {
     width: 0;
     background: transparent;
   }
+
+  //:deep(.swiper-slide) {
+  //  width: fit-content;
+  //}
 }
 
 .cats__menu-link {
@@ -91,7 +103,6 @@ const swipe = ( event ) => {
   align-items: center;
   justify-content: center;
   transition: var(--tr-regular);
-  margin-right: 1rem;
 
   &:last-child {
     margin-right: 0;
