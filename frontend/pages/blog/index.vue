@@ -1,6 +1,6 @@
 <template>
   <div class="sticky__page page-pd-bottom">
-    <GlobalPageHeader is-sticky="true">
+    <GlobalPageHeader :is-sticky="true">
       <svg width="831" height="111" viewBox="0 0 831 111" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M16.8006 94.9581C5.93354 84.285 0.5 71.1539 0.5 55.5C0.5 39.9108 5.93354 26.7797 16.8006 16.042C27.6677 5.36888 41.1222 0 57.1641 0C73.206 0 86.6605 5.36888 97.5276 16.042C108.395 26.715 113.828 39.8462 113.828 55.5C113.828 71.0892 108.395 84.2203 97.5276 94.9581C86.6605 105.631 73.206 111 57.1641 111C41.1222 110.935 27.6677 105.631 16.8006 94.9581ZM33.0366 30.4021C26.5034 37.1941 23.2691 45.5385 23.2691 55.5C23.2691 65.4615 26.5034 73.8059 33.0366 80.5979C39.5698 87.3899 47.5907 90.7535 57.1641 90.7535C66.8022 90.7535 74.8878 87.3899 81.3563 80.5979C87.8248 73.8059 91.0591 65.4615 91.0591 55.5C91.0591 45.5385 87.8248 37.1941 81.3563 30.4021C74.8878 23.6101 66.8022 20.2465 57.1641 20.2465C47.5907 20.2465 39.5698 23.6101 33.0366 30.4021Z" fill="#0000FF"/>
         <path d="M149.415 109.328H127.422V1.5625H173.025C184.798 1.5625 194.371 4.92614 201.68 11.7181C208.99 18.5101 212.612 27.1132 212.612 37.5922C212.612 48.0713 208.99 56.6097 201.745 63.2076C194.5 69.8055 184.927 73.1692 173.025 73.1692H149.479V109.328H149.415ZM149.415 21.0975V53.5695H172.96C178.006 53.5695 182.016 52.0818 185.121 49.0416C188.226 46.0013 189.714 42.1202 189.714 37.3982C189.714 32.6762 188.161 28.795 185.121 25.6901C182.016 22.5852 178.006 21.0975 172.96 21.0975H149.415Z" fill="#0000FF"/>
@@ -13,7 +13,7 @@
       <div class="blog__container container">
           <BlogFilters @filter="filter" />
           <BlogGrid :data="posts" />
-          <GlobalLoadmore v-if="posts.length" class="blog__loadmore"  @loadMore="loadMore" />
+          <GlobalLoadmore v-if="maxPage > 1" class="blog__loadmore"  @loadMore="loadMore" />
       </div>
     </div>
   </div>
@@ -24,6 +24,7 @@
 <script setup lang="ts">
 const termId: any = ref( 0 );
 const page: any = ref( 1 );
+const maxPage: any = ref( 0 );
 
 const { data: posts } = await useAsyncData(
     'blog',
@@ -35,7 +36,9 @@ const { data: posts } = await useAsyncData(
     }), {
       watch: [termId, page],
       transform: (resData: object) => {
-        return (page.value === 1 ? resData.data : [...posts.value, ...resData.data]);
+        maxPage.value = resData.data.max_page;
+
+        return (page.value === 1 ? resData.data.posts : [...posts.value, ...resData.data.posts]);
       },
     },
 );

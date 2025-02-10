@@ -128,22 +128,30 @@ const route = useRoute();
   font-size: var(--fz-caption);
   line-height: var(--lh-caption);
   letter-spacing: var(--lc-caption);
-  //background: var(--fg-blue);
-  //color: var(--fg-white);
+  background: var(--fg-blue);
+  color: var(--fg-white);
   border-radius: 1rem;
   transition: var(--tr-regular);
   max-width: 18rem;
 
-  //&:hover {
-  //  color: var(--fg-white);
-  //}
+  &:hover {
+    color: var(--fg-blue);
+  }
 
-  //&:before {
-  //  background: var(--fg-white);
-  //}
+  &:before {
+    background: var(--fg-white);
+  }
 
   &:before {
     transition: width .5s, height .5s;
+  }
+
+  &.btn--white-fill {
+    background: none;
+
+    &:before {
+      background: var(--fg-blue);
+    }
   }
 
   @media (max-width: $tablet) {

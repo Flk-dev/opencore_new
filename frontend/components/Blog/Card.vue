@@ -1,7 +1,7 @@
 <template>
   <div class="blog-item">
     <NuxtLink :to="to">
-      <UIImage :image="image" classes="blog-item__image">
+      <UIImage :image="image" classes="blog-item__image" classes-pic="item--cover">
         <div class="blog-item__cats" v-if="categories.length">
           <div class="blog-item__cats-item" v-for="category in categories">{{ category.name }}</div>
         </div>
@@ -19,7 +19,6 @@ const props = defineProps<{
   slug: string,
   timeRead?: string,
   categories?: object,
-  colIndex?: string,
 }>();
 
 const to = ref( {
@@ -36,6 +35,8 @@ const to = ref( {
   //opacity: 0;
   //transform: translateY(-50%);
   transition: opacity .2s, transform .8s;
+
+  --image: 57rem;
 
   &--active {
     opacity: 1;
@@ -57,6 +58,10 @@ const to = ref( {
   &__image {
     margin-bottom: 2rem;
     position: relative;
+
+    :deep(.image__picture) {
+      height: var(--image);
+    }
   }
 
   &__cats {

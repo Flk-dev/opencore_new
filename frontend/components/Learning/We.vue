@@ -52,7 +52,7 @@ onMounted( () => {
       animatedSvg.value,
       {
         type: 'oneByOne',
-        duration: 1000,
+        duration: 800,
         animTimingFunction: Vivus.EASE,
         pathTimingFunction: Vivus.EASE,
       }

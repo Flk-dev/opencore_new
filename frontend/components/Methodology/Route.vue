@@ -186,7 +186,7 @@ defineProps<{
       display: none;
     }
 
-    :deep(.video-round__play) {
+    :deep(.video-round__play svg) {
       max-width: 1.4rem;
     }
 

@@ -15,14 +15,18 @@
                 </svg>
               </button>
             </div>
-            <div class="footer__alert">Opengram, VC, Openbook</div>
+            <div class="footer__alert">
+              <a href="https://www.instagram.com/opencore.pro/" target="_blank">Opengram</a>,
+              <a href="https://vc.ru/u/425675-opencorepro" target="_blank">VC</a>,
+              <a href="https://www.facebook.com/opencore.pro/" target="_blank">Openbook</a>
+            </div>
           </div>
           <div class="footer__menu">
             <div class="footer__menu-title footer__title fz-h4">Скачать</div>
             <ul class="footer__menu-list">
-              <li><a href="#">Презентация короткая</a></li>
-              <li><a href="#">Презентация полная</a></li>
-              <li><a href="#">Форма брифа</a></li>
+              <li><a href="https://docs.google.com/presentation/d/1HEDmV_cndZI31hM3_7NcQ9TBGkuppdsvpoUGWY93tPI/edit#slide=id.g31ddfd66591_4_131" target="_blank">Презентация короткая</a></li>
+              <li><a href="https://docs.google.com/presentation/d/1nPQGKjcZ8FQlO6KBkMsGpT3s7DQdVS2DIaWtLzA1OyY/edit" target="_blank">Презентация полная</a></li>
+              <li><a href="https://drive.google.com/drive/u/0/folders/1CgSvbnT-ZM3zjIiGOE5pEcMY2hffQ6EF" target="_blank">Форма брифа</a></li>
             </ul>
           </div>
         </div>
@@ -87,6 +91,24 @@ const contacts = useState('contacts');
 
   &__alert {
     margin-top: 3rem;
+
+    & a {
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -.1rem;
+        width: 0;
+        border-bottom: 1.5px solid var(--fg-white);
+        transition: width .3s;
+      }
+
+      &:hover:after {
+        width: 100%;
+      }
+    }
 
     @media (max-width: $mobile) {
       margin-top: 2rem;

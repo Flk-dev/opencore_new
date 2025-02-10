@@ -84,32 +84,32 @@ const colLeft: any = ref( null );
 const colRight: any = ref( null );
 
 onMounted( () => {
-  //window.addEventListener( 'scroll', onScroll );
+  window.addEventListener( 'scroll', onScroll );
 } );
 
-// const onScroll = () => {
-//   if ( ! colRight.value || ! colLeft.value ) {
-//     return;
-//   }
-//
-//   const leftRect = colLeft.value.getBoundingClientRect();
-//   const rightRect = colRight.value.getBoundingClientRect();
-//   const gridRect = grid.value.getBoundingClientRect();
-//
-//   const travel = leftRect.height - rightRect.height
-//   const offsetTop = gridRect.top + window.scrollY;
-//   const cols = grid.value.getBoundingClientRect().height - window.innerHeight;
-//   const interval = cols / travel;
-//
-//   const scrolled: any = document.scrollingElement.scrollTop;
-//
-//   const e = Math.round( ( scrolled ) - offsetTop ) / interval;
-//   const b = scrolled >= ( leftRect.top + window.scrollY ) + rightRect.height - window.innerHeight;
-//
-//   if ( scrolled >= offsetTop && b == false ) {
-//     colRight.value.style.transform = "translate3d(0px, " + ( e ) + "px, 0px)";
-//   }
-// }
+const onScroll = () => {
+  if ( ! colRight.value || ! colLeft.value ) {
+    return;
+  }
+
+  const leftRect = colLeft.value.getBoundingClientRect();
+  const rightRect = colRight.value.getBoundingClientRect();
+  const gridRect = grid.value.getBoundingClientRect();
+
+  const travel = leftRect.height - rightRect.height
+  const offsetTop = gridRect.top + window.scrollY;
+  const cols = grid.value.getBoundingClientRect().height - window.innerHeight;
+  const interval = cols / travel;
+
+  const scrolled: any = document.scrollingElement.scrollTop;
+
+  const e = Math.round( ( scrolled ) - offsetTop ) / interval;
+  const b = scrolled >= ( leftRect.top + window.scrollY ) + rightRect.height - window.innerHeight;
+
+  if ( scrolled >= offsetTop && b == false ) {
+    colRight.value.style.transform = "translate3d(0px, " + ( e ) + "px, 0px)";
+  }
+}
 
 const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
   if (entry?.isIntersecting) {
