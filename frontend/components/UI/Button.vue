@@ -78,8 +78,10 @@ onMounted( () => {
     color: var(--fg-blue);
   }
 
-  &:hover {
-    color: var(--fg-white);
+  @media (any-hover: hover) {
+    &:hover {
+      color: var(--fg-white);
+    }
   }
 
   &--small {
@@ -119,10 +121,12 @@ onMounted( () => {
       z-index: -1;
     }
 
-    &:hover::before {
-      width: var(--width);
-      height: var(--height);
-      transition: width 1s, height 1s;
+    @media (any-hover: hover) {
+      &:hover::before {
+        width: var(--width);
+        height: var(--height);
+        transition: width 1s, height 1s;
+      }
     }
   }
 
@@ -135,9 +139,11 @@ onMounted( () => {
       background-color: var(--fg-blue);
     }
 
-    &:hover {
-      border-color: var(--fg-blue);
-      color: var(--fg-white) !important;
+    @media (any-hover: hover) {
+      &:hover {
+        border-color: var(--fg-blue);
+        color: var(--fg-white) !important;
+      }
     }
   }
 
@@ -149,8 +155,10 @@ onMounted( () => {
       background-color: var(--fg-white);
     }
 
-    &:hover span {
-      color: var(--fg-blue);
+    @media (any-hover: hover) {
+      &:hover span {
+        color: var(--fg-blue);
+      }
     }
   }
 

@@ -27,6 +27,8 @@ const { result: categories } = await useApi( '/cases/categories', {}, '/cases/ca
 
 const termId: any = ref( 0 );
 const page: any = ref( 1 );
+const maxPage: any = ref( 0 );
+
 const { data: posts } = await useAsyncData(
     'cases',
     () : any => $fetch(getApiUrl( '/cases/' ), {
@@ -37,7 +39,9 @@ const { data: posts } = await useAsyncData(
     }), {
       watch: [termId, page],
       transform: ( resData : object ) => {
-        return page.value === 1 ? resData.data : [ ...posts.value, ...resData.data ];
+        maxPage.value = resData.data.max_page;
+
+        return (page.value === 1 ? resData.data.posts : [...posts.value, ...resData.data.posts]);
       },
     },
 );

@@ -3,7 +3,7 @@
     <div class="partner-gallery__container container">
       <swiper
           class="partner-gallery__swiper"
-          :slides-per-view="1.3"
+          :slides-per-view="1.12"
           :loop="true"
           :space-between="20"
           :breakpoints="{ '576': { slidesPerView: 2 }, '992': { slidesPerView: 5 } }"

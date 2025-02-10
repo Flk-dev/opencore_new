@@ -24,22 +24,33 @@ register_rest_route( OS_API_NAMESPACE, '/cases', [
 			$args['paged'] = $page;
 		}
 
-		$cases = get_posts( $args );
+        $query     = new WP_Query( $args );
+        $posts     = [];
+        $max_pages = $query->max_num_pages;
 
-		if ( ! empty( $cases ) ) {
-			foreach ( $cases as $key => $item ) {
-				$cases[ $key ] = [
-					'post_id'    => $item->ID,
-					'post_title' => $item->post_title,
-					'post_slug'  => $item->post_name,
-					'image'      => on_get_field( 'image', $item->ID ),
-					'subtitle'   => on_get_field( 'subtitle', $item->ID ),
-					'categories' => get_term_format_data( wp_get_post_terms( $item->ID, 'cases_cats' ) )
-				];
-			}
-		}
+        if ( $query->have_posts() ) {
+            while ( $query->have_posts() ) {
+                $query->the_post();
 
-		return get_format_data( $cases );
+                $post_id = get_the_ID();
+
+                $posts[] = [
+                    'post_id'    => $post_id,
+                    'post_title' => get_the_title(),
+                    'post_slug'  => get_post_field( 'post_name', $post_id ),
+                    'image'      => on_get_field( 'image', $post_id ),
+                    'subtitle'  => on_get_field( 'subtitle', $post_id ),
+                    'categories' => get_term_format_data( wp_get_post_terms( $post_id, 'cases_cats' ) )
+                ];
+            }
+            wp_reset_postdata();
+        }
+
+
+        return get_format_data( [
+            'posts'    => $posts,
+            'max_page' => $max_pages
+        ] );
 	},
 
 	'permission_callback' => '__return_true'

@@ -153,6 +153,12 @@ defineProps<{
 
 .partner-video__text {
   margin-top: 3rem;
+
+  @media (max-width: $mobile) {
+    --width: 34rem;
+    max-width: var(--width);
+    min-width: var(--width);
+  }
 }
 
 </style>

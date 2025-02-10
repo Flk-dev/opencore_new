@@ -3,7 +3,7 @@
   <div class="accordion-item" @click="open" :class="{ 'accordion-item--white': isWhite, '_active': active }">
     <div class="accordion-item__head" v-if="title">
       <div class="accordion-item__head-left" :class="titleClass">
-        <div class="accordion-item__counter" v-if="counter">{{ counter }}</div>
+        <div class="accordion-item__counter fz-h2--mobile" v-if="counter">{{ counter }}</div>
         <div class="accordion-item__title fz-h2--mobile" v-html="title"></div>
       </div>
       <div class="accordion-item__icon">
@@ -105,12 +105,18 @@ const isArray = ( value ) => {
     min-width: 4.7rem;
     margin-right: 3.3rem;
     transition: var(--tr-regular);
+
+    @media (max-width: $mobile) {
+      min-width: 2.8rem;
+      margin-right: .7rem;
+    }
   }
 
   &__icon {
     --width: 2.8rem;
     height: var(--width);
     width: var(--width);
+    min-width: var(--width);
 
     & svg {
       width: 100%;
@@ -246,6 +252,10 @@ const isArray = ( value ) => {
 
     &._2 {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr !important;
     }
   }
 }

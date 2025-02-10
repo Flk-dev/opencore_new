@@ -17,11 +17,15 @@ register_rest_route( OS_API_NAMESPACE, '/pages/(?P<slug>.+)', [
 		    return get_wp_error();
 	    }
 
-	    return get_format_data( [
+	    $content = on_get_field( 'page_content', $page[0]->ID, [] );
+        //$content = preg_replace('/\x20([а|в|по|под|за|с|без|у|на|при|к|перед|после])\x20/m', ' \\1&nbsp;', $content);
+
+
+        return get_format_data( [
 		    'ID'           => $page[0]->ID,
 		    'title'        => $page[0]->post_title,
 		    'subtitle'     => on_get_field( 'page_subtitle', $page[0]->ID, '' ),
-		    'page_content' => on_get_field( 'page_content', $page[0]->ID, [] )
+		    'page_content' => $content
 	    ] );
     },
 

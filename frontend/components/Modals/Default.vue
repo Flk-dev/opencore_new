@@ -159,7 +159,7 @@ const close = ( event ) => {
 
   @media (max-width: $tablet) {
     padding: 2rem;
-    width: calc(100% - (var(--p-container) * 2));
+    width: calc(100% - (var(--p-container) * 2)) !important;
   }
 }
 :global(.modal__header) {
@@ -186,10 +186,12 @@ const close = ( event ) => {
   @media (max-width: $mobile) {
     min-width: 3.3rem;
     height: 3.3rem;
+  }
+}
 
-    & svg {
-      max-width: 1.5rem;
-    }
+:global(.modal__close svg) {
+  @media (max-width: $mobile) {
+    max-width: 1.5rem;
   }
 }
 

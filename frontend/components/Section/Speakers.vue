@@ -6,7 +6,7 @@
         <UIPullCursor ref="cursor" />
         <swiper
             class="speakers__swiper"
-            :slides-per-view="1"
+            :slides-per-view="0.9"
             :space-between="30"
             :breakpoints="{ '576': { slidesPerView: 1.5 } }"
             @sliderMove="test"

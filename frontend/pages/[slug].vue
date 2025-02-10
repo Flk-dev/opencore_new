@@ -8,7 +8,7 @@
       <div class="content__page-blocks" v-if="post.page_content.length">
         <div class="content__page-block content__text"
              v-for="content in post.page_content"
-             v-html="content.text">
+             v-html="typography(content.text)">
         </div>
       </div>
     </div>
@@ -18,8 +18,16 @@
 </template>
 
 <script setup lang="ts">
+import Typograf from "typograf";
+
 const route = useRoute();
 const { result: post } = await useApi( '/pages/' + route.params.slug + '/', {}, '', true );
+
+const tp = new Typograf({locale: ['ru', 'en-US']});
+const typography = ( text: any ) => {
+  return tp.execute( text );
+}
+
 </script>
 
 <style scoped lang="scss">

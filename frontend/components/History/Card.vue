@@ -1,6 +1,17 @@
 <template>
   <div class="history-card">
-    <UIImage :image="image" classes-pic="history-card__image item--cover" />
+    <UIImage
+        :image="image"
+        classes-pic="history-card__image item--cover"
+        @click="modal.open( ModalsCareerHistory, {
+          title: title,
+          text: subtitle,
+          fullText: text,
+          isWhite: true,
+          width: '800',
+          customClass: 'history'
+      } )"
+    />
     <h3 class="history-card__title fz-h3 fz-h2--mobile">{{ title }}</h3>
     <div class="history-card__subtitle fz-body" v-if="subtitle">{{ subtitle }}</div>
     <UIButton
@@ -11,7 +22,8 @@
           text: subtitle,
           fullText: text,
           isWhite: true,
-          width: '800'
+          width: '800',
+          customClass: 'history'
       } )"
     />
   </div>
@@ -35,6 +47,7 @@ const modal = useModal();
   height: 55rem;
   border-radius: 1.5rem;
   margin-bottom: 2.5rem;
+  cursor: pointer;
 
   @media (max-width: $tablet) {
     margin-bottom: 1.5rem;
@@ -69,6 +82,20 @@ const modal = useModal();
 
   @media (max-width: $mobile) {
     margin-top: 2.6rem;
+  }
+}
+
+@media (max-width: $tablet) {
+  :global(.modal--history .modal__title) {
+    font-size: var(--fz-h4);
+    max-width: 47.5rem;
+  }
+}
+
+@media (max-width: $mobile) {
+  :global(.modal--history .modal__title) {
+    font-size: var(--fz-h2);
+    max-width: 47.5rem;
   }
 }
 

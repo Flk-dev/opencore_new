@@ -31,7 +31,7 @@
               />
             </div>
             <div class="route-item__result" v-if="item.result">
-              <div class="route-item__subtitle fz-h4">Результат</div>
+              <div class="route-item__subtitle fz-h4 fz-h1--mobile">Результат</div>
               <div class="route-item__text">
                 <ContentText :text="item.result" />
               </div>
@@ -93,6 +93,10 @@ defineProps<{
     gap: 4rem;
     padding: 2rem 0;
     border-top: 1.5px solid var(--fg-black);
+  }
+
+  @media (max-width: $mobile) {
+    gap: 2rem;
   }
 
   &__line {
@@ -165,6 +169,7 @@ defineProps<{
     @media (max-width: $mobile) {
       flex-direction: column;
       justify-content: flex-start;
+      margin-bottom: 2rem;
     }
   }
 
@@ -212,6 +217,18 @@ defineProps<{
   &__accordion-item {
     padding-left: 0;
     padding-right: 0;
+    border-top: none;
+    border-bottom: 1.5px solid var(--fg-black);
+
+    @media (max-width: $mobile) {
+      :deep( .accordion-item__icon ) {
+        --width: 2rem;
+      }
+
+      :deep( .accordion-item__title ) {
+        padding-right: 1.5rem;
+      }
+    }
 
     &._active {
       :deep(.accordion-item__content) {
@@ -223,6 +240,10 @@ defineProps<{
       --fz: var(--fz-caption);
       --lh: var(--lh-caption);
       --top-ul-icon: .8rem;
+
+      @media (max-width: $mobile) {
+        --top-ul-icon: .5rem;
+      }
     }
   }
 }
