@@ -16,19 +16,22 @@
       @mouseover="animateButton( $event )"
       title=""
   >
-    <span v-html="title"></span>
+    <span v-html="windowWidth < 601 && titleMobile ? titleMobile : title"></span>
   </button>
 </template>
 
 <script setup lang="ts">
 defineProps<{
   title: string,
+  titleMobile?: string,
   to?: string
 }>();
 
 const button: any = ref( null );
 const classes: object = ref( [ 'btn', 'btn--ripple' ] );
 const width = ref( 0 );
+
+const { width: windowWidth } = useWindowSize();
 
 onMounted( () => {
   if ( button.value.$el ){

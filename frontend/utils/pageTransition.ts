@@ -33,29 +33,12 @@ export const initPageLoader = () => {
     const tl = gsap.timeline();
 
     // Elements
+    const header = document.querySelector( '.header' );
     const cookie = document.querySelector( '.cookie:not(._hide)' );
     const scrollIcon = document.querySelector('.scroll__icon');
 
     if (timer && min === 3){
         clearInterval( timer );
-    }
-
-    if ( scrollIcon ) {
-        tl.set(scrollIcon, {
-            yPercent: -120,
-            duration: 3,
-            ease: "Power4.easeInOut",
-            delay: 3,
-        });
-    }
-
-    if(cookie) {
-        tl.set(cookie, {
-            yPercent: -120,
-            duration: 3,
-            ease: "Power4.easeInOut",
-            delay: 3
-        });
     }
 
     tl.to(".transition__text",{
@@ -89,18 +72,37 @@ export const initPageLoader = () => {
         duration: 1.4,
         ease: "Expo.easeInOut",
     },"<");
-    //
-    // tl.to(".transition", {
-    //     zIndex: -1
-    // },"<");
+
+    if ( header ) {
+        tl.set(header, {
+            yPercent: 100,
+            duration: 1,
+            ease: "Power4.easeInOut",
+            delay: 1,
+        }, "<=");
+    }
+
+    if ( scrollIcon ) {
+        tl.set(scrollIcon, {
+            yPercent: -120,
+            ease: "Power4.easeInOut",
+        }, "<=");
+    }
+
+    if(cookie) {
+        tl.set(cookie, {
+            yPercent: -120,
+            duration: 1,
+            ease: "Power4.easeInOut",
+            delay: 1
+        }, "<=");
+    }
+
+
 }
 
 export const initPageIn = () => {
     const tl = gsap.timeline();
-
-    // tl.to(".transition", {
-    //     zIndex: 500
-    // },"<");
 
     tl.set(".transition__first",{
         yPercent: 100,

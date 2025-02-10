@@ -33,10 +33,16 @@
                 />
                 <FormInput
                     name="phone"
-                    placeholder="Телефон или почта"
+                    placeholder="Телефон"
                     v-model="form.phone"
                     :value="form.phone"
                 />
+              <FormInput
+                  name="phone"
+                  placeholder="Почта"
+                  v-model="form.email"
+                  :value="form.email"
+              />
                 <FormInput
                     name="comment"
                     placeholder="Расскажите кратко о задаче"
@@ -75,6 +81,7 @@ defineProps<{
 const emit = defineEmits( [ 'close' ] );
 
 const form = ref({
+  company: '',
   name: '',
   email: '',
   phone: '',

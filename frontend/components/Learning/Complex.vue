@@ -6,7 +6,7 @@
       <div class="learning-complex__slider">
         <swiper
             class="learning-complex__swiper"
-            :slides-per-view="1.2"
+            :slides-per-view="1.05"
             :loop="false"
             :breakpoints="{ '576': { slidesPerView: 1.4 }, '992': { slidesPerView: 2.6 } }"
         >
@@ -26,6 +26,7 @@
 
       <UIButton
           title="Получить бесплатную консультацию"
+          title-mobile="Бесплатная консультация"
           class="learning-complex__btn"
           @click="modal.open( ModalsLearningFree, {
             title: 'Узнайте, как улучшить бренд уже сегодня!',

@@ -59,7 +59,7 @@ usePagePreloaderLogic();
     justify-content: center;
     transform: translateZ(0) rotate(0.001deg);
     overflow: hidden;
-    pointer-events: all;
+    pointer-events: none;
     isolation: isolate;
   }
 

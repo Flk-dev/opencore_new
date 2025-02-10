@@ -13,5 +13,13 @@ const { result: categories } = await useApi( '/blog/categories', {}, 'blog/categ
   z-index: 50;
   background: var(--fg-white);
   padding: 1rem 0;
+
+  @media (max-width: $tablet) {
+    top: 7.4rem;
+  }
+
+  @media (max-width: $tablet) {
+    top: 6.8rem;
+  }
 }
 </style>

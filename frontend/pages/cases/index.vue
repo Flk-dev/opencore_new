@@ -12,7 +12,7 @@
 
     <div class="cases">
       <div class="cases__container container">
-        <CasesFilter :data="categories" @filter="filter" />
+        <CasesFilter class="cases__filter" :data="categories" @filter="filter" />
         <CasesGrid class="cases--archive" :data="posts" />
         <GlobalLoadmore  @loadMore="loadMore" />
       </div>
@@ -70,5 +70,21 @@ const loadMore = ( event: any ) => {
 
 .cases--archive:before {
   display: none;
+}
+
+.cases__filter {
+  position: sticky;
+  top: 4.5rem;
+  z-index: 50;
+  background: var(--fg-white);
+  padding: 1rem 0;
+
+  @media (max-width: $tablet) {
+    top: 7.4rem;
+  }
+
+  @media (max-width: $tablet) {
+    top: 6.8rem;
+  }
 }
 </style>
