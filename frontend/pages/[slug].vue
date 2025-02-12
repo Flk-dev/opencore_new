@@ -44,6 +44,8 @@ const typography = ( text: any ) => {
 
 .content__page-title {
   margin: 0;
+  position: sticky;
+  top: 5.3rem;
 
   @media (max-width: $tablet) {
     max-width: 60rem;
