@@ -25,13 +25,15 @@ defineProps<{
 <style scoped lang="scss">
 .scroll-text {
   overflow: hidden;
-  margin: 0 var(--m-m-container)
+  margin: -1rem var(--m-m-container);
 }
 
 .scroll-text__row {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 1.8rem;
+  margin-bottom: .8rem;
+  padding: 1rem 0;
+  overflow: hidden;
 
   &:last-child {
     margin-bottom: 0;

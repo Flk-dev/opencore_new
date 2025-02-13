@@ -113,6 +113,11 @@ onMounted(() => {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    & svg {
+      width: 3.9rem;
+      height: auto;
+    }
   }
 
   @media (any-hover: hover) {

@@ -182,6 +182,7 @@ const close = ( event ) => {
   border-radius: 50%;
   border: .1rem solid var(--fg-blue);
   background: var(--fg-white);
+  transition: var(--tr-regular);
   
   @media (max-width: $mobile) {
     min-width: 3.3rem;
@@ -189,10 +190,28 @@ const close = ( event ) => {
   }
 }
 
+@media (any-hover: hover) {
+  :global(.modal__close:hover){
+    background-color: var(--fg-blue);
+  }
+
+  :global(.modal__close:hover path){
+    fill: var(--fg-white);
+    stroke: var(--fg-white);
+  }
+}
+
 :global(.modal__close svg) {
+  width: 2rem;
+  height: auto;
+
   @media (max-width: $mobile) {
     max-width: 1.5rem;
   }
+}
+
+:global(.modal__close path) {
+  transition: var(--tr-regular);
 }
 
 :global(.modal__form) {
@@ -218,7 +237,7 @@ const close = ( event ) => {
 }
 
 :global(.modal__policy a) {
-  text-decoration: underline;
+  border-bottom: 1.5px solid var(--fg-white);
   color: var(--fg-white);
 }
 

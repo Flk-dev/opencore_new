@@ -9,8 +9,8 @@
             v-for="post in posts" :key="post.post_id"
             :to="{ name: 'services-slug', params: { slug: post.post_slug } }"
         >
-          <div class="services-item__post-fire" v-if="post.is_fire">🔥</div>
-          <div class="services-item__post-title fz-link fz-body--mobile" v-html="post.post_title"></div>
+          <span class="services-item__post-fire" v-if="post.is_fire">🔥</span>
+          <span class="services-item__post-title fz-link fz-body--mobile" v-html="post.post_title"></span>
         </NuxtLink>
       </div>
     </div>
@@ -85,6 +85,8 @@ defineProps<{
     position: relative;
     padding-left: 2.9rem;
 
+    $root: &;
+
     &-fire {
       position: absolute;
       left: 0;
@@ -92,7 +94,17 @@ defineProps<{
     }
 
     &-title {
-      text-decoration: underline;
+      border-bottom: 1.5px solid var(--fg-black);
+      transition: var(--tr-regular);
+    }
+
+    @media(any-hover: hover) {
+      &:hover {
+        #{$root}-title {
+          color: var(--fg-blue);
+          border-color: var(--fg-blue);
+        }
+      }
     }
   }
 }

@@ -34,5 +34,25 @@ defineProps<{
 
 .contact-socials__link {
   color: var(--fg-blue);
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1.5px;
+    width: 0;
+    transition: width .5s;
+    background-color: var(--fg-blue);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
 }
 </style>

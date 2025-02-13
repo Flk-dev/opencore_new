@@ -94,8 +94,35 @@ defineProps<{
   display: flex;
   align-items: center;
 
+  & svg {
+    width: 3rem;
+    height: auto;
+  }
+
   & span {
-    padding-left: var(--icon-left);
+    margin-left: var(--icon-left);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1.5px;
+      background-color: var(--fg-black);
+      transition: width .5s;
+    }
+  }
+}
+
+a.addresses-item__icon {
+  @media (any-hover: hover) {
+    &:hover {
+      & span::after {
+        width: 100%;
+      }
+    } 
   }
 }
 

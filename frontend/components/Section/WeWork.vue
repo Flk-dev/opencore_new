@@ -143,8 +143,10 @@ const toggleList = () => {
 }
 
 .we-work__item {
+  --width: 26rem;
   margin-right: 10rem;
-  min-width: 26rem;
+  min-width: var(--width);
+  max-width: var(--width);
 
   & img {
     width: 100%;

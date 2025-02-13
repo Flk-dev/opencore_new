@@ -53,6 +53,10 @@ defineProps<{
   @media (max-width: $tablet) {
     margin: 0 var(--m-m-container);
   }
+
+  & .swiper-slide {
+    height: auto !important;
+  }
 }
 
 .career-history_swiper {

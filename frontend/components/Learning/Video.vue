@@ -113,6 +113,10 @@ defineProps<{
 }
 
 .learning-video__logo {
+  & img {
+    width: 8.5rem;
+  }
+
   @media (max-width: $mobile) {
     max-width: 4.2rem;
     margin-top: 2rem;

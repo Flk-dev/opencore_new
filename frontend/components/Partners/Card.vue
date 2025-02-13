@@ -1,7 +1,7 @@
 <template>
   <div class="partners-item">
     <div class="partners-item__top">
-      <div class="partners-item__category" v-if="categories.length">
+      <div class="partners-item__category" v-if="categories">
         <p v-for="category in categories">{{ category.name }}</p>
       </div>
       <NuxtLink :to="{ name: 'partners-slug', params: { slug: slug } }" class="partners-item__header">
@@ -24,12 +24,16 @@
 </template>
 
 <script setup lang="ts">
+interface Cats {
+  name: string
+}
+
 defineProps<{
   id: number,
   title: string,
   description?: string,
   slug: string,
-  categories?: object
+  categories?: Array<Cats>
 }>();
 </script>
 
@@ -38,60 +42,66 @@ defineProps<{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
 
-.partners-item__category {
-  padding-bottom: 2rem;
-  border-bottom: .15rem solid var(--fg-blue);
-  margin-bottom: 2rem;
-  color: var(--fg-blue);
-}
-
-.partners-item__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 6rem;
-
-  @media (max-width: $mobile) {
+  &__category {
+    padding-bottom: 2rem;
+    border-bottom: .15rem solid var(--fg-blue);
     margin-bottom: 2rem;
+    color: var(--fg-blue);
   }
-}
 
-.partners-item__title {
-  max-width: 37.2rem;
-  color: var(--fg-blue);
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6rem;
 
-  @media (max-width: $mobile) {
-    max-width: 30.1rem;
+    @media (max-width: $mobile) {
+      margin-bottom: 2rem;
+    }
   }
-}
 
-.partners-item__description {
-  --fz: var(--fz-h4);
-  --lh: var(--lh-h4);
+  &__title {
+    max-width: 37.2rem;
+    color: var(--fg-blue);
 
-  --pd-ul-icon: 1rem;
-  --mb-ul-li: 2rem;
+    @media (max-width: $mobile) {
+      max-width: 30.1rem;
+    }
+  }
 
-  font-family: var(--ff-extended);
+  &__description {
+    --fz: var(--fz-h4);
+    --lh: var(--lh-h4);
 
-  @media (max-width: $mobile) {
-    --fz: var(--fz-h2);
-    --lh: var(--lh-h2);
-    letter-spacing: var(--lc-h2);
+    --pd-ul-icon: 1rem;
+    --mb-ul-li: 2rem;
 
-    --mb-ul-li: 1.5rem;
-    --top-ul-icon: .6rem;
+    font-family: var(--ff-extended);
 
-    :deep(br) {
-      display: none;
+    @media (max-width: $mobile) {
+      --fz: var(--fz-h2);
+      --lh: var(--lh-h2);
+      letter-spacing: var(--lc-h2);
+
+      --mb-ul-li: 1.5rem;
+      --top-ul-icon: .6rem;
+
+      :deep(br) {
+        display: none;
+      }
+    }
+  }
+
+  &__more {
+    margin-top: 4rem;
+  }
+
+  &__icon {
+    & svg {
+      width: 3.9rem;
+      height: auto;
     }
   }
 }
-
-.partners-item__more {
-  margin-top: 4rem;
-}
-
 </style>

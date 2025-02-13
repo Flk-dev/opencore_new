@@ -3,7 +3,7 @@
     <div class="cookie__container container">
       <div class="cookie__block">
         <div class="cookie__text fz-body">
-          Наш сайт использует куки. Продолжая им пользоваться,<br> вы соглашаетесь с&nbsp;<a href="#">условиями использования.</a>
+          Наш сайт использует куки. Продолжая им пользоваться,<br> вы соглашаетесь с&nbsp;<NuxtLink to="/policy-cookie/">условиями использования.</NuxtLink>
         </div>
         <div class="cookie__actions">
           <button class="cookie__actions-btn cookie__submit fz-link" @click="submit">Принять</button>
@@ -41,13 +41,22 @@ const close = () => {
   position: fixed;
   bottom: var(--bottom);
   left: 0;
-  width: 90%;
+  width: 91%;
+  max-width: 100%;
   z-index: 998;
   transform: translateY(var(--translate));
   transition: transform .3s, opacity 3s;
 
   &._hide {
     transform: translateY(var(--translate)) !important;
+  }
+
+  &__container {
+    padding-right: 0;;
+  }
+
+  @media (max-width: $tablet) {
+    width: 100%;
   }
 }
 

@@ -213,6 +213,10 @@ const onScrollEvent = (event, action) => {
       margin-top: 10.2rem;
     }
   }
+
+  &__contacts {
+    text-align: right;
+  }
 }
 
 :deep(.ps__rail-y){

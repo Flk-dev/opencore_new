@@ -55,7 +55,7 @@ defineProps<{
 
     :deep(a) {
       color: var(--fg-black-75);
-      text-decoration: underline;
+      border-bottom: 1.5px solid var(--fg-black-75);
     }
   }
 

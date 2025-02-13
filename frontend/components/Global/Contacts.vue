@@ -22,5 +22,23 @@ const contacts: object = useState('contacts');
   font-size: 2.2rem;
   line-height: 120%;
   color: var(--fg-white);
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: -.35rem;
+    width: 0;
+    height: 1.5px;
+    background-color: var(--fg-white);
+    left: 0;
+    transition: width .5s;
+  }
+
+  @media (hover: any-hover) {
+    &:hover:before {
+      width: 100%;
+    }
+  }
 }
 </style>

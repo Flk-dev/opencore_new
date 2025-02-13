@@ -37,7 +37,7 @@ defineProps<{
 }
 
 .about-company__content {
-  padding-left: 52rem;
+  padding-left: 48.5rem;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;

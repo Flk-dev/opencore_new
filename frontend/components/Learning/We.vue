@@ -119,6 +119,7 @@ const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
 
 .learning-we__media {
   & svg {
+    width: 52rem;
     height: auto;
   }
 

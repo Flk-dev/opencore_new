@@ -26,8 +26,26 @@
   font-size: 4rem;
   line-height: 100%;
   letter-spacing: -.04rem;
+  position: relative;
 
   @media (max-width: $mobile) {
     font-size: 2.4rem;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -.5rem;
+    left: 0;
+    width: 0;
+    height: .15rem;
+    background-color: var(--fg-white);
+    transition: width .5s;
+  }
+
+  @media (hover: any-hover) {
+    &:hover:after {
+      width: 100%;
+    } 
   }
 }

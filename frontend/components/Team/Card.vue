@@ -23,8 +23,6 @@ defineProps<{
 
 <style scoped lang="scss">
 .team-item {
-  cursor: pointer;
-
   &__media {
     height: 35.3rem;
     border-radius: 1.1rem;

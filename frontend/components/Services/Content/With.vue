@@ -4,14 +4,18 @@
       <GlobalBlockHeader :title="data.title" classes="service-with" />
       <div class="service-with__list">
         <div class="service-with__row">
-          <NuxtLink
+          <div 
+            class="service-with__item"
+            v-for="post in data.value"
+            :key="post.post_id"
+          >
+            <NuxtLink
               class="service-with__link fz-link"
-              v-for="post in data.value"
-              :key="post.post_id"
               :to="{ name: 'services-slug', params: { slug: post.post_slug } }"
           >
             {{ post.post_title }}
           </NuxtLink>
+          </div>
         </div>
       </div>
       <UIButton title="Все услуги" to="service" />
@@ -42,8 +46,15 @@ defineProps<{
   }
 
   &__link {
+    display: inline-flex;
     color: var(--fg-black);
-    text-decoration: underline;
+    border-bottom: 1.5px solid var(--fg-black);
+    transition: var(--tr-regular);
+
+    &:hover {
+      color: var(--fg-blue);
+      border-color: var(--fg-blue);
+    }
   }
 }
 </style>

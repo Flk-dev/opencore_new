@@ -62,6 +62,7 @@ const title = computed( () => {
   &__subtitle {
     margin-top: 2.5rem;
     color: var(--fg-black-75);
+    opacity: .75;
   }
 
   &__video {

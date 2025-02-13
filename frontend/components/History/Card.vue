@@ -1,30 +1,19 @@
 <template>
   <div class="history-card">
-    <UIImage
+    <div class="history-card__main">
+      <UIImage
         :image="image"
-        classes-pic="history-card__image item--cover"
-        @click="modal.open( ModalsCareerHistory, {
-          title: title,
-          text: subtitle,
-          fullText: text,
-          isWhite: true,
-          width: '800',
-          customClass: 'history'
-      } )"
+        class="history-card__image"
+        classes-pic="item--cover"
+        @click="openModal"
     />
     <h3 class="history-card__title fz-h3 fz-h2--mobile">{{ title }}</h3>
     <div class="history-card__subtitle fz-body" v-if="subtitle">{{ subtitle }}</div>
+    </div>
     <UIButton
       title="Подробнее"
       class="history-card__button btn--size-xs btn--border"
-      @click="modal.open( ModalsCareerHistory, {
-          title: title,
-          text: subtitle,
-          fullText: text,
-          isWhite: true,
-          width: '800',
-          customClass: 'history'
-      } )"
+      @click="openModal"
     />
   </div>
 </template>
@@ -32,7 +21,7 @@
 <script setup lang="ts">
 import {ModalsCareerHistory} from "#components";
 
-defineProps<{
+const props = defineProps<{
   image?: string,
   title: string,
   subtitle?: string,
@@ -40,48 +29,57 @@ defineProps<{
 }>();
 
 const modal = useModal();
+const openModal = () => {
+  modal.open( ModalsCareerHistory, {
+      title: props.title,
+      text: props.subtitle,
+      fullText: props.text,
+      isWhite: true,
+      width: '800',
+      customClass: 'history'
+  } )
+}
 </script>
 
 <style scoped lang="scss">
-:deep(.history-card__image) {
-  height: 55rem;
-  border-radius: 1.5rem;
-  margin-bottom: 2.5rem;
-  cursor: pointer;
+.history-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  position: relative;
 
-  @media (max-width: $tablet) {
-    margin-bottom: 1.5rem;
+  &__image {
+    :deep( .image__picture  ){
+      height: 55rem;
+      border-radius: 1.5rem;
+      margin-bottom: 2.5rem;
+      cursor: pointer;
+
+      @media (max-width: $tablet) {
+        margin-bottom: 1.5rem;
+      }
+
+      @media (max-width: $mobile) {
+        height: 33rem;
+      }
+    }
   }
 
-  @media (max-width: $mobile) {
-    height: 33rem;
+  &__subtitle {
+    margin-top: 1.5rem;
+
+    @media (max-width: $mobile) {
+      margin-top: .5rem;
+    }
   }
-}
 
-.history-card__subtitle {
-  margin-top: 1.5rem;
+  &__button {
+    margin-top: 4rem;
 
-  @media (max-width: $mobile) {
-    margin-top: .5rem;
-  }
-}
-
-.history-card__button {
-  //height: 4.1rem;
-  //display: flex;
-  //align-items: center;
-  //justify-content: center;
-  //padding: 0 2rem;
-  //font-size: var(--fz-caption);
-  //line-height: var(--lh-caption);
-  //letter-spacing: var(--lc-caption);
-  //color: var(--fg-blue);
-  //border: .15rem solid var(--fg-blue);
-  //border-radius: var(--br-secondary);
-  margin-top: 4rem;
-
-  @media (max-width: $mobile) {
-    margin-top: 2.6rem;
+    @media (max-width: $mobile) {
+      margin-top: 2.6rem;
+    }
   }
 }
 

@@ -16,7 +16,8 @@
               :image="item.image"
               :categories="item.categories"
               :subtitle="item.subtitle"
-              :slug="item.post_slug"
+              :slug="item.post_slug",
+              :add-border="item.add_border"
           />
         </div>
       </div>
@@ -30,6 +31,7 @@
               :categories="item.categories"
               :subtitle="item.subtitle"
               :slug="item.post_slug"
+              :add-border="item.add_border"
           />
         </div>
       </div>

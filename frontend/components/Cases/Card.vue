@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="{ name: 'cases-slug', params: { slug: slug } }" class="cases-item">
+  <NuxtLink :to="{ name: 'cases-slug', params: { slug: slug } }" class="cases-item" :class="[ addBorder ? 'cases-item--border' : '' ]">
     <div class="cases-item__media" v-if="image">
       <picture class="cases-item__media-pic">
         <img :src="image" class="cases-item__media-img" :alt="title">
@@ -22,6 +22,7 @@ defineProps<{
   subtitle?: string,
   title: string,
   slug: string,
+  addBorder?: boolean,
 }>();
 </script>
 
@@ -34,6 +35,12 @@ defineProps<{
   margin-bottom: 8rem;
 
   $root: &;
+
+  &--border {
+    & .cases-item__media-pic {
+      border: 1.5px solid var(--fg-blue);
+    }
+  }
 
   @media (max-width: $mobile) {
     margin-bottom: 6rem;

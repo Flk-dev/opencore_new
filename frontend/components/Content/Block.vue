@@ -2,18 +2,25 @@
   <div class="content" :class="classes">
     <div class="content__container container">
       <div class="content__block">
-        <ContentText v-if="text" :text="text" :classes="classesText" />
+        <ContentText v-if="text" :text="typography( text )" :classes="classesText" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import Typograf from "typograf";
+
 defineProps<{
   classes?: string,
   text?: string,
   classesText?: string,
 }>();
+
+const tp = new Typograf({locale: ['ru', 'en-US']});
+const typography = ( text: any ) => {
+  return tp.execute( text );
+}
 </script>
 
 <style scoped lang="scss">
@@ -35,9 +42,11 @@ defineProps<{
     & .content__text {
       --fz: 2.8rem;
       --lh: 125%;
+      --top-ul-icon: 1.5rem;
 
       @media (max-width: $mobile) {
         --fz: 1.8rem;
+        --top-ul-icon: .85rem;
       }
     }
   }

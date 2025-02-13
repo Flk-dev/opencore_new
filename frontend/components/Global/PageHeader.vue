@@ -47,13 +47,32 @@ onMounted( () => {
     z-index: -1;
     background: var(--fg-white);
 
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, .4);
+      opacity: 0;
+      transition: opacity .2s;
+    }
+
     &-active {
       filter: blur(8px);
+
+      &:after {
+        opacity: 1;
+      }
     }
   }
 
   & svg {
     margin: 0 auto;
+    width: 120.4rem;
+    max-width: 100%;
+    height: auto;
 
     @media (max-width: $tablet) {
       height: 6.3rem;
