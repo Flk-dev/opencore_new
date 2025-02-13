@@ -6,7 +6,7 @@
           <p v-for="category in categories">{{ category.name }}</p>
         </div>
         <h1 class="partner-head__title fz-h1" v-html="title"></h1>
-        <div class="partner-head__subtitle fz-h3 fz-h2--mobile" v-if="subtitle" v-html="subtitle"></div>
+        <div class="partner-head__subtitle fz-h3 fz-h2--mobile" v-if="subtitle" v-html="fixText( subtitle )"></div>
       </div>
     </div>
   </div>
@@ -16,7 +16,9 @@
 defineProps<{
   title: string,
   subtitle?: string,
-  categories?: object
+  categories?: Array<{
+    name: string
+  }>
 }>();
 </script>
 

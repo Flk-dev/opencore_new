@@ -26,12 +26,12 @@
                 v-for="( textItem, key ) in gridItem.texts"
                 :key="key"
             >
-              <ContentText :text="textItem.text" />
+              <ContentText :text="fixText( textItem.text )" />
             </div>
           </div>
         </div>
         <div v-else class="accordion-item__text">
-          <ContentText :text="text" />
+          <ContentText v-if="text" :text="fixText(text)" />
         </div>
         <UIButton
             v-if="isMore"
@@ -48,7 +48,7 @@
 const props = defineProps<{
   classes?: string,
   title: string,
-  text: string,
+  text: string[],
   counter?: string,
   titleClass?: string,
   isMore?: boolean,
@@ -152,6 +152,11 @@ const isArray = ( value ) => {
     :deep( .content__text ) {
       --fz: var(--fz-body-b);
       --lh: var(--lh-body-b);
+    }
+
+    :deep( strong ) {
+      color: var(--fg-blue);
+      font-weight: normal;
     }
   }
 

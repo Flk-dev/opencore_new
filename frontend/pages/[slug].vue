@@ -48,7 +48,8 @@ const typography = ( text: any ) => {
   top: 5.3rem;
 
   @media (max-width: $tablet) {
-    max-width: 60rem;
+    position: relative;
+    top: 0;
   }
 }
 

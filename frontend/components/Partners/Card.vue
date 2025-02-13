@@ -12,7 +12,7 @@
           </svg>
         </div>
       </NuxtLink>
-      <div class="partners-item__description content__text" v-if="description" v-html="description"></div>
+      <div class="partners-item__description content__text" v-if="description" v-html="fixText( description )"></div>
     </div>
     <UIButton
         title="Подробнее"

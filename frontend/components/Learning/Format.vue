@@ -1,12 +1,12 @@
 <template>
-  <div class="learning__format learning-format" v-if="data.list.length">
+  <div class="learning__format learning-format" v-if="data.list">
     <div class="learning__container container">
       <div class="learning-format__grid">
         <div class="learning-format__col" v-for="item in data.list">
           <GlobalBlockHeader :title="item.title"  classes="learning-format" class-title="fz-h1--tablet fz-h1--mobile" />
           <div :class="{ 'learning-format__item': true, '_blue': item.is_blue }">
             <h3 class="learning-format__item-title fz-h3 fz-h1--mobile" v-if="item.subtitle" v-html="item.subtitle"></h3>
-            <div class="learning-format__item-text content__text" v-if="item.text" v-html="item.text"></div>
+            <div class="learning-format__item-text content__text" v-if="item.text" v-html="fixText(item.text)"></div>
           </div>
         </div>
       </div>
@@ -25,8 +25,17 @@
 <script setup lang="ts">
 import {ModalsLearningCallUs} from "#components";
 
+interface List {
+  title: string,
+  is_blue: boolean,
+  subtitle?: string,
+  text?: string
+}
+
 defineProps<{
-  data: object
+  data: {
+    list: Array<List>
+  }
 }>();
 
 const modal = useModal();
@@ -88,23 +97,23 @@ const modal = useModal();
     min-height: 25rem;
     padding: 3rem 2rem;
   }
-}
 
-.learning-format__item-text {
-  --fz: var(--fz-body-b);
-  --lh: var(--fz-body-b);
-  --mb-ul-li: 1rem;
-  --top-ul-icon: .8rem;
+  &-text {
+    --fz: var(--fz-body-b);
+    --lh: var(--fz-body-b);
+    --mb-ul-li: 1rem;
+    --top-ul-icon: .8rem;
 
-  @media (max-width: $tablet) {
-    :deep(ul) {
-      max-width: 80%;
+    @media (max-width: $tablet) {
+      :deep(ul) {
+        max-width: 80%;
+      }
     }
-  }
 
-  @media (max-width: $mobile) {
-    --mb-ul-li: 1.5rem;
-    --top-ul-icon: .6rem;
+    @media (max-width: $mobile) {
+      --mb-ul-li: 1.5rem;
+      --top-ul-icon: .6rem;
+    }    
   }
 }
 
@@ -117,7 +126,6 @@ const modal = useModal();
 
   @media (max-width: $mobile) {
     margin-top: 6rem;
-  }
+  }   
 }
-
 </style>

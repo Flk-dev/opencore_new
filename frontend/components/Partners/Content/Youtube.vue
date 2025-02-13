@@ -120,6 +120,10 @@ defineProps<{
       display: none;
     }
 
+    & img {
+      width: 8.5rem;
+    }
+
     @media (max-width: $tablet) {
       & {
         display: none;

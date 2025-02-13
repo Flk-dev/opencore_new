@@ -33,94 +33,100 @@ defineProps<{
 </script>
 
 <style scoped lang="scss">
-.learning-video__block-header {
-  margin-bottom: 5rem;
+.learning-video {
+  &__block-header {
+    margin-bottom: 5rem;
 
-  @media (max-width: $tablet) {
-    margin-bottom: 3rem;
+    @media (max-width: $tablet) {
+      margin-bottom: 3rem;
+    }    
+  }
+
+  &__video {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70rem;
+    position: relative;
+
+    @media (max-width: $tablet) {
+      height: auto;
+      padding-bottom: 50%;
+    }    
+
+    @media (max-width: $mobile) {
+      padding-bottom: 53%;
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--br-regular);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;    
+  }
+
+  &__play {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    & svg {
+      width: 5.3rem;
+      height: auto;
+    }
+
+    @media (max-width: $mobile) {
+      max-width: 2rem;
+    }    
+  }
+
+  &__info {
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: $mobile) {
+      margin-top: 2rem;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+
+  &__text {
+    max-width: 101.9rem;
+
+    :deep(a) {
+      color: var(--fg-blue);
+      border-bottom: 1.8px solid var(--fg-blue);
+    }
+
+    @media (max-width: $tablet) {
+      max-width: 56.7rem;
+    }
+
+    @media (max-width: $mobile) {
+      max-width: 100%;
+    }
+  }
+
+  &__logo {
+    & img {
+      width: 8.5rem;
+    }
+
+    @media (max-width: $mobile) {
+      max-width: 4.2rem;
+      margin-top: 2rem;
+    }
   }
 }
-
-.learning-video__video {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 70rem;
-  position: relative;
-
-  @media (max-width: $tablet) {
-    height: auto;
-    padding-bottom: 42.5%;
-  }
-
-  @media (max-width: $mobile) {
-    padding-bottom: 53%;
-  }
-}
-
-.learning-video__bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: var(--br-regular);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.learning-video__play {
-  position: absolute;
-  z-index: 5;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  @media (max-width: $mobile) {
-    max-width: 2rem;
-  }
-}
-
-.learning-video__info {
-  margin-top: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  @media (max-width: $mobile) {
-    margin-top: 2rem;
-    align-items: flex-start;
-    flex-direction: column;
-  }
-}
-
-.learning-video__text {
-  max-width: 101.9rem;
-
-  :deep(a) {
-    color: var(--fg-blue);
-    border-bottom: 1.8px solid var(--fg-blue);
-  }
-
-  @media (max-width: $tablet) {
-    max-width: 56.7rem;
-  }
-
-  @media (max-width: $mobile) {
-    max-width: 100%;
-  }
-}
-
-.learning-video__logo {
-  & img {
-    width: 8.5rem;
-  }
-
-  @media (max-width: $mobile) {
-    max-width: 4.2rem;
-    margin-top: 2rem;
-  }
-}
-
 </style>

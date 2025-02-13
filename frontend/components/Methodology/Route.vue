@@ -9,13 +9,13 @@
             <div class="route-item__sticky">
               <div class="route-item__counter fz-h1--mobile">{{ dataKey + 1 }}</div>
               <h3 class="route-item__title fz-h1--mobile" v-if="item.post_title" v-html="item.post_title"></h3>
-              <RoundVideo class="route-item__video" :preview="item.video_preview" :link="item.video_link"  />
+              <RoundVideo class="route-item__video" v-if="item.video_preview && item.video_link" :preview="item.video_preview" :link="item.video_link"  />
             </div>
           </div>
           <div class="route-item__right">
             <div class="route-item__text">
               <ContentText v-if="item.text" :text="item.text" />
-              <RoundVideo class="route-item__video _tablet" :preview="item.video_preview" :link="item.video_link"  />
+              <RoundVideo class="route-item__video _tablet" v-if="item.video_preview && item.video_link" :preview="item.video_preview" :link="item.video_link"  />
             </div>
             <div class="route-item__accordion accordion" v-if="item.list.length">
               <AccordionItem
@@ -26,7 +26,7 @@
                   :text="list.list"
                   :is-two-column="list.is_two_colums"
                   title-class="fz-h4"
-                  is-white="true"
+                  :is-white="true"
                   class="_small route-item__accordion-item"
               />
             </div>
@@ -44,12 +44,23 @@
 </template>
 
 <script setup lang="ts">
-import RoundVideo from "~/components/Global/RoundVideo.vue";
+interface Select {
+  post_title?: string,
+  video_preview?: string,
+  video_link?: string,
+  text: string[],
+  list: Array<{
+    title: string,
+    list: string[],
+    is_two_colums: boolean
+  }>,
+  result?: string
+}
 
 defineProps<{
   data: {
     title: string,
-    select: object
+    select: Array<Select>
   }
 }>();
 </script>
@@ -91,7 +102,7 @@ defineProps<{
   @media (max-width: $tablet) {
     grid-template-columns: 1fr;
     gap: 4rem;
-    padding: 2rem 0;
+    padding: 2rem 0 12rem;
     border-top: 1.5px solid var(--fg-black);
   }
 
@@ -158,6 +169,10 @@ defineProps<{
       @media (max-width: $mobile) {
         padding-right: 0;
       }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
     }
 
     @media (max-width: $tablet) {

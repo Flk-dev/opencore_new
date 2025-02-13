@@ -29,8 +29,8 @@
           title-mobile="Бесплатная консультация"
           class="learning-complex__btn"
           @click="modal.open( ModalsLearningFree, {
-            title: 'Узнайте, как улучшить бренд уже сегодня!',
-            text: 'Оставьте заявку, и наш специалист свяжется с вами, чтобы обсудить ваши задачи. Мы поможем вам понять, какие шаги нужны для создания сильного и уникального бренда.',
+            title: 'Узнайте, как улучшить бренд уже&nbsp;сегодня!',
+            text: 'Оставьте заявку, и наш специалист свяжется с вами, чтобы&nbsp;обсудить ваши задачи. Мы поможем вам понять, какие шаги нужны для создания сильного и уникального бренда.',
           } )"
       />
     </div>
@@ -42,11 +42,16 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import {ModalsLearningFree} from "#components";
 
+interface List {
+  title?: string,
+  text?: string
+}
+
 defineProps<{
   data: {
     title: string,
     text: string,
-    list: object
+    list: Array<List>
   }
 }>();
 

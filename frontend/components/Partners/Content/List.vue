@@ -1,7 +1,7 @@
 <template>
   <div class="partner__list partner-list">
     <div class="partner-list__container container">
-      <h2 class="partner-list__title fz-h2 fz-h1--tablet fz-h1--mobile" :class="{ '_empty': ! data.title.length ? true : false }">{{ data.title }}</h2>
+      <h2 class="partner-list__title fz-h2 fz-h1--tablet fz-h1--mobile" :class="{ '_empty': ! data.title ? true : false }">{{ data.title }}</h2>
       <div class="partner-list__row" v-if="data.list.length">
         <div class="partner-list__item" v-for="(item, key) in data.list">
           <div class="partner-list__item-number fz-h4 fz-h2--mobile">{{getCounter( key + 1 ) }}</div>
@@ -18,13 +18,15 @@
 defineProps<{
   data: {
     title?: string,
-    list?: object
+    list: Array<{
+      text?: string
+    }>
   },
 }>();
 
 let counter = 1;
 
-const getCounter = ( counter ) => {
+const getCounter = ( counter: number ) => {
   return ( counter < 10 ? '0' + counter : counter );
 };
 

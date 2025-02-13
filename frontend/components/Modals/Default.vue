@@ -22,7 +22,7 @@
             <div class="modal__header-flex">
               <div class="modal__header-main">
                 <div class="modal__title fz-h3 fz-h1--mobile" v-html="props.title"></div>
-                <div class="modal__text fz-body" v-if="props.text" v-html="props.text"></div>
+                <div class="modal__text fz-body" v-if="props.text" v-html="fixText(props.text)"></div>
               </div>
               <button class="modal__close" @click="modal.close">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +50,7 @@ const { isOpen, isScrollable, view, props } = storeToRefs(modal);
 
 const model = ref({});
 
-const close = ( event ) => {
+const close = ( event : any ) => {
   const withinBoundaries = event.composedPath().includes( document.querySelector( '.modal__content' ) );
   if ( ! withinBoundaries ) {
     modal.close();

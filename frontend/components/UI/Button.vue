@@ -24,7 +24,7 @@
 defineProps<{
   title: string,
   titleMobile?: string,
-  to?: string
+  to?: object | string
 }>();
 
 const button: any = ref( null );
