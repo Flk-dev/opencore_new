@@ -1,12 +1,13 @@
 <template>
-  <div class="cats__menu">
+  <div class="cats__menu" @mousemove="changeCursor">
+    <UIPullCursor class="cats__menu-cursor" ref="cursor" />
     <swiper
         class="cats__menu-list"
-        v-if="data.length"
+        v-if="data"
         :free-mode="true"
         slides-per-view="auto"
-        :mousewheel="true"
         :space-between="10"
+        @sliderMove="changeCursorSlider"
     >
       <swiper-slide style="width: fit-content !important;">
         <button
@@ -57,18 +58,45 @@ const filter = ( id: any, index: number|string ) => {
   activeIndex.value = index;
 }
 
-const swipe = ( event ) => {
-  list.value.scrollBy({
-    left: event.deltaY < 0 ? -30 : 30,
-  });
+const cursor = ref<object|null>( null );
 
-  event.preventDefault();
+const changeCursor = ( event: any ) => {
+  const x = event.clientX;
+  const y = event.clientY;
+
+  if( cursor.value ){
+    cursor.value.$el.style.left = x + 'px';
+    cursor.value.$el.style.top = y + 'px';
+  }
 }
+
+const changeCursorSlider = ( event: any, pos: any ) => {
+  const x = pos.clientX;
+  const y = pos.clientY;
+
+  if( cursor.value ){
+    cursor.value.$el.style.left = x + 'px';
+    cursor.value.$el.style.top = y + 'px';
+  }
+}
+
 </script>
 
 <style scoped lang="scss">
 .cats__menu {
   margin: 0 var(--m-m-container) 2rem;
+
+  &:hover {
+    cursor: none;
+
+    .cats__menu-link {
+      cursor: none;
+    }
+
+    .cats__menu-cursor {
+      opacity: 1;
+    }
+  }
 
   &-list {
     padding: 0 var(--p-container);

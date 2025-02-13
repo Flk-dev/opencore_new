@@ -33,8 +33,18 @@ defineProps<{
   display: block;
   margin-bottom: 8rem;
 
+  $root: &;
+
   @media (max-width: $mobile) {
     margin-bottom: 6rem;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      #{$root}__media-img {
+        transform: scale(1);
+      }
+    }
   }
 
   &__media {
@@ -44,6 +54,8 @@ defineProps<{
     &-pic {
       height: var(--image-height);
       position: relative;
+      overflow: hidden;
+      border-radius: var(--br-regular);
 
       @media (max-width: $mobile) {
         --image-height: 19.2rem !important;
@@ -52,7 +64,6 @@ defineProps<{
 
 
     &-img {
-      border-radius: var(--br-regular);
       position: absolute;
       top: 0;
       left: 0;
@@ -60,6 +71,9 @@ defineProps<{
       height: 100%;
       object-fit: cover;
       object-position: center;
+      transform: scale(1.05);
+      transform-origin: center center;
+      transition: var(--tr-regular);
     }
   }
 

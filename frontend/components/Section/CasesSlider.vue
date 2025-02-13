@@ -36,21 +36,25 @@ defineProps<{
   data: object
 }>();
 
-const cursor = ref( null );
+const cursor = ref<object|null>( null );
 const changeCursor = ( event: any ) => {
   const x = event.clientX;
   const y = event.clientY;
 
-  cursor.value.$el.style.left = x + 'px';
-  cursor.value.$el.style.top = y + 'px';
+  if(cursor.value){
+    cursor.value.$el.style.left = x + 'px';
+    cursor.value.$el.style.top = y + 'px';
+  }
 }
 
 const test = ( event: any, pos: any ) => {
   const x = pos.clientX;
   const y = pos.clientY;
 
-  cursor.value.$el.style.left = x + 'px';
-  cursor.value.$el.style.top = y + 'px';
+  if( cursor.value ){
+    cursor.value.$el.style.left = x + 'px';
+    cursor.value.$el.style.top = y + 'px';
+  }
 }
 </script>
 
