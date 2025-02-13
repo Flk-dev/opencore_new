@@ -1,11 +1,15 @@
 <template>
-  <SectionCasesSlider class="article__cases" :title="data.title" :data="data.select" />
+  <SectionCasesSlider 
+    class="article__cases"
+    :title="data.title"
+    :data="data.select"
+  />
 </template>
 
 <script setup lang="ts">
 defineProps<{
   data: {
-    title?: string,
+    title: string,
     select: object
   }
 }>();

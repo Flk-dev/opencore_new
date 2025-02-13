@@ -174,6 +174,10 @@ const onScrollEvent = (event, action) => {
       max-height: 42.5rem;
       position: relative;
       overflow: hidden;
+
+      @media (max-width: $tablet) {
+        max-height: none;
+      }
     }
 
     &-white {
@@ -189,6 +193,11 @@ const onScrollEvent = (event, action) => {
         width: 100%;
         height: 9.6rem;
         background: linear-gradient(0deg, #fff 40.5%, rgba(255, 255, 255, 0) 100%);
+
+      
+        @media (max-width: $tablet) {
+          display: none;
+        }
       }
 
       &._active {

@@ -1,7 +1,7 @@
 <template>
   <section class="cases-slider section">
     <div class="cases-slider__container container">
-      <GlobalBlockHeader :title="title" classes="cases-slider" />
+      <GlobalBlockHeader v-if="title" :title="title" classes="cases-slider" />
       <div class="cases-slider__slider" @mousemove="changeCursor">
         <UIPullCursor ref="cursor" />
         <swiper

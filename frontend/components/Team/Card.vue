@@ -33,7 +33,7 @@ defineProps<{
       filter: grayscale(100%);
       transition: all .3s;
 
-      @media (max-width: $mobile) {
+      @media (max-width: $tablet) {
         object-position: top center;
       }
     }

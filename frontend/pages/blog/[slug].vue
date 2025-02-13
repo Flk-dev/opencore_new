@@ -40,7 +40,7 @@ const contentLayouts : any = ref( {
   cases: BlogContentCases,
 } );
 
-const { result: post } = await useApi( '/blog/' + route.params.slug, {}, true );
+const { result: post } = await useApi( '/blog/' + route.params.slug, {} );
 </script>
 
 <style scoped lang="scss">

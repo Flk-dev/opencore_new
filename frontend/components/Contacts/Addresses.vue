@@ -15,7 +15,7 @@
         </div>
         <div class="addresses-item__address fz-headline fz-body--mobile" v-if="item.address">{{ item.address }}</div>
       </div>
-      <div class="addresses-item__col _last">
+      <div class="addresses-item__col addresses-item__col--last">
         <a :href="'tel:' + item.phone" class="addresses-item__coord addresses-item__icon fz-h3  fz-h2--mobile" v-if="item.phone">
           <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13.125 1.875H10.3125C9.56658 1.875 8.85121 2.17132 8.32376 2.69876C7.79632 3.22621 7.5 3.94158 7.5 4.6875V25.3125C7.5 26.0584 7.79632 26.7738 8.32376 27.3012C8.85121 27.8287 9.56658 28.125 10.3125 28.125H19.6875C20.4334 28.125 21.1488 27.8287 21.6762 27.3012C22.2037 26.7738 22.5 26.0584 22.5 25.3125V4.6875C22.5 3.94158 22.2037 3.22621 21.6762 2.69876C21.1488 2.17132 20.4334 1.875 19.6875 1.875H16.875M13.125 1.875V2.8125H16.875V1.875M13.125 1.875H16.875M13.125 25.3125H16.875" stroke="#0000FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -28,8 +28,16 @@
 </template>
 
 <script setup lang="ts">
+interface Items {
+  city?: string,
+  time?: string,
+  coordinates?: string,
+  address?: string,
+  phone?: string
+}
+
 defineProps<{
-  items: object,
+  items: Array<Items>,
   classes?: string
 }>();
 </script>
@@ -63,77 +71,79 @@ defineProps<{
   &:last-child {
     margin-bottom: 0;
   }
-}
 
-.addresses-item__time {
-  margin-top: 1.5rem;
+  &__time {
+    margin-top: 1.5rem;
 
-  @media (max-width: $mobile) {
-    margin-top: 1rem;
-  }
-}
-
-.addresses-item__col._last {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-
-  @media (max-width: $tablet) {
-    grid-area: 2/2;
-    justify-content: flex-start;
-    margin-top: 6rem;
-  }
-
-  @media (max-width: $mobile) {
-    grid-area: auto;
-    margin-top: 0;
-  }
-}
-
-.addresses-item__icon {
-  display: flex;
-  align-items: center;
-
-  & svg {
-    width: 3rem;
-    height: auto;
-  }
-
-  & span {
-    margin-left: var(--icon-left);
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 1.5px;
-      background-color: var(--fg-black);
-      transition: width .5s;
+    @media (max-width: $mobile) {
+      margin-top: 1rem;
     }
   }
-}
 
-a.addresses-item__icon {
-  @media (any-hover: hover) {
-    &:hover {
-      & span::after {
-        width: 100%;
+  &__col {
+    &--last {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+
+      @media (max-width: $tablet) {
+        grid-area: 2/2;
+        justify-content: flex-start;
+        margin-top: 6rem;
       }
-    } 
+
+      @media (max-width: $mobile) {
+        grid-area: auto;
+        margin-top: 0;
+      }
+    }
   }
-}
 
-.addresses-item__address {
-  max-width: 43.1rem;
-  padding-left: var(--pd-count);
-  margin-top: 1.2rem;
+  &__icon {
+    display: flex;
+    align-items: center;
 
-  @media (max-width: $mobile) {
-    margin-top: 0;
-    max-width: 30rem;
+    & svg {
+      width: 3rem;
+      height: auto;
+    }
+
+    & span {
+      margin-left: var(--icon-left);
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 1.5px;
+        background-color: var(--fg-black);
+        transition: width .5s;
+      }
+    }  
+  }
+
+  a.addresses-item__icon {
+    @media (any-hover: hover) {
+      &:hover {
+        & span::after {
+          width: 100%;
+        }
+      } 
+    }    
+  }
+
+  &__address {
+    max-width: 43.1rem;
+    padding-left: var(--pd-count);
+    margin-top: 1.2rem;
+
+    @media (max-width: $mobile) {
+      margin-top: 0;
+      max-width: 30rem;
+    } 
   }
 }
 </style>

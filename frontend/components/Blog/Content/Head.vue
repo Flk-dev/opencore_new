@@ -3,7 +3,10 @@
     <div class="article__head-container container">
       <div class="article__head-content">
         <div>
-          <h1 class="article__head-title fz-h2 fz-h1--tablet fz-h1--mobile">{{ title }}</h1>
+          <h1 
+            class="article__head-title fz-h2 fz-h1--tablet fz-h1--mobile"
+            v-html="fixText( title )"
+           ></h1>
           <div class="article__head-time" v-if="readTime">
             Время прочения {{ readTime }}
           </div>
@@ -22,11 +25,15 @@
 </template>
 
 <script setup lang="ts">
+interface Cats {
+  name: string
+}
+
 defineProps<{
   title: string
   image?: string,
   readTime?: string,
-  categories?: object
+  categories?: Array<Cats>
 }>();
 </script>
 

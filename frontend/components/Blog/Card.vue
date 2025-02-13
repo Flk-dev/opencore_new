@@ -2,23 +2,27 @@
   <div class="blog-item">
     <NuxtLink :to="to">
       <UIImage :image="image" classes="blog-item__image" classes-pic="item--cover">
-        <div class="blog-item__cats" v-if="categories.length">
+        <div class="blog-item__cats" v-if="categories">
           <div class="blog-item__cats-item" v-for="category in categories">{{ category.name }}</div>
         </div>
       </UIImage>
     </NuxtLink>
     <div class="blog-item__time fz-caption" v-if="timeRead">{{ timeRead }}</div>
-    <NuxtLink class="blog-item__title fz-headline fz-body--mobile" :to="to">{{ title }}</NuxtLink>
+    <NuxtLink class="blog-item__title fz-headline fz-body--mobile" :to="to">{{ fixText(title) }}</NuxtLink>
   </div>
 </template>
 
 <script setup lang="ts">
+interface Cats {
+  name: string
+}
+
 const props = defineProps<{
   image?: string,
   title: string,
   slug: string,
   timeRead?: string,
-  categories?: object,
+  categories?: Array<Cats>,
 }>();
 
 const to = ref( {

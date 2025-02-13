@@ -59,5 +59,9 @@ defineProps<{
 .case-team__item-post {
   margin-top: 1.5rem;
   color: var(--fg-blue);
+
+  @media( max-width: $tablet ) {
+    line-height: 140%;
+  }
 }
 </style>

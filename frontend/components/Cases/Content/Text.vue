@@ -1,5 +1,5 @@
 <template>
-  <ContentBlock :text="data.text" classes="case__content _big" />
+  <ContentBlock :text="data.text" class="case__content _big" />
 </template>
 
 <script setup lang="ts">

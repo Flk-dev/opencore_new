@@ -81,6 +81,10 @@ defineProps<{
       transform: scale(1.05);
       transform-origin: center center;
       transition: var(--tr-regular);
+
+      @media (max-width: $tablet) {
+        transform: scale(1);
+      }
     }
   }
 
