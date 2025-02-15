@@ -11,14 +11,17 @@
       </div>
     </div>
     <div class="cases-item__project fz-caption" v-if="subtitle">{{ subtitle }}</div>
-    <h3 class="cases-item__title fz-headline fz-body--mobile" v-html="title"></h3>
+    <h3 class="cases-item__title fz-headline fz-body--mobile" v-html="fixText(title)"></h3>
   </NuxtLink>
 </template>
 
 <script setup lang="ts">
 defineProps<{
   image: string,
-  categories?: object,
+  categories: Array<{
+    term_id: number,
+    name: string
+  }>,
   subtitle?: string,
   title: string,
   slug: string,

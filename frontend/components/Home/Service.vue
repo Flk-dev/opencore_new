@@ -10,6 +10,7 @@
               :text="item.home_text"
               :is-more="true"
               :to="'/services/' + item.post_slug"
+              class="supporting__item"
           />
         </div>
       </div>
@@ -19,10 +20,16 @@
 </template>
 
 <script setup lang="ts">
+interface Select {
+  post_title: string,
+  text: string[],
+  post_slug: string
+}
+
 const props = defineProps<{
   data: {
     title: string,
-    select: object
+    select: string[]
   }
 }>();
 
@@ -90,6 +97,16 @@ const columns = computed(() => {
 
   @media (max-width: $mobile) {
     margin-top: 1rem;
+  }
+}
+
+.supporting__item {
+  @media (max-width: $mobile) {
+    :deep(.accordion-item__title) {
+      font-size: 2rem;
+      line-height: 100%;
+      letter-spacing: -.05rem;
+    }
   }
 }
 

@@ -78,5 +78,10 @@ const modal = useModal();
   text-align: center;
   margin: 3rem 0 6rem;
   color: var(--fg-white);
+
+  @media(max-width: $mobile){
+    max-width: 23.9rem;
+    margin: 1.5rem auto 3.5rem;
+  }
 }
 </style>

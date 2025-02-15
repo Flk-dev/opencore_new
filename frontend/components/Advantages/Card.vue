@@ -4,7 +4,7 @@
       <img :src="icon" class="advantages-item__icon-img" :alt="title">
     </div>
     <div class="advantages-item__title fz-h3 fz-h2--mobile" v-if="title" v-html="title"></div>
-    <div class="advantages-item__text fz-caption fz-body--mobile" v-if="text" v-html="text"></div>
+    <div class="advantages-item__text fz-caption fz-body--mobile" v-if="text" v-html="fixText(text)"></div>
   </div>
 </template>
 

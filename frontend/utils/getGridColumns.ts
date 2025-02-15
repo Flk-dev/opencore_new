@@ -1,4 +1,4 @@
-export default ( data: object ) => {
+export default ( data: string[] ) => {
     if ( ! data ){}
 
     const cols = ref( {
@@ -10,7 +10,7 @@ export default ( data: object ) => {
         return cols;
     }
 
-    data.forEach((element, index) => {
+    data.forEach((element: any, index: number) => {
         index += 1;
         if (index % 2 === 0) {
             cols.value.col_2.push(element);

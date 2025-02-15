@@ -3,7 +3,7 @@
     <div class="cookie__container container">
       <div class="cookie__block">
         <div class="cookie__text fz-body">
-          Наш сайт использует куки. Продолжая им пользоваться,<br> вы соглашаетесь с&nbsp;<NuxtLink to="/policy-cookie/">условиями использования.</NuxtLink>
+          Наш сайт использует куки. Продолжая им&nbsp;пользоваться,<br> вы соглашаетесь с&nbsp;<NuxtLink to="/policy-cookie/">условиями использования.</NuxtLink>
         </div>
         <div class="cookie__actions">
           <button class="cookie__actions-btn cookie__submit fz-link" @click="submit">Принять</button>

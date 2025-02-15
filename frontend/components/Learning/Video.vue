@@ -115,6 +115,10 @@ defineProps<{
 
     @media (max-width: $mobile) {
       max-width: 100%;
+
+      :deep(br) {
+        display: none;
+      }
     }
   }
 

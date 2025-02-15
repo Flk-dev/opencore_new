@@ -10,7 +10,12 @@
 </template>
 
 <script setup lang="ts">
-const contacts: object = useState('contacts');
+interface Contacts {
+  email?: string,
+  phone?: string,
+}
+
+const contacts = useState<Contacts>('contacts');
 </script>
 
 <style scoped lang="scss">
@@ -35,7 +40,7 @@ const contacts: object = useState('contacts');
     transition: width .5s;
   }
 
-  @media (hover: any-hover) {
+  @media (any-hover: hover) {
     &:hover:before {
       width: 100%;
     }

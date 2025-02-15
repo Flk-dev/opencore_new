@@ -3,8 +3,8 @@
       class="reviews-item"
       @click="modal.open( ModalsReview, {
         isWhite: true,
-        title: title,
-        full: full,
+        title: fixText(title),
+        full: fixText(full),
         logo: logo,
         name: name,
         post: post,
@@ -13,7 +13,7 @@
         customClass: 'reviews'
       } )"
   >
-    <h3 class="reviews-item__title fz-h3 fz-h2--mobile" v-if="title" v-html="title"></h3>
+    <h3 class="reviews-item__title fz-h3 fz-h2--mobile" v-if="title" v-html="fixText(title)"></h3>
     <div class="reviews-item__flex" v-if="logo || name">
       <div class="reviews-item__logo" v-if="logo">
         <img :src="logo" :alt="title">
@@ -32,10 +32,10 @@ import {ModalsReview} from "#components";
 defineProps<{
   id: string,
   name: string,
-  title?: string,
+  title: string,
   post?: string,
   logo?: string,
-  full?: string,
+  full: string,
 }>();
 
 const modal = useModal();
@@ -107,6 +107,14 @@ const modal = useModal();
   margin-top: 1rem;
   color: var(--fg-a1);
   transition: all .3s;
+}
+
+@media (max-width: $mobile) {
+  :global(.modal--reviews .modal__title) {
+      font-size: var(--fz-h2);
+      line-height: var(--fz-h2);
+      letter-spacing: var(--lc-h2);
+  }
 }
 
 </style>

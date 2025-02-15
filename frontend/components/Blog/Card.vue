@@ -57,6 +57,7 @@ const to = ref( {
 
   @media (max-width: $mobile) {
     margin-bottom: 6rem;
+    --image: 19.2rem !important;
   }
 
   &__image {

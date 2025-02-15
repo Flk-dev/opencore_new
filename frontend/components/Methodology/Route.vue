@@ -8,14 +8,14 @@
           <div class="route-item__left fz-h3">
             <div class="route-item__sticky">
               <div class="route-item__counter fz-h1--mobile">{{ dataKey + 1 }}</div>
-              <h3 class="route-item__title fz-h1--mobile" v-if="item.post_title" v-html="item.post_title"></h3>
-              <RoundVideo class="route-item__video" v-if="item.video_preview && item.video_link" :preview="item.video_preview" :link="item.video_link"  />
+              <h3 class="route-item__title fz-h1--mobile" v-if="item.post_title" v-html="fixText(item.post_title)"></h3>
+              <GlobalRoundVideo class="route-item__video" v-if="item.video_preview && item.video_link" :preview="item.video_preview" :link="item.video_link"  />
             </div>
           </div>
           <div class="route-item__right">
             <div class="route-item__text">
               <ContentText v-if="item.text" :text="item.text" />
-              <RoundVideo class="route-item__video _tablet" v-if="item.video_preview && item.video_link" :preview="item.video_preview" :link="item.video_link"  />
+              <GlobalRoundVideo class="route-item__video _tablet" v-if="item.video_preview && item.video_link" :preview="item.video_preview" :link="item.video_link"  />
             </div>
             <div class="route-item__accordion accordion" v-if="item.list.length">
               <AccordionItem
@@ -108,6 +108,7 @@ defineProps<{
 
   @media (max-width: $mobile) {
     gap: 2rem;
+    padding-bottom: 8rem;
   }
 
   &__line {
@@ -198,7 +199,7 @@ defineProps<{
 
   &__video {
     position: absolute;
-    right: -16.5rem;
+    right: -16.4rem;
     top: 0;
     --width: 7.5rem;
 
@@ -254,7 +255,7 @@ defineProps<{
     :deep( .content__text ){
       --fz: var(--fz-caption);
       --lh: var(--lh-caption);
-      --top-ul-icon: .8rem;
+      --top-ul-icon: .7rem;
 
       @media (max-width: $mobile) {
         --top-ul-icon: .5rem;

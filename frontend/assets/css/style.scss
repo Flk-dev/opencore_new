@@ -58,14 +58,7 @@ html {
     --fz-modifier: 1.3;
   }
   @media (max-width: $mobile-xxlg) {
-    --fz-modifier: 2.666666;
-  }
-
-  @media (max-width: $mobile-xxs) {
-    --fz-modifier: 2.777777;
-  }
-  @media (max-width: $mobile-xxs) {
-    --fz-modifier: 3.125; // min 320
+    --fz-modifier: 2.63333;
   }
 }
 

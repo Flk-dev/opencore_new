@@ -17,7 +17,10 @@
 const props = defineProps<{
   title?: string,
   subtitle?: string,
-  video?: object,
+  video?: {
+    preview: string,
+    link: string
+  },
 }>();
 
 const title = computed( () => {
@@ -52,6 +55,10 @@ const title = computed( () => {
     :deep(a) {
       color: var(--fg-blue);
       border-bottom: 3px solid var(--fg-blue);
+
+      @media (max-width: $mobile) {
+        border-width: 2px;
+      }
     }
 
     @media (max-width: $tablet) {

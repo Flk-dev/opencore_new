@@ -43,7 +43,7 @@
     transition: width .5s;
   }
 
-  @media (hover: any-hover) {
+  @media (any-hover: hover) {
     &:hover:after {
       width: 100%;
     } 

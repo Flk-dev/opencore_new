@@ -3,9 +3,9 @@
     <div class="container">
       <GlobalBlockHeader :title="data.title" classes="about-company" class-title="fz-h1--tablet"/>
       <div class="about-company__content">
-        <ContentText :text="data.text" class="about-company__text"/>
+        <ContentText v-if="data.text" :text="fixText( data.text )" class="about-company__text"/>
         <GlobalRoundVideo
-            v-if="data.video_link"
+            v-if="data.video_link && data.video_preview"
             :link="data.video_link"
             :preview="data.video_preview"
             class="about-company__video _big"

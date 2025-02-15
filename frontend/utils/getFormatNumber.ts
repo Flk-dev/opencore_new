@@ -1,4 +1,4 @@
-export default ( counter: Number ) => {
+export default ( counter: number ) => {
     if ( counter < 10 ) {
         return '0' + counter;
     }

@@ -1,7 +1,7 @@
 <template>
   <div
       class="service-when"
-      v-if="data.list.length"
+      v-if="data.list"
       :class="{ '_blue': data.is_blue }"
       ref="services"
   >
@@ -10,7 +10,7 @@
       <div class="service-when__grid">
         <div class="service-when__item" v-for="(item, key) in data.list" :key="key">
           <h4 class="service-when__item-title fz-h4 fz-h2--mobile" v-if="item.title" v-html="item.title"></h4>
-          <ContentText :text="item.text" class="service-when__item-text" />
+          <ContentText v-if="item.text" :text="fixText(item.text)" class="service-when__item-text" />
         </div>
       </div>
     </div>
@@ -21,7 +21,10 @@
 defineProps<{
   data: {
     title?: string,
-    list?: object,
+    list?: Array<{
+      title?: string,
+      text?: string
+    }>,
     is_blue: boolean
   }
 }>();

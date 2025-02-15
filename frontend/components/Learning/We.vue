@@ -14,7 +14,7 @@
               v-intersection-observer="onIntersectionObserver"
           >
             <div class="learning-we__item-counter fz-h3">{{ getFormatNumber( (key + 1) ) }}</div>
-            <div class="learning-we__item-text fz-h3 fz-h2--mobile" v-html="item.text"></div>
+            <div class="learning-we__item-text fz-h3 fz-h2--mobile" v-html="fixText(item.text)"></div>
           </div>
         </div>
         <div class="learning-we__media">
@@ -40,11 +40,13 @@ defineProps<{
   data: {
     image?: string,
     title: string,
-    list: object
+    list: Array<{
+      text: string
+    }>
   }
 }>();
 
-const animatedSvg = ref(null);
+const animatedSvg = ref<Ref|null>(null);
 const vivus = ref( {} );
 
 onMounted( () => {
@@ -72,6 +74,10 @@ const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
   background: var(--fg-blue);
   color: var(--fg-white);
   border-radius: var(--br-regular);
+
+  @media (max-width: $tablet) {
+    padding-bottom: 1rem;
+  }
 }
 
 .learning-we__content {

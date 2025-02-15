@@ -16,7 +16,10 @@
 defineProps<{
   data: {
     title?: string,
-    list: object
+    list: Array<{
+      name: string,
+      text: string
+    }>
   }
 }>();
 </script>
@@ -57,11 +60,8 @@ defineProps<{
 }
 
 .case-team__item-post {
-  margin-top: 1.5rem;
+  margin-top: .5rem;
   color: var(--fg-blue);
-
-  @media( max-width: $tablet ) {
-    line-height: 140%;
-  }
+  line-height: 140%;
 }
 </style>

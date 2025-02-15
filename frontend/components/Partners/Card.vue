@@ -95,6 +95,11 @@ defineProps<{
 
   &__more {
     margin-top: 4rem;
+
+    @media (max-width: $mobile) {
+      margin-top: 2rem;
+      border-radius: 1rem;
+    }
   }
 
   &__icon {

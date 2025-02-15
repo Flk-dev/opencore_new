@@ -127,6 +127,7 @@ const modal = useModal();
 
   @media (max-width: $mobile) {
     --fz: 1.5rem;
+    --top-ul-icon: .65rem;
   }
 }
 

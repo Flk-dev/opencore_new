@@ -4,8 +4,8 @@
       <img :src="image" :alt="name">
     </div>
     <div class="team-item___main">
-      <div class="team-item__post" v-if="post">{{post}}</div>
-      <div class="team-item__name" :class="isBig ? 'fz-h3 fz-h2--mobile' : 'fz-caption'" v-if="name">{{ name }}</div>
+      <div class="team-item__post" v-if="post" v-html="post"></div>
+      <div class="team-item__name" :class="isBig ? 'fz-h3 fz-h2--mobile' : 'fz-caption fz-body--mobile'" v-if="name">{{ name }}</div>
     </div>
     <div class="team-item__text fz-caption" v-if="isBig && text" v-html="text"></div>
   </div>
@@ -41,6 +41,7 @@ defineProps<{
     @media (max-width: $mobile) {
       height: auto;
       padding-bottom: 100%;
+      margin-bottom: 1.4rem;
     }
   }
 
@@ -85,9 +86,10 @@ defineProps<{
         height: 61rem;
       }
 
-      @media (max-width: $tablet) {
+      @media (max-width: $mobile) {
         height: auto;
         padding-bottom: 100%;
+        margin-bottom: 1.9rem;
       }
     }
 
@@ -99,10 +101,20 @@ defineProps<{
       order: 2;
       font-size: 2rem;
       margin-top: 1rem;
+
+      :deep(br) {
+        display: none;
+      }
       
       @media (max-width: $mobile) {
         font-size: var(--fz-body-b);
         line-height: var(--lh-body-b);
+        max-width: 80%;
+
+        
+        :deep(br) {
+          display: block;
+        }
       }
     }
   }

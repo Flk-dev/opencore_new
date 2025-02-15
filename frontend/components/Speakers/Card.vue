@@ -99,6 +99,7 @@ defineProps<{
 
   @media (max-width: $mobile) {
     --m-bottom: 1rem;
+    --lh: 115%;
   }
 }
 

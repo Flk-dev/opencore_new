@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<{
   isSticky: false,
 });
 
-const pageHeader = ref( null );
+const pageHeader = ref<Ref|null>( null );
 
 onMounted( () => {
   window.addEventListener( 'scroll', () => {
@@ -54,7 +54,7 @@ onMounted( () => {
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(255, 255, 255, .4);
+      background-color: rgba(255, 255, 255, .55);
       opacity: 0;
       transition: opacity .2s;
     }

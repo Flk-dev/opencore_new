@@ -239,7 +239,7 @@ const isArray = ( value ) => {
 
   @media (max-width: $mobile) {
     padding: 2rem 1rem;
-    margin-bottom: 1.5rem;
+    --m-bottom: 1.5rem;
   }
 
   &__grid {
