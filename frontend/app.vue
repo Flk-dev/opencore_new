@@ -1,13 +1,11 @@
 <template>
   <div>
       <NuxtLayout>
-        <GlobalTransition />
         <GlobalHeader />
           <NuxtPage/>
         <GlobalFooter />
         <GlobalCookie />
         <GlobalScrollIcon />
-        <ModalsDefault />
       </NuxtLayout>
   </div>
 </template>

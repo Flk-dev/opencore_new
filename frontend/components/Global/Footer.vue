@@ -49,7 +49,12 @@
 </template>
 
 <script setup lang="ts">
-const contacts = useState('contacts');
+interface Contacts {
+  email?: string,
+  phone?: string
+}
+
+const contacts = useState<Contacts>('contacts');
 </script>
 
 <style scoped lang="scss">
