@@ -115,15 +115,24 @@ export const initPageIn = () => {
 
     tl.to(".transition__first",{
         yPercent: 0,
-        duration: 0.5,
+        duration: .8,
         ease: "Power2.easeIn",
     });
 
     tl.to(".transition__first-inner", {
         yPercent: 0,
-        duration: 0.5,
+        duration: .8,
         ease: "Power2.easeIn"
     },"<");
+
+    tl.set('.menu', {
+        xPercent: '-100%',
+        duration: .5,
+    }, "<");
+
+    tl.set('body', {
+        className: ''
+    });
 
     tl.set(".transition__last, .transition__last-inner",{
         yPercent: 0,
@@ -153,6 +162,4 @@ export const initPageIn = () => {
         duration: 1.4,
         ease: "Expo.easeInOut",
     },"< 0.1");
-
-    document.querySelector('body').classList.remove( 'menu--open', '_lock' );
 }
