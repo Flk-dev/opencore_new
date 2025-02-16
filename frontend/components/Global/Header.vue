@@ -85,7 +85,7 @@ const route = useRoute();
   padding: .5rem 0 .4rem;
   z-index: 1000;
   transition: var(--tr-regular);
-  transform: translateY(-100%);
+  //transform: translateY(-100%);
 
   &._fixed {
     background: var(--fg-white);

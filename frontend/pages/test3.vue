@@ -26,6 +26,7 @@ const links = [
 	const navbar = ref()
 	const navLink = ref([])
 	const isDragging = ref(false)
+    const currentIndex = ref( 0 );
 
 
 	// VARS
@@ -71,7 +72,7 @@ const links = [
 	const render = () => {
 		requestAnimationFrame(render)
 
-		y = lerp(y * 0.9, scrollY, 0.05)
+        y = lerp(y * 0.9, (scrollY), 0.05);
 
 		dispose(y)
 
@@ -92,7 +93,24 @@ const links = [
 	})
 
 	const handleMouseWheel = (e) => {
-		scrollY -= e.deltaY
+		//scrollY -= e.deltaY
+
+        let direction;
+        if (e.deltaY < 0) {
+            direction = 1;
+            currentIndex.value--;
+            if (currentIndex.value < 0) {
+                currentIndex.value = navLink.value.length - 1;
+            }
+        } else {
+            direction = -1;
+            currentIndex.value++;
+            if (currentIndex.value > navLink.value.length - 1) {
+                currentIndex.value = 0;
+            }
+        }
+
+        scrollY -= e.deltaY - (itemHeight * direction);
 	}
 
 	const handleTouchStart = (e) => {
