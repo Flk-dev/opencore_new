@@ -27,7 +27,7 @@
   <GlobalFooterButton />
 </template>
 
-<script setup lang="ts">
+<script setup>
 const { result: post } = await useApi( '/services' );
 </script>
 

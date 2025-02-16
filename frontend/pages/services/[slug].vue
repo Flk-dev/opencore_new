@@ -41,7 +41,7 @@ const contentLayouts: any = ref({
   cases: ServicesContentCases,
   include: ServicesContentInclude,
   return: ServicesContentReturn,
-  advatanges: ServicesContentAdvantages,
+  //advatanges: ServicesContentAdvantages,
   with_service: ServicesContentWith,
 } );
 

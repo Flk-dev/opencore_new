@@ -21,7 +21,12 @@
 defineProps<{
   name: string,
   description: string,
-  posts?: Array<string>,
+  posts?: Array<{
+    post_id: number,
+    post_slug: string,
+    is_fire: boolean,
+    post_title: string
+  }>,
 }>();
 </script>
 
