@@ -1,5 +1,5 @@
 <template>
-  <section class="we-work section" v-if="weWork.list.length">
+  <section class="we-work section" v-if="weWork.list">
     <div class="we-work__container container">
       <GlobalBlockHeader :title="title" classes="we-work" class-title="fz-h1--tablet">
         <div class="block-header__text fz-caption" v-if="text" v-html="text"></div>

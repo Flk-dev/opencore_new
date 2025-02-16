@@ -44,7 +44,10 @@ import 'swiper/css';
 
 withDefaults(defineProps<{
   hideAll?: boolean,
-  data: object,
+  data: Array<{
+    term_id: number,
+    name?: string
+  }>,
 }>(), {
   hideAll: false,
 });
@@ -58,7 +61,7 @@ const filter = ( id: any, index: number|string ) => {
   activeIndex.value = index;
 }
 
-const cursor = ref<object|null>( null );
+const cursor = ref<Ref|null>( null );
 
 const changeCursor = ( event: any ) => {
   const x = event.clientX;

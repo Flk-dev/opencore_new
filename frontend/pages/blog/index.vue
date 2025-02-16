@@ -21,21 +21,21 @@
   <GlobalFooterButton />
 </template>
 
-<script setup lang="ts">
-const termId: any = ref( 0 );
-const page: any = ref( 1 );
-const maxPage: any = ref( 0 );
+<script setup>
+const termId = ref( 0 );
+const page = ref( 1 );
+const maxPage = ref( 0 );
 
 const { data: posts } = await useAsyncData(
     'blog',
-    (): any => $fetch(getApiUrl('/blog/'), {
+    () => $fetch(getApiUrl('/blog/'), {
       params: {
         category: termId.value,
         page: page.value
       }
     }), {
       watch: [termId, page],
-      transform: (resData: object) => {
+      transform: (resData) => {
         maxPage.value = resData.data.max_page;
 
         return (page.value === 1 ? resData.data.posts : [...posts.value, ...resData.data.posts]);
@@ -43,7 +43,7 @@ const { data: posts } = await useAsyncData(
     },
 );
 
-const filter = (id: number | string) => {
+const filter = (id) => {
   termId.value = id;
   page.value = 1;
 };

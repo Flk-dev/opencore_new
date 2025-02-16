@@ -1,5 +1,5 @@
 <template>
-  <SectionAdvantages :title="data.title" :select="data.select" />
+  <SectionAdvantages :title="data.title" v-if="data.select" :select="data.select" />
 </template>
 
 <script setup lang="ts">

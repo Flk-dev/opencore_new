@@ -5,7 +5,7 @@
     <div class="about-branding__list" v-if="data.list">
       <div class="about-branding__item" v-for="(item, index) in data.list" :key="index">
         <div class="about-branding__item-title fz-h3 fz-h2--mobile" v-html="item.title"></div>
-        <div class="about-branding__item-text fz-body--mobile" v-html="item.text"></div>
+        <div class="about-branding__item-text fz-body--mobile" v-html="fixText(item.text)"></div>
       </div>
     </div>
   </div>
@@ -16,7 +16,10 @@
 defineProps<{
   data: {
     title?: string,
-    list?: object
+    list?: Array<{
+      title: string,
+      text: string
+    }>
   }
 }>();
 </script>

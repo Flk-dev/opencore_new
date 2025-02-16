@@ -2,7 +2,7 @@
   <section
       class="advantages section section--blue"
       v-if="select"
-      ref="blueSection">
+    >
     <div class="advantages__container container">
       <GlobalBlockHeader :title="title" classes="advantages" class-title="fz-h1--tablet" />
       <div class="advantages__grid">
@@ -21,10 +21,13 @@
 <script setup lang="ts">
 defineProps<{
   title?: string,
-  select: object
+  select?: Array<{
+    post_id: number,
+    title: string,
+    icon: string,
+    text: string
+  }>
 }>();
-
-const blueSection = ref( null );
 </script>
 
 <style scoped lang="scss">

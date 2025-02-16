@@ -18,7 +18,7 @@
           <path d="M82.5179 28.1774V0H88.4588V29.4864H76.8916L68.3822 1.29124V29.4687H62.4414V0H73.9736L82.5179 28.1774Z" fill="white"/>
         </svg>
 
-        <span class="fz-headline">{{ afterText }}</span>
+        <span class="fz-headline"></span>
       </div>
       <div 
         class="menu__list" 

@@ -6,6 +6,7 @@
         <GlobalFooter />
         <GlobalCookie />
         <GlobalScrollIcon />
+        <ModalsDefault />
       </NuxtLayout>
   </div>
 </template>
