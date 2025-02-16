@@ -60,7 +60,7 @@ onMounted( () => {
       stagger: 0.5,
       scrollTrigger: {
         pin: ".about-values .container",
-        markers: true,
+        markers: false,
         scrub: true,
         start: "top top",
         end: `${window.innerHeight * 5} bottom`,

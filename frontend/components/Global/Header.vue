@@ -1,5 +1,12 @@
 <template>
-  <header class="header" :class="{ '_fixed': fixed, 'header--white': isWhite ? isWhite : false }">
+  <header 
+    class="header" 
+    ref="headerRef"
+    :class="{
+      'header--white': isWhite ? isWhite : false,
+      'header--hide': isHide
+    }"
+  >
     <div class="header__container container">
       <NuxtLink to="/" class="header__logo logo" :class="route.path == '/' ? 'header__logo--home' : ''">
         <div class="logo__pc">
@@ -39,6 +46,9 @@
 </template>
 
 <script setup lang="ts">
+import { useHeader } from '~/stores/header';
+import { storeToRefs } from 'pinia'
+
 defineProps<{
   isWhite?: boolean
 }>();
@@ -55,14 +65,17 @@ const openMenu = () => {
   body.classList.add( '_lock', 'menu--open' );
 }
 
-const fixed = ref( false );
+const headerRef  = ref( null );
+const { height } = useElementSize( headerRef );
+
+const header = useHeader();
+const { isHide } = storeToRefs(header);
+
 onMounted(() => {
-  window.addEventListener('scroll', () => {
-    if ( window.pageYOffset > 100 ){
-      fixed.value = true;
-    } else {
-      fixed.value = false;
-    }
+  header.$patch({ headerHeight: height })
+
+  window.addEventListener('scroll', ( event: any ) => {
+    header.scroll( event );
   });
 });
 
@@ -85,6 +98,7 @@ const route = useRoute();
   padding: .5rem 0 .4rem;
   z-index: 1000;
   transition: var(--tr-regular);
+  background-color: var(--fg-white);
   //transform: translateY(-100%);
 
   &._fixed {
@@ -107,6 +121,10 @@ const route = useRoute();
     & .header__logo {
       opacity: 0;
     }
+  }
+
+  &--hide {
+    transform: translateY(-100%);
   }
 }
 
