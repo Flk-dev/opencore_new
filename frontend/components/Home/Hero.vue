@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="hero__slider">
-        <swiper-container
+        <swiper
             class="hero__slider-swiper"
             :free-mode="true"
             slides-per-view="auto"
@@ -40,7 +40,7 @@
               <img src="/img/hero/logos/logo-4.svg" alt="">
             </div>
           </swiper-slide>
-        </swiper-container>
+        </swiper>
       </div>
       <div class="hero__logo" ref="logo">
         <NuxtLink to="/">
@@ -62,6 +62,8 @@
 </template>
 
 <script setup lang="ts">
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -215,7 +217,7 @@ onMounted( () => {
   position: absolute;
   bottom: 22.5rem;
 
-  :deep(swiper-slide) {
+  :deep(.swiper-slide) {
     width: 26rem !important;
   }
 

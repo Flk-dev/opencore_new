@@ -26,7 +26,7 @@ const contentLayouts: any = ref( {
   return: HomeReturn,
   reviews: HomeReviews,
   festival: HomeFestival,
-  advantages: HomeAdvantages,
+  //advantages: HomeAdvantages,
 } );
 
 const { result: post } = await useApi( '/template/home', {}, '', true );

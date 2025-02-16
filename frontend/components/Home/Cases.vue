@@ -17,7 +17,7 @@ const props = defineProps<{
 
 const { result: categories } = await useApi( '/cases/categories', {}, '/cases/categories' );
 
-const posts: array = ref( props.data.select );
+const posts: any = ref( props.data.select );
 const termId: any = ref( 0 );
 const filter = async (id: number | string) => {
   termId.value = id;
@@ -29,7 +29,7 @@ const filter = async (id: number | string) => {
           category: termId.value,
         }
       }), {
-        transform: ( resData : object ) => {
+        transform: ( resData : any ) => {
           posts.value = resData.data;
         },
       },

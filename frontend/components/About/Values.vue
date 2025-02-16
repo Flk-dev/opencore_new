@@ -1,5 +1,5 @@
 <template>
-  <div class="about__values about-values" v-element-visibility="onElementVisibility">
+  <div class="about__values about-values">
     <div class="container">
       <GlobalBlockHeader :title="data.title" classes="about-values" />
       <div class="about-values__list" v-if="data.select">
@@ -15,7 +15,7 @@
             </div>
             <div class="about-values__item-content">
               <div class="about-values__item-title fz-h3 fz-h2--mobile" v-if="item.post_title" v-html="item.post_title"></div>
-              <div class="about-values__item-text" v-if="item.text" v-html="item.text"></div>
+              <div class="about-values__item-text" v-if="item.text" v-html="fixText( item.text )"></div>
             </div>
         </div>
       </div>
@@ -24,27 +24,50 @@
 </template>
 
 <script setup lang="ts">
-import { vElementVisibility } from '@vueuse/components';
-import setActiveDelay from "~/utils/setActiveDelay";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 
 defineProps<{
   data: {
     title?: string,
-    select?: object
+    select?: Array<{
+      post_id: number,
+      icon: string,
+      post_title: string,
+      text: string
+    }>
   }
 }>();
 
-const items = ref( null );
+gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.defaults({
+  markers: true
+});
 
-const onElementVisibility = ( state: boolean ) => {
-  if ( state ){
-    setActiveDelay(
-        '.about-values__item',
-        'about-values__item--active',
-        1000
-    );
-  }
-}
+const items = ref( null );
+const spacer = ref( 100 );
+
+onMounted( () => {
+  gsap.fromTo(
+    ".about-values__item",
+    {
+      x: () => '500%',
+      //y: '-100%',
+    },
+    {
+      x: 0,
+      stagger: 0.5,
+      scrollTrigger: {
+        pin: ".about-values .container",
+        markers: true,
+        scrub: true,
+        start: "top top",
+        end: `${window.innerHeight * 5} bottom`,
+      }
+    }
+  );
+} )
 </script>
 
 <style scoped lang="scss">
@@ -84,8 +107,8 @@ const onElementVisibility = ( state: boolean ) => {
   justify-content: space-between;
   min-height: 36rem;
   margin-right: calc( -1 * ((var(--width) - var(--coef)) - var(--coef)));
-  opacity: 0;
-  transform: translateX(100%);
+  //opacity: 0;
+  //transform: translateX(100%);
   transition: all .7s;
 
   &--active {

@@ -5,7 +5,7 @@
 <script setup lang="ts">
 defineProps<{
   data: {
-    title?: string,
+    title: string,
     text?: string,
     logo?: string,
   }
