@@ -40,7 +40,7 @@ usePagePreloaderLogic();
   right: 0;
   bottom: 0;
   overflow: hidden;
-  z-index: 500;
+  z-index: 1001;
   pointer-events: none;
   transform: translateZ(0) rotate(0.001deg);
   isolation: isolate;

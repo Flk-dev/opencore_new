@@ -124,7 +124,7 @@ const route = useRoute();
   }
 
   &--hide {
-    transform: translateY(-100%);
+    transform: translateY(-100%) !important;
   }
 }
 

@@ -2,7 +2,8 @@ import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 
 let timer: NodeJS.Timeout;
-let min: number = 1;
+
+const wordCounter = ref(1);
 
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.defaults({
@@ -25,7 +26,7 @@ export const initWords = () => {
         item.dataset.wordActive = false;
         next.dataset.wordActive = true;
 
-        min++;
+        wordCounter.value++;
     }, 1000);
 }
 
@@ -37,7 +38,7 @@ export const initPageLoader = () => {
     const cookie = document.querySelector( '.cookie:not(._hide)' );
     const scrollIcon = document.querySelector('.scroll__icon');
 
-    if (timer && min === 3){
+    if (timer){
         clearInterval( timer );
     }
 

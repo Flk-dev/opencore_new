@@ -12,6 +12,8 @@ export default () => {
     });
 
     nuxtApp.hook("page:finish", () => {
-        initPageLoader();
+        setTimeout( () => {
+            initPageLoader();
+        }, 3000 );
     });
 }
