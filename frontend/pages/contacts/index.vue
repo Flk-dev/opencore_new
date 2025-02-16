@@ -14,7 +14,7 @@
       <h1 class="contacts__title fz-h1--tablet fz-h1--mobile">Давайте вместе сделаем<br> что-то классное</h1>
       <div class="contacts__flex">
         <div class="contacts__main">
-          <GlobalRoundVideo class="contacts__video _big" :link="post.video.link" :preview="post.video.preview" />
+          <GlobalRoundVideo class="contacts__video _big" v-if="post.video" :link="post.video.link" :preview="post.video.preview" />
           <div class="contacts__main-content">
             <div class="contacts__hello fz-h4" v-if="post.hello_text" v-html="post.hello_text"></div>
             <ContactsSocials classes="contacts__direct" :socials="post.socials_direct" />

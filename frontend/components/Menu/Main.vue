@@ -95,7 +95,9 @@ const dispose = (scroll) => {
   const wrapHeight = navLink.value.length * itemHeight.value;
 
   gsap.set(navLink.value, {
-    y: (i) => i * itemHeight.value - scroll,
+    y: (i) => {
+      return i * itemHeight.value + scroll + 15;
+    },
     modifiers: {
       y: (y) => {
         const s = gsap.utils.wrap(
@@ -121,7 +123,7 @@ const render = () => {
   dispose(y)
 
   scrollSpeed = y - oldScrollY
-  oldScrollY = y
+  oldScrollY = y;
 }
 
 const handleMouseWheel = (e) => {
@@ -146,6 +148,16 @@ const handleMouseWheel = (e) => {
 onMounted( () => {
 	dispose(0)
 	render();
+
+  /*let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.menu__list',
+      start: "top center",
+      end: "bottom center",
+      scrub: true,
+      markers: true
+    }
+  });*/
 } );
 
 </script>
@@ -196,6 +208,19 @@ onMounted( () => {
     width: 100%;  
     display: flex;
     align-items: center;
+
+    @media (any-hover: hover) {
+      &:hover {
+         & .menu__title {
+          opacity: 1;
+          transform: translateX(0);
+         }
+
+        & .menu__link {
+          color: var(--fg-white);
+        }
+      }
+    }
   }
 
   &__link {
@@ -222,11 +247,15 @@ onMounted( () => {
   &__title {
     margin-left: 2rem;
     margin-top: .8rem;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: all .3s;
   }
 
   &__before,
   &__after {
     position: absolute;
+    opacity: 1;
   }
 
   &__before {
