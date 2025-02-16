@@ -1,9 +1,21 @@
 import { markRaw } from "vue";
 import {defineStore} from "pinia";
 
-const lockUnlockBody = () => {
-    document.querySelector( 'body' ).classList.toggle( '_lock' );
-};
+const lockBody = () => {
+    const body = document.querySelector( 'body' );
+    if(body){
+        body.classList.add( '_lock' );
+    }
+}
+
+const unLockBody = () => {
+    const body = document.querySelector( 'body' );
+    if(body){
+        body.classList.remove( '_lock' );
+    }
+}
+
+let timer: TimerHandler;
 
 const isScrollable = () => {
     return new Promise((resolve) => {
@@ -30,6 +42,11 @@ export const useModal = defineStore('modal', {
     actions: {
         open( view: object, props?: object ) {
             this.isOpen = true;
+            this.view = {};
+            this.props = {};
+
+            clearInterval( timer );
+
             this.view = markRaw(view);
             if (props){
                 this.props = props;
@@ -39,15 +56,19 @@ export const useModal = defineStore('modal', {
                 this.isScrollable = value;
             });
 
-            lockUnlockBody();
+            lockBody();
         },
         close() {
             this.isOpen = false;
-            this.view = {};
-            this.props = {};
-            this.isScrollable = false;
+            timer = setTimeout( () => {
+                this.view = {};
+            }, 800 );
 
-            lockUnlockBody();
+            unLockBody();
+            //this.props = {};
+            //this.isScrollable = false;
+
+            //this.view = {};
         }
     }
 })

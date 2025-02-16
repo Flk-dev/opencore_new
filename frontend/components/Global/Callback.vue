@@ -12,14 +12,13 @@
             </button>
           </div>
         </div>
-        <div class="callback__form form">
-          <div class="callback__form-white" ref="whiteBlock">
-            <PerfectScrollbar
-                class="callback__form-overflow"
-                @ps-scroll-down="onScrollEvent( $event, 'down' )"
-                @ps-scroll-up="onScrollEvent( $event, 'up' )"
-            >
-                <FormInput
+        <div class="callback__form" ref="scrollbar">
+          <PerfectScrollbar
+            class="callback__scrollbar"
+            @ps-scroll-down="onScrollEvent( $event, 'down' )"
+            @ps-scroll-up="onScrollEvent( $event, 'up' )"
+          >
+            <FormInput
                     name="name"
                     placeholder="Ваше имя"
                     v-model="form.name"
@@ -55,11 +54,7 @@
                     v-model="form.file"
                     :value="form.file"
                 />
-              </PerfectScrollbar>
-            </div>
-          <div class="form__button">
-            <UIButton title="Отправить" class="btn--white" />
-          </div>
+          </PerfectScrollbar>
         </div>
         <div class="callback__bottom">
           <GlobalSocials class="callback__socials" />
@@ -72,8 +67,6 @@
 </template>
 
 <script setup lang="ts">
-import Button from "~/components/Blog/Content/Button.vue";
-
 defineProps<{
   isOpen?: boolean
 }>();
@@ -89,17 +82,17 @@ const form = ref({
   file: '',
 });
 
-const whiteBlock = ref( null );
+const scrollbar = ref<Ref|null>( null );
 
 const close = () => {
   emit( 'close' );
 }
 
-const onScrollEvent = (event, action) => {
+const onScrollEvent = (event: any, action: string) => {
   if ( action == 'down' ) {
-    whiteBlock.value.classList.add('_active');
+    scrollbar.value.classList.add('_active');
   } else {
-    whiteBlock.value.classList.remove('_active');
+    scrollbar.value.classList.remove('_active');
   }
 }
 
@@ -164,10 +157,52 @@ const onScrollEvent = (event, action) => {
   &__overflow {
     overflow-y: auto;
     padding: 3rem;
+    height: 100%;
+  }
+
+  &__scrollbar {
+    max-height: 42.5rem;
+    padding: 0 3rem 0 0;
+
+    @media (max-width: $tablet) {
+        max-height: fit-content;
+      }
   }
 
   &__form {
-    &-overflow {
+    background-color: var(--fg-white);
+    padding: 1rem 1rem 1rem 4rem;
+    height: 100%;
+    max-height: 42.5rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--br-regular);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 9.6rem;
+      background: linear-gradient(0deg, #fff 40.5%, rgba(255, 255, 255, 0) 100%);      
+      pointer-events: none;
+      transition: opacity .3s;
+
+      @media (max-width: $tablet) {
+        display: none;
+      }
+    }
+
+    &._active::after {
+      opacity: 0;
+    }
+
+    @media (max-width: $tablet) {
+        max-height: fit-content;
+      }
+
+    /*&-overflow {
       padding: 1rem 4rem 3rem;
       background: var(--fg-white);
       border-radius: var(--br-regular);
@@ -209,7 +244,7 @@ const onScrollEvent = (event, action) => {
       :deep(.form__file) {
         margin-bottom: 0;
       }
-    }
+    }*/
   }
 
   &__bottom {
@@ -232,13 +267,20 @@ const onScrollEvent = (event, action) => {
   width: 1.5px;
   background: var(--fg-gray);
   opacity: 1 !important;
-  right: 1rem;
+  right: 0 !important;
   max-height: 40.5rem !important;
+  max-height: 37.5rem !important;
+    overflow: hidden;
+    margin-top: 1rem;
 }
 
 :deep(.ps__thumb-y) {
   width: 1.5px !important;
   background: var(--fg-blue) !important;
   right: 0 !important;
+}
+
+:deep(.ps__rail-x) {
+  display: none !important;
 }
 </style>

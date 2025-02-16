@@ -109,6 +109,7 @@ const modal = useModal();
   transition: all .3s;
 }
 
+
 @media (max-width: $mobile) {
   :global(.modal--reviews .modal__title) {
       font-size: var(--fz-h2);

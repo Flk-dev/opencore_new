@@ -83,6 +83,10 @@ const openModal = () => {
   }
 }
 
+:global(.modal--history .modal__close) {
+  border-color: var(--fg-blue);
+}
+
 @media (max-width: $tablet) {
   :global(.modal--history .modal__title) {
     font-size: var(--fz-h4);

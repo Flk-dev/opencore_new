@@ -61,14 +61,14 @@ const close = ( event : any ) => {
 <style scoped lang="scss">
 .modal {
   opacity: 0;
-  transform: translateY(-100%);
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 9999;
-  transition: trasform .4s, opacity .2s;
+  pointer-events: none;
+  z-index: 999;
+  transition: all .5s;
 
   &--scrollable {
     :deep(.modal__overflow) {
@@ -79,13 +79,15 @@ const close = ( event : any ) => {
   &--open {
     opacity: 1;
     transform: translateY(0);
+    pointer-events: all;
 
     & .modal__bg {
       opacity: 1;
     }
 
     & .modal__content {
-      transform: translateY(0);
+      opacity: 1;
+      //transform: translateY(0);
     }
   }
 
@@ -96,6 +98,10 @@ const close = ( event : any ) => {
 
     & .modal__header {
       color: var(--fg-black);
+    }
+
+    & .modal__close {
+      border-color: var(--fg-blue);
     }
   }
 
@@ -130,7 +136,7 @@ const close = ( event : any ) => {
   height: 100%;
   background: var(--fg-black-75);
   opacity: 0;
-  transition: opacity .2s;
+  transition: opacity .5s;
 }
 
 .modal__overflow {
@@ -154,8 +160,11 @@ const close = ( event : any ) => {
   z-index: 5;
   border-radius: var(--br-regular);
   padding: 3rem;
-  transform: translateY(-100%);
-  transition: transform .5s;
+  opacity: 0;
+  transition: opacity .5s;
+  transition-duration: .4s;
+  //transform: translateY(-100%);
+  //transition: transform .5s;
 
   @media (max-width: $tablet) {
     padding: 2rem;
