@@ -66,13 +66,13 @@ const openMenu = () => {
 }
 
 const headerRef  = ref( null );
-const { height } = useElementSize( headerRef );
+const { height } = useElementBounding( headerRef );
 
 const header = useHeader();
 const { isHide } = storeToRefs(header);
 
 onMounted(() => {
-  header.$patch({ headerHeight: height })
+  header.$patch({ headerHeight: height.value });
 
   window.addEventListener('scroll', ( event: any ) => {
     header.scroll( event );

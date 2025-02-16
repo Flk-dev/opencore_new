@@ -1,9 +1,14 @@
 import {defineStore} from "pinia";
 
+interface State {
+    isHide: boolean,
+    headerHeight: number
+}
+
 const scrollPos = ref( 0 );
 
 export const useHeader = defineStore('header', {
-    state: () => ({
+    state: (): State => ({
         isHide: false,
         headerHeight: 0
         //isFixed: false,
@@ -19,5 +24,6 @@ export const useHeader = defineStore('header', {
 
             scrollPos.value = (document.body.getBoundingClientRect()).top;
         },
+
     }
 })
