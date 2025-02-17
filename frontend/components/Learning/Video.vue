@@ -94,9 +94,12 @@ defineProps<{
     align-items: center;
     justify-content: space-between;
 
+    @media (max-width: $tablet) {
+      align-items: flex-start;
+    }
+
     @media (max-width: $mobile) {
       margin-top: 2rem;
-      align-items: flex-start;
       flex-direction: column;
     }
   }
@@ -106,7 +109,7 @@ defineProps<{
 
     :deep(a) {
       color: var(--fg-blue);
-      border-bottom: 1.8px solid var(--fg-blue);
+      border-bottom: .15rem solid var(--fg-blue);
     }
 
     @media (max-width: $tablet) {

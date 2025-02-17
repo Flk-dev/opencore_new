@@ -17,9 +17,8 @@
   <GlobalFooterButton
       title="Создайте свою историю успеха<br> с&nbsp;нашей командой!"
       btn-title="Стать частью команды"
-      @click="modal.open( ModalsPartnerAlways, {
-        title: 'Мы всегда открыты для новых партнеров.',
-        text: 'Если у вас есть опыт в брендинге, маркетинге, дизайне, веб-разработке или других областях, заполните форму, чтобы присоединиться к пулу подрядчиков.'
+      @click="modal.open( ModalsCareerForm, {
+        title: 'Давайте общаться',
       } )"
   />
 </template>
@@ -30,7 +29,8 @@ import {
   CareerValues,
   CareerExpertise,
   CareerHistory,
-  ModalsPartnerAlways
+  ModalsPartnerAlways,
+  ModalsCareerForm
 } from '#components';
 
 const contentLayouts: any = ref( {
