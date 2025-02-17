@@ -74,8 +74,13 @@ ScrollTrigger.defaults({
   markers: false
 });
 
+const store = useHeader();
+const isHide = computed( () => store.isHide );
+
+let tl: any;
+
 onMounted( () => {
-  let tl = gsap.timeline({
+  tl = gsap.timeline({
     scrollTrigger: {
       trigger: '.home__cases',
       start: "top bottom",
@@ -95,16 +100,25 @@ onMounted( () => {
   tl.to(logo.value, {
     zIndex: 1001,
     padding: 0
-  }, '<25%')
+  }, '<25%');
+
+  /*tl.to(logo.value, {
+      y: -200
+    }, '>');*/
 } );
 
-// computed( () => {
-//   setPosition();
-// } )
+/*watch(isHide, (newX) => {
+  if(newX){
+    tl.to(logo.value, {
+      y: -200
+    }, '<');
+  } else {
+    tl.to(logo.value, {
+      y: 0
+    }, '<');
+  }
+})*/
 
-// const setPosition = () => {
-//   sliderBottom.value = (logo.value.getBoundingClientRect().height + 40) + 'px';
-// };
 </script>
 
 <style scoped lang="scss">

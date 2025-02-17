@@ -13,8 +13,8 @@
             </svg>
           </div>
           <div class="transition__text-inner">
-            <div class="transition__text-item transition__text--first" data-word-active="true">core</div>
-            <div class="transition__text-item transition__text--secondary" data-word-active="false">steady</div>
+            <div class="transition__text-item transition__text--first" data-word-active="true">steady</div>
+            <div class="transition__text-item transition__text--secondary" data-word-active="false">core</div>
             <div class="transition__text-item transition__text--third" data-word-active="false">ready</div>
           </div>
         </div>

@@ -24,6 +24,14 @@
         class="menu__list" 
         ref="navbar"
         @mousewheel="handleMouseWheel"
+        @touchstart="handleTouchStart"
+        @touchmove="handleTouchMove"
+        @touchend="handleTouchEnd"
+        @mousedown="handleTouchStart"
+        @mousemove="handleTouchMove"
+        @mouseleave="handleTouchEnd"
+        @mouseup="handleTouchEnd"
+        @selectstart="() => false"
       >
         <div
           v-for="link in links"
@@ -79,6 +87,7 @@ const links = ref( [
 const navbar = ref( null )
 const navLink = ref( null )
 const currentIndex = ref( 0 );
+const isDragging = ref( false );
 
 const { height: menuHeight } = useElementSize( navbar );
 const { height: itemHeight } = useElementSize( navLink );
@@ -145,19 +154,25 @@ const handleMouseWheel = (e) => {
   scrollY -= e.deltaY;
 }
 
+const handleTouchStart = (e) => {
+		touchStart = e.clientY || e.touches[0].clientY
+		isDragging.value = true
+	}
+
+	const handleTouchMove = (e) => {
+		if(!isDragging.value) return
+		touchY = e.clientY || e.touches[0].clientY
+		scrollY += (touchY - touchStart) * 3
+		touchStart = touchY
+	}
+
+	const handleTouchEnd = () => {
+		isDragging.value = false
+	}
+
 onMounted( () => {
 	dispose(0)
 	render();
-
-  /*let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.menu__list',
-      start: "top center",
-      end: "bottom center",
-      scrub: true,
-      markers: true
-    }
-  });*/
 } );
 
 </script>
@@ -186,6 +201,10 @@ onMounted( () => {
     position: absolute;
     right: 0;
     width: 60%;
+
+    @media (max-width: $tablet) {
+      width: 68%;
+    }
   }
 
   &__list {
@@ -307,6 +326,13 @@ onMounted( () => {
       width: 22.7rem;
       right: calc(100% - 0.5rem);
     }
+
+    @media (max-width: $mobile) {
+      width: auto;
+      right: calc(100% + 1rem);
+      width: 8.8rem;
+      transform: translateY(-50%);
+    }
   }
 
   &__after {
@@ -325,6 +351,42 @@ onMounted( () => {
 
     & .socials {
       margin-top: 1.5rem;
+    }
+
+    @media (max-width: $mobile) {
+      bottom: auto;
+      top: 7.7rem;
+
+      :deep( .short-contacts__item ) {
+        margin-bottom: .5rem;
+        line-height: 1rem;
+      }
+
+      :deep( .short-contacts__link ) {
+        font-size: 1rem;
+        line-height: 1rem;
+
+        &::before {
+          display: none;
+        }
+      }
+
+      :deep(.socials) {
+        margin-top: 1rem;;
+      }
+
+      :deep(.socials__item) {
+        margin-right: 1rem;
+      }
+
+      :deep(.socials__link) {
+        width: 2.4rem;
+        height: 2.4rem;
+
+        & svg {
+          max-width: 50%;
+        }
+      }
     }
   }
 }
