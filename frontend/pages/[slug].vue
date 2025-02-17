@@ -93,6 +93,7 @@ const typography = ( text: any ) => {
   &-sticky {
     position: sticky;
     top: .5rem;
+    transition: all .3s;
   }
 }
 </style>

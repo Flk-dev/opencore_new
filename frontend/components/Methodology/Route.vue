@@ -14,7 +14,7 @@
           </div>
           <div class="route-item__right">
             <div class="route-item__text">
-              <ContentText v-if="item.text" :text="item.text" />
+              <ContentText v-if="item.text" :text="fixText(item.text)" />
               <GlobalRoundVideo class="route-item__video _tablet" v-if="item.video_preview && item.video_link" :preview="item.video_preview" :link="item.video_link"  />
             </div>
             <div class="route-item__accordion accordion" v-if="item.list.length">
@@ -33,7 +33,7 @@
             <div class="route-item__result" v-if="item.result">
               <div class="route-item__subtitle fz-h4 fz-h1--mobile">Результат</div>
               <div class="route-item__text">
-                <ContentText :text="item.result" />
+                <ContentText :text="fixText(item.result)" />
               </div>
             </div>
           </div>

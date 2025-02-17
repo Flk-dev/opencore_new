@@ -46,6 +46,7 @@ onMounted( () => {
     top: 0;
     z-index: -1;
     background: var(--fg-white);
+    transition: all .3s;
 
     &:after {
       content: '';

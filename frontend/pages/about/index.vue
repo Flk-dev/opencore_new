@@ -33,7 +33,7 @@ const contentLayouts: any = ref( {
   branding: AboutBranding,
   about: AboutCompany,
   win: AboutWin,
-  //adavantages: AboutAdvantages, // TODO: Проверить логику
+  adavantages: AboutAdvantages, // TODO: Проверить логику
   values: AboutValues,
   leaders: AboutLeaders,
   team: AboutTeam,

@@ -80,7 +80,7 @@ const isArray = ( value ) => {
 <style scoped lang="scss">
 .accordion-item {
   padding: 2rem;
-  border-top: 1.5px solid var(--fg-black);
+  border-top: .15rem solid var(--fg-black);
   --m-bottom: 3rem;
   margin-bottom: var(--m-bottom);
   transition: var(--tr-regular);

@@ -19,6 +19,7 @@ const headerHeight = computed(() => store.headerHeight);
   z-index: 50;
   background: var(--fg-white);
   padding: 1rem 0;
+  transition: all .3s;
 
   @media (max-width: $tablet) {
     top: 7.4rem;
