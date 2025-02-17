@@ -1,46 +1,38 @@
 <template>
   <div
-      class="cases__parallax parallax"
-      v-if="columns.value.colLeft.length"
+      class="cases__parallax"
+      v-if="columns.value && columns.value.colLeft.length"
       ref="grid"
-      v-intersection-observer="onIntersectionObserver"
   >
     <div class="cases__line"></div>
     <div class="cases__grid">
-      <div class="cases__col">
-        <div ref="colLeft">
-          <CasesCard
-              v-for="item in columns.value.colLeft"
-              :key="item.post_id"
-              :title="item.post_title"
-              :image="item.image"
-              :categories="item.categories"
-              :subtitle="item.subtitle"
-              :slug="item.post_slug",
-              :add-border="item.add_border"
-          />
-        </div>
+      <div class="cases__col" ref="colLeft">
+        <CasesCard
+            v-for="item in columns.value.colLeft"
+            :key="item.post_id"
+            :slug="item.post_slug"
+            :title="item.post_title"
+            :image="item.image"
+            :subtitle="item.subtitle"
+            :categories="item.categories"
+        />
       </div>
-      <div class="cases__col cases__col--right">
-        <div ref="colRight" v-if="columns.value.colRight.length">
-          <CasesCard
-              v-for="item in columns.value.colRight"
-              :key="item.post_id"
-              :title="item.post_title"
-              :image="item.image"
-              :categories="item.categories"
-              :subtitle="item.subtitle"
-              :slug="item.post_slug"
-              :add-border="item.add_border"
-          />
-        </div>
+      <div class="cases__col cases__col--right" ref="colRight">
+        <CasesCard
+            v-for="item in columns.value.colRight"
+            :key="item.post_id"
+            :slug="item.post_slug"
+            :title="item.post_title"
+            :image="item.image"
+            :subtitle="item.subtitle"
+            :categories="item.categories"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { vIntersectionObserver } from '@vueuse/components';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -53,6 +45,9 @@ const setWindowWidth = () => {
   windowWidth.value = window.innerWidth;
 }
 
+const colLeft = ref( null );
+const colRight = ref( null );
+
 onMounted( () => {
   setWindowWidth();
   window.addEventListener('resize', setWindowWidth);
@@ -64,19 +59,18 @@ onMounted( () => {
 
   let mm = gsap.matchMedia();
   mm.add("(min-width: 992px)", () => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger:".cases__grid",
-          start:"top top",
-          end:"bottom bottom",
-          scrub: true,
-          markers: false
-        }
-      });
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger:".cases__grid",
+        start:"top top",
+        end:"bottom bottom",
+        scrub: true,
+      }
+    });
 
-      tl.to('.cases__col--right', {
-        duration: 2,
-        y: -250,
+    tl.to('.cases__col--right', {
+      duration: 2,
+      y: -250,
     }, 0);
   });
 } )
@@ -87,59 +81,22 @@ const columns = computed(() => {
     colRight: [],
   });
 
-  if (props.data) {
-    if (windowWidth.value < 992) {
-      data.value.colLeft = props.data;
-      data.value.colRight = [];
-    } else {
-      props.data.forEach((element: Array<string>, index: number) => {
-        index += 1;
-        if (index % 2 === 0) {
-          data.value.colRight.push(element);
-        } else {
-          data.value.colLeft.push(element);
-        }
-      });
-    }
+  if (windowWidth.value < 992) {
+    data.value.colLeft = props.data;
+    data.value.colRight = [];
+  } else {
+    props.data.forEach((element, index) => {
+      index += 1;
+      if (index % 2 === 0) {
+        data.value.colRight.push(element);
+      } else {
+        data.value.colLeft.push(element);
+      }
+    });
   }
 
   return data;
 });
-
-const grid: any = ref( null );
-const colLeft: any = ref( null );
-const colRight: any = ref( null );
-
-/*const onScroll = () => {
-  if ( ! colRight.value || ! colLeft.value ) {
-    return;
-  }
-
-  const leftRect = colLeft.value.getBoundingClientRect();
-  const rightRect = colRight.value.getBoundingClientRect();
-  const gridRect = grid.value.getBoundingClientRect();
-
-  const travel = leftRect.height - rightRect.height
-  const offsetTop = gridRect.top + window.scrollY;
-  const cols = grid.value.getBoundingClientRect().height - window.innerHeight;
-  const interval = cols / travel;
-
-  const scrolled: any = document.scrollingElement.scrollTop;
-
-  const e = Math.round( ( scrolled ) - offsetTop ) / interval;
-  const b = scrolled >= ( leftRect.top + window.scrollY ) + rightRect.height - window.innerHeight;
-
-  if ( scrolled >= offsetTop && b == false ) {
-    colRight.value.style.transform = "translate3d(0px, " + ( e ) + "px, 0px)";
-  }
-}*/
-
-const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
-  if (entry?.isIntersecting) {
-    grid.value.classList.add('cases__grid--active');
-  }
-}
-
 </script>
 
 <style scoped lang="scss">

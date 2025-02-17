@@ -12,7 +12,7 @@
 
     <div class="cases">
       <div class="cases__container container">
-        <CasesFilter class="cases__filter" :data="categories" :style="{top: (!isHide ? (headerHeight - 2) : 0) + 'px'}" @filter="filter" />
+        <CasesFilter class="cases__filter" @filter="filter" />
         <CasesGrid class="cases--archive" :data="posts" />
         <GlobalLoadmore  @loadMore="loadMore" />
       </div>
@@ -22,29 +22,21 @@
   <GlobalFooterButton />
 </template>
 
-<script setup lang="ts">
-import { useHeader } from "~/stores/header";
-
-const { result: categories } = await useApi( '/cases/categories', {}, '/cases/categories' );
-
-const store = useHeader();
-const isHide = computed(() => store.isHide);
-const headerHeight = computed(() => store.headerHeight);
-
-const termId: any = ref( 0 );
-const page: any = ref( 1 );
-const maxPage: any = ref( 0 );
+<script setup>
+const termId = ref( 0 );
+const page = ref( 1 );
+const maxPage = ref( 0 );
 
 const { data: posts } = await useAsyncData(
     'cases',
-    () : any => $fetch(getApiUrl( '/cases/' ), {
+    () => $fetch(getApiUrl( '/cases/' ), {
       params: {
         category: termId.value,
         page: page.value
       }
     }), {
       watch: [termId, page],
-      transform: ( resData : any ) => {
+      transform: ( resData ) => {
         maxPage.value = resData.data.max_page;
 
         return (page.value === 1 ? resData.data.posts : [...posts.value, ...resData.data.posts]);
@@ -52,15 +44,14 @@ const { data: posts } = await useAsyncData(
     },
 );
 
-const filter = (id: number | string) => {
+const filter = (id) => {
   termId.value = id;
   page.value = 1;
 };
 
-const loadMore = ( event: any ) => {
+const loadMore = () => {
   page.value++;
 };
-
 </script>
 
 <style scoped lang="scss">

@@ -1,31 +1,47 @@
 <template>
-  <NuxtLink :to="{ name: 'cases-slug', params: { slug: slug } }" class="cases-item" :class="[ addBorder ? 'cases-item--border' : '' ]">
+  <NuxtLink 
+    :to="{ name: 'cases-slug', params: { slug: slug } }" 
+    class="cases-item"
+    :class="[ add_border ? 'cases-item--borer' : '' ]"
+  >
     <div class="cases-item__media" v-if="image">
       <picture class="cases-item__media-pic">
         <img :src="image" class="cases-item__media-img" :alt="title">
       </picture>
-      <div class="cases-item__categories" v-if="categories.length">
+      <div class="cases-item__categories" v-if="categories">
         <div class="cases-item__category" v-for="category in categories" :key="category.term_id">
           {{ category.name }}
         </div>
       </div>
     </div>
-    <div class="cases-item__project fz-caption" v-if="subtitle">{{ subtitle }}</div>
-    <h3 class="cases-item__title fz-headline fz-body--mobile" v-html="fixText(title)"></h3>
+    <div class="cases-item__project fz-caption" v-if="subtitle" v-html="subtitle"></div>
+    <h3 class="cases-item__title fz-headline fz-body--mobile" v-if="title" v-html="fixText(title)"></h3>
   </NuxtLink>
 </template>
 
 <script setup lang="ts">
-defineProps<{
-  image: string,
-  categories: Array<{
+/*defineProps<{
+  image?: string,
+  categories?: Array<{
     term_id: number,
     name: string
   }>,
   subtitle?: string,
-  title: string,
-  slug: string,
+  title?: string,
+  slug?: string,
   addBorder?: boolean,
+}>();*/
+
+defineProps<{
+  title?: string,
+  slug?: string,
+  image?: string,
+  subtitle?: string,
+  add_border?: string,
+  categories?: Array<{
+    term_id: number,
+    name: string
+  }>
 }>();
 </script>
 

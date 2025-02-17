@@ -29,7 +29,6 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-
 const props = defineProps<{
   data: object
 }>();
@@ -91,8 +90,6 @@ const columns = computed(() => {
 
   return data;
 });
-
-
 </script>
 
 <style scoped lang="scss">
