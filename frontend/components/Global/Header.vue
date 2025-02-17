@@ -72,12 +72,20 @@ const header = useHeader();
 const { isHide } = storeToRefs(header);
 
 onMounted(() => {
-  header.$patch({ headerHeight: height.value });
+  setHeight();
+
+  window.addEventListener('resize', ( event: any ) => {
+    setHeight();
+  });
 
   window.addEventListener('scroll', ( event: any ) => {
     header.scroll( event );
   });
 });
+
+const setHeight = () => {
+  header.$patch({ headerHeight: height.value });
+}
 
 const isOpen = ref( false );
 const toggleCallback = () => {
@@ -106,7 +114,7 @@ const route = useRoute();
   }
 
   @media (max-width: $tablet) {
-    padding: 2rem 0;
+    padding: 1.7rem 0;
   }
 
   &--white {

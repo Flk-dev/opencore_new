@@ -62,6 +62,8 @@ onMounted( () => {
 
     &-active {
       filter: blur(8px);
+      top: 50%;
+      transform: translate(0, -50%);
 
       &:after {
         opacity: 1;
