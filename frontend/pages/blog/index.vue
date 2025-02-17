@@ -13,7 +13,7 @@
       <div class="blog__container container">
           <BlogFilters @filter="filter" />
           <BlogGrid :data="posts" />
-          <GlobalLoadmore v-if="maxPage > 1" class="blog__loadmore"  @loadMore="loadMore" />
+          <GlobalLoadmore class="blog__loadmore" @load-more="loadMore" />
       </div>
     </div>
   </div>
