@@ -51,19 +51,22 @@ onMounted( () => {
     markers: false
   });
 
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger:".blog__grid",
-      start:"top top",
-      end:"bottom bottom",
-      scrub: true,
-    }
-  });
+  let mm = gsap.matchMedia();
+  mm.add("(min-width: 992px)", () => {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger:".blog__grid",
+        start:"top top",
+        end:"bottom bottom",
+        scrub: true,
+      }
+    });
 
-  tl.to('.blog__col--right', {
-    duration: 2,
-    y: -250,
-}, 0);
+    tl.to('.blog__col--right', {
+      duration: 2,
+      y: -250,
+    }, 0);
+  });
 } )
 
 const columns = computed(() => {

@@ -80,32 +80,35 @@ const isHide = computed( () => store.isHide );
 let tl: any;
 
 onMounted( () => {
-  tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.home__cases',
-      start: "top bottom",
-      end: "top left",
-      scrub: true,
-    }
-  });
+  let mm = gsap.matchMedia();
+  mm.add("(min-width: 992px)", () => {
+    tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.home__cases',
+        start: "top bottom",
+        end: "top left",
+        scrub: true,
+      }
+    });
 
-  tl.from(logo.value, {
-    y: "96vh",
-    scale: 1,
-    yPercent: -100,
-    width: "100%",
-    duration: 1,
-  });
+    tl.from(logo.value, {
+      y: "96vh",
+      scale: 1,
+      yPercent: -100,
+      width: "100%",
+      duration: 1,
+    });
 
-  tl.to(logo.value, {
-    zIndex: 1001,
-    padding: 0
-  }, '<25%');
+    tl.to(logo.value, {
+      zIndex: 1001,
+      padding: 0
+    }, '<25%');
 
-  /*tl.to(logo.value, {
-      y: -200
-    }, '>');*/
-} );
+    /*tl.to(logo.value, {
+        y: -200
+      }, '>');*/
+  } );
+});
 
 /*watch(isHide, (newX) => {
   if(newX){

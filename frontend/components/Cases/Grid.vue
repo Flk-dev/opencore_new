@@ -62,20 +62,23 @@ onMounted( () => {
     markers: false
   });
 
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger:".cases__grid",
-      start:"top top",
-      end:"bottom bottom",
-      scrub: true,
-      markers: false
-    }
-  });
+  let mm = gsap.matchMedia();
+  mm.add("(min-width: 992px)", () => {
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger:".cases__grid",
+          start:"top top",
+          end:"bottom bottom",
+          scrub: true,
+          markers: false
+        }
+      });
 
-  tl.to('.cases__col--right', {
-    duration: 2,
-    y: -250,
-}, 0);
+      tl.to('.cases__col--right', {
+        duration: 2,
+        y: -250,
+    }, 0);
+  });
 } )
 
 const columns = computed(() => {
@@ -200,6 +203,18 @@ const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
       max-width: 52rem;
       --image-height: 31rem;
     }
+  }
+
+  @media (max-width: $tablet) {
+      :deep(.cases-item__title) {
+        max-width: 80%;
+      }
+  }
+
+  @media (max-width: $mobile) {
+      :deep(.cases-item__title) {
+        max-width: 100%;
+      }
   }
 }
 
