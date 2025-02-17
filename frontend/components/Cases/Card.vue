@@ -45,6 +45,10 @@ defineProps<{
     }
   }
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   @media (max-width: $mobile) {
     margin-bottom: 6rem;
   }

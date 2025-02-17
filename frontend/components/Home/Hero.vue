@@ -18,7 +18,7 @@
             :free-mode="true"
             slides-per-view="auto"
             :mousewheel="true"
-            :space-between="10"
+            :space-between="100"
         >
           <swiper-slide>
             <div class="hero__slider-item">
@@ -112,6 +112,7 @@ onMounted( () => {
   min-height: calc(100vh - 5rem);
   padding-top: 3.6rem;
   position: relative;
+  overflow: hidden;
 
   &__header {
     display: flex;

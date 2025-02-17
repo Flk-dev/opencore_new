@@ -21,7 +21,7 @@
           />
         </div>
       </div>
-      <div class="cases__col">
+      <div class="cases__col cases__col--right">
         <div ref="colRight" v-if="columns.value.colRight.length">
           <CasesCard
               v-for="item in columns.value.colRight"
@@ -40,7 +40,9 @@
 </template>
 
 <script setup lang="ts">
-import { vIntersectionObserver } from '@vueuse/components'
+import { vIntersectionObserver } from '@vueuse/components';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const props = defineProps<{
   data: object
@@ -54,6 +56,26 @@ const setWindowWidth = () => {
 onMounted( () => {
   setWindowWidth();
   window.addEventListener('resize', setWindowWidth);
+
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.defaults({
+    markers: false
+  });
+
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger:".cases__grid",
+      start:"top top",
+      end:"bottom bottom",
+      scrub: true,
+      markers: true
+    }
+  });
+
+  tl.to('.cases__col--right', {
+    duration: 2,
+    y: -250,
+}, 0);
 } )
 
 const columns = computed(() => {
@@ -85,11 +107,7 @@ const grid: any = ref( null );
 const colLeft: any = ref( null );
 const colRight: any = ref( null );
 
-onMounted( () => {
-  window.addEventListener( 'scroll', onScroll );
-} );
-
-const onScroll = () => {
+/*const onScroll = () => {
   if ( ! colRight.value || ! colLeft.value ) {
     return;
   }
@@ -111,7 +129,7 @@ const onScroll = () => {
   if ( scrolled >= offsetTop && b == false ) {
     colRight.value.style.transform = "translate3d(0px, " + ( e ) + "px, 0px)";
   }
-}
+}*/
 
 const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
   if (entry?.isIntersecting) {
@@ -187,7 +205,7 @@ const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
 
 .cases__col {
   width: 50%;
-  padding: 2rem 1.5rem 13.5rem var(--p-container);
+  padding: 2rem 1.5rem 0 var(--p-container);
   position: relative;
 
   @media (max-width: $tablet) {
