@@ -1,5 +1,5 @@
 <template>
-  <div class="about__values about-values">
+  <div class="about__values about-values" ref="values">
     <div class="container">
       <GlobalBlockHeader :title="data.title" classes="about-values" />
       <div class="about-values__list" v-if="data.select">
@@ -47,8 +47,11 @@ ScrollTrigger.defaults({
 
 const items = ref( null );
 const spacer = ref( 100 );
+const values = ref<Ref|null>( null );
 
 onMounted( () => {
+  window.addEventListener( 'resize', animate );
+
   gsap.fromTo(
     ".about-values__item",
     {
@@ -62,12 +65,17 @@ onMounted( () => {
         pin: ".about-values .container",
         markers: false,
         scrub: true,
-        start: "top top",
-        end: `${window.innerHeight * 5} bottom`,
+        start: `-30% top`,
+        end: `${values.value.getBoundingClientRect().height * 3} bottom`,
       }
     }
   );
-} )
+} );
+
+const animate = () => {
+
+}
+
 </script>
 
 <style scoped lang="scss">

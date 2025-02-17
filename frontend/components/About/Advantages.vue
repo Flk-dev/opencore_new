@@ -6,7 +6,12 @@
 defineProps<{
   data: {
     title: string,
-    select: object
+    select: Array<{
+      post_id: number,
+      title: string,
+      icon: string,
+      text: string
+    }>
   }
 }>();
 </script>

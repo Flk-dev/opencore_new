@@ -36,7 +36,7 @@
         :value="form.project.name"
     />
 
-    <FormTextarea
+    <FormInput
         name="project_description"
         placeholder="Описание проекта"
         v-model="form.project.description"

@@ -15,7 +15,6 @@
       </div>
     </div>
   </div>
-
   <GlobalFooterButton action="default" />
 </template>
 
