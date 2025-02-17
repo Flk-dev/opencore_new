@@ -14,7 +14,7 @@
       <div class="cases__container container">
         <CasesFilter class="cases__filter" @filter="filter" />
         <CasesGrid class="cases--archive" :data="posts" />
-        <GlobalLoadmore  @loadMore="loadMore" />
+        <GlobalLoadmore @loadMore="loadMore" />
       </div>
     </div>
   </div>
