@@ -52,7 +52,11 @@ const close = () => {
   }
 
   &__container {
-    padding-right: 0;;
+    padding-right: 0;
+
+    @media (max-width: $tablet) {
+      padding-right: var(--p-container);
+    }
   }
 
   @media (max-width: $tablet) {
