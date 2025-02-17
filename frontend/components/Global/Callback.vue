@@ -12,49 +12,53 @@
             </button>
           </div>
         </div>
-        <div class="callback__form" ref="scrollbar">
-          <PerfectScrollbar
-            class="callback__scrollbar"
-            @ps-scroll-down="onScrollEvent( $event, 'down' )"
-            @ps-scroll-up="onScrollEvent( $event, 'up' )"
-          >
-            <FormInput
-                    name="name"
-                    placeholder="Ваше имя"
-                    v-model="form.name"
-                    :value="form.name"
-                />
-                <FormInput
-                    name="company"
-                    placeholder="Название компании"
-                    v-model="form.company"
-                    :value="form.company"
-                />
+        <div class="callback__main form">
+          <div class="callback__form" ref="scrollbar">
+            <PerfectScrollbar
+              class="callback__scrollbar"
+              @ps-scroll-down="onScrollEvent( $event, 'down' )"
+              @ps-scroll-up="onScrollEvent( $event, 'up' )"
+            >
+              <FormInput
+                      name="name"
+                      placeholder="Ваше имя"
+                      v-model="form.name"
+                      :value="form.name"
+                  />
+                  <FormInput
+                      name="company"
+                      placeholder="Название компании"
+                      v-model="form.company"
+                      :value="form.company"
+                  />
+                  <FormInput
+                      name="phone"
+                      placeholder="Телефон"
+                      v-model="form.phone"
+                      :value="form.phone"
+                  />
                 <FormInput
                     name="phone"
-                    placeholder="Телефон"
-                    v-model="form.phone"
-                    :value="form.phone"
+                    placeholder="Почта"
+                    v-model="form.email"
+                    :value="form.email"
                 />
-              <FormInput
-                  name="phone"
-                  placeholder="Почта"
-                  v-model="form.email"
-                  :value="form.email"
-              />
-                <FormInput
-                    name="comment"
-                    placeholder="Расскажите кратко о задаче"
-                    v-model="form.comment"
-                    :value="form.comment"
-                />
-                <FormFile
-                    name="file"
-                    label="Прикрепите файл"
-                    v-model="form.file"
-                    :value="form.file"
-                />
-          </PerfectScrollbar>
+                  <FormInput
+                      name="comment"
+                      placeholder="Расскажите кратко о задаче"
+                      v-model="form.comment"
+                      :value="form.comment"
+                  />
+                  <FormFile
+                      name="file"
+                      label="Прикрепите файл"
+                      v-model="form.file"
+                      :value="form.file"
+                  />
+            </PerfectScrollbar>
+          </div>
+
+          <UIButton title="Отправить" class="btn--white callback__btn" />
         </div>
         <div class="callback__bottom">
           <GlobalSocials class="callback__socials" />
@@ -260,6 +264,10 @@ const onScrollEvent = (event: any, action: string) => {
 
   &__contacts {
     text-align: right;
+  }
+
+  &__btn {
+    margin-top: 2rem;
   }
 }
 

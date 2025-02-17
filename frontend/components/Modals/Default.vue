@@ -67,7 +67,7 @@ const close = ( event : any ) => {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 999;
+  z-index: 1001;
   transition: all .5s;
 
   &--scrollable {

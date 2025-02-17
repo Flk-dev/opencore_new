@@ -95,7 +95,12 @@ usePagePreloaderLogic();
     display: flex;
     align-items: center;
 
+    @media (max-width: $mobile) {
+      padding-left: var(--p-container);
+    }
+
     &-logo {
+      --width:
       min-width: 59.4rem;
       margin-right: 2rem;
       margin-top: 4rem;
@@ -103,6 +108,18 @@ usePagePreloaderLogic();
       & svg {
         width: 100%;
         height: auto;
+      }
+
+      @media (max-width: $tablet) {
+        min-width: 32.5rem;
+        margin-top: 2rem;
+      }
+
+      @media (max-width: $mobile) {
+        min-width: 15rem;
+        max-width: 15rem;
+        margin-top: 1rem;
+        margin-right: 1rem;
       }
     }
 
@@ -125,6 +142,16 @@ usePagePreloaderLogic();
 
       &[data-word-active="true"] {
         display: block;
+      }
+
+      @media (max-width: $tablet) {
+        font-size: 12.3rem;
+        letter-spacing: -1.2rem;
+      }
+
+      @media (max-width: $mobile) {
+        font-size: 5.7rem;
+        letter-spacing: -0.2rem;
       }
     }
   }
