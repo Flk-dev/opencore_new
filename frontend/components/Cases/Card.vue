@@ -41,7 +41,7 @@ defineProps<{
 
   &--border {
     & .cases-item__media-pic {
-      border: 1.5px solid var(--fg-blue);
+      box-shadow: 0 5px 11px 0 rgba(112, 112, 112, 0.1), 0 19px 19px 0 rgba(112, 112, 112, 0.07), 0 43px 26px 0 rgba(112, 112, 112, 0.04), 0 77px 31px 0 rgba(112, 112, 112, 0.01), 0 121px 34px 0 rgba(112, 112, 112, 0);
     }
   }
 

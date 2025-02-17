@@ -35,7 +35,7 @@ const to = ref( {
 
 <style scoped lang="scss">
 .blog-item {
-  margin-bottom: 25rem;
+  margin-bottom: 8rem;
   //opacity: 0;
   //transform: translateY(-50%);
   transition: opacity .2s, transform .8s;

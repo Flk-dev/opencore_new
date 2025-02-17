@@ -226,6 +226,11 @@ onMounted( () => {
     bottom: 0;
     margin: 0 var(--m-m-container);
   }
+
+  &-item img {
+    width: 100%;
+    height: auto
+  }
 }
 
 .menu--open {

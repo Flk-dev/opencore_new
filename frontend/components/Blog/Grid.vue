@@ -11,7 +11,7 @@
           :categories="item.categories"
       />
     </div>
-    <div class="blog__col" ref="colRight">
+    <div class="blog__col blog__col--right" ref="colRight">
       <BlogCard
           v-for="item in columns.value.colRight"
           :key="item.post_id"
@@ -26,8 +26,8 @@
 </template>
 
 <script setup lang="ts">
-// import { gsap } from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
 const props = defineProps<{
@@ -46,40 +46,24 @@ onMounted( () => {
   setWindowWidth();
   window.addEventListener('resize', setWindowWidth);
 
-  // gsap.registerPlugin(ScrollTrigger);
-  // ScrollTrigger.defaults({
-  //   markers: false
-  // });
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.defaults({
+    markers: false
+  });
 
-  // let tl = gsap.timeline({
-  //   scrollTrigger: {
-  //     pin: ".blog__grid",
-  //     trigger: ".blog__grid",
-  //     start: "top top",
-  //     end: 'bottom bottom',
-  //     markers: true,
-  //     scrub: 1,
-  //     pinSpacing: false,
-  //   }
-  // });
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger:".blog__grid",
+      start:"top top",
+      end:"bottom bottom",
+      scrub: true,
+    }
+  });
 
-  // tl.to(
-  //     colLeft.value,
-  //     {
-  //       duration: 4,
-  //       y: () => -1 * (colLeft.value.offsetHeight - window.innerHeight)
-  //     },
-  //     0
-  // )
-  //     .from(
-  //         colRight.value,
-  //         {
-  //           duration: 4,
-  //           y: () => -1 * (colRight.value.offsetHeight - window.innerHeight)
-  //         },
-  //         0
-  //     );
-
+  tl.to('.blog__col--right', {
+    duration: 2,
+    y: -250,
+}, 0);
 } )
 
 const columns = computed(() => {
@@ -148,14 +132,6 @@ const columns = computed(() => {
   }
 
   &:last-child {
-    :deep(.blog-item:first-child) {
-      margin-top: 17rem;
-
-      @media (max-width: $mobile) {
-        margin-top: 0;
-      }
-    }
-
     :deep(.blog-item:nth-child(2n + 2)) {
       max-width: 52rem;
       --image: 31rem;

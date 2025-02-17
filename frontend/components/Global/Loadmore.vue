@@ -9,8 +9,9 @@
 
 
 <script setup lang="ts">
-const button = ref(null);
+const button = ref<Ref|null>(null);
 const emit = defineEmits( ['loadMore'] );
+
 const animateButton = ( event: any ) => {
   button.value.classList.add('animate');
   emit('loadMore', button.value);
