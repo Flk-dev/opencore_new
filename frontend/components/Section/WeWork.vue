@@ -8,17 +8,18 @@
         </div>
       </GlobalBlockHeader>
       <div class="we-work__rows">
-        <Vue3Marquee
+        <NuxtMarquee
             v-for="(list, listKey) in weWork.list"
             :key="listKey"
             class="we-work__slide"
-            :direction="listKey === 1 ? 'reverse' : 'normal'"
-            duration="40"
+            :direction="listKey === 1 ? 'right' : 'left'"
+            :speed="listKey === 1 ? 75 : 90"
+            :pauseOnHover="true"
             clone="true">
           <div class="we-work__item" v-for="(cell, cellKey) in list.leader_cell" :key="cellKey">
             <img :src="cell.logo" class="we-work__item-img" alt="">
           </div>
-        </Vue3Marquee>
+        </NuxtMarquee>
       </div>
       <template v-if="withList && weWork.data">
         <button class="we-work__open" :class="{ '_active' : isActive }" @click="toggleList">

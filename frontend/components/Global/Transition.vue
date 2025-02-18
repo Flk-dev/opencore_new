@@ -14,8 +14,8 @@
           </div>
           <div class="transition__text-inner">
             <div class="transition__text-item transition__text--first" data-word-active="true">steady</div>
-            <div class="transition__text-item transition__text--secondary" data-word-active="false">core</div>
-            <div class="transition__text-item transition__text--third" data-word-active="false">ready</div>
+            <div class="transition__text-item transition__text--secondary" data-word-active="false">ready</div>
+            <div class="transition__text-item transition__text--third" data-word-active="false">core</div>
           </div>
         </div>
       </div>
@@ -100,6 +100,21 @@ usePagePreloaderLogic();
     }
 
     &-logo {
+      & svg {
+        width: 59.5rem;
+        height: auto;
+
+        @media (max-width: $tablet) {
+          width: 32.5rem;
+        }
+
+        @media (max-width: $tablet) {
+          width: 15rem;
+        }
+      }
+    }
+
+    /*&-logo {
       --width:
       min-width: 59.4rem;
       margin-right: 2rem;
@@ -121,7 +136,7 @@ usePagePreloaderLogic();
         margin-top: 1rem;
         margin-right: 1rem;
       }
-    }
+    }*/
 
     //&-logo {
     //  position: absolute;
@@ -133,12 +148,14 @@ usePagePreloaderLogic();
       font-family: var(--ff-atyp);
       font-style: italic;
       font-size: 23.3rem;
-      line-height: 80%;
+      position: relative;
       letter-spacing: -2.2rem;
       text-transform: uppercase;
       color: var(--fg-white);
       display: none;
       transition: opacity .2s;
+      line-height: 55%;
+      height: 16.3rem;
 
       &[data-word-active="true"] {
         display: block;
@@ -147,11 +164,13 @@ usePagePreloaderLogic();
       @media (max-width: $tablet) {
         font-size: 12.3rem;
         letter-spacing: -1.2rem;
+        height: 8.5rem;
       }
 
       @media (max-width: $mobile) {
         font-size: 5.7rem;
         letter-spacing: -0.2rem;
+        height: 4rem;
       }
     }
   }

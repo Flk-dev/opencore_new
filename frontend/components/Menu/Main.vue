@@ -104,6 +104,7 @@ const dispose = (scroll) => {
   const wrapHeight = navLink.value.length * itemHeight.value;
 
   gsap.set(navLink.value, {
+    duration: 30,
     y: (i) => {
       return i * itemHeight.value + scroll + 15;
     },
@@ -127,7 +128,7 @@ const lerp = (number0, number1, time) => {
 const render = () => {
   requestAnimationFrame(render)
 
-  y = lerp(y * 0.9, (scrollY), 0.09);
+  y = lerp(y * 0.9, (scrollY), 0.1);
 
   dispose(y)
 

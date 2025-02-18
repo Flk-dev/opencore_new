@@ -6,13 +6,13 @@
         <div class="addresses-item__time fz-headline fz-body--mobile" v-if="item.time">{{ item.time }}</div>
       </div>
       <div class="addresses-item__col">
-        <div class="addresses-item__coord addresses-item__icon fz-h3 fz-h2--mobile" v-if="item.coordinates">
+        <a v-if="item.coordinates" :href="item.ya_map" class="addresses-item__coord addresses-item__icon fz-h3 fz-h2--mobile" target="_blank">
           <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M26.25 12.4922C26.25 21.2422 15 28.7422 15 28.7422C15 28.7422 3.75 21.2422 3.75 12.4922C3.75 9.5085 4.93526 6.64702 7.04505 4.53724C9.15483 2.42745 12.0163 1.24219 15 1.24219C17.9837 1.24219 20.8452 2.42745 22.955 4.53724C25.0647 6.64702 26.25 9.5085 26.25 12.4922Z" stroke="#0000FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M15 18C17.7614 18 20 15.5376 20 12.5C20 9.46243 17.7614 7 15 7C12.2386 7 10 9.46243 10 12.5C10 15.5376 12.2386 18 15 18Z" stroke="#0000FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <span>{{ item.coordinates }}</span>
-        </div>
+        </a>
         <div class="addresses-item__address fz-headline fz-body--mobile" v-if="item.address">{{ item.address }}</div>
       </div>
       <div class="addresses-item__col addresses-item__col--last">
@@ -33,7 +33,8 @@ interface Items {
   time?: string,
   coordinates?: string,
   address?: string,
-  phone?: string
+  phone?: string,
+  ya_map?: string,
 }
 
 defineProps<{
