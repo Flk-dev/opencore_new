@@ -14,7 +14,6 @@
             class="we-work__slide"
             :direction="listKey === 1 ? 'right' : 'left'"
             :speed="listKey === 1 ? 75 : 90"
-            :pauseOnHover="true"
             clone="true">
           <div class="we-work__item" v-for="(cell, cellKey) in list.leader_cell" :key="cellKey">
             <img :src="cell.logo" class="we-work__item-img" alt="">

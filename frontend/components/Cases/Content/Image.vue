@@ -24,13 +24,13 @@ defineProps<{
 .case-image__image {
   border-radius: 0;
 }
-.case-image__image ::v-deep {
-  & img {
+.case-image__image {
+  :deep( img ) {
     width: 100%;
     height: auto;
   }
 
-  & .image__picture {
+  :deep(.image__picture) {
     border-radius: 0;
   }
 }

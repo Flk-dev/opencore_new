@@ -69,6 +69,15 @@ onMounted(() => {
   justify-content: center;
   transform: translateY(var(--translate));
 
+  box-shadow:
+      0 2px 5px 0 rgba(0, 0, 0, 0.1),
+      0 9px 9px 0 rgba(0, 0, 0, 0.09),
+      0 19px 12px 0 rgba(0, 0, 0, 0.05),
+      0 34px 14px 0 rgba(0, 0, 0, 0.01),
+      0 54px 15px 0 rgba(0, 0, 0, 0)
+;
+
+
   transition: transform .3s, background .3s, right .3s;
   transition-delay: .5s, 0s;
 

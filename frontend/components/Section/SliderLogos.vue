@@ -47,5 +47,13 @@ defineProps<{
   display: flex;
   align-items: center;
   justify-content: center;
+
+  & img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 4.7rem;
+  }
 }
 </style>

@@ -1,13 +1,11 @@
 <template>
-  <div class="cats__menu" @mousemove="changeCursor">
-    <UIPullCursor class="cats__menu-cursor" ref="cursor" />
+  <div class="cats__menu">
     <swiper
         class="cats__menu-list"
         v-if="data"
         :free-mode="true"
         slides-per-view="auto"
         :space-between="10"
-        @sliderMove="changeCursorSlider"
     >
       <swiper-slide style="width: fit-content !important;">
         <button
@@ -61,7 +59,7 @@ const filter = ( id: any, index: number|string ) => {
   activeIndex.value = index;
 }
 
-const cursor = ref<Ref|null>( null );
+/*const cursor = ref<Ref|null>( null );
 
 const changeCursor = ( event: any ) => {
   const x = event.clientX;
@@ -81,7 +79,7 @@ const changeCursorSlider = ( event: any, pos: any ) => {
     cursor.value.$el.style.left = x + 'px';
     cursor.value.$el.style.top = y + 'px';
   }
-}
+}*/
 
 </script>
 
@@ -90,12 +88,6 @@ const changeCursorSlider = ( event: any, pos: any ) => {
   margin: 0 var(--m-m-container) 2rem;
 
   &:hover {
-    cursor: none;
-
-    .cats__menu-link {
-      cursor: none;
-    }
-
     .cats__menu-cursor {
       opacity: 1;
     }

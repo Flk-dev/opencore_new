@@ -24,6 +24,11 @@ defineProps<{
   &__icon {
     margin-bottom: 5.2rem;
 
+    &-img {
+     height: 4.7rem;
+      width: auto;
+    }
+
     @media (max-width: $tablet) {
       margin-bottom: 4rem;
     }

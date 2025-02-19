@@ -9,7 +9,9 @@
           <div class="service-include__item-title fz-h2 fz-h1--tablet" v-html="item.title"></div>
         </div>
         <div class="service-include__item-list" v-if="item.list.length">
-          <div class="service-include__item-value fz-body" v-for="(listItem, listKey) in item.list" :key="listKey" v-html="listItem.text"></div>
+          <div class="service-include__item-value fz-body" v-for="(listItem, listKey) in item.list" :key="listKey">
+            <NuxtLink :to="listItem.link">{{ fixText(listItem.text) }}</NuxtLink>
+          </div>
         </div>
       </div>
     </div>
@@ -56,8 +58,10 @@ defineProps<{
 }
 
 .service-include__item {
+  --l-width: 61.3rem;
+  --r-width: calc( 100% - var(--l-width) );
+
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
   padding: 3rem 0;
   margin-bottom: 9rem;
@@ -79,6 +83,9 @@ defineProps<{
 
 .service-include__item-main {
   display: flex;
+  width: var(--l-width);
+  max-width: 100%;
+  margin-right: 2.9rem;
 
   @media (max-width: $tablet) {
     width: 100%;
@@ -118,9 +125,10 @@ defineProps<{
   grid-template-columns: repeat(3, 1fr);
   column-gap: 4rem;
   row-gap: 3rem;
-  max-width: 82rem;
+  width: var(--r-width);
 
   @media (max-width: $tablet) {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
   }
@@ -132,7 +140,15 @@ defineProps<{
 }
 
 .service-include__item-value {
-  text-decoration: underline;
+  & a {
+    border-bottom: .15rem solid var(--fg-black);
+    transition: var(--tr-regular);
+
+    &:hover {
+      color: var(--fg-blue);
+      border-color: var(--fg-blue);
+    }
+  }
 }
 
 .service-include__btn {

@@ -67,6 +67,20 @@ const to = ref( {
     :deep(.image__picture) {
       height: var(--image);
     }
+
+    :deep(.image__img) {
+      transform: scale(1.05);
+      transform-origin: center center;
+      transition: var(--tr-regular);
+    }
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      :deep(.image__img) {
+        transform: scale(1);
+      }
+    }
   }
 
   &__cats {

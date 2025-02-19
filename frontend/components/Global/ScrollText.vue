@@ -1,17 +1,17 @@
 <template>
   <section class="scroll-text" :class="classes + '__scroll-text'">
-    <Vue3Marquee
+    <NuxtMarquee
         class="scroll-text__row"
         v-for="( row, key ) in data"
         :key="key"
-        :direction="key % 2 === 0 ? 'reverse' : 'normal'"
-        :duration="key % 2 === 0 ? 30 : 40"
-        :clone="true"
+        :direction="key === 1 ? 'right' : 'left'"
+        :speed="listKey === 1 ? 75 : 90"
+        :pauseOnHover="true"
     >
       <div class="scroll-text__item fz-h4 fz-h2--mobile" v-for="cell in row.cell">
         {{ cell.text }}
       </div>
-    </Vue3Marquee>
+    </NuxtMarquee>
   </section>
 </template>
 

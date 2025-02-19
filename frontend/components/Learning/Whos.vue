@@ -8,7 +8,7 @@
             v-for="(item, key) in data.list"
             :key="key"
             :title="item.title"
-            :text="item.text"
+            :text="fixText(item.text)"
         />
       </div>
     </div>
@@ -38,8 +38,11 @@ defineProps<{
 }
 
 .learning-whos__block-header {
+  margin-top: -.1rem;
+
   @media (max-width: $tablet) {
     margin-bottom: 4rem;
+    margin-top: 0;
   }
 
   @media (max-width: $mobile) {

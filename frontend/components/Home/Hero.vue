@@ -32,7 +32,7 @@
           </swiper-slide>
           <swiper-slide>
             <div class="hero__slider-item">
-              <img src="/img/hero/logos/logo-3.svg" alt="">
+              <img src="/img/hero/logos/logo-3-new.svg" alt="">
             </div>
           </swiper-slide>
           <swiper-slide>

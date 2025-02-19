@@ -128,6 +128,11 @@ defineProps<{
     border-radius: 1rem;
     margin-right: .5rem;
     margin-bottom: .5rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.04),
+    0 15px 15px 0 rgba(0, 0, 0, 0.03),
+    0 34px 20px 0 rgba(0, 0, 0, 0.02),
+    0 60px 24px 0 rgba(0, 0, 0, 0.01),
+    0 94px 26px 0 rgba(0, 0, 0, 0);
 
     &:last-child {
       margin-right: 0;
