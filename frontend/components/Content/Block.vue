@@ -65,10 +65,10 @@ const typography = ( text: any ) => {
 
     }
 
-    :deep(p:has(img)){
-      margin-left: var(--m-m-container);
-      margin-right: var(--m-m-container);
-    }
+    //:deep(p:has(img)){
+    //  margin-left: var(--m-m-container);
+    //  margin-right: var(--m-m-container);
+    //}
 
     :deep(h2),
     :deep(h3),

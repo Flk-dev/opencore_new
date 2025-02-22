@@ -57,6 +57,10 @@ const upCounter = () => {
   }
 }
 
+.partner-list__title {
+  margin-top: -.95rem;
+}
+
 .partner-list__title:not(._empty) {
   @media (max-width: $tablet) {
     margin-bottom: 6rem;

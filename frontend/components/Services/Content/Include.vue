@@ -48,7 +48,8 @@ defineProps<{
   }
 
   :deep(.block-header__content) {
-    max-width: 47.7rem;
+    max-width: 44.7rem;
+    margin-right: .4rem;
     
     @media (max-width: $tablet) {
       margin-top: 1.5rem;

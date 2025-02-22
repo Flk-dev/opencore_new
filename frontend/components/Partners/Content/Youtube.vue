@@ -13,14 +13,7 @@
         <div class="partner-video__logo-text" v-if="data.logo_text" v-html="data.logo_text"></div>
       </div>
     </div>
-    <div class="partner-video__iframe">
-      <div class="partner-video__preview" :style="{backgroundImage: 'url('+data.preview+')'}"></div>
-      <button class="partner-video__play">
-        <svg width="37" height="41" viewBox="0 0 37 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path opacity="0.9" d="M33.78 15.9289C36.9889 17.7815 36.9889 22.4132 33.78 24.2658L7.574 39.3959C4.3651 41.2485 0.353981 38.9327 0.353981 35.2274V4.96731C0.353981 1.262 4.3651 -1.05382 7.57399 0.798833L33.78 15.9289Z" fill="white"/>
-        </svg>
-      </button>
-    </div>
+    <GlobalYoutubeVideo class="partner-video__iframe" :preview="data.preview" :link="data.link" />
     <div class="partner-video__logo _tablet">
       <div class="partner-video__logo-media">
         <img :src="data.logo" alt="">
@@ -32,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   data: {
     title: string,
     text?: string,
@@ -41,6 +34,17 @@ defineProps<{
     preview?: string
   }
 }>();
+
+const output = ref( null );
+const isHide = ref( false );
+
+const play = () => {
+  if (props.link) {
+    isHide.value = true;
+    output.value.innerHTML = '<iframe width="560" height="315" src="' + props.link + '&autoplay=true" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+  }
+}
+
 </script>
 
 <style scoped lang="scss">
@@ -70,15 +74,8 @@ defineProps<{
   }
 
   &__iframe {
-    min-height: 39.3rem;
-    position: relative;
-    border-radius: var(--br-regular);
-    overflow: hidden;
-    min-width: 70rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border: 1px solid var(--fg-blue);
+    min-width: 70rem;
 
     @media (max-width: $tablet) {
       margin-top: 4rem;
@@ -90,26 +87,7 @@ defineProps<{
       margin-top: 3rem;
       min-height: auto;
       padding-bottom: 56.5%;
-    }    
-  }
-
-  &__preview {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  &__play {
-    position: absolute;
-    z-index: 5;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    }
   }
 
   &__logo {
@@ -149,7 +127,23 @@ defineProps<{
       color: var(--fg-black-75);
 
       & :deep(a) {
-        border-bottom: 1.5px solid var(--fg-black-75);
+        position: relative;
+
+        &:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -.2rem;
+          width: 0;
+          height: .15rem;
+          background: var(--fg-black-75);
+          transition: width .5s;
+        }
+
+        &:hover:after {
+          width: 100%;
+        }
+        //border-bottom: 1.5px solid var(--fg-black-75);
       }      
     }
   }

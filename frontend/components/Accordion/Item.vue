@@ -154,6 +154,10 @@ const isArray = ( value ) => {
       --lh: var(--lh-body-b);
     }
 
+    :deep( p + ul ) {
+      margin-top: calc(-1 * (var(--m-bottom) / 1.5));
+    }
+
     :deep( strong ) {
       color: var(--fg-blue);
       font-weight: normal;

@@ -189,7 +189,7 @@ const close = ( event : any ) => {
   min-width: 4.5rem;
   height: 4.5rem;
   border-radius: 50%;
-  border: .1rem solid var(--fg-white);
+  border: .15rem solid var(--fg-white);
   background: var(--fg-white);
   transition: var(--tr-regular);
   

@@ -15,6 +15,7 @@
             :image="item.image"
             :subtitle="item.subtitle"
             :categories="item.categories"
+            :add_border="item.add_border"
         />
       </div>
       <div class="cases__col cases__col--right" ref="colRight">
@@ -26,6 +27,7 @@
             :image="item.image"
             :subtitle="item.subtitle"
             :categories="item.categories"
+            :add_border="item.add_border"
         />
       </div>
     </div>

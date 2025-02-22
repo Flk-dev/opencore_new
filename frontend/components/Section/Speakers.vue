@@ -9,6 +9,7 @@
             :slides-per-view="0.9"
             :space-between="30"
             :breakpoints="{ '576': { slidesPerView: 1.5 } }"
+            :loop="true"
             @sliderMove="test"
         >
           <swiper-slide v-for="(item, index) in data" :key="item.id">
@@ -30,7 +31,7 @@
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 
-defineProps<{
+const props = defineProps<{
   title?: string,
   data: object
 }>();
@@ -51,6 +52,11 @@ const test = ( event: any, pos: any ) => {
   cursor.value.$el.style.left = x + 'px';
   cursor.value.$el.style.top = y + 'px';
 }
+
+const data = computed( () => {
+  return [ ...props.data, ...props.data ];
+} );
+
 </script>
 
 <style scoped lang="scss">
@@ -67,6 +73,8 @@ const test = ( event: any, pos: any ) => {
 
 .speakers__swiper {
   padding: 0 var(--p-container);
+
+
 }
 
 .speakers__block-header {

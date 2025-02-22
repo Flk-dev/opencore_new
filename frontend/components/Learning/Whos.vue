@@ -38,7 +38,7 @@ defineProps<{
 }
 
 .learning-whos__block-header {
-  margin-top: -.1rem;
+  margin-top: -.95rem;
 
   @media (max-width: $tablet) {
     margin-bottom: 4rem;

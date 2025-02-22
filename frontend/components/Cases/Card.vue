@@ -2,7 +2,7 @@
   <NuxtLink 
     :to="{ name: 'cases-slug', params: { slug: slug } }" 
     class="cases-item"
-    :class="[ add_border ? 'cases-item--borer' : '' ]"
+    :class="[ add_border ? 'cases-item--border' : '' ]"
   >
     <div class="cases-item__media" v-if="image">
       <picture class="cases-item__media-pic">
