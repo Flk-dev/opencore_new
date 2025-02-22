@@ -16,6 +16,12 @@
             <div class="transition__text-item transition__text--first" data-word-active="true">steady</div>
             <div class="transition__text-item transition__text--secondary" data-word-active="false">ready</div>
             <div class="transition__text-item transition__text--third" data-word-active="false">core</div>
+            <div class="transition__text-item transition__text--first" data-word-active="false">steady</div>
+            <div class="transition__text-item transition__text--secondary" data-word-active="false">ready</div>
+            <div class="transition__text-item transition__text--third" data-word-active="false">core</div>
+            <div class="transition__text-item transition__text--first" data-word-active="false">steady</div>
+            <div class="transition__text-item transition__text--secondary" data-word-active="false">ready</div>
+            <div class="transition__text-item transition__text--third" data-word-active="false">core</div>
           </div>
         </div>
       </div>
@@ -91,6 +97,7 @@ usePagePreloaderLogic();
     width: 100%;
     bottom: 4.2rem;
     padding: 0 0 0 2.9rem;
+    overflow: hidden;
 
     display: flex;
     align-items: center;
@@ -114,51 +121,26 @@ usePagePreloaderLogic();
       }
     }
 
-    /*&-logo {
-      --width:
-      min-width: 59.4rem;
-      margin-right: 2rem;
-      margin-top: 4rem;
-
-      & svg {
-        width: 100%;
-        height: auto;
-      }
-
-      @media (max-width: $tablet) {
-        min-width: 32.5rem;
-        margin-top: 2rem;
-      }
-
-      @media (max-width: $mobile) {
-        min-width: 15rem;
-        max-width: 15rem;
-        margin-top: 1rem;
-        margin-right: 1rem;
-      }
-    }*/
-
-    //&-logo {
-    //  position: absolute;
-    //  left: 0;
-    //  bottom: 0;
-    //}
-    //
     &-item {
       font-family: var(--ff-atyp);
       font-style: italic;
       font-size: 23.3rem;
-      position: relative;
       letter-spacing: -2.2rem;
       text-transform: uppercase;
       color: var(--fg-white);
-      display: none;
-      transition: opacity .2s;
       line-height: 55%;
       height: 16.3rem;
+      position: absolute;
+      bottom: 0;
+      //top: -100%;
+      transition: all .3s;
+      //transform: translateY(-150%);
+      //transition: transform 0.32s ease-in;
 
       &[data-word-active="true"] {
-        display: block;
+        //top: 0;
+        //transform: translateY(0);
+        //transition: top 0.38s ease-out;
       }
 
       @media (max-width: $tablet) {
@@ -175,4 +157,20 @@ usePagePreloaderLogic();
     }
   }
 }
+
+@keyframes slideUp {
+  0%,
+  50% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+
+  }
+}
+
 </style>
