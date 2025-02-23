@@ -1,7 +1,9 @@
 <template>
   <div class="career__numbers career-numbers">
     <div class="career-numbers__container container">
-      <h2 class="career-numbers__title fz-h2 fz-h1--tablet" v-html="data.title"></h2>
+      <h2 class="career-numbers__title fz-h2 fz-h1--tablet animate" v-animate>
+        <span v-html="data.title" class="_up"></span>
+      </h2>
       <div class="career-numbers__list" v-if="data.list.length">
         <div class="career-numbers__item" v-for="(item, key) in data.list" :key="key">
           <div class="career-numbers__item-main">

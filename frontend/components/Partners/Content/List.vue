@@ -1,7 +1,16 @@
 <template>
   <div class="partner__list partner-list">
     <div class="partner-list__container container">
-      <h2 class="partner-list__title fz-h2 fz-h1--tablet fz-h1--mobile" :class="{ '_empty': ! data.title ? true : false }" v-if="data.title" v-html="fixText(data.title)"></h2>
+      <div class="partner-list__col">
+        <h2
+            class="partner-list__title fz-h2 fz-h1--tablet fz-h1--mobile animate"
+            :class="{ '_empty': ! data.title ? true : false }"
+            v-if="data.title"
+            v-animate
+        >
+          <span class="_up" v-html="fixText(data.title)"></span>
+        </h2>
+      </div>
       <div class="partner-list__row" v-if="data.list.length">
         <div class="partner-list__item" v-for="(item, key) in data.list">
           <div class="partner-list__item-number fz-h4 fz-h2--mobile">{{getCounter( key + 1 ) }}</div>

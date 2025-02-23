@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@vueuse/nuxt',
     'vue3-perfect-scrollbar/nuxt',
-    "nuxt-marquee"
+    "nuxt-marquee",
   ],
   runtimeConfig: {
     public: {

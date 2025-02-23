@@ -5,8 +5,12 @@
         <div class="partner-head__category fz-caption" v-if="categories">
           <p v-for="category in categories">{{ category.name }}</p>
         </div>
-        <h1 class="partner-head__title fz-h1" v-html="title"></h1>
-        <div class="partner-head__subtitle fz-h3 fz-h2--mobile" v-if="subtitle" v-html="fixText( subtitle )"></div>
+        <h1 class="partner-head__title fz-h1 animate" v-animate>
+          <span v-html="title" class="_up"></span>
+        </h1>
+        <div class="partner-head__subtitle fz-h3 fz-h2--mobile animate" v-if="subtitle" v-animate>
+          <span v-html="fixText( subtitle )" class="_up"></span>
+        </div>
       </div>
     </div>
   </div>

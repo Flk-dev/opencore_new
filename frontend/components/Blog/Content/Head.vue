@@ -4,9 +4,11 @@
       <div class="article__head-content">
         <div>
           <h1 
-            class="article__head-title fz-h2 fz-h1--tablet fz-h1--mobile"
-            v-html="fixText( title )"
-           ></h1>
+            class="article__head-title fz-h2 fz-h1--tablet fz-h1--mobile animate"
+            v-animate
+           >
+            <span  v-html="fixText( title )" class="_up"></span>
+          </h1>
           <div class="article__head-time" v-if="readTime">
             Время прочения {{ readTime }}
           </div>

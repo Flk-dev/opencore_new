@@ -12,7 +12,9 @@
         isBlueTitle: true
       } )"
   >
-    <div class="reviews-item__title fz-h3 fz-h2--mobile" v-html="title"></div>
+    <div class="reviews-item__title fz-h3 fz-h2--mobile animate" v-animate>
+      <span class="_up" v-html="title"></span>
+    </div>
     <div class="reviews-item__content">
       <div class="reviews-item__text" v-if="text" v-html="text"></div>
       <div class="reviews-item__client">

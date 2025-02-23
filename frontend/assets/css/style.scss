@@ -247,19 +247,21 @@ h4, .fz-h4 {
   }
 }
 
-//.page-enter-active,
-//.page-leave-active {
-//  transition: all .5s;
-//}
-//
-//.page-enter-from {
-//  opacity: 0;
-//  transform: translateY(100%) scale(0.9);
-//}
-//
-//.page-leave-to {
-//  opacity: 0;
-//  transform: translateY(-100%) scale(0.9);
-//}
+.animate {
+  overflow: hidden;
+
+  & ._up {
+    display: block;
+    transform: translateY(101%);
+    transition-duration: .6s;
+    transition-timing-function: ease-in-out;
+  }
+
+  &--animated {
+    & ._up {
+      transform: translateY(0);
+    }
+  }
+}
 
 @import "./components";

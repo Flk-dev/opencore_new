@@ -5,8 +5,12 @@
     <div class="service-include__list">
       <div class="service-include__item" v-for="(item, key) in data.list">
         <div class="service-include__item-main">
-          <div class="service-include__item-number fz-h2 fz-h1--tablet">{{ getFormatNumber( key + 1 ) }}</div>
-          <div class="service-include__item-title fz-h2 fz-h1--tablet" v-html="item.title"></div>
+          <div class="service-include__item-number fz-h2 fz-h1--tablet animate" v-animate>
+            <span class="_up">{{ getFormatNumber( key + 1 ) }}</span>
+          </div>
+          <div class="service-include__item-title fz-h2 fz-h1--tablet animate" v-animate>
+            <span v-html="item.title" class="_up"></span>
+          </div>
         </div>
         <div class="service-include__item-list" v-if="item.list.length">
           <div class="service-include__item-value fz-body" v-for="(listItem, listKey) in item.list" :key="listKey">

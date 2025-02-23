@@ -1,8 +1,12 @@
 <template>
   <div class="services__head services-head">
     <div class="services-head__content">
-      <h1 class="services-head__title fz-h2 fz-h1--tablet" v-if="title" v-html="title"></h1>
-      <h3 class="services-head__subtitle fz-h3 fz-h4--tablet fz-h2--mobile" v-if="subtitle" v-html="subtitle"></h3>
+      <h1 class="services-head__title fz-h2 fz-h1--tablet animate" v-if="title" v-animate>
+        <span class="_up" v-html="title"></span>
+      </h1>
+      <h3 class="services-head__subtitle fz-h3 fz-h4--tablet fz-h2--mobile animate" v-if="subtitle" v-animate>
+        <span class="_up" v-html="subtitle"></span>
+      </h3>
     </div>
     <GlobalRoundVideo
         class="services-head__video _middle"
@@ -51,6 +55,7 @@ const title = computed( () => {
 
   &__title {
     margin: 0;
+    padding-bottom: 1rem;
 
     :deep(a) {
       color: var(--fg-blue);

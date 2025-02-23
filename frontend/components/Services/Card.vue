@@ -1,6 +1,8 @@
 <template>
   <div class="services-item">
-    <h2 class="services-item__title fz-h1--tablet" v-html="name"></h2>
+    <h2 class="services-item__title fz-h1--tablet animate" v-animate>
+      <span class="_up" v-html="name"></span>
+    </h2>
     <div class="services-item__content">
       <div class="services-item__text" v-if="description" v-html="description"></div>
       <div class="services-item__posts" v-if="posts">

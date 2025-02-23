@@ -4,7 +4,9 @@
     <GlobalBlockHeader :title="data.title" classes="about-branding" class-title="fz-h1" />
     <div class="about-branding__list" v-if="data.list">
       <div class="about-branding__item" v-for="(item, index) in data.list" :key="index">
-        <div class="about-branding__item-title fz-h3 fz-h2--mobile" v-html="item.title"></div>
+        <div class="about-branding__item-title fz-h3 fz-h2--mobile animate" v-animate>
+          <span v-html="item.title" class="_up"></span>
+        </div>
         <div class="about-branding__item-text fz-body--mobile" v-html="fixText(item.text)"></div>
       </div>
     </div>

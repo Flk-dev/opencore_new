@@ -9,9 +9,13 @@
           <span>Назад (все услуги)</span>
         </button>
         <div class="service__head-flex">
-          <h1 class="service__head-title service__title fz-h2 fz-h1--tablet">{{ post.post_title }}</h1>
+          <h1 class="service__head-title service__title fz-h2 fz-h1--tablet animate" v-animate>
+            <span class="_up">{{ post.post_title }}</span>
+          </h1>
           <div class="service__head-content">
-            <h3 class="service__head-subtitle fz-h4--tablet fz-h2--mobile" v-if="post.subtitle" v-html="post.subtitle"></h3>
+            <h3 class="service__head-subtitle fz-h4--tablet fz-h2--mobile animate" v-if="post.subtitle" v-animate>
+              <span class="_up" v-html="post.subtitle"></span>
+            </h3>
             <ContentText class="service__head-text" v-if="post.full_text" :text="fixText(post.full_text)" />
           </div>
         </div>

@@ -11,7 +11,9 @@
 
   <div class="contacts page-pd-bottom">
     <div class="contacts__container container">
-      <h1 class="contacts__title fz-h1--tablet fz-h1--mobile">Давайте вместе сделаем<br> что-то классное</h1>
+      <h1 class="contacts__title fz-h1--tablet fz-h1--mobile animate" v-animate>
+        <span class="_up">Давайте вместе сделаем<br> что-то классное</span>
+      </h1>
       <div class="contacts__flex">
         <div class="contacts__main">
           <GlobalRoundVideo class="contacts__video _big" v-if="post.video" :link="post.video.link" :preview="post.video.preview" />
