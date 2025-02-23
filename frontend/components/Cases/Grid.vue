@@ -2,7 +2,7 @@
   <div
       class="cases__parallax"
       v-if="columns.value && columns.value.colLeft.length"
-      ref="grid"
+      v-intersection-observer="onIntersectionObserver"
   >
     <div class="cases__line"></div>
     <div class="cases__grid">
@@ -37,6 +37,7 @@
 <script setup lang="ts">
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { vIntersectionObserver } from '@vueuse/components';
 
 const props = defineProps<{
   data: object
@@ -49,6 +50,16 @@ const setWindowWidth = () => {
 
 const colLeft = ref( null );
 const colRight = ref( null );
+
+const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
+  if (entry.isIntersecting) {
+    entry.target.classList.add("cases__parallax--active");
+  }
+}
+
+// const targetIsVisible = useElementVisibility(grid, {
+//   rootMargin: '0px 0px 100px 0px',
+// })
 
 onMounted( () => {
   setWindowWidth();
@@ -70,15 +81,21 @@ onMounted( () => {
       }
     });
 
+    //tl.set(".cases__line",{ yPercent:10 });
+
+    // tl.to( '.cases__line', {
+    //   height: '100%'
+    // } );
+
     tl.to('.cases__col--right', {
       duration: 2,
       y: -250,
-    }, 0);
+    });
   });
 } )
 
 const columns = computed(() => {
-  const data: object = ref({
+  const data: Ref = ref({
     colLeft: [],
     colRight: [],
   });
@@ -87,7 +104,7 @@ const columns = computed(() => {
     data.value.colLeft = props.data;
     data.value.colRight = [];
   } else {
-    props.data.forEach((element, index) => {
+    props.data.forEach((element: any, index: number) => {
       index += 1;
       if (index % 2 === 0) {
         data.value.colRight.push(element);
@@ -106,27 +123,19 @@ const columns = computed(() => {
   margin: 0 calc( -1 * var(--p-container) );
   position: relative;
 
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    border-bottom: 1.5px solid var(--fg-blue);
-    transition: width 3s;
+  &--active {
+    .cases__col:before {
+      width: 100%;
+    }
 
-    @media (max-width: $tablet) {
-      display: none;
+    .cases__line {
+      height: 5%;
     }
   }
 }
 
 .cases__grid {
   display: flex;
-
-  &--active:before {
-    width: 100%;
-  }
 
   @media (max-width: $tablet) {
     flex-direction: column;
@@ -139,9 +148,10 @@ const columns = computed(() => {
   left: 50%;
   transform: translateX(-50%);
   top: 0;
-  border-right: 1.5px solid var(--fg-blue);
-  height: 100%;
+  border-right: .15rem solid var(--fg-blue);
+  height: 0;
   transition: height 3s;
+  transition-delay: .6s;
 
   @media (max-width: $tablet) {
     display: none;
@@ -149,6 +159,21 @@ const columns = computed(() => {
 }
 
 .cases__col {
+  width: 50%;
+  padding: 2rem 1.5rem 0 var(--p-container);
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: .15rem;
+    background: var(--fg-blue);
+    transition: width .5s;
+  }
+
   &:first-child {
     :deep(.cases-item:nth-child(2n + 1)) {
       max-width: 52rem;
@@ -158,6 +183,18 @@ const columns = computed(() => {
   }
 
   &:last-child {
+    padding-left: 1.5rem;
+    padding-right: var(--p-container);
+
+    &:after {
+      content: '';
+    }
+
+    &:before {
+      left: auto;
+      right: 0;
+    }
+
     :deep(.cases-item:nth-child(2n + 2)) {
       max-width: 52rem;
       --image-height: 31rem;
@@ -165,9 +202,11 @@ const columns = computed(() => {
   }
 
   @media (max-width: $tablet) {
-      :deep(.cases-item__title) {
-        max-width: 80%;
-      }
+    padding: 0 var(--p-container);
+
+    :deep(.cases-item__title) {
+      max-width: 80%;
+    }
   }
 
   @media (max-width: $mobile) {
@@ -177,35 +216,35 @@ const columns = computed(() => {
   }
 }
 
-.cases__col {
-  width: 50%;
-  padding: 2rem 1.5rem 0 var(--p-container);
-  position: relative;
-
-  @media (max-width: $tablet) {
-    padding: 0 var(--p-container)
-  }
-
-  &:last-child {
-    padding-left: 1.5rem;
-    padding-right: var(--p-container);
-
-    &:after {
-      display: none;
-    }
-
-    & .cases-item._small {
-      margin-left: 0;
-    }
-  }
-
-  @media (max-width: $tablet) {
-    width: 100%;
-    border-top: none;
-  }
-
-  @media (max-width: $mobile) {
-
-  }
-}
+//.cases__col {
+//  width: 50%;
+//  padding: 2rem 1.5rem 0 var(--p-container);
+//  position: relative;
+//
+//  @media (max-width: $tablet) {
+//    padding: 0 var(--p-container)
+//  }
+//
+//  &:last-child {
+//    padding-left: 1.5rem;
+//    padding-right: var(--p-container);
+//
+//    &:after {
+//      display: none;
+//    }
+//
+//    & .cases-item._small {
+//      margin-left: 0;
+//    }
+//  }
+//
+//  @media (max-width: $tablet) {
+//    width: 100%;
+//    border-top: none;
+//  }
+//
+//  @media (max-width: $mobile) {
+//
+//  }
+//}
 </style>

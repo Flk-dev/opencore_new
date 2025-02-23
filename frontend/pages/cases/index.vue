@@ -55,19 +55,19 @@ const loadMore = () => {
 </script>
 
 <style scoped lang="scss">
-.cases--archive {
-  & :deep(.cases__col) {
-    border: none;
-  }
-
-  :deep(.cases__line) {
-    display: none !important;
-  }
-}
-
-.cases--archive:before {
-  display: none;
-}
+//.cases--archive {
+//  & :deep(.cases__col) {
+//    border: none;
+//  }
+//
+//  :deep(.cases__line) {
+//    display: none !important;
+//  }
+//}
+//
+//.cases--archive:before {
+//  display: none;
+//}
 
 .cases__filter {
   position: sticky;
