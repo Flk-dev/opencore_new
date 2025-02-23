@@ -2,10 +2,11 @@
   <div
       class="cases__parallax"
       v-if="columns.value && columns.value.colLeft.length"
+      ref="cases"
       v-intersection-observer="onIntersectionObserver"
   >
-    <div class="cases__line"></div>
-    <div class="cases__grid">
+    <div class="cases__line" ref="line"></div>
+    <div class="cases__grid" ref="grid" :style="{'--height': casesHeight ? casesHeight + 'px' : 'auto'}">
       <div class="cases__col" ref="colLeft">
         <CasesCard
             v-for="item in columns.value.colLeft"
@@ -40,59 +41,21 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { vIntersectionObserver } from '@vueuse/components';
 
 const props = defineProps<{
-  data: object
+  data: string[]
 }>();
 
-const windowWidth = ref( 0 );
-const setWindowWidth = () => {
-  windowWidth.value = window.innerWidth;
-}
+const cases = ref(null);
+const grid = ref(null);
+const line = ref(null);
 
-const colLeft = ref( null );
-const colRight = ref( null );
+const {width: windowWidth} = useWindowSize();
+const {height: casesHeight} = useElementSize(cases);
 
 const onIntersectionObserver = ([entry]: IntersectionObserverEntry[]) => {
   if (entry.isIntersecting) {
     entry.target.classList.add("cases__parallax--active");
   }
 }
-
-// const targetIsVisible = useElementVisibility(grid, {
-//   rootMargin: '0px 0px 100px 0px',
-// })
-
-onMounted( () => {
-  setWindowWidth();
-  window.addEventListener('resize', setWindowWidth);
-
-  gsap.registerPlugin(ScrollTrigger);
-  ScrollTrigger.defaults({
-    markers: false
-  });
-
-  let mm = gsap.matchMedia();
-  mm.add("(min-width: 992px)", () => {
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger:".cases__grid",
-        start:"top top",
-        end:"bottom bottom",
-        scrub: true,
-      }
-    });
-
-    //tl.set(".cases__line",{ yPercent:10 });
-
-    // tl.to( '.cases__line', {
-    //   height: '100%'
-    // } );
-
-    tl.to('.cases__col--right', {
-      duration: 2,
-      y: -250,
-    });
-  });
-} )
 
 const columns = computed(() => {
   const data: Ref = ref({
@@ -105,8 +68,9 @@ const columns = computed(() => {
     data.value.colRight = [];
   } else {
     props.data.forEach((element: any, index: number) => {
-      index += 1;
-      if (index % 2 === 0) {
+      let key = index;
+      key += 1;
+      if (key % 2 === 0 || ( props.data.length - 1 ) === index) {
         data.value.colRight.push(element);
       } else {
         data.value.colLeft.push(element);
@@ -116,6 +80,38 @@ const columns = computed(() => {
 
   return data;
 });
+
+onMounted( () => {
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".cases__grid",
+      start:"top top",
+      end: () => "+=" + casesHeight.value,
+      scrub: true,
+    }
+  });
+
+  tl.to('.cases__col--right', {
+    duration: 2,
+    y: '-=' + (grid.value.querySelector('.cases-item:nth-child(2)').getBoundingClientRect().height * 1.25),
+  });
+
+  gsap.set(line.value, {transformOrigin: "center top", xPercent: -50, x: 0});
+
+  gsap.fromTo(line.value, {
+    scaleY: 0,
+  }, {
+    scaleY: 1,
+    ease: "none",
+    scrollTrigger: {
+      trigger: grid.value,
+      start: 0,
+      end: () => "+=" + casesHeight.value,
+      markers: true,
+      scrub: true,
+    }
+  });
+} )
 </script>
 
 <style scoped lang="scss">
@@ -129,13 +125,14 @@ const columns = computed(() => {
     }
 
     .cases__line {
-      height: 5%;
+      height: 100%;
     }
   }
 }
 
 .cases__grid {
   display: flex;
+  height: var(--height);
 
   @media (max-width: $tablet) {
     flex-direction: column;
@@ -149,7 +146,7 @@ const columns = computed(() => {
   transform: translateX(-50%);
   top: 0;
   border-right: .15rem solid var(--fg-blue);
-  height: 0;
+  height: 100%;
   transition: height 3s;
   transition-delay: .6s;
 
