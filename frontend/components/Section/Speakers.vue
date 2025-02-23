@@ -8,7 +8,7 @@
             class="speakers__swiper"
             :slides-per-view="0.9"
             :space-between="30"
-            :breakpoints="{ '576': { slidesPerView: 1.5 } }"
+            :breakpoints="{ '576': { slidesPerView: 1.5, freeMode: true } }"
             :loop="true"
             @sliderMove="test"
         >
@@ -74,7 +74,9 @@ const data = computed( () => {
 .speakers__swiper {
   padding: 0 var(--p-container);
 
-
+  :deep(.swiper-slide) {
+    transition: all 0.5s ease;
+  }
 }
 
 .speakers__block-header {

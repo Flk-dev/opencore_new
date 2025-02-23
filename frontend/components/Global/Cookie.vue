@@ -85,7 +85,16 @@ const close = () => {
 
   & a {
     color: var(--fg-blue);
-    border-bottom: .15rem solid var(--fg-blue);
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -.35rem;
+      left: 0;
+      width: 100%;
+      border-bottom: .15rem solid var(--fg-blue);
+    }
   }
 
   @media (max-width: $tablet) {
