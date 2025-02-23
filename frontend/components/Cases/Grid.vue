@@ -107,7 +107,7 @@ onMounted( () => {
       trigger: grid.value,
       start: 0,
       end: () => "+=" + casesHeight.value,
-      markers: true,
+      //markers: true,
       scrub: true,
     }
   });
