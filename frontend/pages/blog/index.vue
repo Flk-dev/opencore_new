@@ -12,8 +12,8 @@
     <div class="blog">
       <div class="blog__container container">
           <BlogFilters @filter="filter" />
-          <BlogGrid :data="posts" />
-          <GlobalLoadmore class="blog__loadmore" @load-more="loadMore" />
+          <BlogGrid :data="postsList" />
+          <GlobalLoadmore v-if="maxPage !== page" class="blog__loadmore" @load-more="loadMore" />
       </div>
     </div>
   </div>
@@ -24,7 +24,6 @@
 <script setup>
 const termId = ref( 0 );
 const page = ref( 1 );
-const maxPage = ref( 0 );
 
 const { data: posts } = await useAsyncData(
     'blog',
@@ -36,12 +35,20 @@ const { data: posts } = await useAsyncData(
     }), {
       watch: [termId, page],
       transform: (resData) => {
-        maxPage.value = resData.data.max_page;
+        resData.data.posts = (page.value === 1 ? resData.data.posts : [...postsList.value, ...resData.data.posts]);
 
-        return (page.value === 1 ? resData.data.posts : [...posts.value, ...resData.data.posts]);
+        return resData.data;
       },
     },
 );
+
+const maxPage = computed(() => {
+  return posts.value.max_page;
+});
+
+const postsList = computed(() => {
+  return posts.value.posts;
+});
 
 const filter = (id) => {
   termId.value = id;

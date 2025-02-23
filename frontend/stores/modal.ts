@@ -62,7 +62,8 @@ export const useModal = defineStore('modal', {
             this.isOpen = false;
             timer = setTimeout( () => {
                 this.view = {};
-            }, 800 );
+                this.props = {};
+            }, 250 );
 
             unLockBody();
             //this.props = {};
