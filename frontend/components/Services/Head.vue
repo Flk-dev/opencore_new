@@ -1,10 +1,10 @@
 <template>
   <div class="services__head services-head">
     <div class="services-head__content">
-      <h1 class="services-head__title fz-h2 fz-h1--tablet animate" v-if="title" v-animate>
+      <h1 class="services-head__title fz-h2 fz-h1--tablet animate animate__fadeIn" v-if="title" v-animate>
         <span class="_up" v-html="title"></span>
       </h1>
-      <h3 class="services-head__subtitle fz-h3 fz-h4--tablet fz-h2--mobile animate" v-if="subtitle" v-animate>
+      <h3 class="services-head__subtitle fz-h3 fz-h4--tablet fz-h2--mobile animate animate__fadeIn" v-if="subtitle" v-animate>
         <span class="_up" v-html="subtitle"></span>
       </h3>
     </div>

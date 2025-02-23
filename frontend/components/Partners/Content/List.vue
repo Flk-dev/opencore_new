@@ -3,7 +3,7 @@
     <div class="partner-list__container container">
       <div class="partner-list__col">
         <h2
-            class="partner-list__title fz-h2 fz-h1--tablet fz-h1--mobile animate"
+            class="partner-list__title fz-h2 fz-h1--tablet fz-h1--mobile animate animate__fadeIn"
             :class="{ '_empty': ! data.title ? true : false }"
             v-if="data.title"
             v-animate

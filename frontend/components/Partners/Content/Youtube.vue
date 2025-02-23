@@ -3,7 +3,7 @@
   <div class="partner-video__container container">
     <div class="partner-video__content">
       <div>
-        <div class="animate" ref="animate" v-animate>
+        <div class="animate animate__fadeIn" ref="animate" v-animate>
          <h2 class="partner-video__title fz-h2 fz-h1--mobile _up">{{ data.title }}</h2>
         </div>
         <div class="partner-video__text fz-h4 fz-h2--mobile" v-if="data.text" v-html="data.text"></div>

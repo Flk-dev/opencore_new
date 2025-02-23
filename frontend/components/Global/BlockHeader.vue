@@ -3,9 +3,9 @@
       class="block-header"
       :class="classes + '__block-header'"
   >
-    <div class="animate" v-animate>
+    <div class="animate animate__fadeIn" v-animate>
       <h2
-          class="block-header__title fz-h1--mobile animate _up"
+          class="block-header__title fz-h1--mobile _up"
           :class="[ ( classTitle === 'fz-h1' ? 'fz-h1' : 'fz-h2' ), classTitle ]"
           v-html="title"
       ></h2>

@@ -5,7 +5,7 @@
         <p v-for="category in categories">{{ category.name }}</p>
       </div>
       <NuxtLink :to="{ name: 'partners-slug', params: { slug: slug } }" class="partners-item__header">
-        <h3 class="partners-item__title fz-h1--mobile animate" v-animate>
+        <h3 class="partners-item__title fz-h1--mobile animate animate__fadeIn" v-animate>
           <span v-html="title" class="_up"></span>
         </h3>
         <div class="partners-item__icon">

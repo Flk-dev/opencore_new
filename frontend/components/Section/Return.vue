@@ -6,7 +6,11 @@
       </div>
       <div class="return__col return__col--last">
         <h4 class="return__subtitle fz-h4 fz-h2--mobile" v-if="bigText" v-html="fixText(bigText)"></h4>
-        <div class="return__caption fz-caption" v-if="smallText" v-html="fixText(smallText)"></div>
+        <div
+            class="return__caption fz-caption"
+            v-if="smallText"
+            v-html="fixText(smallText)"
+        ></div>
       </div>
     </div>
   </section>

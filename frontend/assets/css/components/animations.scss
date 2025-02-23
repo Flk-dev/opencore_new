@@ -1,0 +1,32 @@
+.animate {
+  overflow: hidden;
+
+  $root: &;
+
+  &__fadeIn {
+    & ._up {
+      display: block;
+      transform: translateY(101%);
+      transition-duration: .6s;
+      transition-timing-function: ease-in-out;
+    }
+
+    &._animated {
+      & ._up {
+        transform: translateY(0);
+      }
+    }
+  }
+
+
+  &__fadeUp {
+    opacity: 0;
+    transform: translateY(80%);
+    transition: opacity 1s cubic-bezier(.075,0,.165,0),transform 1.5s cubic-bezier(.075,.82,.165,1);
+
+    &._animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

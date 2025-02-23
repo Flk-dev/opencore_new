@@ -1,6 +1,6 @@
 <template>
   <div class="services-item">
-    <h2 class="services-item__title fz-h1--tablet animate" v-animate>
+    <h2 class="services-item__title fz-h1--tablet animate animate__fadeIn" v-animate>
       <span class="_up" v-html="name"></span>
     </h2>
     <div class="services-item__content">

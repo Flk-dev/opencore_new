@@ -247,21 +247,4 @@ h4, .fz-h4 {
   }
 }
 
-.animate {
-  overflow: hidden;
-
-  & ._up {
-    display: block;
-    transform: translateY(101%);
-    transition-duration: .6s;
-    transition-timing-function: ease-in-out;
-  }
-
-  &--animated {
-    & ._up {
-      transform: translateY(0);
-    }
-  }
-}
-
 @import "./components";

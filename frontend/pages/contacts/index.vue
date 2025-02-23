@@ -11,7 +11,7 @@
 
   <div class="contacts page-pd-bottom">
     <div class="contacts__container container">
-      <h1 class="contacts__title fz-h1--tablet fz-h1--mobile animate" v-animate>
+      <h1 class="contacts__title fz-h1--tablet fz-h1--mobile animate animate__fadeIn" v-animate>
         <span class="_up">Давайте вместе сделаем<br> что-то классное</span>
       </h1>
       <div class="contacts__flex">

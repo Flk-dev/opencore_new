@@ -3,7 +3,7 @@
     <div class="advantages-item__icon" v-if="icon">
       <img :src="icon" class="advantages-item__icon-img" alt="">
     </div>
-    <div class="advantages-item__title fz-h3 fz-h2--mobile animate" v-if="title" v-animate>
+    <div class="advantages-item__title fz-h3 fz-h2--mobile animate animate__fadeIn" v-if="title" v-animate>
       <span class="_up" v-html="fixText(title)"></span>
     </div>
     <div class="advantages-item__text fz-caption fz-body--mobile" v-if="text" v-html="fixText(text)"></div>

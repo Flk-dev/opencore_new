@@ -4,7 +4,7 @@
       <div class="article__head-content">
         <div>
           <h1 
-            class="article__head-title fz-h2 fz-h1--tablet fz-h1--mobile animate"
+            class="article__head-title fz-h2 fz-h1--tablet fz-h1--mobile animate animate__fadeIn"
             v-animate
            >
             <span  v-html="fixText( title )" class="_up"></span>

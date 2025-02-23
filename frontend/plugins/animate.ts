@@ -7,7 +7,7 @@ export default defineNuxtPlugin((nuxtApp) => {
                 item,
                 ([entry], observerElement) => {
                     if ( entry?.isIntersecting ){
-                        el.classList.add( "animate--animated" );
+                        el.classList.add( "_animated" );
                     }
                 },
             )
