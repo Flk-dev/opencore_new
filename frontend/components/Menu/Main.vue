@@ -41,6 +41,7 @@
           <NuxtLink
             class="menu__link"
             :to="link.href"
+            @click="close"
             @dragstart.prevent
           >
             {{ link.title }}
@@ -170,6 +171,10 @@ const handleTouchStart = (e) => {
 	const handleTouchEnd = () => {
 		isDragging.value = false
 	}
+
+  const close = () => {
+    document.body.classList.remove('menu--open', '_lock')
+  }
 
 onMounted( () => {
 	dispose(0)

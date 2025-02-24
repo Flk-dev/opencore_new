@@ -67,7 +67,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(var(--translate));
+  //transform: translateY(var(--translate));
 
   box-shadow:
       0 2px 5px 0 rgba(0, 0, 0, 0.1),

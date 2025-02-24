@@ -107,7 +107,7 @@ const route = useRoute();
   z-index: 1000;
   transition: var(--tr-regular);
   background-color: var(--fg-white);
-  transform: translateY(-100%);
+  //transform: translateY(-100%);
 
   &._fixed {
     background: var(--fg-white);
