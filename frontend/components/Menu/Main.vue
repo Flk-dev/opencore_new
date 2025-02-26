@@ -232,7 +232,7 @@ onMounted( () => {
     position: absolute;
     width: 100%;  
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 
     @media (any-hover: hover) {
       &:hover {
@@ -271,7 +271,7 @@ onMounted( () => {
 
   &__title {
     margin-left: 2rem;
-    margin-top: .8rem;
+    margin-top: 3rem;
     transform: translateX(-100%);
     opacity: 0;
     transition: all .3s;

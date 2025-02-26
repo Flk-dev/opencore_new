@@ -1,5 +1,5 @@
 <template>
-  <div class="advantages__item advantages-item">
+  <div class="advantages__item advantages-item animate" v-animate>
     <div class="advantages-item__icon" v-if="icon">
       <img :src="icon" class="advantages-item__icon-img" alt="">
     </div>
@@ -21,7 +21,25 @@ defineProps<{
 <style scoped lang="scss">
 .advantages-item {
   padding-top: 2rem;
-  border-top: 1.5px solid var(--fg-white);
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: .15rem;
+    background: var(--fg-white);
+    transition: width .5s;
+    transition-delay: .3s;
+  }
+
+  &._animated {
+    &:before {
+      width: 100%;
+    }
+  }
 
   &__icon {
     margin-bottom: 5.2rem;

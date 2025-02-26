@@ -14,7 +14,7 @@
       <div class="partner-list__row" v-if="data.list.length">
         <div class="partner-list__item" v-for="(item, key) in data.list">
           <div class="partner-list__item-number fz-h4 fz-h2--mobile">{{getCounter( key + 1 ) }}</div>
-          <div class="partner-list__item-text fz-h4 fz-h2--mobile" v-html="item.text">
+          <div class="partner-list__item-text fz-h4 fz-h2--mobile" v-html="fixText(item.text)">
 
           </div>
         </div>
@@ -105,6 +105,12 @@ const upCounter = () => {
 
 .partner-list__item-text {
   font-weight: 600;
+
+  @media (max-width: $mobile) {
+    :deep(br) {
+      display: none;
+    }
+  }
 }
 
 </style>

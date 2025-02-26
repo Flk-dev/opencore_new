@@ -30,7 +30,7 @@ const filter = async (id: number | string) => {
         }
       }), {
         transform: ( resData : any ) => {
-          posts.value = resData.data;
+          posts.value = resData.data.posts;
         },
       },
   );
