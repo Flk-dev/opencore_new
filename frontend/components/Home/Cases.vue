@@ -50,6 +50,8 @@ const filter = async (id: number | string) => {
 }
 
 .home__cases-btn {
+  //border: none;
+
   @media (max-width: $tablet) {
     margin-top: 8rem;
   }

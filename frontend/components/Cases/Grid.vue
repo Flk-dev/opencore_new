@@ -105,12 +105,25 @@ onMounted( () => {
     ease: "none",
     scrollTrigger: {
       trigger: grid.value,
-      start: 0,
+      start: -100,
       end: () => "+=" + casesHeight.value,
-      //markers: true,
       scrub: true,
     }
   });
+
+  // gsap.fromTo('.home__cases-btn', {
+  //   scaleY: 0,
+  // }, {
+  //   scaleY: 1,
+  //   ease: "none",
+  //   scrollTrigger: {
+  //     trigger: grid.value,
+  //     start: 550,
+  //     end: () => "+=" + casesHeight.value,
+  //     //markers: true,
+  //     scrub: true,
+  //   }
+  // });
 } )
 </script>
 
@@ -147,8 +160,8 @@ onMounted( () => {
   top: 0;
   border-right: .15rem solid var(--fg-blue);
   height: 100%;
-  transition: height 3s;
-  transition-delay: .6s;
+  transition: all 2s;
+  //transition-delay: 2s;
 
   @media (max-width: $tablet) {
     display: none;
