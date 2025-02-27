@@ -68,6 +68,11 @@ export const initPageLoader = () => {
         ease: "Expo.easeInOut",
     },"<");
 
+    tl.set('.main', {
+        opacity: 1,
+        duration: 1
+    }, "<");
+
     tl.to(".transition__last-inner", {
         yPercent: 100,
         duration: 1.4,
@@ -98,12 +103,15 @@ export const initPageLoader = () => {
             delay: 1
         }, "<=");
     }
-
-
 }
 
 export const initPageIn = () => {
     const tl = gsap.timeline();
+
+    tl.set('.main', {
+        opacity: 0,
+        duration: 1.4,
+    }, "<");
 
     tl.set(".transition__first",{
         yPercent: 100,
@@ -125,15 +133,6 @@ export const initPageIn = () => {
         ease: "Power2.easeIn"
     },"<");
 
-    tl.set('.menu', {
-        xPercent: '-100%',
-        duration: .5,
-    }, "<");
-
-    tl.set('body', {
-        className: ''
-    });
-
     tl.set(".transition__last, .transition__last-inner",{
         yPercent: 0,
         delay: 0.1
@@ -151,6 +150,15 @@ export const initPageIn = () => {
         ease: "Expo.easeOut"
     },"<");
 
+    tl.set('.menu', {
+        xPercent: '-100%',
+        duration: .5,
+    }, "<");
+
+    tl.set('body', {
+        className: ''
+    }, "<");
+
     tl.to(".transition__last", {
         yPercent: -100,
         duration: 1.4,
@@ -162,4 +170,9 @@ export const initPageIn = () => {
         duration: 1.4,
         ease: "Expo.easeInOut",
     },"< 0.1");
+
+    tl.set('.main', {
+        opacity: 1,
+        duration: 0,
+    }, "<=");
 }

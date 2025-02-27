@@ -3,45 +3,9 @@
     <div class="hero__container container">
       <div class="hero__header">
         <h1 class="hero__title">Стратегический брендинг для&nbsp;лидерства на&nbsp;рынке</h1>
-        <div class="hero__video" style="background-image: url('/img/hero/video.jpg')">
-          <div class="hero__video-play">
-            <svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path opacity="0.9" d="M24.5297 11.6664C26.8665 13.0156 26.8665 16.3886 24.5297 17.7377L5.4455 28.756C3.10865 30.1052 0.187597 28.4187 0.187597 25.7204L0.187597 3.68381C0.187597 0.985457 3.10865 -0.701015 5.44549 0.648162L24.5297 11.6664Z" fill="white"/>
-            </svg>
-          </div>
-          <button class="hero__video-button fz-link">Смотреть шоурил</button>
-        </div>
+        <HeroVideo />
       </div>
-      <div class="hero__slider">
-        <swiper
-            class="hero__slider-swiper"
-            :free-mode="true"
-            slides-per-view="auto"
-            :mousewheel="true"
-            :space-between="100"
-        >
-          <swiper-slide>
-            <div class="hero__slider-item">
-              <img src="/img/hero/logos/logo-1.svg" alt="">
-            </div>
-          </swiper-slide>
-          <swiper-slide>
-            <div class="hero__slider-item">
-              <img src="/img/hero/logos/logo-2.svg" alt="">
-            </div>
-          </swiper-slide>
-          <swiper-slide>
-            <div class="hero__slider-item">
-              <img src="/img/hero/logos/logo-3-new.svg" alt="">
-            </div>
-          </swiper-slide>
-          <swiper-slide>
-            <div class="hero__slider-item">
-              <img src="/img/hero/logos/logo-4.svg" alt="">
-            </div>
-          </swiper-slide>
-        </swiper>
-      </div>
+      <HeroLogos />
       <div class="hero__logo" ref="logo">
         <NuxtLink to="/">
           <svg width="1400" height="186" viewBox="0 0 1400 186" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,8 +26,6 @@
 </template>
 
 <script setup lang="ts">
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -169,85 +131,6 @@ onMounted( () => {
       margin-bottom: 4rem;
       letter-spacing: -.08rem;
     }
-  }
-}
-
-.hero__video {
-  min-width: 13.4rem;
-  height: 13.2rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 3.1rem;
-  overflow: hidden;
-  transition: var(--tr-regular);
-  position: relative;
-
-  & > * {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: var(--tr-regular);
-  }
-
-  &:hover {
-    min-width: 26.6rem;
-
-    & .hero__video-button {
-      opacity: 1;
-      z-index: 5;
-    }
-
-    & .hero__video-play {
-      opacity: 0;
-    }
-  }
-
-  @media (max-width: $tablet) {
-    width: 100%;
-    height: 39.6rem;
-  }
-
-  @media (max-width: $mobile) {
-    margin-left: 0;
-    width: 100%;
-    height: 25.7rem;
-    border-radius: 2.4rem;
-  }
-
-  &-button {
-    display: inline-block;
-    cursor: pointer;
-    padding: 1rem;
-    border-radius: 1rem;
-    border: 1px solid var(--fg-white);
-    z-index: -1;
-    opacity: 0;
-    backdrop-filter: blur(1.5rem);
-    background: rgba(255, 255, 255, 0.2);
-    color: var(--fg-white);
-    white-space: nowrap;
-  }
-}
-
-.hero__slider {
-  position: absolute;
-  bottom: 22.5rem;
-
-  :deep(.swiper-slide) {
-    width: 26rem !important;
-  }
-
-  @media (max-width: $tablet) {
-    position: relative;
-    bottom: 0;
-    margin: 0 var(--m-m-container);
-  }
-
-  &-item img {
-    width: 100%;
-    height: auto
   }
 }
 

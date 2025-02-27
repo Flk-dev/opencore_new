@@ -27,6 +27,20 @@ const animateButton = ( event: any ) => {
   border-radius: 50%;
   background: var(--fg-blue);
   margin: var(--mt-content-block-secondary) auto 0;
+  border: .15rem solid var(--fg-blue);
+  transition: var(--tr-regular);
+
+  & path {
+    transition: var(--tr-regular);
+  }
+
+  &:hover {
+    background: none;
+
+    & path {
+      fill: var(--fg-blue);
+    }
+  }
 
   @media (max-width: $mobile) {
     width: 6rem;

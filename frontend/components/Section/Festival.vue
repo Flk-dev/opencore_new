@@ -13,6 +13,7 @@
             :direction="listKey === 1 ? 'right' : 'left'"
             :speed="listKey === 1 ? 75 : 90"
             clone="true"
+            :pause-on-hover="true"
         >
           <div class="festival__item" v-for="(item, cellKey) in list.awards_cell" :key="cellKey">
               <div class="festival__title fz-h3" v-if="item.text" v-html="item.text"></div>

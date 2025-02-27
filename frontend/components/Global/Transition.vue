@@ -88,7 +88,7 @@ usePagePreloaderLogic();
 
 
     &--secondary {
-      background: var(--fg-white);
+      background: var(--fg-blue);
     }
   }
 

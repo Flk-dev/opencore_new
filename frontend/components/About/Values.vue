@@ -2,7 +2,7 @@
   <div class="about__values about-values" ref="values">
     <div class="container">
       <GlobalBlockHeader :title="data.title" classes="about-values" />
-      <div class="about-values__list" v-if="data.select">
+      <div class="about-values__list" v-if="data.select" ref="list">
         <div
             class="about-values__item"
             v-for="(item, key) in data.select"
@@ -42,31 +42,33 @@ defineProps<{
 
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.defaults({
-  markers: true
+  markers: false
 });
 
 const items = ref( null );
-const spacer = ref( 100 );
 const values = ref<Ref|null>( null );
+const list = ref<Ref|null>( null );
 
 onMounted( () => {
   window.addEventListener( 'resize', animate );
 
   gsap.fromTo(
-    ".about-values__item",
+    ".about-values__item:not(:first-child)",
     {
-      x: () => '500%',
+      x: () => '50%',
+      opacity: 0,
       //y: '-100%',
     },
     {
       x: 0,
-      stagger: 0.5,
+      duration: 20,
+      opacity: 1,
+      stagger: 20,
       scrollTrigger: {
         pin: ".about-values .container",
-        markers: false,
         scrub: true,
-        start: `-30% top`,
-        end: `${values.value.getBoundingClientRect().height * 3} bottom`,
+        start: `center center`,
+        end: `${(list.value.getBoundingClientRect().width * 2)} bottom`,
       }
     }
   );
@@ -107,7 +109,7 @@ const animate = () => {
   min-width: var(--width);
   max-width: var(--width);
   background: var(--fg-white);
-  border: .1rem solid var(--fg-blue);
+  border: .15rem solid var(--fg-blue);
   border-radius: var(--br-regular);
   padding: 3rem;
   display: flex;
@@ -115,9 +117,8 @@ const animate = () => {
   justify-content: space-between;
   min-height: 36rem;
   margin-right: calc( -1 * ((var(--width) - var(--coef)) - var(--coef)));
-  //opacity: 0;
-  //transform: translateX(100%);
-  transition: all .7s;
+  z-index: 5;
+  //transition: all .7s;
 
   &--active {
     opacity: 1;
