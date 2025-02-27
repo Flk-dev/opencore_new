@@ -41,6 +41,7 @@
           <NuxtLink
             class="menu__link"
             :to="link.href"
+            @click="close"
             @dragstart.prevent
           >
             {{ link.title }}
@@ -156,24 +157,24 @@ const handleMouseWheel = (e) => {
 }
 
 const handleTouchStart = (e) => {
-  touchStart = e.clientY || e.touches[0].clientY
-  isDragging.value = true
-}
+		touchStart = e.clientY || e.touches[0].clientY
+		isDragging.value = true
+	}
 
-const handleTouchMove = (e) => {
-  if(!isDragging.value) return
-  touchY = e.clientY || e.touches[0].clientY
-  scrollY += (touchY - touchStart) * 3
-  touchStart = touchY
-}
+	const handleTouchMove = (e) => {
+		if(!isDragging.value) return
+		touchY = e.clientY || e.touches[0].clientY
+		scrollY += (touchY - touchStart) * 3
+		touchStart = touchY
+	}
 
-const handleTouchEnd = () => {
-  isDragging.value = false
-}
+	const handleTouchEnd = () => {
+		isDragging.value = false
+	}
 
-  // const close = () => {
-  //   document.body.classList.remove('menu--open', '_lock')
-  // }
+  const close = () => {
+    document.body.classList.remove('menu--open', '_lock')
+  }
 
 onMounted( () => {
 	dispose(0)
