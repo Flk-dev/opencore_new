@@ -27,7 +27,7 @@
             class="cats__menu-link"
             :data-id="category.term_id"
             @click="filter( category.term_id, key)"
-            :class="{ '_active': activeIndex === key }"
+            :class="{ '_active': (activeIndex === key || category.term_id === activeIndex) }"
         >
           {{ category.name }}
         </button>
@@ -40,12 +40,13 @@
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   hideAll?: boolean,
   data: Array<{
     term_id: number,
     name?: string
   }>,
+  isActiveIndex?: number,
 }>(), {
   hideAll: false,
 });
@@ -58,6 +59,13 @@ const filter = ( id: any, index: number|string ) => {
   emit( 'filter', id );
   activeIndex.value = index;
 }
+
+onMounted( () => {
+  if ( props.isActiveIndex ) {
+    activeIndex.value = parseInt( props.isActiveIndex );
+    //activeIndex.value = isActiveIndex;
+  }
+} )
 
 /*const cursor = ref<Ref|null>( null );
 

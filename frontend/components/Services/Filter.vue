@@ -3,14 +3,20 @@
     <div class="services__filter-title fz-h4 fz-h2--mobile animate animate__fadeIn" v-animate>
       <span class="_up">Какой тип брендинга вас интересует?</span>
     </div>
-    <GlobalFilterCategories class="services__filter-list" :data="categories" :hide-all="true" />
+    <GlobalFilterCategories class="services__filter-list" :data="categories" :hide-all="true" @filter="filter" :is-active-index="isActiveIndex" />
   </div>
 </template>
 
 <script setup lang="ts">
 defineProps<{
-  categories: object
+  categories: object,
+  isActiveIndex?: number
 }>();
+
+const emit = defineEmits( [ 'serviceFilter' ] );
+const filter = ( term_id: number ) => {
+  emit( 'serviceFilter', term_id );
+}
 </script>
 
 <style scoped lang="scss">

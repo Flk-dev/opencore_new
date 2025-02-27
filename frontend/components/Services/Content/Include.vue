@@ -1,11 +1,11 @@
 <template>
 <div class="service-include" v-if="data.list.length">
   <div class="service__container container">
-    <GlobalBlockHeader :title="data.title" classes="service-include" :text="data.text" class-title="fz-h1--tablet" />
+    <GlobalBlockHeader :title="data.title" classes="service-include" :text="fixText( data.text )" class-title="fz-h1--tablet" />
     <div class="service-include__list">
       <div class="service-include__item" v-for="(item, key) in data.list">
         <div class="service-include__item-main">
-          <div class="service-include__item-number fz-h2 fz-h1--tablet animate animate__fadeIn" v-animate>
+          <div class="service-include__item-number fz-h3 fz-h1--tablet animate animate__fadeIn" v-animate>
             <span class="_up">{{ getFormatNumber( key + 1 ) }}</span>
           </div>
           <div class="service-include__item-title fz-h2 fz-h1--tablet animate animate__fadeIn" v-animate>
@@ -52,7 +52,7 @@ defineProps<{
   }
 
   :deep(.block-header__content) {
-    max-width: 44.7rem;
+    max-width: 46.4rem;
     margin-right: .4rem;
     
     @media (max-width: $tablet) {
@@ -103,8 +103,9 @@ defineProps<{
 }
 
 .service-include__item-number {
-  min-width: 8.9rem;
+  min-width: 6.5rem;
   color: var(--fg-blue);
+  margin-top: .3rem;
 
   @media (max-width: $tablet) {
     min-width: auto;

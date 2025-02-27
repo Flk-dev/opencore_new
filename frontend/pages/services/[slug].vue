@@ -117,7 +117,7 @@ const { result: post } = await useApi( '/services/' + route.params.slug, {}, '',
   color: var(--fg-black-75);
 
   --fz: var(--fz-body-b);
-  --lh: var(--fz-body-b);
+  --lh: 120%;
 
   @media (max-width: $mobile) {
     margin-top: 4rem;

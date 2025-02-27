@@ -11,8 +11,8 @@
 
   <div class="services page-pd-bottom">
     <div class="services__container container">
-      <ServicesHead :title="post.title" :subtitle="post.subtitle" :video="post.video" />
-      <ServicesFilter v-if="post.types" :categories="post.types" />
+      <ServicesHead :title="settings.title" :subtitle="settings.subtitle" :video="settings.video" />
+      <ServicesFilter v-if="settings.types" :categories="settings.types" @serviceFilter="filter" :is-active-index="termId" />
       <div class="services__row" v-if="post.categories">
         <ServicesCard
           v-for="category in post.categories"
@@ -27,8 +27,30 @@
   <GlobalFooterButton />
 </template>
 
-<script setup>
-const { result: post } = await useApi( '/services' );
+<script setup lang="ts">
+const { result: settings } = await useApi( '/services-settings' );
+const termId = ref( 34 );
+
+const { data: post } = await useAsyncData(
+    'services',
+    () => $fetch(getApiUrl('/services'), {
+      params: {
+        term_id: termId.value,
+      }
+    }), {
+      watch: [termId],
+      transform: (resData) => {
+        //resData.data.posts = (page.value === 1 ? resData.data.posts : [...postsList.value, ...resData.data.posts]);
+
+        return resData.data;
+      },
+    },
+);
+
+
+const filter = async ( term_id: number ) => {
+  termId.value = term_id;
+}
 </script>
 
 <style scoped lang="scss">
