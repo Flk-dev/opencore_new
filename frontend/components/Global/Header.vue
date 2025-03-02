@@ -3,7 +3,7 @@
     class="header" 
     ref="headerRef"
     :class="{
-      'header--white': isWhite ? isWhite : false,
+      'header--white': isWhite,
       'header--hide': isHide
     }"
   >
@@ -118,6 +118,8 @@ const route = useRoute();
   }
 
   &--white {
+    background: none;
+
     :deep(.burger__line) {
       border-color: var(--fg-white);
     }
