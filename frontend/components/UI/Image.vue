@@ -19,6 +19,13 @@ defineProps<{
 <style scoped lang="scss">
 .image {
   position: relative;
+
+  &--border {
+    & .image__picture {
+      border-top: .1rem solid #888;
+      border-bottom: .1rem solid #888;
+    }
+  }
 }
 
 .image__picture {

@@ -1,13 +1,19 @@
 <template>
-  <div class="methodology__advantages methodology-advantages" v-if="data.list.length">
+  <div class="methodology__advantages methodology-advantages" v-if="data.list">
     <div class="container">
       <GlobalBlockHeader :title="data.title" classes="methodology-advantages" class-title="fz-h1" />
       <div class="methodology-advantages__grid">
         <div class="methodology-advantages__item" v-for="(item, key) in data.list" :key="key">
-          <div class="methodology-advantages__item-icon" v-if="item.icon">
+          <div class="methodology-advantages__item-icon animate animate__opIn" v-if="item.icon" v-animate>
             <img :src="item.icon" alt="">
           </div>
-          <div class="methodology-advantages__item-title fz-h3 fz-h4--tablet fz-h2--mobile" v-if="item.title" v-html="item.title"></div>
+          <div
+              class="methodology-advantages__item-title fz-h3 fz-h4--tablet fz-h2--mobile animate animate__fadeIn"
+              v-if="item.title"
+              v-animate
+          >
+            <span class="_up"  v-html="item.title"></span>
+          </div>
           <ContentText :text="item.text" class="methodology-advantages__item-text" />
         </div>
       </div>
@@ -19,7 +25,11 @@
 defineProps<{
   data: {
     title?: string,
-    list: object
+    list?: Array<{
+      icon?: string,
+      title?: string,
+      text: string
+    }>,
   }
 }>();
 </script>

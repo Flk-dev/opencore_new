@@ -1,5 +1,5 @@
 <template>
-  <SectionCasesSlider 
+  <SectionBlogSlider
     class="article__cases"
     :title="data.title"
     :data="data.select"

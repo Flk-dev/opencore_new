@@ -1,13 +1,14 @@
 <template>
 <div class="case-image" v-if="data.image">
-  <UIImage :image="data.image" classes="case-image__image" />
+  <UIImage :image="data.image" class="case-image__image" :class="[ data.is_border ? 'image--border' : '' ]" />
 </div>
 </template>
 
 <script setup lang="ts">
 defineProps<{
   data: {
-    image: string
+    image: string,
+    is_border?: boolean,
   }
 }>();
 </script>

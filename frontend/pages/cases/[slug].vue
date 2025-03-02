@@ -2,7 +2,7 @@
   <div class="case page-paddings">
     <div class="case__header">
       <div class="container">
-        <h1 class="case__title fz-h2 fz-h1--tablet" v-if="post.post_title">{{ post.post_title }}</h1>
+        <h1 class="case__title fz-h2 fz-h1--tablet" v-if="post.post_title" v-html="post.post_title"></h1>
       </div>
     </div>
     <div class="case__content" v-if="post.content">

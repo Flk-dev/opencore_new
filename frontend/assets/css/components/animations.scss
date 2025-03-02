@@ -29,4 +29,13 @@
       transform: translateY(0);
     }
   }
+
+  &__opIn {
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(.075,0,.165,0),transform 1.5s cubic-bezier(.075,.82,.165,1);
+
+    &._animated {
+      opacity: 1;
+    }
+  }
 }

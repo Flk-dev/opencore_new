@@ -141,7 +141,8 @@ const isArray = ( value ) => {
 
     & > * {
       min-height: 0;
-      transition: var(--tr-regular);
+      opacity: 0;
+      transition: padding-top .3s, min-height .5s, opacity .1s;
     }
   }
 
@@ -206,6 +207,10 @@ const isArray = ( value ) => {
     #{$root}__body {
       opacity: 1;
       grid-template-rows: 1fr;
+
+      & > * {
+        opacity: 1;
+      }
     }
 
     #{$root}__content {

@@ -108,14 +108,14 @@ const open = () => {
 }
 
 
-:global(.modal__close) {
+:global(.modal--hero__video .modal__close) {
   position: absolute;
   right: -5rem;
   top: -2rem;
   background: none;
 }
 
-:global(.modal__close path) {
+:global(.modal--hero__video .modal__close path) {
   stroke: var(--fg-white);
   fill: var(--fg-white);
 }

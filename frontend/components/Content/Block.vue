@@ -62,7 +62,10 @@ const typography = ( text: any ) => {
       height: auto;
       border-radius: var(--br-regular);
       margin: 6rem 0;
+    }
 
+    :deep(img.img-box-shadow) {
+      border: .1rem solid #888;
     }
 
     //:deep(p:has(img)){
