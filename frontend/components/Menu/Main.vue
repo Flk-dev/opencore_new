@@ -44,9 +44,9 @@
             @click="close"
             @dragstart.prevent
           >
-            {{ link.title }}
+            <div class="menu__title">{{ link.title }}</div>
+            <div class="menu__subtitle">{{ link.ru }}</div>
           </NuxtLink>
-          <div class="menu__title">{{ link.ru }}</div>
         </div>
       </div>
     </div>
@@ -199,6 +199,8 @@ onMounted( () => {
   opacity: 0;
   transform: translateY(-100%);
 
+  $root: &;
+
   @media (max-width: $mobile) {
     padding: 0 1.5rem 0 2rem;
   }
@@ -249,6 +251,24 @@ onMounted( () => {
   }
 
   &__link {
+    display: flex;
+    align-items: flex-start;
+
+    @media (any-hover: hover) {
+      &:hover {
+        #{$root}__subtitle {
+          transform: translateX(0);
+          opacity: 1;
+        }
+
+        #{$root}__title {
+          color: var(--fg-white);
+        }
+      }
+    }
+  }
+
+  &__title {
     display: block;
     font-family: var(--ff-atyp);
     font-size: 10.6rem;
@@ -269,13 +289,24 @@ onMounted( () => {
     }
   }
 
-  &__title {
-    margin-left: 2rem;
-    margin-top: 2.3rem;
+  &__subtitle {
+    margin-top: 2rem;
+    margin-left: 1.5rem;
     transform: translateX(-100%);
     opacity: 0;
     transition: all .3s;
   }
+
+  //&__title {
+  //  position: absolute;
+  //  left: 100%;
+  //  top: .3rem;
+  //  //margin-left: 2rem;
+  //  //margin-top: 2.3rem;
+  //  //transform: translateX(-100%);
+  //  //opacity: 0;
+  //  transition: all .3s;
+  //}
 
   &__before,
   &__after {
