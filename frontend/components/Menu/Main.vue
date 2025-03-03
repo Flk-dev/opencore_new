@@ -297,6 +297,11 @@ onMounted( () => {
     left: calc(100% + 1rem);
     top: 2rem;
     transition: all .3s;
+    min-width: max-content;
+
+    @media (min-width: $desktop-lg) {
+      top: .3rem;
+    }
   }
 
   &__before,
