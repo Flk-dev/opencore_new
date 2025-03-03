@@ -253,6 +253,7 @@ onMounted( () => {
   &__link {
     display: flex;
     align-items: flex-start;
+    position: relative;
 
     @media (any-hover: hover) {
       &:hover {
@@ -290,23 +291,13 @@ onMounted( () => {
   }
 
   &__subtitle {
-    margin-top: 2rem;
-    margin-left: 1.5rem;
     transform: translateX(-100%);
     opacity: 0;
+    position: absolute;
+    left: calc(100% + 1rem);
+    top: 2rem;
     transition: all .3s;
   }
-
-  //&__title {
-  //  position: absolute;
-  //  left: 100%;
-  //  top: .3rem;
-  //  //margin-left: 2rem;
-  //  //margin-top: 2.3rem;
-  //  //transform: translateX(-100%);
-  //  //opacity: 0;
-  //  transition: all .3s;
-  //}
 
   &__before,
   &__after {
