@@ -41,7 +41,8 @@ import {
 
 const route = useRoute();
 const contentLayouts: any = ref({
-  when: ServicesContentWhen,
+  //when: ServicesContentWhen,
+  when_2: ServicesContentWhen,
   cases: ServicesContentCases,
   include: ServicesContentInclude,
   return: ServicesContentReturn,
