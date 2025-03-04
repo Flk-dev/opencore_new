@@ -12,7 +12,7 @@
         </h2>
       </div>
       <div class="service-when__grid" ref="grid">
-        <div class="service-when__item" v-for="(item, key) in data.list" :key="key">
+        <div class="service-when__item" v-for="(item, key) in data.list" :key="key" ref="cards">
           <div class="service-when__card service-when__face">
             <h4 class="service-when__title fz-h2--mobile" v-if="item.face_title" v-html="item.face_title"></h4>
             <ContentText v-if="item.face_text" :text="fixText(item.face_text)" class="service-when__text" />
@@ -54,6 +54,8 @@ const { height } = useElementSize( title );
 
 const services: Ref = ref( null );
 const grid: Ref = ref( null );
+const cards: Ref = ref( null );
+
 let tl;
 
 onMounted( () => {
@@ -62,14 +64,15 @@ onMounted( () => {
       trigger: '.service-when',
       pin: '.service-when__container',
       start: `center center`,
-      end: `${(grid.value.getBoundingClientRect().height * 3.5)} bottom`,
+      end: `${(grid.value.getBoundingClientRect().height * 2.5)} bottom`,
       scrub: true,
-      markers: true,
+      markers: false,
     }
   });
 
   tl.to('.service-when__item', {
-    rotationY: -180,
+    rotationY: () => -180,
+    ease: "none",
     //easing: "easeInOutExpo",
   });
 
