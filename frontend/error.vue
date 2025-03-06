@@ -24,7 +24,9 @@ const handleError = () => {
 .error__page {
   background-color: #3B3B3B;
   color: var(--fg-white);
+  position: relative;
   overflow: hidden;
+  height: 100vh;
 
   &-content {
     padding: 29.7rem 0 2rem;
@@ -38,8 +40,9 @@ const handleError = () => {
     height: 100%;
 
     & img {
-      width: 100%;
-      height: 100%;
+      width: 140%;
+      height: 140%;
+      margin-top: -10rem;
       object-position: center center;
       object-fit: cover;
     }

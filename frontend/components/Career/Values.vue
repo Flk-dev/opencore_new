@@ -3,7 +3,7 @@
     <div class="career-values__container container">
       <GlobalBlockHeader :title="data.title" classes="career-values" class-title="fz-h1--tablet"/>
       <div class="career-values__block" v-if="data.list">
-        <GlobalAnimatedCircle :list="data.list" />
+        <GlobalAnimatedCircle v-if="data.list" :list="data.list" />
       </div>
     </div>
   </div>
@@ -12,7 +12,10 @@
 <script setup lang="ts">defineProps<{
   data: {
     title?: string,
-    list: object,
+    list: Array<{
+      title?: string,
+      text?: string,
+    }>,
   }
 }>();
 </script>
