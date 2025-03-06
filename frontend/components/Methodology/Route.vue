@@ -2,7 +2,7 @@
   <div class="methodology__route route" v-if="data.select.length">
     <div class="container">
       <GlobalBlockHeader :title="data.title" classes="route" class-title="fz-h1" />
-      <div class="route__grid">
+      <div class="route__grid" ref="grid">
         <div class="route__col route__left">
           <div class="route__line route__line--first"></div>
           <div
@@ -91,16 +91,13 @@ defineProps<{
   }
 }>();
 
+const grid: Ref = ref( null );
+const { height: gridHeight } = useElementSize( grid );
+
 const items: Ref = ref( null );
 const titles: Ref = ref( null );
 
-const initTitle = ( id: number ) => {
-  const title = titles.value.filter((item: any) => item.dataset.id === id);
-  titles.value.forEach((item: any) => item.classList.remove( 'route__titles-item--active' ));
-  title[0].classList.add( 'route__titles-item--active' );
-}
-
-onMounted( () => {
+const iniItems = () => {
   items.value.forEach((item: any) => {
     ScrollTrigger.create({
       trigger: item,
@@ -115,6 +112,16 @@ onMounted( () => {
       }
     });
   })
+}
+
+const initTitle = ( id: number ) => {
+  const title = titles.value.filter((item: any) => item.dataset.id === id);
+  titles.value.forEach((item: any) => item.classList.remove( 'route__titles-item--active' ));
+  title[0].classList.add( 'route__titles-item--active' );
+}
+
+onMounted( () => {
+  iniItems();
 } )
 
 const store = useHeader();
