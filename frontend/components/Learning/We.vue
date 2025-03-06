@@ -77,10 +77,10 @@ onMounted( () => {
       start: `-20% top`,
       end: `bottom bottom`,
       scrub: false,
-      markers: true,
+      markers: false,
     }
   });
-  
+
   vivusCircle.value = new Vivus(
       circle.value,
       {
