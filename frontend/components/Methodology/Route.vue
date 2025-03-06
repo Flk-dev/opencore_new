@@ -120,7 +120,24 @@ const initTitle = ( id: number ) => {
   title[0].classList.add( 'route__titles-item--active' );
 }
 
+gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.defaults({
+  markers: false
+});
+
 onMounted( () => {
+  // let tl = gsap.timeline({
+  //   scrollTrigger: {
+  //     trigger:".route__grid",
+  //     start:"-30% top",
+  //     end: "bottom bottom",
+  //     scrub: true,
+  //   }
+  // });
+  //
+  // tl.set('.route__line--first', {
+  //   width: '100%',
+  // } );
   iniItems();
 } )
 
@@ -175,6 +192,7 @@ const headerHeight = computed(() => store.headerHeight);
     width: 100%;
     height: .15rem;
     background: var(--fg-blue);
+    transition: width .5s;
 
     &--last {
       top: auto;
