@@ -44,7 +44,7 @@ const close = () => {
   width: 91%;
   max-width: 100%;
   z-index: 998;
-  //transform: translateY(var(--translate));
+  transform: translateY(var(--translate));
   transition: transform .3s, opacity 3s;
 
   &._hide {
