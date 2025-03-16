@@ -66,6 +66,21 @@ const handleError = () => {
     transform: translateX(-50%);
     z-index: 5;
 
+    @media (any-hover: hover) {
+      &:hover {
+        border-color: var(--fg-blue);
+
+      }
+
+      &:before {
+        background: var(--fg-blue);
+      }
+    }
+
+    :deep(span) {
+      color: var(--fg-white);
+    }
+
     @media (max-width: $mobile) {
       width: auto;
       padding: 2.5rem 3rem;

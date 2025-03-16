@@ -90,7 +90,7 @@ defineProps<{
   display: flex;
   width: var(--l-width);
   max-width: 100%;
-  margin-right: 2.9rem;
+  margin-right: 7.9rem;
 
   @media (max-width: $tablet) {
     width: 100%;

@@ -115,6 +115,16 @@ const open = () => {
   background: none;
 }
 
+:global(.modal--hero__video .modal__close:hover) {
+  background: var(--fg-blue);
+  border-color: var(--fg-blue);
+}
+
+
+:global(.modal--hero__video .modal__close:hover path) {
+  fill: var(--fg-white);
+}
+
 :global(.modal--hero__video .modal__close path) {
   stroke: var(--fg-white);
   fill: var(--fg-white);

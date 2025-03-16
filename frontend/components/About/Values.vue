@@ -111,7 +111,7 @@ const animate = () => {
   background: var(--fg-white);
   border: .15rem solid var(--fg-blue);
   border-radius: var(--br-regular);
-  padding: 3rem;
+  padding: 3rem 2.4rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -119,6 +119,10 @@ const animate = () => {
   margin-right: calc( -1 * ((var(--width) - var(--coef)) - var(--coef)));
   z-index: 5;
   //transition: all .7s;
+
+  @media (max-width: $mobile) {
+    padding: 3rem 2.8rem;
+  }
 
   &--active {
     opacity: 1;

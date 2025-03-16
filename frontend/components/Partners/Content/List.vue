@@ -1,7 +1,7 @@
 <template>
   <div class="partner__list partner-list">
     <div class="partner-list__container container">
-      <div class="partner-list__col">
+      <div class="partner-list__col" :class="{ 'partners-list__col--empty': data.title ? false : true }">
         <h2
             class="partner-list__title fz-h2 fz-h1--tablet fz-h1--mobile animate animate__fadeIn"
             :class="{ '_empty': ! data.title ? true : false }"
@@ -108,6 +108,14 @@ const upCounter = () => {
 
   @media (max-width: $mobile) {
     :deep(br) {
+      display: none;
+    }
+  }
+}
+
+.partner-list__col {
+  @media (max-width: $tablet) {
+    &--empty {
       display: none;
     }
   }

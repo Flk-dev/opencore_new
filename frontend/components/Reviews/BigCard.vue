@@ -16,7 +16,7 @@
       <span class="_up" v-html="title"></span>
     </div>
     <div class="reviews-item__content">
-      <div class="reviews-item__text" v-if="text" v-html="text"></div>
+      <div class="reviews-item__text" v-if="text" v-html="fixText(text)"></div>
       <div class="reviews-item__client">
         <NuxtLink
             v-if="cases"

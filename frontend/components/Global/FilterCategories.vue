@@ -3,9 +3,11 @@
     <swiper
         class="cats__menu-list"
         v-if="data"
+        :modules="[Navigation]"
         :free-mode="true"
         slides-per-view="auto"
         :space-between="10"
+        :navigation="{enabled: true, prevEl: '.cats__menu-prev', nextEl: '.cats__menu-next'}"
     >
       <swiper-slide style="width: fit-content !important;">
         <button
@@ -33,11 +35,38 @@
         </button>
       </swiper-slide>
     </swiper>
+
+    <button class="cats__menu-nav cats__menu-prev">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_6485_93248)">
+          <path d="M9.69744 12.9844L19.3404 22.6596L19.7422 22.2578L12.2072 14.7227C11.2566 13.7722 11.2563 12.2312 12.2064 11.2802L19.7399 3.74L19.3401 3.34008L9.69744 12.9844Z" fill="black" stroke="black"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_6485_93248">
+            <rect width="26" height="26" fill="white" transform="matrix(0 -1 1 0 0 26)"/>
+          </clipPath>
+        </defs>
+      </svg>
+    </button>
+    <button class="cats__menu-nav cats__menu-next">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_6485_92995)">
+          <path d="M16.3026 12.9844L6.65956 22.6596L6.25779 22.2578L13.7928 14.7227C14.7434 13.7722 14.7437 12.2312 13.7936 11.2802L6.26009 3.74L6.65992 3.34008L16.3026 12.9844Z" fill="black" stroke="black"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_6485_92995">
+            <rect width="26" height="26" fill="white" transform="matrix(0 -1 -1 0 26 26)"/>
+          </clipPath>
+        </defs>
+      </svg>
+
+    </button>
   </div>
 </template>
 
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 
 const props = withDefaults(defineProps<{
@@ -107,12 +136,32 @@ const changeCursorSlider = ( event: any, pos: any ) => {
 
 }
 
-//swiper-container::part(.swiper) {
-//  background-color: red;
-//}
+.cats__menu-nav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background: linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, #fff 57%);
+  width: 7rem;
+  height: 8.9rem;
+  padding-left: 1.5rem;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: all .3s;
 
-.cats__menu-list {
-  //white-space: nowrap;
+  &.swiper-button-disabled {
+    opacity: 0;
+  }
+}
+
+.cats__menu-next {
+  left: auto;
+  right: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 57%);
+  justify-content: flex-end;
+  padding-right: 1.5rem;
 }
 
 .cats__menu-link {

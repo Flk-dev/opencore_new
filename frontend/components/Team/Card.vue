@@ -7,7 +7,7 @@
       <div class="team-item__post" v-if="post" v-html="post"></div>
       <div class="team-item__name" :class="isBig ? 'fz-h3 fz-h2--mobile' : 'fz-caption fz-body--mobile'" v-if="name">{{ name }}</div>
     </div>
-    <div class="team-item__text fz-caption" v-if="isBig && text" v-html="text"></div>
+    <div class="team-item__text fz-caption" v-if="isBig && text" v-html="fixText(text)"></div>
   </div>
 </template>
 
@@ -66,6 +66,10 @@ defineProps<{
   &__text {
     margin-top: 3.5rem;
     max-width: 40rem;
+
+    @media (max-width: $tablet) {
+      max-width: 60rem;
+    }
 
     @media (max-width: $mobile) {
       max-width: 41.7rem;

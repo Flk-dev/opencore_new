@@ -29,7 +29,8 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const logo: any = ref( null );
+const logo: Ref = ref( null );
+const section: Ref = ref( null );
 
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.defaults({
@@ -46,12 +47,21 @@ onMounted( () => {
   mm.add("(min-width: 992px)", () => {
     tl = gsap.timeline({
       scrollTrigger: {
-        trigger: '.home__cases',
-        start: "top bottom",
-        end: "top left",
+        trigger: '.hero',
+        start: "bottom bottom",
+        end: `${ section.value.getBoundingClientRect().height * 2 } bottom`,
         scrub: true,
       }
     });
+
+    // tl = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: '.home__cases',
+    //     start: "top bottom",
+    //     end: "top left",
+    //     scrub: true,
+    //   }
+    // });
 
     tl.from(logo.value, {
       y: "96vh",
@@ -66,23 +76,23 @@ onMounted( () => {
       padding: 0
     }, '<25%');
 
-    /*tl.to(logo.value, {
-        y: -200
-      }, '>');*/
+    tl.to(logo.value, {
+      yPercent: -200,
+    }, '<250%');
   } );
 });
 
-/*watch(isHide, (newX) => {
+watch(isHide, (newX) => {
   if(newX){
-    tl.to(logo.value, {
-      y: -200
-    }, '<');
+      gsap.set(logo.value, {
+      yPercent: -200,
+    });
   } else {
-    tl.to(logo.value, {
-      y: 0
-    }, '<');
+    gsap.set(logo.value, {
+      yPercent: 0,
+    });
   }
-})*/
+})
 
 </script>
 

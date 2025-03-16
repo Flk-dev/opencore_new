@@ -11,7 +11,7 @@
                 <div class="learning-complex__item-number">{{ ( index + 1 ) }}</div>
                 <h4 class="learning-complex__item-title fz-h4 fz-h2--mobile" v-html="item.title"></h4>
               </div>
-              <div class="learning-complex__item-text content__text" v-html="item.text"></div>
+              <div class="learning-complex__item-text content__text" v-html="fixText(item.text)"></div>
             </div>
           </div>
         </div>

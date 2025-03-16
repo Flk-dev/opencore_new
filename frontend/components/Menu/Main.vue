@@ -41,7 +41,6 @@
           <NuxtLink
             class="menu__link"
             :to="link.href"
-            @click="close"
             @dragstart.prevent
           >
             <div class="menu__title">{{ link.title }}</div>

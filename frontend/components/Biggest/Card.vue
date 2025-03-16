@@ -4,7 +4,7 @@
       <div class="biggest-item__logo" v-if="logo">
         <img :src="logo" :alt="title">
       </div>
-      <h4 class="biggest-item__title fz-h2--mobile">{{ title }}</h4>
+      <h4 class="biggest-item__title fz-h2--mobile" v-if="title" v-html="fixText(title)"></h4>
       <div class="biggest-item__subtitle fz-caption" v-if="subtitle" v-html="subtitle"></div>
     </div>
     <div class="biggest-item__text" v-if="text" v-html="text"></div>
@@ -60,7 +60,7 @@ defineProps<{
   }
 
   @media (max-width: $mobile) {
-    padding: 2rem;
+    padding: 2rem 1.85rem;
   }
 }
 </style>

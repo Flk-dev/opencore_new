@@ -53,5 +53,9 @@ defineProps<{
 .learning-whos__list {
   width: 76.6rem;
   max-width: 100%;
+
+  :deep(.accordion-item__text) {
+    max-width: 90%;
+  }
 }
 </style>

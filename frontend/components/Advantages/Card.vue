@@ -73,7 +73,7 @@ defineProps<{
     @media (max-width: $tablet) {
       max-width: 100%;
 
-      & br {
+      :deep(br){
         display: none;
       }
     }

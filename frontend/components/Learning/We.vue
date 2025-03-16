@@ -130,6 +130,10 @@ onMounted( () => {
   @media (max-width: $tablet) {
     padding-bottom: 1rem;
   }
+
+  @media (max-width: $mobile) {
+    padding: 3rem 2rem 1rem;
+  }
 }
 
 .learning-we__content {

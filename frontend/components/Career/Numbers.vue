@@ -10,7 +10,7 @@
             <div class="career-numbers__item-number fz-h2 fz-h3--tablet fz-h1--mobile" v-if="item.number">{{ item.number }}</div>
             <div class="career-numbers__item-subtitle fz-h4 fz-h1--mobile" v-if="item.subtitle" v-html="item.subtitle"></div>
           </div>
-          <div class="career-numbers__item-text fz-body" v-if="item.text" v-html="item.text"></div>
+          <div class="career-numbers__item-text fz-body" v-if="item.text" v-html="fixText(item.text)"></div>
         </div>
       </div>
       <div class="career-numbers__button" v-if="data.button && data.button_link">

@@ -81,6 +81,12 @@ defineProps<{
 
     font-family: var(--ff-extended);
 
+    @media (max-width: $tablet) {
+      :deep(br) {
+        display: none;
+      }
+    }
+
     @media (max-width: $mobile) {
       --fz: var(--fz-h2);
       --lh: var(--lh-h2);
@@ -88,10 +94,6 @@ defineProps<{
 
       --mb-ul-li: 1.5rem;
       --top-ul-icon: .6rem;
-
-      :deep(br) {
-        display: none;
-      }
     }
   }
 

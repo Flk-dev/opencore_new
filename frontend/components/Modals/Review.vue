@@ -1,5 +1,5 @@
 <template>
-  <ContentText v-if="props.full" :text="props.full" class="review-modal__text" />
+  <ContentText v-if="props.full" :text="fixText(props.full)" class="review-modal__text" />
   <div class="review-modal__footer">
     <div class="review-modal__logo" v-if="props.logo">
       <img :src="props.logo" alt="">
